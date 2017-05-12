@@ -15,7 +15,7 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 	private JButton Setting_btn;// Setting button
 	private Font f1;
 
-	public Main() {
+	public JPanel main() {
 
 		f1 = new Font("蹈框", Font.BOLD, 15);
 		start_btn = new JButton("START"); // start button 积己
@@ -29,6 +29,14 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 		
 		Exit_btn = new JButton("EXIT");// Exit button 积己
 		Exit_btn.setFont(f1);
+		
+		JPanel panel = new JPanel();
+		panel.add(start_btn);
+		panel.add(introduce_btn);
+		panel.add(Setting_btn);
+		panel.add(Exit_btn);
+		
+		return panel;
 	}
 
 	public void start() {
@@ -51,6 +59,7 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 
+		//if(arg0.getSource().equals(start_btn))
 	}
 
 }

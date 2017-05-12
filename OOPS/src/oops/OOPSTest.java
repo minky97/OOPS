@@ -12,6 +12,9 @@ public class OOPSTest {
 		
 		//OOPS oops = new OOPS();
 	//	frame.add(oops);
+		Main main = new Main();
+		frame.add(main.main());
+		
 		
 		frame.setSize(frame_Width, frame_Height);
 		frame.setVisible(true);

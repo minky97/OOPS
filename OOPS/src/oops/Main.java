@@ -1,11 +1,12 @@
 package oops;
 
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Main extends JPanel implements ActionListener {// OOPs first screen
 
@@ -18,23 +19,35 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 	public JPanel main() {
 
 		f1 = new Font("妓崇", Font.BOLD, 15);
+		Image image = new ImageIcon("main.png").getImage();
 		start_btn = new JButton("START"); // start button 持失
 		start_btn.setFont(f1);
-		
+
 		introduce_btn = new JButton("INTRODUCE");// introduce button 持失
 		introduce_btn.setFont(f1);
-		
+
 		Setting_btn = new JButton("SETTING");// Setting button 持失
 		Setting_btn.setFont(f1);
-		
+
 		Exit_btn = new JButton("EXIT");// Exit button 持失
 		Exit_btn.setFont(f1);
+
+		JPanel background = new JPanel() {
+			public void paintComponent(Graphics g) {
+
+				g.drawImage(image, 0, 0, this);
+				setOpaque(true);
+				super.paintComponent(g);
+
+			}
+		};
 		
 		JPanel panel = new JPanel();
 		panel.add(start_btn);
 		panel.add(introduce_btn);
 		panel.add(Setting_btn);
 		panel.add(Exit_btn);
+
 		//
 		return panel;
 	}
@@ -59,7 +72,7 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 
-		//if(arg0.getSource().equals(start_btn))
+		// if(arg0.getSource().equals(start_btn))
 	}
 
 }

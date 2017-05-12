@@ -1,5 +1,6 @@
 package oops;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,18 +9,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class Main extends JPanel implements ActionListener {// OOPs first screen
+public class Main extends JFrame implements ActionListener {// OOPs first screen
 
 	private JButton start_btn;// start button
 	private JButton introduce_btn;// introduce button
 	private JButton Exit_btn;// Exit button
 	private JButton Setting_btn;// Setting button
 	private Font f1;
+	private JScrollPane scrollPane;
+	private OOPSTest ex;
 
-	public JPanel main() {
+	public void main() {
 
 		f1 = new Font("蹈框", Font.BOLD, 15);
-		Image image = new ImageIcon("main.png").getImage();
+		ImageIcon image = new ImageIcon("main.png");
 		start_btn = new JButton("START"); // start button 积己
 		start_btn.setFont(f1);
 
@@ -32,16 +35,26 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 		Exit_btn = new JButton("EXIT");// Exit button 积己
 		Exit_btn.setFont(f1);
 
-		JPanel panel= new JPanel();
+		JPanel panel= new JPanel(){
+			public void paintComponent(Graphics g){
+				g.drawImage(image.getImage(), 0, 0, null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
 		
+		
+	
 		
 		panel.add(start_btn);
 		panel.add(introduce_btn);
 		panel.add(Setting_btn);
 		panel.add(Exit_btn);
 
-		//
-		return panel;
+		
+		 scrollPane = new JScrollPane(panel);
+	      setContentPane(scrollPane);
+	
 	}
 
 	public void start() {
@@ -64,7 +77,18 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 
-		// if(arg0.getSource().equals(start_btn))
+//		if(arg0.getSource().equals(start_btn))
+//		{
+//			
+//		}
+//		else if(arg0.getSource().equals(Exit_btn))
+//			ex.change("Exit");
+//		else if(arg0.getSource().equals(Setting_btn))
+//			ex.change("Setting");
+//		else if(arg0.getSource().equals(introduce_btn))
+//			ex.change("Introduce");
 	}
+	
+	
 
 }

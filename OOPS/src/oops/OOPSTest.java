@@ -13,6 +13,7 @@ public class OOPSTest  {
 		return main;
 	}
 
+	
 	public void setMain(Main main) {
 
 		if (main == null)

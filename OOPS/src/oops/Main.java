@@ -19,10 +19,9 @@ public class Main extends JFrame implements ActionListener {// OOPs first screen
 	private JScrollPane scrollPane;
 	private OOPSTest ex;
 
-	public void main() {
+	public Main() {
 
 		f1 = new Font("妓崇", Font.BOLD, 15);
-		ImageIcon image = new ImageIcon("main.png");
 		start_btn = new JButton("START"); // start button 持失
 		start_btn.setFont(f1);
 
@@ -32,19 +31,19 @@ public class Main extends JFrame implements ActionListener {// OOPs first screen
 		Setting_btn = new JButton("SETTING");// Setting button 持失
 		Setting_btn.setFont(f1);
 
+		
 		Exit_btn = new JButton("EXIT");// Exit button 持失
 		Exit_btn.setFont(f1);
+		
+		ImageIcon image = new ImageIcon("image.png");
 
-		JPanel panel= new JPanel(){
+		JPanel panel= new JPanel() {
 			public void paintComponent(Graphics g){
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
 			}
 		};
-		
-		
-	
 		
 		panel.add(start_btn);
 		panel.add(introduce_btn);
@@ -53,7 +52,7 @@ public class Main extends JFrame implements ActionListener {// OOPs first screen
 
 		
 		 scrollPane = new JScrollPane(panel);
-	      setContentPane(scrollPane);
+	     setContentPane(scrollPane);
 	
 	}
 

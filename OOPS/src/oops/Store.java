@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 public class Store extends JPanel implements ActionListener {
 
 	
-	Clock c = new Clock();
-	Hint h = new Hint();
-	User u = new User();
+	//Clock c = new Clock();
+	//Hint h = new Hint();
+	//User u = new User();
 
 	private int price;
 	private int num;

@@ -35,7 +35,7 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 		panel.add(introduce_btn);
 		panel.add(Setting_btn);
 		panel.add(Exit_btn);
-		
+		//
 		return panel;
 	}
 

@@ -32,17 +32,9 @@ public class Main extends JPanel implements ActionListener {// OOPs first screen
 		Exit_btn = new JButton("EXIT");// Exit button »ý¼º
 		Exit_btn.setFont(f1);
 
-		JPanel background = new JPanel() {
-			public void paintComponent(Graphics g) {
-
-				g.drawImage(image, 0, 0, this);
-				setOpaque(true);
-				super.paintComponent(g);
-
-			}
-		};
+		JPanel panel= new JPanel();
 		
-		JPanel panel = new JPanel();
+		
 		panel.add(start_btn);
 		panel.add(introduce_btn);
 		panel.add(Setting_btn);

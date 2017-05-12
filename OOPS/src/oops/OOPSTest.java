@@ -4,8 +4,8 @@ import javax.swing.JFrame;
 public class OOPSTest {
 
 	public void createFrame() {
-		final int frame_Height = 800;
-		final int frame_Width = 1000;
+		final int frame_Height =900;
+		final int frame_Width = 1300;
 
 		JFrame frame = new JFrame("OOPS!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

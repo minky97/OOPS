@@ -92,7 +92,7 @@ public class BackSound implements LineListener {
     
     public void mulist() {
     	
-        String game1 = "C:\\Users\\이은영\\Desktop\\sun\\game1.wav";
+    	String game1 = "C:\\Users\\이은영\\Desktop\\sun\\game1.wav";
         BackSound player = new BackSound();
         player.play(game1);
         
@@ -110,6 +110,13 @@ public class BackSound implements LineListener {
         
         String timesup = "C:\\Users\\이은영\\Desktop\\sun\\timesup.wav";
         player.play(timesup);
+    	
+    }
+    
+    public static void main(String[] args) {
+    	
+    	BackSound bc = new BackSound();
+    	bc.mulist();
     	
     }
  

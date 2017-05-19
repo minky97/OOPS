@@ -8,8 +8,6 @@ public class OOPSTest  {
 	private Start start;
 	private End end;
 	private Introduce introduce;
-
-
 	public static void main(String[] args) {
 
 		OOPSTest test = new OOPSTest();
@@ -18,6 +16,7 @@ public class OOPSTest  {
 	
 	public OOPSTest(){
 		main=new Main();
+		main.setVisible(true);
 	}
 
 
@@ -26,7 +25,7 @@ public class OOPSTest  {
 		if (panelName.equals("Introduce")) {
 			introduce=new Introduce();
 			main.setVisible(false);
-			
+			introduce.setVisible(true);
 		}
 		else{
 			System.out.println("kk");

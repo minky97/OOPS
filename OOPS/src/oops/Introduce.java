@@ -19,18 +19,7 @@ public class Introduce extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Introduce frame = new Introduce();
-//					frame.visible(true,frame);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});		
-//	}
+
 
 	
 	/**
@@ -39,7 +28,7 @@ public class Introduce extends JFrame {
 	public Introduce() {
 		setTitle("Introduce");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+
 		
 		setBounds(100, 100, frame_Width, frame_Height);
 		contentPane = new JPanel();

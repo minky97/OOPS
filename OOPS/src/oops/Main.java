@@ -13,6 +13,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
@@ -68,6 +70,13 @@ public class Main extends JFrame {
 		btnStart.setFont(f1);
 		
 		JButton btnIntroduce = new JButton("Introduce");
+		btnIntroduce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(arg0.getSource().equals(btnIntroduce)){
+					new Introduce();
+				}
+			}
+		});
 		btnIntroduce.setFont(f1);
 		
 		JButton btnSetting = new JButton("Setting");

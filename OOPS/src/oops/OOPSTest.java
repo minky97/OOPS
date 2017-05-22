@@ -7,6 +7,7 @@ public class OOPSTest  {
 	private Main main;
 	private Start start;
 	private End end;
+	private Setting setting;
 	private Introduce introduce;
 	
 	public OOPSTest(Main input_main)
@@ -23,7 +24,13 @@ public class OOPSTest  {
 			main.setVisible(false);
 			
 		}
-		else{
+		else if(panelName.equals("Setting")){
+			setting = new Setting(main);
+			setting.setVisible(true);
+			main.setVisible(false);
+			
+		}
+		else {
 			System.out.println("kk");
 		}
 	}

@@ -78,6 +78,13 @@ public class Main extends JFrame {
 
 		JButton btnSetting = new JButton("Setting");
 		btnSetting.setFont(f1);
+		btnSetting.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0)
+			{				
+				oopstest = new OOPSTest(mine);
+				oopstest.test(btnSetting.getText());
+			}
+		});
 
 		JButton btnExit = new JButton("Exit");
 		btnExit.setFont(f1);

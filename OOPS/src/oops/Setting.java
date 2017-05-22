@@ -16,6 +16,8 @@ public class Setting extends JFrame {
 
 	private JPanel contentPane;
 	private Main main;
+	final int frame_Height = 900;
+	final int frame_Width = 1300;
 
 	/**
 	 * Launch the application.
@@ -27,8 +29,7 @@ public class Setting extends JFrame {
 	 */
 	public Setting(Main main_input) {
 		this.main=main_input;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, frame_Width, frame_Height);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

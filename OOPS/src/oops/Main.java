@@ -65,6 +65,13 @@ public class Main extends JFrame {
 
 		JButton btnStart = new JButton("Start");
 		btnStart.setFont(f1);
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0)
+			{				
+				oopstest = new OOPSTest(mine);
+				oopstest.test(btnStart.getText());
+			}
+		});
 
 		JButton btnIntroduce = new JButton("Introduce");
 		btnIntroduce.addActionListener(new ActionListener() {

@@ -9,7 +9,7 @@ public class OOPSTest  {
 	private End end;
 	private Setting setting;
 	private Introduce introduce;
-	
+	private Join join;
 	public OOPSTest(Main input_main)
 	{
 		this.main = input_main;
@@ -29,6 +29,16 @@ public class OOPSTest  {
 			setting.setVisible(true);
 			main.setVisible(false);
 			
+		}
+		else if(panelName.equals("Start")){
+			join=new Join(main);
+			join.setVisible(true);
+			main.setVisible(false);
+		}
+		else if(panelName.equals("Start_game")){
+			start=new Start(main);
+			start.setVisible(true);
+			join.setVisible(false);
 		}
 		else {
 			System.out.println("kk");

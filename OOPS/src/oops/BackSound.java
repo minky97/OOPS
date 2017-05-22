@@ -10,6 +10,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineEvent.Type;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -47,7 +48,10 @@ public class BackSound implements LineListener {
  
             audioClip.open(audioStream);
              
-            audioClip.start();
+            audioClip.start(); // 노래 나오게 하는 것
+            
+            
+            //audioClip.stop(); 노래 안 나오게 하는 것
              
             while (!playCompleted) {
                 // wait for the playback completes

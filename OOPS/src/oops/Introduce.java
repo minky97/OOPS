@@ -2,6 +2,8 @@ package oops;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 
 public class Introduce extends JFrame {
 
+	private Main main;
 	private JPanel contentPane;
 	final int frame_Height = 900;
 	final int frame_Width = 1300;
@@ -25,10 +28,10 @@ public class Introduce extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Introduce() {
+	public Introduce(Main main_input)
+	{
 		setTitle("Introduce");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		this.main = main_input;
 		
 		setBounds(100, 100, frame_Width, frame_Height);
 		contentPane = new JPanel();
@@ -53,6 +56,52 @@ public class Introduce extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 		
+		this.addWindowListener(new WindowListener()
+		{
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowClosing(WindowEvent e) 
+			{
+				main.setVisible(true);
+				dispose();
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 

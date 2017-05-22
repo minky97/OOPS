@@ -7,27 +7,30 @@ public class OOPSTest  {
 	private Main main;
 	private Start start;
 	private End end;
+	private Setting setting;
 	private Introduce introduce;
-	public static void main(String[] args) {
-
-		OOPSTest test = new OOPSTest();
 	
+	public OOPSTest(Main input_main)
+	{
+		this.main = input_main;
 	}
 	
-	public OOPSTest(){
-		main=new Main();
-		main.setVisible(true);
-	}
-
-
-	public void test(String panelName) {
-		
-		if (panelName.equals("Introduce")) {
-			introduce=new Introduce();
-			main.setVisible(false);
+	public void test(String panelName) 
+	{		
+		if (panelName.equals("Introduce"))
+		{
+			introduce=new Introduce(main);
 			introduce.setVisible(true);
+			main.setVisible(false);
+			
 		}
-		else{
+		else if(panelName.equals("Setting")){
+			setting = new Setting(main);
+			setting.setVisible(true);
+			main.setVisible(false);
+			
+		}
+		else {
 			System.out.println("kk");
 		}
 	}

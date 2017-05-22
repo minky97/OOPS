@@ -81,6 +81,11 @@ public class Main extends JFrame {
 
 		JButton btnExit = new JButton("Exit");
 		btnExit.setFont(f1);
+		btnExit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				mine.setVisible(false);
+			}
+		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane

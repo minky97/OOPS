@@ -99,6 +99,7 @@ public class End extends JFrame {
             .addComponent(panel, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
       );
       contentPane.setLayout(gl_contentPane);
-   }
+   }//66
+   
 
 

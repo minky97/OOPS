@@ -31,15 +31,10 @@ public class OOPSTest  {
 			
 		}
 		else if(panelName.equals("Start")){
-			join=new Join(main);
-			join.setVisible(true);
-			main.setVisible(false);
+			start=new Start(main,false);
+			
 		}
-		else if(panelName.equals("Start_game")){
-			start=new Start(main);
-			start.setVisible(true);
-			join.setVisible(false);
-		}
+		
 		else {
 			System.out.println("kk");
 		}

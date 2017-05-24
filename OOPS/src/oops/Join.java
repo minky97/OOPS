@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
@@ -31,10 +32,18 @@ public class Join extends JFrame {
 	private Main main;
 	private Start start;
 	private OOPSTest oopstest;
+	private int index;
+	private boolean log_in;
 
-	/**
-	 * Launch the application.
-	 */
+	public int getindex_user(){
+		return index;
+	}
+	public boolean getlog_in(){
+		return log_in;
+	}
+	public ArrayList<String> getuser_list(){
+		return userlist;
+	}
 
 	/**
 	 * Create the frame.
@@ -42,6 +51,7 @@ public class Join extends JFrame {
 	public Join(Main main_input) {
 		this.main = main_input;
 		setBounds(100, 100, frame_Width, frame_Height);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -63,14 +73,18 @@ public class Join extends JFrame {
 		JButton btnLogin = new JButton("Log-in");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (e.getSource().equals(btnLogin)) {
+				if (e.getSource().equals(btnLogin)) { 
 					id = textField.getText();
 					if (userlist.contains(id)) {
-						oopstest=new OOPSTest(main);
-						oopstest.test("Start_game");
+						log_in=true;
+						start=new Start(main,log_in);
+						index=userlist.indexOf(id);
 					} else {
+						log_in=false;
+						
 						login_warning.setText(id + "doesn't exist.\tPlease input existing id or create new id");
 					}
+					
 				}
 				if (e.getSource().equals(btnJoin)) {
 					id = textField.getText();
@@ -78,6 +92,7 @@ public class Join extends JFrame {
 						join_warning.setText(id + "exist already.\tPlease input new id");
 					} else {
 						userlist.add(id);
+						JOptionPane.showMessageDialog(null, "Success join ! you can do log-in.");
 					}
 
 				}

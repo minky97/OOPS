@@ -29,6 +29,7 @@ public class Main extends JFrame {
 	private Main frame;
 	private OOPSTest oopstest;
 	private Join join;
+	private JLabel lblWelcome;
 
 	/**
 	 * Launch the application.
@@ -49,7 +50,7 @@ public class Main extends JFrame {
 		setBounds(100, 100, frame_Width, frame_Height);
 
 		if(join.getlog_in()){//check log_in
-			JLabel lblWelcome = new JLabel("Welcome !"+join.getuser_list().get(join.getindex_user()));
+			lblWelcome = new JLabel("Welcome !"+join.getuser_list().get(join.getindex_user()));
 		}
 		
 		

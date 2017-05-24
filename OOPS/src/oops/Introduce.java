@@ -30,11 +30,6 @@ public class Introduce extends JFrame {
 	final Font F_title;
 	final Font F_text;
 
-	/**
-	 * Launch the application.
-	 */
-
-
 	
 	/**
 	 * Create the frame.

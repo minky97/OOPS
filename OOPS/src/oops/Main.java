@@ -48,9 +48,15 @@ public class Main extends JFrame {
 		setTitle("OOPS");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, frame_Width, frame_Height);
+		
+		join=new Join(mine);
+		
+		lblWelcome = new JLabel("");
 
 		if(join.getlog_in()){//check log_in
-			lblWelcome = new JLabel("Welcome !"+join.getuser_list().get(join.getindex_user()));
+			lblWelcome.setText("Welcome !"+join.getuser_list().get(join.getindex_user()));
+			lblWelcome.setFont(f1);
+			
 		}
 		
 		

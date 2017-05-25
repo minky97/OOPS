@@ -28,7 +28,7 @@ private Main main;
 		
 		this.main=main_input;
 		  setTitle("One Step");
-	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 	      setBounds(100, 100, frame_Width, frame_Height);
 	      
 	      image = new ImageIcon("step1.png");

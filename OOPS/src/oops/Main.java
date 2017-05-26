@@ -28,7 +28,7 @@ public class Main extends JFrame {
 	final int frame_Width = 1300;
 	private Main frame;
 	private OOPSTest oopstest;
-	private Join join;
+	private Login login;
 	private JLabel lblWelcome;
 
 	/**
@@ -49,12 +49,12 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, frame_Width, frame_Height);
 		
-		join=new Join(mine);
+		login=new Login(mine);
 		
 		lblWelcome = new JLabel("");
 
-		if(join.getlog_in()){//check log_in
-			lblWelcome.setText("Welcome !"+join.getuser_list().get(join.getindex_user()));
+		if(login.getlog_in()){//check log_in
+			lblWelcome.setText("Welcome !"+login.getuser_list().get(login.getindex_user()));
 			lblWelcome.setFont(f1);
 			
 		}

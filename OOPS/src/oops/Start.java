@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Start extends JFrame{
 
 	private JLabel label;
-	private Join join;
+	private Login login;
 	private Main main;
 	private OneStep onestep;
 	public Start(Main main_input,boolean log_in){
@@ -16,8 +16,8 @@ public class Start extends JFrame{
 			main.setVisible(false);
 		}
 		else if(log_in == false){
-			join = new Join(main);
-			join.setVisible(true);
+			login = new Login(main);
+			login.setVisible(true);
 			main.setVisible(false);
 		}
 	}

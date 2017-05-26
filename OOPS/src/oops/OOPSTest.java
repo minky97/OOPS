@@ -9,7 +9,7 @@ public class OOPSTest  {
 	private End end;
 	private Setting setting;
 	private Introduce introduce;
-	private Join join;
+	private Login login;
 	public OOPSTest(Main input_main)
 	{
 		this.main = input_main;

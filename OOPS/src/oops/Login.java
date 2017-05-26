@@ -26,7 +26,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
-	
+	private Login mine;
+	private Join join;
 	private JPanel contentPane;
 	private JTextField textField;
 	private ArrayList<String> userlist_id ;
@@ -61,22 +62,14 @@ public class Login extends JFrame {
 	public ArrayList<String> getuser_list() {
 		return userlist_id;
 	}
+	public void setuser_list(ArrayList<String>user_id,ArrayList<String>user_pw){
+
+		this.userlist_id = user_id;
+		this.userlist_pw = user_pw;
+	}
 
 	
-	public void join(ArrayList<String>id_list,ArrayList<String>pw_list) {// join
 
-		
-		
-		id = textField.getText();
-		pw=textField_1.getText();
-		if (userlist_id.contains(id)) {
-			JOptionPane.showMessageDialog(null, id + "exist already.\tPlease input new id");
-		} else {
-			id_list.add(id);
-			pw_list.add(pw);
-			JOptionPane.showMessageDialog(null, "Success join ! you can do log-in.");
-		}
-	}
 
 	public Login(Main main_input) {
 	
@@ -116,11 +109,15 @@ public class Login extends JFrame {
 		userlist_id = new ArrayList();
 		userlist_pw = new ArrayList();
 		
+		
+		
 		JButton btnJoin = new JButton("Join");
 		btnJoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(btnJoin)) {
-					join(userlist_id,userlist_pw);
+					join= new Join(mine);
+					join.setVisible(true);
+					setVisible(false);
 				}
 			}
 
@@ -128,7 +125,8 @@ public class Login extends JFrame {
 
 		log_in = false;
 		
-		btnLogin = new JButton("Log-in");
+		btnLogin = 
+				new JButton("Log-in");
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

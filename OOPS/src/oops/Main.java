@@ -26,7 +26,6 @@ public class Main extends JFrame {
 	private Font f1;
 	final int frame_Height = 900;
 	final int frame_Width = 1300;
-	private Main frame;
 	private OOPSTest oopstest;
 	private Login login;
 	private JLabel lblWelcome;

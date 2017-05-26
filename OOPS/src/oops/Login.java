@@ -26,11 +26,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
-
+	
 	private JPanel contentPane;
 	private JTextField textField;
-	private ArrayList<String> userlist_id;
-	private ArrayList<String> userlist_pw;
+	private ArrayList<String> userlist_id ;
+	private ArrayList<String> userlist_pw ;
 	private String id;
 	private String pw;
 	final int frame_Height = 900;
@@ -43,12 +43,15 @@ public class Login extends JFrame {
 	private ImageIcon image;
 	private Font f1;
 	private JTextField textField_1;
-
+	private JLabel lblNewLabel;
+	private JButton btnLogin;
+	
 	public int getindex_user() {
 		return index;
 	}
-	public void setlog_in(boolean login){
-		this.log_in=login;
+
+	public void setlog_in(boolean login) {
+		this.log_in = login;
 	}
 
 	public boolean getlog_in() {
@@ -59,18 +62,32 @@ public class Login extends JFrame {
 		return userlist_id;
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	
-	public void join(){//join
-		
-	}
-	public Login(Main main_input) {//login
-		this.main = main_input;
-		setBounds(100, 100, frame_Width, frame_Height);
-		image = new ImageIcon("login.png");
+	public void join(ArrayList<String>id_list,ArrayList<String>pw_list) {// join
 
+		
+		
+		id = textField.getText();
+		pw=textField_1.getText();
+		if (userlist_id.contains(id)) {
+			JOptionPane.showMessageDialog(null, id + "exist already.\tPlease input new id");
+		} else {
+			id_list.add(id);
+			pw_list.add(pw);
+			JOptionPane.showMessageDialog(null, "Success join ! you can do log-in.");
+		}
+	}
+
+	public Login(Main main_input) {
+	
+		this.main = main_input;
+		setTitle("Login");
+		setBounds(100, 100, frame_Width, frame_Height);
+	
+		f1 = new Font("Times", Font.BOLD, 40);
+		
+		image = new ImageIcon("login.png");
+		
 		contentPane = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(image.getImage(), 0, 0, null);
@@ -78,70 +95,55 @@ public class Login extends JFrame {
 				super.paintComponent(g);
 			}
 		};
+
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-
-		f1 = new Font("Times", Font.BOLD, 40);
-
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Log-in", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		contentPane.add(panel, BorderLayout.CENTER);
-
-		userlist_id = new ArrayList();
-		userlist_pw = new ArrayList();
-
-		JLabel lblId = new JLabel("ID: ");
-		lblId.setFont(f1);
-
-		JLabel lblPassword = new JLabel("PASSWORD :");
+		
+		JLabel lblID = new JLabel("ID :");
+		lblID.setFont(f1);
+		JLabel lblPassword = new JLabel("password :");
 		lblPassword.setFont(f1);
+		
+		
+		textField = new JTextField();
+		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("If you don't have id , click the button \"Join\".");
-
+		lblNewLabel = new JLabel("If you don't have id , click the button \"Join\".");
+		
+		userlist_id = new ArrayList();
+		userlist_pw = new ArrayList();
 		
 		JButton btnJoin = new JButton("Join");
 		btnJoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(btnJoin)) {
-					
-					join();
-					
-//					id = textField.getText();
-//					if (userlist_id.contains(id)) {
-//						JOptionPane.showMessageDialog(null,id + "exist already.\tPlease input new id");
-//					} else {
-//						userlist_id.add(id);
-//						JOptionPane.showMessageDialog(null, "Success join ! you can do log-in.");
-//					}
-
-				}			
+					join(userlist_id,userlist_pw);
+				}
 			}
 
-			private void join() {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+			});
 
 		log_in = false;
-
-		textField = new JTextField();
-		textField.setColumns(10);
-
-		JButton btnLogin = new JButton("Log-in");
+		
+		btnLogin = new JButton("Log-in");
+		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(btnLogin)) {
 					id = textField.getText();
+					pw=textField_1.getText();
 					if (userlist_id.contains(id)) {
 						setlog_in(true);
 						index = userlist_id.indexOf(id);
+						if(!pw.equals(userlist_pw.get(index)))
+							JOptionPane.showMessageDialog(null, "Passwords do not correct !");
+						else{
 						JOptionPane.showMessageDialog(null, "Welcome !");
 						start = new Start(main, log_in);
+						}
 					} else if (!userlist_id.contains(id)) {
 						setlog_in(false);
 						JOptionPane.showMessageDialog(null,
@@ -195,50 +197,57 @@ public class Login extends JFrame {
 
 			}
 		});
+
+
 		
-		
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(261)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblPassword)
-						.addComponent(lblId, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(textField_1)
-						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
-					.addGap(61)
-					.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(368, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(545, Short.MAX_VALUE)
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(392, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(lblPassword)
+								.addComponent(lblID))
+							.addGap(18)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField_1, 309, 309, 309)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 309, GroupLayout.PREFERRED_SIZE))
+							.addGap(75)
+							.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(208)
+							.addComponent(btnJoin, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 115, GroupLayout.PREFERRED_SIZE)))
+					.addGap(317))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(290)
 					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnJoin, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-					.addGap(558))
+					.addContainerGap(692, Short.MAX_VALUE))
 		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(286)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblId, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-					.addGap(40)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblPassword)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
-					.addGap(67)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnJoin, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel))
-					.addContainerGap(295, Short.MAX_VALUE))
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(430)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblID)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+					.addGap(61)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblPassword))
+					.addGap(72)
+					.addComponent(btnJoin, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel)
+					.addContainerGap(128, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(507, Short.MAX_VALUE)
+					.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+					.addGap(292))
 		);
-		panel.setLayout(gl_panel);
+		getContentPane().setLayout(groupLayout);
 	}
 }
 

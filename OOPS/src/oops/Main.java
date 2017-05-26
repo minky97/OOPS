@@ -78,6 +78,7 @@ public class Main extends JFrame {
 
 		setContentPane(contentPane);
 
+		
 		JButton btnStart = new JButton("Start");
 		btnStart.setFont(f1);
 		btnStart.addActionListener(new ActionListener() {

@@ -52,7 +52,7 @@ public class Join extends JFrame {
 			BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
 			String s;
 			while((s=rd_id.readLine()) != null){
-				if(s.equals(id));
+				if(s.equals(id))
 				return true;
 			}
 			return false;

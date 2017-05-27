@@ -194,7 +194,7 @@ public class Login extends JFrame {
 						if (check(id,pw,file_id,file_pw)) {
 							setlog_in(true);
 							JOptionPane.showMessageDialog(null, "Welcome !");
-							start = new Start(main, log_in);
+							start = new Start(main_input,log_in);
 							
 							
 						} else if (!check(id,pw,file_id,file_pw)) {

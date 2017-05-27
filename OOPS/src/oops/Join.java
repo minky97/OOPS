@@ -45,6 +45,7 @@ public class Join extends JFrame {
 	private String filename_pw;
 	private File file_id;
 	private File file_pw;
+	private Main main;
 	
 	public boolean check(String id,File file_id) throws IOException{
 		try {
@@ -65,6 +66,8 @@ public class Join extends JFrame {
 	}
 	public Join(Login log_input) {
 		this.log = log_input;
+		log = new Login(main);
+		
 		setTitle("Sign");
 		setBounds(100, 100, frame_Width, frame_Height);
 
@@ -72,8 +75,8 @@ public class Join extends JFrame {
 
 		image = new ImageIcon("sign.png");
 
-		filename_id = "C:\\id.txt";
-		filename_pw = "c:\\pw.txt";
+		filename_id = "id.txt";
+		filename_pw = "pw.txt";
 		
 		file_id = new File(filename_id);
 		file_pw = new File(filename_pw);
@@ -123,6 +126,8 @@ public class Join extends JFrame {
 						
 						fw_id.close();
 						fw_pw.close();
+						
+						
 						setVisible(false);
 						log.setVisible(true);
 						dispose();

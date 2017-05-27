@@ -27,6 +27,7 @@ private Main main;
 	public OneStep(Main main_input) {
 		
 		this.main=main_input;
+		main = new Main();
 		  setTitle("One Step");
 	
 	      setBounds(100, 100, frame_Width, frame_Height);

@@ -111,6 +111,9 @@ public class Login extends JFrame {
 	
 		
 	}
+	public void oopLogin(Login log){
+		log = new Login(main);
+	}
 
 
 	public Login(Main main_input) {
@@ -152,8 +155,8 @@ public class Login extends JFrame {
 		userlist_id = new ArrayList();
 		userlist_pw = new ArrayList();
 		
-		filename_id = "C:\\id.txt";
-		filename_pw = "c:\\pw.txt";
+		filename_id = "id.txt";
+		filename_pw = "pw.txt";
 		
 		file_id = new File(filename_id);
 		file_pw = new File(filename_pw);
@@ -166,6 +169,7 @@ public class Login extends JFrame {
 					join= new Join(mine);
 					join.setVisible(true);
 					setVisible(false);
+					
 				}
 			}
 

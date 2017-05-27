@@ -10,6 +10,7 @@ public class OOPSTest  {
 	private Setting setting;
 	private Introduce introduce;
 	private Login login;
+	private Join join;
 	public OOPSTest(Main input_main)
 	{
 		this.main = input_main;
@@ -34,7 +35,7 @@ public class OOPSTest  {
 			start=new Start(main,false);
 			
 		}
-		
+
 		else {
 			System.out.println("kk");
 		}

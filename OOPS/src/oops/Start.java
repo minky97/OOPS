@@ -12,8 +12,10 @@ public class Start extends JFrame{
 		this.main = main_input;
 		if(log_in == true){
 			onestep = new OneStep(main);
+			login=new Login(main);
 			onestep.setVisible(true);
 			main.setVisible(false);
+			login.setVisible(false);
 		}
 		else if(log_in == false){
 			login = new Login(main);

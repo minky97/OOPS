@@ -94,12 +94,17 @@ public class Login extends JFrame {
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Incorrect Password!");
+					return false;
 				}
 			}
-			else
+			else{
+				JOptionPane.showMessageDialog(null,
+						id + " doesn't exist.\tPlease input existing id or create new id");
 				return false;
+
+			}
+				
 			
-			return false;
 		
 		
 		} catch (FileNotFoundException e) {
@@ -194,9 +199,7 @@ public class Login extends JFrame {
 							
 						} else if (!check(id,pw,file_id,file_pw)) {
 							setlog_in(false);
-							JOptionPane.showMessageDialog(null,
-									id + " doesn't exist.\tPlease input existing id or create new id");
-						}
+													}
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -302,4 +305,3 @@ public class Login extends JFrame {
 		getContentPane().setLayout(groupLayout);
 	}
 }
-

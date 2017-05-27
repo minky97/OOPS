@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,6 +22,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
@@ -47,6 +53,11 @@ public class Login extends JFrame {
 	private JLabel lblNewLabel;
 	private JButton btnLogin;
 	
+	private String filename_id;
+	private String filename_pw;
+	private File file_id;
+	private File file_pw;
+	
 	public int getindex_user() {
 		return index;
 	}
@@ -62,13 +73,44 @@ public class Login extends JFrame {
 	public ArrayList<String> getuser_list() {
 		return userlist_id;
 	}
-	public void setuser_list(ArrayList<String>user_id,ArrayList<String>user_pw){
 
-		this.userlist_id = user_id;
-		this.userlist_pw = user_pw;
-	}
 
+	public boolean check(String id,String pw,File file_id,File file_pw) throws IOException{
+		try {
+			BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
+			BufferedReader rd_pw = new BufferedReader(new FileReader(file_pw));
+			String a;
+			userlist_id = new ArrayList();
+			userlist_pw = new ArrayList();
+			while((a=rd_id.readLine()) != null){
+				userlist_id.add(a);
+			}
+			while((a=rd_pw.readLine()) !=null){
+				userlist_pw.add(a);
+			}
+			if(userlist_id.contains(id)){
+				if(pw.equals(userlist_pw.get(userlist_id.indexOf(id)))){
+					return true;
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Incorrect Password!");
+				}
+			}
+			else
+				return false;
+			
+			return false;
+		
+		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	
+	
+		
+	}
 
 
 	public Login(Main main_input) {
@@ -77,6 +119,7 @@ public class Login extends JFrame {
 		setTitle("Login");
 		setBounds(100, 100, frame_Width, frame_Height);
 	
+		
 		f1 = new Font("Times", Font.BOLD, 40);
 		
 		image = new ImageIcon("login.png");
@@ -109,7 +152,12 @@ public class Login extends JFrame {
 		userlist_id = new ArrayList();
 		userlist_pw = new ArrayList();
 		
+		filename_id = "C:\\id.txt";
+		filename_pw = "c:\\pw.txt";
 		
+		file_id = new File(filename_id);
+		file_pw = new File(filename_pw);
+
 		
 		JButton btnJoin = new JButton("Join");
 		btnJoin.addActionListener(new ActionListener() {
@@ -133,20 +181,22 @@ public class Login extends JFrame {
 				if (e.getSource().equals(btnLogin)) {
 					id = textField.getText();
 					pw=textField_1.getText();
-					if (userlist_id.contains(id)) {
-						setlog_in(true);
-						index = userlist_id.indexOf(id);
-						if(!pw.equals(userlist_pw.get(index)))
-							JOptionPane.showMessageDialog(null, "Passwords do not correct !");
-						else{
-						JOptionPane.showMessageDialog(null, "Welcome !");
-						start = new Start(main, log_in);
+					try {
+						if (check(id,pw,file_id,file_pw)) {
+							setlog_in(true);
+							JOptionPane.showMessageDialog(null, "Welcome !");
+							start = new Start(main, log_in);
+							
+							
+						} else if (!check(id,pw,file_id,file_pw)) {
+							setlog_in(false);
+							JOptionPane.showMessageDialog(null,
+									id + " doesn't exist.\tPlease input existing id or create new id");
 						}
-					} else if (!userlist_id.contains(id)) {
-						setlog_in(false);
-						JOptionPane.showMessageDialog(null,
-								id + " doesn't exist.\tPlease input existing id or create new id");
-					}
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} 
 
 				}
 			}

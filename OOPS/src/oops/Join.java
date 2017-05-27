@@ -6,6 +6,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -34,9 +41,28 @@ public class Join extends JFrame {
 	private JTextField textField;
 	private String id;
 	private String pw;
-	private ArrayList<String> id_list;
-	private ArrayList<String> pw_list;
-
+	private String filename_id;
+	private String filename_pw;
+	private File file_id;
+	private File file_pw;
+	
+	public boolean check(String id,File file_id) throws IOException{
+		try {
+			BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
+			String s;
+			while((s=rd_id.readLine()) != null){
+				if(s.equals(id));
+				return true;
+			}
+			return false;
+		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 	public Join(Login log_input) {
 		this.log = log_input;
 		setTitle("Sign");
@@ -46,6 +72,14 @@ public class Join extends JFrame {
 
 		image = new ImageIcon("sign.png");
 
+		filename_id = "C:\\id.txt";
+		filename_pw = "c:\\pw.txt";
+		
+		file_id = new File(filename_id);
+		file_pw = new File(filename_pw);
+		
+		
+		
 		contentPane_1 = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(image.getImage(), 0, 0, null);
@@ -54,29 +88,10 @@ public class Join extends JFrame {
 			}
 		};
 
-		id_list = new ArrayList();
-		pw_list = new ArrayList();
-
 		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane_1);
 
-		JButton btnJoin = new JButton("Join");
-		btnJoin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				id = textField.getText();
-				pw = textField_1.getText();
-				if (log.getuser_list().contains(id)) {//check that already exist user.
-					JOptionPane.showMessageDialog(null, "It already exist.");
-				} else {
-					JOptionPane.showMessageDialog(null, "Success join !");
-					id_list.add(id);
-					pw_list.add(pw);
-					log.setuser_list(id_list, pw_list);
-					log.setVisible(true);
-					dispose();
-				}
-			}
-		});
+
 
 		JLabel lblId = new JLabel("ID :");
 		lblId.setFont(f1);
@@ -88,6 +103,85 @@ public class Join extends JFrame {
 		textField = new JTextField();
 		textField.setColumns(10);
 
+		JButton btnJoin = new JButton("Join");
+		btnJoin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				id = textField.getText();
+				pw = textField_1.getText();
+				try{
+					if (check(id,file_id)) {//check that already exist user.
+						JOptionPane.showMessageDialog(null, "It already exist.");
+					} else {
+						JOptionPane.showMessageDialog(null, "Success join ! \n *Welcome* ");
+						BufferedWriter fw_id = new BufferedWriter(new FileWriter(file_id,true));
+						BufferedWriter fw_pw = new BufferedWriter(new FileWriter(file_pw,true));
+						fw_id.write(id+"\n");
+						fw_pw.write(pw+"\n");
+						
+						fw_id.flush();
+						fw_pw.flush();
+						
+						fw_id.close();
+						fw_pw.close();
+						setVisible(false);
+						log.setVisible(true);
+						dispose();
+					}	
+				}
+				catch(Exception e2){
+					e2.printStackTrace();
+				}
+				
+				
+			}
+		});
+		
+		this.addWindowListener(new WindowListener() {
+
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				setVisible(false);
+				log.setVisible(true);
+				dispose();
+			}
+
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
 		GroupLayout gl_contentPane_1 = new GroupLayout(contentPane_1);
 		gl_contentPane_1.setHorizontalGroup(gl_contentPane_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane_1.createSequentialGroup().addGap(123)

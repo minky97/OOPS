@@ -41,7 +41,7 @@ public class Main extends JFrame {
 	
 	public static void main(String[] args) {
 		Main main = new Main();
-		main.setSound(true);
+		
 		main.setVisible(true);
 	}
 	public void setSound(boolean start){
@@ -55,7 +55,7 @@ public class Main extends JFrame {
 		setBounds(100, 100, frame_Width, frame_Height);
 		
 		login=new Login(mine);
-		
+		setSound(true);
 		lblWelcome = new JLabel("");
 
 		

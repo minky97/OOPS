@@ -121,9 +121,11 @@ public class Login extends JFrame {
 	}
 
 
+
 	public Login(Main main_input) {
 	
 		this.main = main_input;
+		main.setSound(false);
 		setTitle("Login");
 		setBounds(100, 100, frame_Width, frame_Height);
 	

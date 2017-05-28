@@ -35,7 +35,7 @@ public class BackSound implements LineListener {
     public BackSound(String music){
     	this.music = music;
     }
-    void play(String audioFilePath,boolean start) {
+    void play(String audioFilePath,boolean check) {
         File audioFile = new File(audioFilePath);
  
         try {
@@ -50,10 +50,10 @@ public class BackSound implements LineListener {
             audioClip.addLineListener(this);
  
             audioClip.open(audioStream);
-             if(start)
+             if(check)
             audioClip.start(); // 노래 나오게 하는 것
             
-             else if(!start)
+             else if(!check)
             audioClip.stop(); //노래 안 나오게 하는 것
              
 //            while (!playCompleted) {
@@ -98,35 +98,38 @@ public class BackSound implements LineListener {
     }
     
     public void mulist(boolean start) {
-    	
-    	BackSound player = new BackSound(music);
+  
     	
  
-    	if(music.equals("game1")){
-    	String game1 = "game1.wav";
-        player.play(game1,start);
+    	String store=null;
+    	switch (music) {
+    	
+    	case "game1" :
+    		store="game1.wav";
+    		break;
+    	case "game2" :
+    		store="game2.wav";
+    		break;
+    	case "game3" :
+    		store="game3.wav";
+    		break;
+    	case "main" :
+    		store="main.wav";
+    		break;
+    	case "timesup" :
+    		store="timesup.wav";
+    		break;
+    	case "logout" :
+    		store="logout.wav";
+    		break;
+    		
     	}
-    	else if(music.equals("game2")){
-        String game2 = "game2.wav";
-        player.play(game2,start);
-    	}
-    	else if(music.equals("game3")){
-        String game3 = "game3.wav";
-        player.play(game3,start);
-    	}
-    	else if(music.equals("logout")){
-        String logout = "C:logout.wav";
-        player.play(logout,start);
-    	}
-    	else if(music.equals("main")){
-        String main = "C:main.wav";
-        player.play(main,start);
-    	}
-    	else if(music.equals("timesup")){
-        String timesup = "C:timesup.wav";
-        player.play(timesup,start);
+    	if(store==null){
+    		System.out.println("error!");
     	}
     	
+    	play(store,start);
+    	    	
     }
 
  

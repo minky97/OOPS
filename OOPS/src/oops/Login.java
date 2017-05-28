@@ -173,7 +173,7 @@ public class Login extends JFrame {
 		btnJoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(btnJoin)) {
-					join= new Join(mine,main);
+					join= new Join(main);
 					join.setVisible(true);
 					setVisible(false);
 					

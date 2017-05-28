@@ -41,7 +41,12 @@ public class Main extends JFrame {
 	
 	public static void main(String[] args) {
 		Main main = new Main();
+		//main.setSound(true);
 		main.setVisible(true);
+	}
+	public void setSound(boolean start){
+		Sound = new BackSound("main");
+		Sound.mulist(start);
 	}
 	public Main() {
 		this.mine = this;
@@ -53,9 +58,8 @@ public class Main extends JFrame {
 		
 		lblWelcome = new JLabel("");
 
-		Sound = new BackSound("main");
-		Sound.mulist();
 		
+	
 		if(login.getlog_in()){//check log_in
 			lblWelcome.setText("Welcome !"+login.getuser_list().get(login.getindex_user()));
 			lblWelcome.setFont(f1);

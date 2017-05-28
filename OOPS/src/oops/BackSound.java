@@ -59,7 +59,7 @@ public class BackSound implements LineListener {
             while (!playCompleted) {
                 // wait for the playback completes
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
@@ -97,33 +97,34 @@ public class BackSound implements LineListener {
  
     }
     
-    public void mulist() {
+    public void mulist(boolean start) {
     	
     	BackSound player = new BackSound(music);
     	
+ 
     	if(music.equals("game1")){
-    	String game1 = "C:\\Users\\이은영\\Desktop\\sun\\game1.wav";
-        player.play(game1,true);
+    	String game1 = "game1.wav";
+        player.play(game1,start);
     	}
     	else if(music.equals("game2")){
-        String game2 = "C:\\Users\\이은영\\Desktop\\sun\\game2.wav";
-        player.play(game2,true);
+        String game2 = "game2.wav";
+        player.play(game2,start);
     	}
     	else if(music.equals("game3")){
-        String game3 = "C:\\Users\\이은영\\Desktop\\sun\\game3.wav";
-        player.play(game3,true);
+        String game3 = "game3.wav";
+        player.play(game3,start);
     	}
     	else if(music.equals("logout")){
-        String logout = "C:\\Users\\이은영\\Desktop\\sun\\logout.wav";
-        player.play(logout,true);
+        String logout = "C:logout.wav";
+        player.play(logout,start);
     	}
     	else if(music.equals("main")){
-        String main = "C:\\Users\\이은영\\Desktop\\sun\\main.wav";
-        player.play(main,true);
+        String main = "C:main.wav";
+        player.play(main,start);
     	}
     	else if(music.equals("timesup")){
-        String timesup = "C:\\Users\\이은영\\Desktop\\sun\\timesup.wav";
-        player.play(timesup,true);
+        String timesup = "C:timesup.wav";
+        player.play(timesup,start);
     	}
     	
     }

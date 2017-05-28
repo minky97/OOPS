@@ -18,8 +18,11 @@ public class OneStep extends JFrame {
 	final int frame_Height = 900;
 	final int frame_Width = 1300;
 private Main main;
-
-	
+private BackSound Sound;
+public void setSound(boolean start){
+	Sound = new BackSound("main");
+	Sound.mulist(start);
+}
 
 	/**
 	 * Create the frame.
@@ -30,9 +33,15 @@ private Main main;
 		main = new Main();
 		  setTitle("One Step");
 	
+		 
 	      setBounds(100, 100, frame_Width, frame_Height);
 	      
+	     // main.setSound(false);
+	     // setSound(true);
+	      
 	      image = new ImageIcon("step1.png");
+	     
+	      setSound(true);
 	      
 	      contentPane = new JPanel(){ 
 	            public void paintComponent(Graphics g) {

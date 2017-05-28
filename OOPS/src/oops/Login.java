@@ -125,7 +125,6 @@ public class Login extends JFrame {
 	public Login(Main main_input) {
 	
 		this.main = main_input;
-		main.setSound(false);
 		setTitle("Login");
 		setBounds(100, 100, frame_Width, frame_Height);
 	
@@ -138,7 +137,7 @@ public class Login extends JFrame {
 			public void paintComponent(Graphics g) {
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
-				super.paintComponent(g);
+			super.paintComponent(g);
 			}
 		};
 

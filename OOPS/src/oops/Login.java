@@ -75,7 +75,7 @@ public class Login extends JFrame {
 	}
 
 
-	public boolean check(String id,String pw,File file_id,File file_pw) throws IOException{
+	public boolean check(String id,String pw,File file_id,File file_pw) throws IOException{//check log-in information.
 		try {
 			BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
 			BufferedReader rd_pw = new BufferedReader(new FileReader(file_pw));

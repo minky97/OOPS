@@ -47,7 +47,7 @@ public class Join extends JFrame {
 	private File file_pw;
 	private Main main;
 	
-	public boolean check(String id,File file_id) throws IOException{
+	public boolean check(String id,File file_id) throws IOException{//input user id & pw in file.
 		try {
 			BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
 			String s;
@@ -84,7 +84,7 @@ public class Join extends JFrame {
 		
 		
 		
-		contentPane_1 = new JPanel() {
+		contentPane_1 = new JPanel() {//background image
 			public void paintComponent(Graphics g) {
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
@@ -115,7 +115,7 @@ public class Join extends JFrame {
 				try{
 					if (check(id,file_id)) {//check that already exist user.
 						JOptionPane.showMessageDialog(null, "It already exist.");
-					} else {
+					} else {//make the user
 						JOptionPane.showMessageDialog(null, "Success join ! \n *Welcome* ");
 						BufferedWriter fw_id = new BufferedWriter(new FileWriter(file_id,true));
 						BufferedWriter fw_pw = new BufferedWriter(new FileWriter(file_pw,true));

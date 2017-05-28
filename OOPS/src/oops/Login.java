@@ -125,6 +125,7 @@ public class Login extends JFrame {
 	public Login(Main main_input) {
 	
 		this.main = main_input;
+		
 		setTitle("Login");
 		setBounds(100, 100, frame_Width, frame_Height);
 	
@@ -172,7 +173,7 @@ public class Login extends JFrame {
 		btnJoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(btnJoin)) {
-					join= new Join(mine);
+					join= new Join(mine,main);
 					join.setVisible(true);
 					setVisible(false);
 					

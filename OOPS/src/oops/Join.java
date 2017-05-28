@@ -64,8 +64,9 @@ public class Join extends JFrame {
 		}
 		
 	}
-	public Join(Login log_input) {
+	public Join(Login log_input,Main main_input) {
 		this.log = log_input;
+		this.main = main_input;
 		log = new Login(main);
 		
 		setTitle("Sign");
@@ -169,7 +170,6 @@ public class Join extends JFrame {
 
 			@Override
 			public void windowClosing(WindowEvent e) {
-				setVisible(false);
 				log.setVisible(true);
 				dispose();
 			}

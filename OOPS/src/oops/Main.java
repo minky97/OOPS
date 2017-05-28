@@ -29,6 +29,7 @@ public class Main extends JFrame {
 	private OOPSTest oopstest;
 	private Login login;
 	private JLabel lblWelcome;
+	private BackSound Sound;
 
 	/**
 	 * Launch the application.
@@ -52,6 +53,9 @@ public class Main extends JFrame {
 		
 		lblWelcome = new JLabel("");
 
+		Sound = new BackSound("main");
+		Sound.mulist();
+		
 		if(login.getlog_in()){//check log_in
 			lblWelcome.setText("Welcome !"+login.getuser_list().get(login.getindex_user()));
 			lblWelcome.setFont(f1);

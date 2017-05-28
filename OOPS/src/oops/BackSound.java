@@ -27,11 +27,14 @@ public class BackSound implements LineListener {
      * this flag indicates whether the playback completes or not.
      */
     boolean playCompleted;
-     
+    private String music;
     /**
      * Play a given audio file.
      * @param audioFilePath Path of the audio file.
      */
+    public BackSound(String music){
+    	this.music = music;
+    }
     void play(String audioFilePath) {
         File audioFile = new File(audioFilePath);
  
@@ -96,33 +99,41 @@ public class BackSound implements LineListener {
     
     public void mulist() {
     	
+    	BackSound player = new BackSound(music);
+    	
+    	if(music.equals("game1")){
     	String game1 = "C:\\Users\\이은영\\Desktop\\sun\\game1.wav";
-        BackSound player = new BackSound();
         player.play(game1);
-        
+    	}
+    	else if(music.equals("game2")){
         String game2 = "C:\\Users\\이은영\\Desktop\\sun\\game2.wav";
         player.play(game2);
-        
+    	}
+    	else if(music.equals("game3")){
         String game3 = "C:\\Users\\이은영\\Desktop\\sun\\game3.wav";
         player.play(game3);
-        
+    	}
+    	else if(music.equals("logout")){
         String logout = "C:\\Users\\이은영\\Desktop\\sun\\logout.wav";
         player.play(logout);
-        
+    	}
+    	else if(music.equals("main")){
         String main = "C:\\Users\\이은영\\Desktop\\sun\\main.wav";
         player.play(main);
-        
+    	}
+    	else if(music.equals("timesup")){
         String timesup = "C:\\Users\\이은영\\Desktop\\sun\\timesup.wav";
         player.play(timesup);
+    	}
     	
     }
     
-    public static void main(String[] args) {
-    	
-    	BackSound bc = new BackSound();
-    	bc.mulist();
-    	
-    }
+//    public static void main(String[] args) {
+//    	
+//    	BackSound bc = new BackSound();
+//    	bc.mulist();
+//    	
+//    }
  
 }
 

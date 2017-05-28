@@ -35,7 +35,7 @@ public class BackSound implements LineListener {
     public BackSound(String music){
     	this.music = music;
     }
-    void play(String audioFilePath) {
+    void play(String audioFilePath,boolean start) {
         File audioFile = new File(audioFilePath);
  
         try {
@@ -50,11 +50,11 @@ public class BackSound implements LineListener {
             audioClip.addLineListener(this);
  
             audioClip.open(audioStream);
-             
+             if(start)
             audioClip.start(); // 노래 나오게 하는 것
             
-            
-            //audioClip.stop(); 노래 안 나오게 하는 것
+             else if(!start)
+            audioClip.stop(); //노래 안 나오게 하는 것
              
             while (!playCompleted) {
                 // wait for the playback completes
@@ -103,27 +103,27 @@ public class BackSound implements LineListener {
     	
     	if(music.equals("game1")){
     	String game1 = "C:\\Users\\이은영\\Desktop\\sun\\game1.wav";
-        player.play(game1);
+        player.play(game1,true);
     	}
     	else if(music.equals("game2")){
         String game2 = "C:\\Users\\이은영\\Desktop\\sun\\game2.wav";
-        player.play(game2);
+        player.play(game2,true);
     	}
     	else if(music.equals("game3")){
         String game3 = "C:\\Users\\이은영\\Desktop\\sun\\game3.wav";
-        player.play(game3);
+        player.play(game3,true);
     	}
     	else if(music.equals("logout")){
         String logout = "C:\\Users\\이은영\\Desktop\\sun\\logout.wav";
-        player.play(logout);
+        player.play(logout,true);
     	}
     	else if(music.equals("main")){
         String main = "C:\\Users\\이은영\\Desktop\\sun\\main.wav";
-        player.play(main);
+        player.play(main,true);
     	}
     	else if(music.equals("timesup")){
         String timesup = "C:\\Users\\이은영\\Desktop\\sun\\timesup.wav";
-        player.play(timesup);
+        player.play(timesup,true);
     	}
     	
     }

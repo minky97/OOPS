@@ -30,7 +30,6 @@ public void setSound(boolean start){
 	public OneStep(Main main_input) {
 		
 		this.main=main_input;
-		main = new Main();
 		  setTitle("One Step");
 	
 		 

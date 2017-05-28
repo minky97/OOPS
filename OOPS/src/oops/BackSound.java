@@ -14,7 +14,7 @@ import javax.sound.sampled.LineEvent.Type;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
- 
+import sun.audio.*;
 /**
  * This is an example program that demonstrates how to play back an audio file
  * using the Clip in Java Sound API.
@@ -128,13 +128,7 @@ public class BackSound implements LineListener {
     	}
     	
     }
-    
-//    public static void main(String[] args) {
-//    	
-//    	BackSound bc = new BackSound();
-//    	bc.mulist();
-//    	
-//    }
+
  
 }
 

@@ -56,16 +56,16 @@ public class BackSound implements LineListener {
              else if(!start)
             audioClip.stop(); //노래 안 나오게 하는 것
              
-            while (!playCompleted) {
-                // wait for the playback completes
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
+//            while (!playCompleted) {
+//                // wait for the playback completes
+//                try {
+//                    Thread.sleep(5000);
+//                } catch (InterruptedException ex) {
+//                    ex.printStackTrace();
+//                }
+//            }
              
-            audioClip.close();
+            //audioClip.close();
              
         } catch (UnsupportedAudioFileException ex) {
             System.out.println("The specified audio file is not supported.");

@@ -20,7 +20,7 @@ public class OneStep extends JFrame {
 private Main main;
 private BackSound Sound;
 public void setSound(boolean start){
-	Sound = new BackSound("main");
+	Sound = new BackSound("game1");
 	Sound.mulist(start);
 }
 
@@ -36,12 +36,11 @@ public void setSound(boolean start){
 		 
 	      setBounds(100, 100, frame_Width, frame_Height);
 	      
-	     // main.setSound(false);
-	     // setSound(true);
+	      main.setSound(false);
+	      setSound(true);
 	      
 	      image = new ImageIcon("step1.png");
 	     
-	      setSound(true);
 	      
 	      contentPane = new JPanel(){ 
 	            public void paintComponent(Graphics g) {
@@ -81,6 +80,8 @@ public void setSound(boolean start){
 	  			@Override
 	  			public void windowClosing(WindowEvent e) 
 	  			{
+	  				setSound(false);
+	  				main.setSound(true);
 	  				main.setVisible(true);
 	  				dispose();
 	  			}

@@ -41,7 +41,7 @@ public class Main extends JFrame {
 	
 	public static void main(String[] args) {
 		Main main = new Main();
-		//main.setSound(true);
+		main.setSound(true);
 		main.setVisible(true);
 	}
 	public void setSound(boolean start){

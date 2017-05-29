@@ -29,6 +29,13 @@ public class Store extends JFrame {
 	private int lifenum;
 	private int timenum;
 	private int hintnum;
+	private JLabel time_ = new JLabel(new ImageIcon("time.png"));
+	private JLabel hint_ = new JLabel(new ImageIcon("hint.png"));
+	private JLabel life_ = new JLabel(new ImageIcon("heart.png"));
+	private JLabel time_coin = new JLabel(new ImageIcon("coin.png"));
+	private JLabel hint_coin = new JLabel(new ImageIcon("coin.png"));
+	private JLabel life_coin = new JLabel(new ImageIcon("coin.png"));
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -58,58 +65,87 @@ public class Store extends JFrame {
 		
 		JPanel panel_life = new JPanel();
 		
-		JPanel panel_hint = new JPanel();
-		
 		JPanel panel_time = new JPanel();
+		
+		JPanel panel_hint = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel_life, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-					.addGap(2)
-					.addComponent(panel_hint, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE)
-					.addGap(1)
-					.addComponent(panel_time, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_time, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_hint, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_hint, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel_life, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 524, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(145, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel_time, GroupLayout.PREFERRED_SIZE, 523, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel_life, GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+						.addComponent(panel_time, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel_hint, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(39, Short.MAX_VALUE))
 		);
 		
 		JLabel lblTime = new JLabel("time");
 		
-		JLabel label = new JLabel("");
-		GroupLayout gl_panel_hint = new GroupLayout(panel_hint);
-		gl_panel_hint.setHorizontalGroup(
-			gl_panel_hint.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_hint.createSequentialGroup()
-					.addGroup(gl_panel_hint.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_hint.createSequentialGroup()
-							.addGap(98)
-							.addComponent(lblTime))
-						.addGroup(gl_panel_hint.createSequentialGroup()
-							.addGap(70)
-							.addComponent(label)))
-					.addContainerGap(89, Short.MAX_VALUE))
-		);
-		gl_panel_hint.setVerticalGroup(
-			gl_panel_hint.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_hint.createSequentialGroup()
-					.addContainerGap()
+		JLabel time_image = new JLabel(new ImageIcon("time.png"));
+		
+		JTextArea txtrYouCanGet_1 = new JTextArea();
+		txtrYouCanGet_1.setText("you can get 10 seconds.\r\nThe time gives you more\r\ntime to solve question.");
+		
+		JLabel label2_coin = new JLabel(new ImageIcon("coin.png"));
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		JButton btnBuy_1 = new JButton("BUY");
+		GroupLayout gl_panel_time = new GroupLayout(panel_time);
+		gl_panel_time.setHorizontalGroup(
+			gl_panel_time.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_time.createSequentialGroup()
+					.addGap(98)
 					.addComponent(lblTime)
-					.addGap(37)
-					.addComponent(label)
-					.addContainerGap(430, Short.MAX_VALUE))
+					.addContainerGap(106, Short.MAX_VALUE))
+				.addGroup(gl_panel_time.createSequentialGroup()
+					.addContainerGap(101, Short.MAX_VALUE)
+					.addGroup(gl_panel_time.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtrYouCanGet_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(time_image, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE))
+					.addGap(27))
+				.addGroup(Alignment.LEADING, gl_panel_time.createSequentialGroup()
+					.addGap(26)
+					.addComponent(label2_coin, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(92, Short.MAX_VALUE))
+				.addGroup(gl_panel_time.createSequentialGroup()
+					.addContainerGap(100, Short.MAX_VALUE)
+					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(45))
+				.addGroup(gl_panel_time.createSequentialGroup()
+					.addContainerGap(146, Short.MAX_VALUE)
+					.addComponent(btnBuy_1, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(79))
 		);
-		panel_hint.setLayout(gl_panel_hint);
+		gl_panel_time.setVerticalGroup(
+			gl_panel_time.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_time.createSequentialGroup()
+					.addGap(34)
+					.addComponent(lblTime)
+					.addGap(34)
+					.addComponent(time_image, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
+					.addGap(45)
+					.addComponent(txtrYouCanGet_1, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(label2_coin, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnBuy_1)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_time.setLayout(gl_panel_time);
 		
 		JLabel lblLife = new JLabel("Life");
 		
@@ -135,48 +171,51 @@ public class Store extends JFrame {
 		
 		JButton btnBuy = new JButton("BUY");
 		
-		JTextArea textArea = new JTextArea();
+		JTextArea txtrYouCanGet = new JTextArea();
+		txtrYouCanGet.setText("you can get 1 life.\r\nThe life gives you a \r\none more chance to\r\nsolve question.\r\n");
 		GroupLayout gl_panel_life = new GroupLayout(panel_life);
 		gl_panel_life.setHorizontalGroup(
 			gl_panel_life.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_life.createSequentialGroup()
 					.addGroup(gl_panel_life.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_life.createSequentialGroup()
+							.addGap(35)
+							.addComponent(txtrYouCanGet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_life.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(life_image, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_life.createSequentialGroup()
 							.addGap(88)
 							.addComponent(lblLife))
 						.addGroup(gl_panel_life.createSequentialGroup()
-							.addGap(17)
-							.addComponent(life_image, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_life.createSequentialGroup()
-							.addGap(17)
-							.addComponent(label1_coin, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_life.createSequentialGroup()
 							.addGap(27)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_life.createSequentialGroup()
-							.addGap(74)
-							.addComponent(btnBuy))
-						.addGroup(gl_panel_life.createSequentialGroup()
-							.addGap(32)
-							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(label1_coin, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(17, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel_life.createSequentialGroup()
+					.addContainerGap(38, Short.MAX_VALUE)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(34))
+				.addGroup(gl_panel_life.createSequentialGroup()
+					.addGap(73)
+					.addComponent(btnBuy, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(80, Short.MAX_VALUE))
 		);
 		gl_panel_life.setVerticalGroup(
 			gl_panel_life.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_life.createSequentialGroup()
-					.addGap(15)
+					.addGap(34)
 					.addComponent(lblLife)
-					.addGap(18)
+					.addGap(27)
 					.addComponent(life_image, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
-					.addGap(46)
-					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(37)
+					.addGap(45)
+					.addComponent(txtrYouCanGet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addComponent(label1_coin, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-					.addGap(9)
+					.addGap(24)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(23)
 					.addComponent(btnBuy)
-					.addContainerGap(20, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		panel_life.setLayout(gl_panel_life);
 		contentPane.setLayout(gl_contentPane);

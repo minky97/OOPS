@@ -50,7 +50,7 @@ public class OneStep extends JFrame {
    private JTextField textField_2;
    private JTextField textField_3;
    private JTextField textField_4;
-   
+   private String s;
    
    public void setSound(boolean start){
       Sound = new BackSound("game1");
@@ -66,7 +66,7 @@ public class OneStep extends JFrame {
       main = new Main();
         setTitle("One Step");
    
-       
+       s="Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
          setBounds(100, 100, frame_Width, frame_Height);
          
          main.setSound(false);
@@ -83,8 +83,6 @@ public class OneStep extends JFrame {
                 }
              };
              
-             String s = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
-
              this.addWindowListener(new WindowListener()
            {
               
@@ -115,20 +113,17 @@ public class OneStep extends JFrame {
               @Override
               public void windowClosing(WindowEvent e) 
               {
-            	  
-            	  JOptionPane.showConfirmDialog(null,s,"Caution",JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
-                  
+                  JOptionPane.showConfirmDialog(null,s,"Caution",JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
+                 
               }
               
               @Override
               public void windowClosed(WindowEvent e) {
                  // TODO Auto-generated method stub
-                  setSound(false);
+            	  setSound(false);
                   main.setSound(true);
                   main.setVisible(true);
                   dispose();
-
-                 
               }
               
               @Override
@@ -142,21 +137,72 @@ public class OneStep extends JFrame {
              
              JPanel panel = new JPanel();
              panel.setBackground(Color.WHITE);
+             
+             JPanel panel_1 = new JPanel();
+             panel_1.setBackground(Color.WHITE);
              GroupLayout gl_contentPane = new GroupLayout(contentPane);
              gl_contentPane.setHorizontalGroup(
                 gl_contentPane.createParallelGroup(Alignment.LEADING)
                    .addGroup(gl_contentPane.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(panel, GroupLayout.PREFERRED_SIZE, 972, GroupLayout.PREFERRED_SIZE)
-                      .addContainerGap(286, Short.MAX_VALUE))
+                      .addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+                         .addComponent(panel_1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                         .addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 1146, Short.MAX_VALUE))
+                      .addContainerGap(112, Short.MAX_VALUE))
              );
              gl_contentPane.setVerticalGroup(
                 gl_contentPane.createParallelGroup(Alignment.LEADING)
                    .addGroup(gl_contentPane.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(panel, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
-                      .addContainerGap(623, Short.MAX_VALUE))
+                      .addGap(18)
+                      .addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
+                      .addContainerGap(421, Short.MAX_VALUE))
              );
+             
+             JTextArea txtrIfYou_1 = new JTextArea();
+             txtrIfYou_1.setText("2. If you want Overloading, you must always change parameter list. (o/x)");
+             
+             JRadioButton rdbtnNewRadioButton = new JRadioButton("O");
+             rdbtnNewRadioButton.setBackground(Color.WHITE);
+             
+             JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("X");
+             rdbtnNewRadioButton_1.setBackground(Color.WHITE);
+             
+             JButton button = new JButton("A");
+             button.setForeground(Color.BLACK);
+             GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+             gl_panel_1.setHorizontalGroup(
+                gl_panel_1.createParallelGroup(Alignment.LEADING)
+                   .addGroup(gl_panel_1.createSequentialGroup()
+                      .addGap(37)
+                      .addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+                         .addGroup(gl_panel_1.createSequentialGroup()
+                            .addComponent(rdbtnNewRadioButton)
+                            .addGap(59)
+                            .addComponent(rdbtnNewRadioButton_1))
+                         .addComponent(txtrIfYou_1, GroupLayout.PREFERRED_SIZE, 816, GroupLayout.PREFERRED_SIZE))
+                      .addGap(116)
+                      .addComponent(button, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+                      .addContainerGap(827, Short.MAX_VALUE))
+             );
+             gl_panel_1.setVerticalGroup(
+                gl_panel_1.createParallelGroup(Alignment.TRAILING)
+                   .addGroup(gl_panel_1.createSequentialGroup()
+                      .addContainerGap(26, Short.MAX_VALUE)
+                      .addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+                         .addGroup(gl_panel_1.createSequentialGroup()
+                            .addComponent(txtrIfYou_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+                            .addGap(34)
+                            .addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+                               .addComponent(rdbtnNewRadioButton)
+                               .addComponent(rdbtnNewRadioButton_1))
+                            .addGap(34))
+                         .addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+                            .addComponent(button, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+                            .addGap(31))))
+             );
+             panel_1.setLayout(gl_panel_1);
              
              
              
@@ -192,40 +238,42 @@ public class OneStep extends JFrame {
              btnNewButton.setForeground(Color.BLACK);
              btnNewButton.setForeground(Color.pink);
              
+             panel_1.setVisible(false);
+             
            btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0)
             {            
                
-               if(textField.equals("private")) {
+               if(textField.getText().equals("private")) {
                   score = score + 1;
                }
                
-               if(textField_1.equals("hidden")) {
+               if(textField_1.getText().equals("hidden")) {
                   score = score + 1;
                }
                
-               if(textField_2.equals("public")) {
+               if(textField_2.getText().equals("public")) {
                   score = score + 1;
                }
                
-               if(textField_3.equals("guardians")) {
+               if(textField_3.getText().equals("guardians")) {
                   score = score + 1;
                }
                
-               if(textField_4.equals("setters")) {
+               if(textField_4.getText().equals("setters")) {
                   score = score + 1;
                }
                
                JOptionPane.showMessageDialog(null, "Your Score is" +score);
                
-               if(score == 5) {
-            	   
-            	   txtrIfYou.setText("2. If you want Overloading, you must always change parameter list.(o/x)");
-            	   
-               }
-               
             }
          });
+           
+           if(score == 5) {
+            
+              panel_1.setVisible(true);
+              
+           }
              
              
              
@@ -236,9 +284,9 @@ public class OneStep extends JFrame {
                       .addContainerGap()
                       .addComponent(label)
                       .addPreferredGap(ComponentPlacement.RELATED)
-                      .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-                         .addComponent(txtrIfYou, Alignment.LEADING)
-                         .addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+                      .addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+                         .addComponent(txtrIfYou, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                         .addGroup(gl_panel.createSequentialGroup()
                             .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(ComponentPlacement.RELATED)
                             .addComponent(label_1)
@@ -256,12 +304,12 @@ public class OneStep extends JFrame {
                             .addComponent(label_4)
                             .addPreferredGap(ComponentPlacement.RELATED)
                             .addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                      .addPreferredGap(ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                      .addPreferredGap(ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
                       .addComponent(btnNewButton)
-                      .addGap(40))
+                      .addGap(136))
              );
              gl_panel.setVerticalGroup(
-                gl_panel.createParallelGroup(Alignment.LEADING)
+                gl_panel.createParallelGroup(Alignment.TRAILING)
                    .addGroup(gl_panel.createSequentialGroup()
                       .addGap(24)
                       .addComponent(txtrIfYou, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
@@ -278,10 +326,10 @@ public class OneStep extends JFrame {
                          .addComponent(label_4)
                          .addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                       .addGap(39))
-                   .addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-                      .addGap(53)
-                      .addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                      .addGap(49))
+                   .addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+                      .addGap(51)
+                      .addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                      .addGap(51))
              );
              panel.setLayout(gl_panel);
              contentPane.setLayout(gl_contentPane);

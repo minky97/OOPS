@@ -50,7 +50,7 @@ public class OneStep extends JFrame {
    private JTextField textField_2;
    private JTextField textField_3;
    private JTextField textField_4;
-   private String s;
+   
    
    public void setSound(boolean start){
       Sound = new BackSound("game1");
@@ -66,7 +66,7 @@ public class OneStep extends JFrame {
       main = new Main();
         setTitle("One Step");
    
-       s="Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
+       
          setBounds(100, 100, frame_Width, frame_Height);
          
          main.setSound(false);
@@ -113,17 +113,17 @@ public class OneStep extends JFrame {
               @Override
               public void windowClosing(WindowEvent e) 
               {
-                  JOptionPane.showConfirmDialog(null,s,"Caution",JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
-                 
+                 JOptionPane.showConfirmDialog(null, "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.",null, JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
+                 setSound(false);
+                 main.setSound(true);
+                 main.setVisible(true);
+                 dispose();
               }
               
               @Override
               public void windowClosed(WindowEvent e) {
                  // TODO Auto-generated method stub
-            	  setSound(false);
-                  main.setSound(true);
-                  main.setVisible(true);
-                  dispose();
+                 
               }
               
               @Override
@@ -145,10 +145,13 @@ public class OneStep extends JFrame {
                 gl_contentPane.createParallelGroup(Alignment.LEADING)
                    .addGroup(gl_contentPane.createSequentialGroup()
                       .addContainerGap()
-                      .addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-                         .addComponent(panel_1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                         .addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 1146, Short.MAX_VALUE))
-                      .addContainerGap(112, Short.MAX_VALUE))
+                      .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+                         .addGroup(gl_contentPane.createSequentialGroup()
+                            .addComponent(panel, GroupLayout.PREFERRED_SIZE, 1146, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(112, Short.MAX_VALUE))
+                         .addGroup(gl_contentPane.createSequentialGroup()
+                            .addComponent(panel_1, 0, 0, Short.MAX_VALUE)
+                            .addGap(112))))
              );
              gl_contentPane.setVerticalGroup(
                 gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -170,7 +173,8 @@ public class OneStep extends JFrame {
              rdbtnNewRadioButton_1.setBackground(Color.WHITE);
              
              JButton button = new JButton("A");
-             button.setForeground(Color.BLACK);
+             button.setBackground(Color.CYAN);
+             button.setForeground(Color.PINK);
              GroupLayout gl_panel_1 = new GroupLayout(panel_1);
              gl_panel_1.setHorizontalGroup(
                 gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -235,6 +239,7 @@ public class OneStep extends JFrame {
              textField_4.setColumns(10);
              
              JButton btnNewButton = new JButton("A");
+             btnNewButton.setBackground(Color.CYAN);
              btnNewButton.setForeground(Color.BLACK);
              btnNewButton.setForeground(Color.pink);
              
@@ -265,15 +270,14 @@ public class OneStep extends JFrame {
                }
                
                JOptionPane.showMessageDialog(null, "Your Score is" +score);
+                 
+               panel_1.setVisible(true);
+               panel.setVisible(false);
+                  
+               
                
             }
          });
-           
-           if(score == 5) {
-            
-              panel_1.setVisible(true);
-              
-           }
              
              
              

@@ -11,22 +11,22 @@ public class Life  {
 	
 	JLabel ImgBox;
 	
-private int userlife;
-public Life(int num_life,Graphics g){
+	private int userlife;
+	public Life(int num_life,Graphics g){
 	img = new ImageIcon("life.png").getImage();
 	while(true){
 	if(num_life==0)
 	{
-		//End end = new End();
+		End end = new End();
 	}
 	else if(num_life==1){
-		//g.drawImage(img, 0, 50,this);
+		g.drawImage(img, 0, 50,(ImageObserver) this);
 	}
 	else if(num_life==2){
-		//g.drawImage(img, 50, 50,this);
+		g.drawImage(img, 50, 50,(ImageObserver) this);
 	}
 	else if(num_life==3){
-		//g.drawImage(img, 100, 50,this);
+		g.drawImage(img, 100, 50,(ImageObserver) this);
 	}
 		}
 

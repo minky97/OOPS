@@ -22,6 +22,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JRadioButton;
@@ -189,33 +191,31 @@ public class OneStep extends JFrame {
             {            
                
                if(textField.equals("private")) {
-                  
                   score = score + 1;
-                  
                }
                
                if(textField_1.equals("hidden")) {
-                  
                   score = score + 1;
-                  
                }
                
                if(textField_2.equals("public")) {
-                  
                   score = score + 1;
-                  
                }
                
                if(textField_3.equals("guardians")) {
-                  
                   score = score + 1;
-                  
                }
                
                if(textField_4.equals("setters")) {
-                  
                   score = score + 1;
-                  
+               }
+               
+               JOptionPane.showMessageDialog(null, "Your Score is" +score);
+               
+               if(score == 5) {
+            	   
+            	   txtrIfYou.setText("2. If you want Overloading, you must always change parameter list.(o/x)");
+            	   
                }
                
             }

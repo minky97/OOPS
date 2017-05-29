@@ -83,6 +83,8 @@ public class OneStep extends JFrame {
                 }
              };
              
+             String s = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
+
              this.addWindowListener(new WindowListener()
            {
               
@@ -113,15 +115,19 @@ public class OneStep extends JFrame {
               @Override
               public void windowClosing(WindowEvent e) 
               {
-                 setSound(false);
-                 main.setSound(true);
-                 main.setVisible(true);
-                 dispose();
+            	  
+            	  JOptionPane.showConfirmDialog(null,s,"Caution",JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
+                  
               }
               
               @Override
               public void windowClosed(WindowEvent e) {
                  // TODO Auto-generated method stub
+                  setSound(false);
+                  main.setSound(true);
+                  main.setVisible(true);
+                  dispose();
+
                  
               }
               

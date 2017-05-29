@@ -56,15 +56,8 @@ public class Main extends JFrame {
 		
 		login=new Login(mine);
 		setSound(true);
-		lblWelcome = new JLabel("");
 
-		
 	
-		if(login.getlog_in()){//check log_in
-			lblWelcome.setText("Welcome !"+login.getuser_list().get(login.getindex_user()));
-			lblWelcome.setFont(f1);
-			
-		}
 		
 		
 		
@@ -139,14 +132,12 @@ public class Main extends JFrame {
 					.addGap(507))
 				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(1013)
-					.addComponent(lblWelcome, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(30, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(47)
-					.addComponent(lblWelcome, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
 					.addComponent(btnStart, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 					.addGap(35)

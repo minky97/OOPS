@@ -33,7 +33,7 @@ public class TwoStep_Question extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private int check=1;
+	private int check = 1;
 	private File q1;
 	private String a;
 	private String answer;
@@ -41,25 +41,59 @@ public class TwoStep_Question extends JPanel {
 	private File q2;
 	private File q3;
 	private File q4;
-	private int score;
-	private ArrayList<String> select;
+	
 	private ArrayList<String> answer_select;
 	private Font f1;
 	private JTextField textField_1;
-	private TwoStep_Question two;
 	private JButton btnA;
-	private JCheckBox chckbxNewCheckBox;
-	private JCheckBox chckbxNewCheckBox_1;
-	private JCheckBox chckbxNewCheckBox_2;
-	private JCheckBox chckbxNewCheckBox_3;
-	
+
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		if(answer==null)
+			System.out.println("error!");
+		this.answer = answer;
+	}
+
+	public ArrayList<String> getAnswer_select() {
+		return answer_select;
+	}
+
+	public void setAnswer_select(ArrayList<String> answer_select) {
+		if(answer_select==null)
+			System.out.println("error");
+		this.answer_select = answer_select;
+	}
+
+	public JButton getBtnA() {
+		return btnA;
+	}
+
+	public void setBtnA(JButton btnA) {
+		this.btnA = btnA;
+		btnA.setFont(new Font("±º∏≤", Font.BOLD, 49));
+		btnA.setForeground(Color.MAGENTA);
+		btnA.setBackground(Color.CYAN);
+		
+		
+	}
+
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {// capsulation «ÿæﬂ¥Ô
+		this.check = check;
+	}
+
 	public TwoStep_Question(int num) {
 
 		f1 = new Font("Times", Font.BOLD, 14);
 
-		
 		JScrollPane scrollPane = new JScrollPane();
-
 
 		JLabel lblAnswer = new JLabel("Answer :");
 		lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
@@ -69,11 +103,10 @@ public class TwoStep_Question extends JPanel {
 		answer = textField_1.getText().trim();
 		answer = answer.toLowerCase();
 
-		
-//		two = new TwoStep_Question();
-		this.check=1;
+		// two = new TwoStep_Question();
+		this.check = 1;
 		String reader = "";
-		
+
 		try {
 			q1 = new File("step2-1.txt");
 			q2 = new File("step2-2.txt");
@@ -107,171 +140,38 @@ public class TwoStep_Question extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		btnA = new JButton("A");
-		select = new ArrayList<String>();
-		
+		setBtnA(btnA);
 		answer_select = new ArrayList<String>();
 
-		switch (num) {
-		case 1:
-			select.add("1) class practice");
-			select.add("2) [] args\r\n");
-			select.add("3) int num;");
-			select.add("4) num);\r\n");
-			answer_select.add(0, "+num);");
-			break;
-		case 2:
-			select.add("1) \\Users\\¿Ã¿∫øµ\\Desktop\\sun\\game1.wav\";");
-			select.add("2) Music();");
-			select.add("3) 3player.play(game1)");
-			select.add("4) ");
-			answer_select.add(0, "\\\\Users\\\\¿Ã¿∫øµ\\\\Desktop\\\\sun\\\\game1.wav\";");
-			break;
-		case 3:
-			select.add("1) int number() {;");
-			select.add("2) plus = a+b;");
-			select.add("3) \n }");
-			select.add("4) ");
-			answer_select.add(0, "return");
-			break;
-		case 4:
-			select.add("1) int a, int b) {");
-			select.add("2) return a-b;");
-			select.add("3) Else if (b<a) {");
-			select.add("4) ");
-			answer_select.add(0, "else");
-			break;
-		}
+		answer_select.add("static");
+		answer_select.add("Inheritance");
+		answer_select.add("Polymorphism");
+		answer_select.add("Superclass");
+		
+		setAnswer_select(answer_select);
 
 		
-		chckbxNewCheckBox = new JCheckBox(select.get(0));
 
-		chckbxNewCheckBox_1 = new JCheckBox(select.get(1));
-
-		chckbxNewCheckBox_2 = new JCheckBox(select.get(2));
-
-		chckbxNewCheckBox_3 = new JCheckBox(select.get(3));
-		
-		chckbxNewCheckBox.setFont(f1);
-		chckbxNewCheckBox.setBackground(Color.white);
-
-		chckbxNewCheckBox_1.setFont(f1);
-		chckbxNewCheckBox_1.setBackground(Color.white);
-
-		chckbxNewCheckBox_2.setFont(f1);
-		chckbxNewCheckBox_2.setBackground(Color.white);
-
-		chckbxNewCheckBox_3.setFont(f1);
-		chckbxNewCheckBox_3.setBackground(Color.white);
-		
-		btnA.setFont(new Font("±º∏≤", Font.BOLD, 49));
-		btnA.setForeground(Color.MAGENTA);
-		btnA.setBackground(Color.CYAN);
-
-		
-		btnA.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (num == 1) {
-
-					if (chckbxNewCheckBox_3.isSelected() && !chckbxNewCheckBox_2.isSelected()
-							&& !chckbxNewCheckBox_1.isSelected() && !chckbxNewCheckBox.isSelected()) {
-
-						score = score + 3;
-						if (answer.equals(answer_select.get(0))) {
-							score = score + 3;
-						}
-						JOptionPane.showMessageDialog(null, "Your score is " + score);
-						check=2;
-//						two = new TwoStep_Question();
-
-					}
-
-				} else if (num == 2) {
-
-					chckbxNewCheckBox_3.setVisible(false);
-					if (chckbxNewCheckBox.isSelected() && !chckbxNewCheckBox_1.isSelected()
-							&& !chckbxNewCheckBox_2.isSelected()) {
-						score = score + 3;
-						if (answer.equals(answer_select.get(0)))
-							score = score + 3;
-
-					}
-					JOptionPane.showMessageDialog(null, "Your score is " + score);
-					check=3;
-//					two = new TwoStep_Question();
-
-				} else if (num == 3) {
-
-					chckbxNewCheckBox_3.setVisible(false);
-					if (!chckbxNewCheckBox.isSelected() && !chckbxNewCheckBox_1.isSelected()
-							&& chckbxNewCheckBox_2.isSelected()) {
-						score = score + 3;
-						if (answer.equals(answer_select.get(0)))
-							score = score + 3;
-
-					}
-					JOptionPane.showMessageDialog(null, "Your score is " + score);
-					check=4;
-//					two = new TwoStep_Question();
-					
-
-				} else if (num == 4) {
-					chckbxNewCheckBox_3.setVisible(false);
-					if (!chckbxNewCheckBox.isSelected() && !chckbxNewCheckBox_1.isSelected()
-							&& chckbxNewCheckBox_2.isSelected()) {
-						score = score + 3;
-						if (answer.equals(answer_select.get(0)))
-							score = score + 3;
-
-					}
-					JOptionPane.showMessageDialog(null, "Your score is " + score);
-
-				}
-
-			}
-
-		});
-		
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup().addGap(27)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup().addGap(9).addComponent(chckbxNewCheckBox)
-										.addGap(80).addComponent(chckbxNewCheckBox_1).addGap(78)
-										.addComponent(chckbxNewCheckBox_2).addGap(71).addComponent(chckbxNewCheckBox_3)
-										.addContainerGap())
-								.addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621,
-												GroupLayout.PREFERRED_SIZE)
-										.addGroup(Alignment.TRAILING,
-												groupLayout.createSequentialGroup().addGap(49).addComponent(lblAnswer)
-														.addPreferredGap(ComponentPlacement.RELATED,
-																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 372,
-																GroupLayout.PREFERRED_SIZE)))
-										.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-										.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-										.addGap(32)))));
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addGap(27)
+				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup().addGap(49).addComponent(lblAnswer)
+								.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE).addComponent(
+										textField_1, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)))
+				.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+				.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE).addGap(32)));
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup().addGap(28).addComponent(scrollPane,
 										GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
-								.addGroup(
-										groupLayout.createSequentialGroup().addGap(56).addComponent(btnA,
-												GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
-						.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-										.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-												.addComponent(chckbxNewCheckBox_1).addComponent(chckbxNewCheckBox_2)
-												.addComponent(chckbxNewCheckBox))
-										.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
-								.addGroup(Alignment.TRAILING,
-										groupLayout.createSequentialGroup().addComponent(chckbxNewCheckBox_3)
-												.addGap(40)))
+								.addGroup(groupLayout.createSequentialGroup().addGap(56).addComponent(btnA,
+										GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
+						.addPreferredGap(ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblAnswer))

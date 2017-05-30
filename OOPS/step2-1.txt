@@ -1,12 +1,1 @@
-1.
-public    class practice {
-	
-	public static void main(String  2)[] args) {
-		
-		3)  int num;
-		num = 7;
-		System.out.println("My Number: " 4)  num);
-		
-	}
-
-}
+Q: What access modifier is used when you can call method without creating object?

@@ -3,6 +3,8 @@ package oops;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -24,8 +26,12 @@ public class TwoStep extends JFrame {
 	final int frame_Height = 900;
 	final int frame_Width = 1300;
 	private int window;
-	private JPanel panel_1;
-
+	private Main main;
+	private int score;
+	private TwoStep_Question panel_1;
+	private TwoStep_Question panel_2;
+	private TwoStep_Question panel_3;
+	private TwoStep_Question panel_4;
 	/**
 	 * Launch the application.
 	 */
@@ -33,6 +39,47 @@ public class TwoStep extends JFrame {
 		Sound = new BackSound("game1");
 		Sound.mulist(start);
 	}
+	
+
+	public TwoStep_Question getPanel_1() {
+		return panel_1;
+	}
+
+
+	public void setPanel_1(TwoStep_Question panel_1) {
+		this.panel_1 = panel_1;
+	}
+
+
+	public TwoStep_Question getPanel_2() {
+		return panel_2;
+	}
+
+
+	public void setPanel_2(TwoStep_Question panel_2) {
+		this.panel_2 = panel_2;
+	}
+
+
+	public TwoStep_Question getPanel_3() {
+		return panel_3;
+	}
+
+
+	public void setPanel_3(TwoStep_Question panel_3) {
+		this.panel_3 = panel_3;
+	}
+
+
+	public TwoStep_Question getPanel_4() {
+		return panel_4;
+	}
+
+
+	public void setPanel_4(TwoStep_Question panel_4) {
+		this.panel_4 = panel_4;
+	}
+
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -128,6 +175,84 @@ public class TwoStep extends JFrame {
 		JPanel panel = new JPanel();
 		panel_1 = new TwoStep_Question(1);
 		panel_1.setBackground(Color.WHITE);
+		panel_2 = new TwoStep_Question(2);
+		panel_2.setBackground(Color.WHITE);
+		panel_3 = new TwoStep_Question(3);
+		panel_3.setBackground(Color.WHITE);
+		panel_4 = new TwoStep_Question(4);
+		panel_4.setBackground(Color.WHITE);
+		
+		panel_1.setVisible(true);
+		panel_2.setVisible(false);
+		panel_3.setVisible(false);
+		panel_4.setVisible(false);
+		
+		panel_1.getBtnA().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))) {
+						score = score + 5;
+					}
+					JOptionPane.showMessageDialog(null, "Your score is " + score);
+					panel_1.setVisible(false);
+					panel_2.setVisible(true);
+					panel_3.setVisible(false);
+					panel_4.setVisible(false);
+				
+
+			}
+
+		});
+		panel_2.getBtnA().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))) {
+						score = score + 5;
+					}
+					JOptionPane.showMessageDialog(null, "Your score is " + score);
+					panel_1.setVisible(false);
+					panel_2.setVisible(false);
+					panel_3.setVisible(true);
+					panel_4.setVisible(false);
+				
+
+			}
+
+		});
+		panel_3.getBtnA().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))) {
+						score = score + 5;
+					}
+					JOptionPane.showMessageDialog(null, "Your score is " + score);
+					panel_1.setVisible(false);
+					panel_2.setVisible(false);
+					panel_3.setVisible(false);
+					panel_4.setVisible(true);
+				
+
+			}
+
+		});
+		panel_4.getBtnA().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))) {
+						score = score + 5;
+					}
+					JOptionPane.showMessageDialog(null, "Your score is " + score);
+					panel_1.setVisible(false);
+					panel_2.setVisible(false);
+					panel_3.setVisible(false);
+					panel_4.setVisible(false);
+					
+				
+
+			}
+
+		});
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -136,6 +261,19 @@ public class TwoStep extends JFrame {
 					.addGap(31)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(341, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(31)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(341, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(31)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(341, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(31)
+						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(341, Short.MAX_VALUE))
+				
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -143,6 +281,18 @@ public class TwoStep extends JFrame {
 					.addGap(29)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(316, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(29)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(316, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(29)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(316, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(29)
+						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(316, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

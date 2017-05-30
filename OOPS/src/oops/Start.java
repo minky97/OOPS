@@ -8,6 +8,8 @@ public class Start extends JFrame{
 	private Login login;
 	private Main main;
 	private OneStep onestep;
+	private TwoStep twostep;
+	private int step;
 	public Start(Main main_input,boolean log_in){
 		this.main = main_input;
 	
@@ -24,5 +26,10 @@ public class Start extends JFrame{
 			login.setVisible(true);
 			main.setVisible(false);
 		}
+//		else if(step==2){
+//			twostep.new TwoStep(main);
+//			twostep.setVisible(true);
+//			onestep.setVisible(false);
+//		}
 	}
 }

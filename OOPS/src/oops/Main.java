@@ -86,6 +86,7 @@ public class Main extends JFrame {
 			{				
 				oopstest = new OOPSTest(mine);
 				oopstest.test(btnStart.getText());
+				setSound(false);
 			}
 		});
 
@@ -95,6 +96,7 @@ public class Main extends JFrame {
 			{				
 				oopstest = new OOPSTest(mine);
 				oopstest.test(btnIntroduce.getText());
+				setSound(false);
 			}
 		});
 		btnIntroduce.setFont(f1);
@@ -106,6 +108,7 @@ public class Main extends JFrame {
 			{				
 				oopstest = new OOPSTest(mine);
 				oopstest.test(btnSetting.getText());
+				setSound(false);
 			}
 		});
 

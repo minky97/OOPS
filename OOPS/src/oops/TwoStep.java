@@ -41,45 +41,6 @@ public class TwoStep extends JFrame {
 	}
 	
 
-	public TwoStep_Question getPanel_1() {
-		return panel_1;
-	}
-
-
-	public void setPanel_1(TwoStep_Question panel_1) {
-		this.panel_1 = panel_1;
-	}
-
-
-	public TwoStep_Question getPanel_2() {
-		return panel_2;
-	}
-
-
-	public void setPanel_2(TwoStep_Question panel_2) {
-		this.panel_2 = panel_2;
-	}
-
-
-	public TwoStep_Question getPanel_3() {
-		return panel_3;
-	}
-
-
-	public void setPanel_3(TwoStep_Question panel_3) {
-		this.panel_3 = panel_3;
-	}
-
-
-	public TwoStep_Question getPanel_4() {
-		return panel_4;
-	}
-
-
-	public void setPanel_4(TwoStep_Question panel_4) {
-		this.panel_4 = panel_4;
-	}
-
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

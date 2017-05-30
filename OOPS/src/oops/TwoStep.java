@@ -32,6 +32,7 @@ public class TwoStep extends JFrame {
 	private TwoStep_Question panel_2;
 	private TwoStep_Question panel_3;
 	private TwoStep_Question panel_4;
+	private String answer;
 	/**
 	 * Launch the application.
 	 */
@@ -150,7 +151,9 @@ public class TwoStep extends JFrame {
 		
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				answer=panel_1.getTextField_1().getText().trim();
+				answer=answer.toLowerCase();
+				panel_1.setAnswer(answer);
 					if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))) {
 						score = score + 5;
 					}
@@ -159,13 +162,16 @@ public class TwoStep extends JFrame {
 					panel_2.setVisible(true);
 					panel_3.setVisible(false);
 					panel_4.setVisible(false);
-				
+			
 
 			}
 
 		});
 		panel_2.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				answer=panel_2.getTextField_1().getText().trim();
+				answer=answer.toLowerCase();
+				panel_2.setAnswer(answer);
 				
 					if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))) {
 						score = score + 5;
@@ -175,14 +181,15 @@ public class TwoStep extends JFrame {
 					panel_2.setVisible(false);
 					panel_3.setVisible(true);
 					panel_4.setVisible(false);
-				
 
 			}
 
 		});
 		panel_3.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				answer=panel_3.getTextField_1().getText().trim();
+				answer=answer.toLowerCase();
+				panel_3.setAnswer(answer);
 					if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))) {
 						score = score + 5;
 					}
@@ -198,7 +205,9 @@ public class TwoStep extends JFrame {
 		});
 		panel_4.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				answer=panel_4.getTextField_1().getText().trim();
+				answer=answer.toLowerCase();
+				panel_4.setAnswer(answer);
 					if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))) {
 						score = score + 5;
 					}

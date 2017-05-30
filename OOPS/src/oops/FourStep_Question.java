@@ -44,9 +44,17 @@ public class FourStep_Question extends JPanel {
 	
 	private ArrayList<String> answer_select;
 	private Font f1;
-	private JTextField textField_1;
+	private JTextArea textField_1;
 	private JButton btnA;
 
+
+	public JTextArea getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextArea textField_1) {
+		this.textField_1 = textField_1;
+	}
 
 	public String getAnswer() {
 		return answer;
@@ -97,7 +105,8 @@ public class FourStep_Question extends JPanel {
 
 		JLabel lblAnswer = new JLabel("Answer :");
 		lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		textField_1 = new JTextField();
+		textField_1 = new JTextArea();
+		textField_1.setBackground(new Color(245, 245, 220));
 		textField_1.setColumns(10);
 
 		answer = textField_1.getText().trim();
@@ -185,5 +194,4 @@ public class FourStep_Question extends JPanel {
 		textArea_1.setEditable(false);
 
 	}
-
 }

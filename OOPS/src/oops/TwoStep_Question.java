@@ -48,6 +48,14 @@ public class TwoStep_Question extends JPanel {
 	private JButton btnA;
 
 
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
 	public String getAnswer() {
 		return answer;
 	}
@@ -102,6 +110,7 @@ public class TwoStep_Question extends JPanel {
 
 		answer = textField_1.getText().trim();
 		answer = answer.toLowerCase();
+		setAnswer(answer);
 
 		this.check = 1;
 		String reader = "";
@@ -143,16 +152,13 @@ public class TwoStep_Question extends JPanel {
 		btnA = new JButton("A");
 		setBtnA(btnA);
 		answer_select = new ArrayList<String>();
-
 		answer_select.add("static");
-		answer_select.add("Inheritance");
-		answer_select.add("Polymorphism");
-		answer_select.add("Superclass");
-		
+		answer_select.add("inheritance");
+		answer_select.add("polymorphism");
+		answer_select.add("superclass");
 		setAnswer_select(answer_select);
 
-		
-
+	
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addGap(27)

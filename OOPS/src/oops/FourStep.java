@@ -28,10 +28,10 @@ public class FourStep extends JFrame {
 	private int window;
 	private Main main;
 	private int score;
-	private TwoStep_Question panel_1;
-	private TwoStep_Question panel_2;
-	private TwoStep_Question panel_3;
-	private TwoStep_Question panel_4;
+	private FourStep_Question panel_1;
+	private FourStep_Question panel_2;
+	private FourStep_Question panel_3;
+	private FourStep_Question panel_4;
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +47,7 @@ public class FourStep extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TwoStep frame = new TwoStep();
+					FourStep frame = new FourStep();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,11 +61,11 @@ public class FourStep extends JFrame {
 	 */
 	public FourStep() {
 
-		setTitle("Two Step");
+		setTitle("Four Step");
 		setBounds(100, 100, frame_Width, frame_Height);
 		setSound(true);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
-		image = new ImageIcon("step2.png");
+		image = new ImageIcon("step4.png");
 
 		contentPane = new JPanel() {
 			public void paintComponent(Graphics g) {
@@ -135,13 +135,13 @@ public class FourStep extends JFrame {
 		setContentPane(contentPane);
 
 		JPanel panel = new JPanel();
-		panel_1 = new TwoStep_Question(1);
+		panel_1 = new FourStep_Question(1);
 		panel_1.setBackground(Color.WHITE);
-		panel_2 = new TwoStep_Question(2);
+		panel_2 = new FourStep_Question(2);
 		panel_2.setBackground(Color.WHITE);
-		panel_3 = new TwoStep_Question(3);
+		panel_3 = new FourStep_Question(3);
 		panel_3.setBackground(Color.WHITE);
-		panel_4 = new TwoStep_Question(4);
+		panel_4 = new FourStep_Question(4);
 		panel_4.setBackground(Color.WHITE);
 		
 		panel_1.setVisible(true);
@@ -204,11 +204,13 @@ public class FourStep extends JFrame {
 						score = score + 5;
 					}
 					JOptionPane.showMessageDialog(null, "Your score is " + score);
-					panel_1.setVisible(false);
-					panel_2.setVisible(false);
-					panel_3.setVisible(false);
-					panel_4.setVisible(false);
-					
+//					panel_1.setVisible(false);
+//					panel_2.setVisible(false);
+//					panel_3.setVisible(false);
+//					panel_4.setVisible(false);
+					dispose();
+					End end = new End();
+					end.setVisible(true);
 				
 
 			}

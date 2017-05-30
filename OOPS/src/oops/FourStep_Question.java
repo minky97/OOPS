@@ -28,7 +28,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class TwoStep_Question extends JPanel {
+public class FourStep_Question extends JPanel {
 
 	/**
 	 * Create the panel.
@@ -89,7 +89,7 @@ public class TwoStep_Question extends JPanel {
 		this.check = check;
 	}
 
-	public TwoStep_Question(int num) {
+	public FourStep_Question(int num) {
 
 		f1 = new Font("Times", Font.BOLD, 14);
 
@@ -103,14 +103,15 @@ public class TwoStep_Question extends JPanel {
 		answer = textField_1.getText().trim();
 		answer = answer.toLowerCase();
 
+		
 		this.check = 1;
 		String reader = "";
 
 		try {
-			q1 = new File("step2-1.txt");
-			q2 = new File("step2-2.txt");
-			q3 = new File("step2-3.txt");
-			q4 = new File("step2-4.txt");
+			q1 = new File("step4-1.txt");
+			q2 = new File("step4-2.txt");
+			q3 = new File("step4-3.txt");
+			q4 = new File("step4-4.txt");
 
 			switch (num) {
 			case 1:
@@ -144,10 +145,10 @@ public class TwoStep_Question extends JPanel {
 		setBtnA(btnA);
 		answer_select = new ArrayList<String>();
 
-		answer_select.add("static");
-		answer_select.add("Inheritance");
-		answer_select.add("Polymorphism");
-		answer_select.add("Superclass");
+		answer_select.add("4");
+		answer_select.add("0\n0\n4\n");
+		answer_select.add("-1 4 5");
+		answer_select.add("6\ntrue\n13\n5\nfalse\n2\n5\n66\nB\nB\nC\n");
 		
 		setAnswer_select(answer_select);
 

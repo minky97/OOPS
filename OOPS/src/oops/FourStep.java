@@ -204,10 +204,6 @@ public class FourStep extends JFrame {
 						score = score + 5;
 					}
 					JOptionPane.showMessageDialog(null, "Your score is " + score);
-//					panel_1.setVisible(false);
-//					panel_2.setVisible(false);
-//					panel_3.setVisible(false);
-//					panel_4.setVisible(false);
 					dispose();
 					End end = new End();
 					end.setVisible(true);

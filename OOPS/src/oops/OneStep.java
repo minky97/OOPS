@@ -37,6 +37,7 @@ public class OneStep extends JFrame {
 	private int lifenum;
 	private ImageIcon life;// life image
 
+	private Start start;
 	/**
 	 * Launch the application.
 	 */
@@ -123,10 +124,12 @@ public class OneStep extends JFrame {
 						JOptionPane.WARNING_MESSAGE);
 				if (window == JOptionPane.CANCEL_OPTION) {
 					remove(window);
-				} else if (window == JOptionPane.OK_OPTION) {
-					
+				} else if (window == JOptionPane.OK_OPTION) {					
 					setSound(false,Sound);
-
+					setSound(false,Sound);
+					 main.setSound(true);
+					 main.setVisible(true);
+					dispose();
 				}
 
 			}
@@ -134,10 +137,6 @@ public class OneStep extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-				setSound(false,Sound);
-				// main.setSound(true);
-				// main.setVisible(true);
-				dispose();
 			}
 
 			@Override
@@ -174,7 +173,7 @@ public class OneStep extends JFrame {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
-					score = score + 10;
+					score = score + 3;
 				} else
 					lifenum = lifenum - 1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
@@ -192,7 +191,7 @@ public class OneStep extends JFrame {
 				answer = answer.toLowerCase();
 
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
-					score = score + 10;
+					score = score + 3;
 				} else
 					lifenum = lifenum - 1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
@@ -208,7 +207,7 @@ public class OneStep extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
-					score = score + 10;
+					score = score + 3;
 				} else
 					lifenum = lifenum - 1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
@@ -216,6 +215,9 @@ public class OneStep extends JFrame {
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
+				dispose();
+				setSound(false,Sound);
+				start=new Start(main,true,2);
 				
 			}
 

@@ -48,6 +48,9 @@ public class Main extends JFrame {
       this.Sound = sound;
       sound.mulist(start);
    }
+   public void setSound(boolean start){
+	      Sound.mulist(start);
+   }
    public Main() {
       this.mine = this;
       setTitle("OOPS");

@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -37,33 +38,31 @@ public class FourStep extends JFrame {
 	private String answer;
 	private int lifenum;
 	private ImageIcon life;// life image
+	private ArrayList<JLabel> imageArray;
 
 	/**
 	 * Launch the application.
 	 */
-	public void setSound(boolean start,BackSound sound) {
+	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
 		sound.mulist(start);
 	}
 
-	public void showlife(int num, JLabel label1, JLabel label2, JLabel label3) {
-		if (num == 3) {
-			label1.setVisible(true);
-			label2.setVisible(true);
-			label3.setVisible(true);
-		} else if (num == 2) {
-			label1.setVisible(true);
-			label2.setVisible(true);
-			label3.setVisible(false);
-		} else if (num == 1) {
-			label1.setVisible(true);
-			label2.setVisible(false);
-			label3.setVisible(false);
-		} else if (num <= 0) {
+	public void showlife(int num, ImageIcon life) {
+
+		if (num <= 0) {
 			dispose();
-			End end = new End();
-			end.setVisible(true);
+			setSound(false, Sound);
+		} else {
+
+			for (int i = 0; i < 5; i++) {
+				imageArray.get(i).setVisible(false);
+			}
+			for (int i = 0; i < num; i++) {
+				imageArray.get(i).setVisible(true);
+			}
 		}
+
 	}
 
 	public static void main(String[] args) {
@@ -87,7 +86,7 @@ public class FourStep extends JFrame {
 		Sound = new BackSound("game3");
 		setTitle("Four Step");
 		setBounds(100, 100, frame_Width, frame_Height);
-		setSound(true,Sound);
+		setSound(true, Sound);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step4.png");
 
@@ -133,8 +132,8 @@ public class FourStep extends JFrame {
 				if (window == JOptionPane.CANCEL_OPTION) {
 					remove(window);
 				} else if (window == JOptionPane.OK_OPTION) {
-					
-					setSound(false,Sound);
+
+					setSound(false, Sound);
 
 				}
 
@@ -143,7 +142,7 @@ public class FourStep extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-				setSound(false,Sound);
+				setSound(false, Sound);
 				// main.setSound(true);
 				// main.setVisible(true);
 				dispose();
@@ -160,7 +159,7 @@ public class FourStep extends JFrame {
 		setContentPane(contentPane);
 
 		JPanel panel = new JPanel();
-		
+
 		panel_1 = new FourStep_Question(1);
 		panel_1.setBackground(Color.WHITE);
 		panel_2 = new FourStep_Question(2);
@@ -178,9 +177,19 @@ public class FourStep extends JFrame {
 		JLabel lblNewLabel = new JLabel(life);
 		JLabel lblNewLabel_1 = new JLabel(life);
 		JLabel lblNewLabel_2 = new JLabel(life);
+		JLabel lblNewLabel_3 = new JLabel(life);
 
+		JLabel lblNewLabel_4 = new JLabel(life);
+
+		imageArray = new ArrayList<JLabel>();
+		imageArray.add(lblNewLabel);
+		imageArray.add(lblNewLabel_1);
+		imageArray.add(lblNewLabel_2);
+		imageArray.add(lblNewLabel_3);
+		imageArray.add(lblNewLabel_4);
+		
 		lifenum = 3;
-
+		showlife(lifenum, life);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -194,8 +203,7 @@ public class FourStep extends JFrame {
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
-				
+				showlife(lifenum, life);
 			}
 
 		});
@@ -213,8 +221,7 @@ public class FourStep extends JFrame {
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
-				
+				showlife(lifenum, life);
 			}
 
 		});
@@ -230,8 +237,8 @@ public class FourStep extends JFrame {
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
-				
+				showlife(lifenum, life);
+
 			}
 
 		});
@@ -246,28 +253,34 @@ public class FourStep extends JFrame {
 				dispose();
 				End end = new End();
 				end.setVisible(true);
-				setSound(false,Sound);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
-						}
+				setSound(false, Sound);
+				showlife(lifenum, life);
+			}
 
 		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(31).addGroup(gl_contentPane
-						.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(31)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
 								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
 								.addGap(18)
 								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110,
 										GroupLayout.PREFERRED_SIZE)
-								.addGap(55).addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121,
-										GroupLayout.PREFERRED_SIZE))
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(341, Short.MAX_VALUE)));
+								.addGap(55)
+								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(50)
+								.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 162,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(53).addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 161,
+										GroupLayout.PREFERRED_SIZE)))
+				.addContainerGap(341, Short.MAX_VALUE)));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -276,12 +289,17 @@ public class FourStep extends JFrame {
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE))
 						.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
-								.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95,
+										Short.MAX_VALUE))
 						.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
 	}

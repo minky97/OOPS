@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class User extends JPanel{
    
-	private Life ulife;
+//	private Life ulife;
 	private ArrayList<User> user = new ArrayList<User>();
     private int lf;
 //   @Override

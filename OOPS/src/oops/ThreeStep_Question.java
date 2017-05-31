@@ -50,10 +50,6 @@ public class ThreeStep_Question extends JPanel {
 	private Font f1;
 	private JTextField textField_1;
 	private JButton btnA;
-	/**
-	 * @wbp.nonvisual location=193,364
-	 */
-	private final JComboBox comboBox = new JComboBox();
 
 
 	public JTextField getTextField_1() {
@@ -126,7 +122,6 @@ public class ThreeStep_Question extends JPanel {
 	}
 
 	public ThreeStep_Question(int num) {
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
 
 		f1 = new Font("Times", Font.BOLD, 14);
 
@@ -202,30 +197,48 @@ public class ThreeStep_Question extends JPanel {
 		answer_select.add("return");
 		answer_select.add("else");
 		setAnswer_select(answer_select);
+		
+		JComboBox comboBox = new JComboBox();
 
 	
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-				.createSequentialGroup().addGap(27)
-				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup().addGap(49).addComponent(lblAnswer)
-								.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE).addComponent(
-										textField_1, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)))
-				.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-				.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE).addGap(32)));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup().addGap(28).addComponent(scrollPane,
-										GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup().addGap(56).addComponent(btnA,
-										GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
-						.addPreferredGap(ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblAnswer))
-						.addGap(37)));
+					.addGap(27)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(49)
+							.addComponent(lblAnswer)
+							.addPreferredGap(ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+					.addGap(32))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(99)
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(753, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(28)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(56)
+							.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
+					.addGap(18)
+					.addComponent(comboBox, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblAnswer))
+					.addGap(37))
+		);
 
 		JTextArea textArea_1 = new JTextArea();
 		scrollPane.setViewportView(textArea_1);
@@ -235,5 +248,4 @@ public class ThreeStep_Question extends JPanel {
 		textArea_1.setEditable(false);
 
 	}
-
 }

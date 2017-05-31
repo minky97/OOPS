@@ -29,6 +29,11 @@ public class BackSound implements LineListener {
 	 */
 	boolean playCompleted;
 	private String music;
+	private DataLine.Info info;
+	private File audioFile;
+	private AudioInputStream audioStream;
+	private AudioFormat format;
+	private Clip audioClip;
 
 	/**
 	 * Play a given audio file.
@@ -38,19 +43,18 @@ public class BackSound implements LineListener {
 	 */
 	public BackSound(String music) {
 		this.music = music;
+		info = new DataLine.Info(Clip.class, format);
 	}
 
 	void play(String audioFilePath, boolean check) {
-		File audioFile = new File(audioFilePath);
+		audioFile = new File(audioFilePath);
 
 		try {
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			audioStream = AudioSystem.getAudioInputStream(audioFile);
 
-			AudioFormat format = audioStream.getFormat();
+			format = audioStream.getFormat();
 
-			DataLine.Info info = new DataLine.Info(Clip.class, format);
-
-			Clip audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip = (Clip) AudioSystem.getLine(info);
 
 			audioClip.addLineListener(this);
 
@@ -58,7 +62,7 @@ public class BackSound implements LineListener {
 			if (check)
 				audioClip.start(); // 노래 나오게 하는 것
 
-			else{
+			else {
 				audioClip.stop(); // 노래 안 나오게 하는 것
 				audioClip.close();
 			}

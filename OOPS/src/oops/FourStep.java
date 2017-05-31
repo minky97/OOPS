@@ -42,7 +42,7 @@ public class FourStep extends JFrame {
 	 * Launch the application.
 	 */
 	public void setSound(boolean start,BackSound sound) {
-		
+		this.Sound = sound;
 		sound.mulist(start);
 	}
 
@@ -133,8 +133,9 @@ public class FourStep extends JFrame {
 				if (window == JOptionPane.CANCEL_OPTION) {
 					remove(window);
 				} else if (window == JOptionPane.OK_OPTION) {
-					dispose();
+					
 					setSound(false,Sound);
+
 				}
 
 			}
@@ -159,6 +160,7 @@ public class FourStep extends JFrame {
 		setContentPane(contentPane);
 
 		JPanel panel = new JPanel();
+		
 		panel_1 = new FourStep_Question(1);
 		panel_1.setBackground(Color.WHITE);
 		panel_2 = new FourStep_Question(2);

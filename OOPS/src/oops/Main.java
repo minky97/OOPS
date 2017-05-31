@@ -44,9 +44,9 @@ public class Main extends JFrame {
 		
 		main.setVisible(true);
 	}
-	public void setSound(boolean start){
-		Sound = new BackSound("main");
-		Sound.mulist(start);
+	public void setSound(boolean start,BackSound sound){
+		this.Sound = sound;
+		sound.mulist(start);
 	}
 	public Main() {
 		this.mine = this;
@@ -55,7 +55,9 @@ public class Main extends JFrame {
 		setBounds(100, 100, frame_Width, frame_Height);
 		
 		login=new Login(mine);
-		setSound(true);
+		
+		Sound = new BackSound("main");
+		setSound(true,Sound);
 
 	
 		
@@ -86,7 +88,7 @@ public class Main extends JFrame {
 			{				
 				oopstest = new OOPSTest(mine);
 				oopstest.test(btnStart.getText());
-				setSound(false);
+				setSound(false,Sound);
 			}
 		});
 
@@ -96,7 +98,7 @@ public class Main extends JFrame {
 			{				
 				oopstest = new OOPSTest(mine);
 				oopstest.test(btnIntroduce.getText());
-				setSound(false);
+				setSound(false,Sound);
 			}
 		});
 		btnIntroduce.setFont(f1);
@@ -108,7 +110,7 @@ public class Main extends JFrame {
 			{				
 				oopstest = new OOPSTest(mine);
 				oopstest.test(btnSetting.getText());
-				setSound(false);
+				setSound(false,Sound);
 			}
 		});
 
@@ -117,6 +119,7 @@ public class Main extends JFrame {
 		btnExit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 				mine.setVisible(false);
+				setSound(false,Sound);
 			}
 		});
 		

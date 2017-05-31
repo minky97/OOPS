@@ -116,10 +116,10 @@ public class TwoStep_Question extends JPanel {
 		String reader = "";
 
 		try {
-			q1 = new File("step2-1.txt");
-			q2 = new File("step2-2.txt");
-			q3 = new File("step2-3.txt");
-			q4 = new File("step2-4.txt");
+			q1 = new File("step3-1.txt");
+			q2 = new File("step3-2.txt");
+			q3 = new File("step3-3.txt");
+			q4 = new File("step3-4.txt");
 
 			switch (num) {
 			case 1:

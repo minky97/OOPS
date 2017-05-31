@@ -1,0 +1,10 @@
+4.
+	public int subtract((1)int a, int b) {
+
+		if(a>b) {
+			return (2)a-b;
+		}
+		(3)Else if (b<a) {
+			return b-a;
+		}
+	}

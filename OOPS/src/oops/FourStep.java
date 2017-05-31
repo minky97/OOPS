@@ -20,7 +20,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class FourStep extends JFrame {
+public class FourStep extends JFrame implements Step{
 
 	private JPanel contentPane;
 	private String caution;
@@ -65,24 +65,13 @@ public class FourStep extends JFrame {
 
 	}
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FourStep frame = new FourStep();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public FourStep() {
+	public FourStep(Main main_input) {
 
+		this.main=main_input;
 		Sound = new BackSound("game3");
 		setTitle("Four Step");
 		setBounds(100, 100, frame_Width, frame_Height);
@@ -134,6 +123,9 @@ public class FourStep extends JFrame {
 				} else if (window == JOptionPane.OK_OPTION) {
 
 					setSound(false, Sound);
+					 main.setSound(true);
+					 main.setVisible(true);
+					dispose();
 
 				}
 
@@ -142,10 +134,7 @@ public class FourStep extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-				setSound(false, Sound);
-				// main.setSound(true);
-				// main.setVisible(true);
-				dispose();
+			
 			}
 
 			@Override

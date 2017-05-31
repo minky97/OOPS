@@ -19,7 +19,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class OneStep extends JFrame {
+public class OneStep extends JFrame implements Step{
 
 	private JPanel contentPane;
 	private String caution;

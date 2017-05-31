@@ -21,7 +21,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class TwoStep extends JFrame {
+public class TwoStep extends JFrame implements Step{
 
 	private JPanel contentPane;
 	private String caution;
@@ -40,6 +40,7 @@ public class TwoStep extends JFrame {
 	private int lifenum;
 	private ImageIcon life;// life image
 	private ArrayList<JLabel> imageArray;
+	private ThreeStep threestep;
 
 	/**
 	 * Launch the application.
@@ -250,6 +251,10 @@ public class TwoStep extends JFrame {
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
 				showlife(lifenum, life);
+				dispose();
+				setSound(false,Sound);
+				threestep = new ThreeStep(main);
+				threestep.setVisible(true);
 
 			}
 

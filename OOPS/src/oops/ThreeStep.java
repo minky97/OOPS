@@ -20,7 +20,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class ThreeStep extends JFrame {
+public class ThreeStep extends JFrame implements Step{
 
 	private JPanel contentPane;
 	private String caution;
@@ -39,6 +39,7 @@ public class ThreeStep extends JFrame {
 	private int num;
 	private int lifenum;
 	private ImageIcon life;// life image
+	private FourStep fourstep;
 
 	/**
 	 * Launch the application.
@@ -66,24 +67,12 @@ public class ThreeStep extends JFrame {
 		}
 	}
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ThreeStep frame = new ThreeStep();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
-	public ThreeStep() {
+	public ThreeStep(Main main_input) {
 
+		this.main = main_input;
 		setTitle("Three Step");
 		setBounds(100, 100, frame_Width, frame_Height);
 		setSound(true);
@@ -134,6 +123,8 @@ public class ThreeStep extends JFrame {
 					remove(window);
 				} else if (window == JOptionPane.OK_OPTION) {
 
+					main.setVisible(true);
+					main.setSound(true);
 					dispose();
 					setSound(false);
 				}
@@ -143,10 +134,7 @@ public class ThreeStep extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-				setSound(false);
-				// main.setSound(true);
-				// main.setVisible(true);
-				dispose();
+
 			}
 
 			@Override
@@ -188,8 +176,9 @@ public class ThreeStep extends JFrame {
 				answer = answer.toLowerCase();
 				panel_1.setAnswer(answer);
 				num = Integer.parseInt(panel_1.getComboBox().getSelectedItem().toString().trim());
-	            panel_1.setNum(num);
-				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0)) && (panel_1.getNum()==(panel_1.getAnswer_num().get(0)))) {
+				panel_1.setNum(num);
+				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))
+						&& (panel_1.getNum() == (panel_1.getAnswer_num().get(0)))) {
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
@@ -209,9 +198,10 @@ public class ThreeStep extends JFrame {
 				answer = answer.toLowerCase();
 				panel_2.setAnswer(answer);
 				num = Integer.parseInt(panel_2.getComboBox().getSelectedItem().toString().trim());
-	            panel_2.setNum(num);
+				panel_2.setNum(num);
 
-				if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1)) && (panel_2.getNum()==(panel_2.getAnswer_num().get(1)))) {
+				if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))
+						&& (panel_2.getNum() == (panel_2.getAnswer_num().get(1)))) {
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
@@ -230,8 +220,9 @@ public class ThreeStep extends JFrame {
 				answer = answer.toLowerCase();
 				panel_3.setAnswer(answer);
 				num = Integer.parseInt(panel_3.getComboBox().getSelectedItem().toString().trim());
-	            panel_3.setNum(num);
-				if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2)) && (panel_3.getNum()==(panel_3.getAnswer_num().get(2)))) {
+				panel_3.setNum(num);
+				if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))
+						&& (panel_3.getNum() == (panel_3.getAnswer_num().get(2)))) {
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
@@ -251,8 +242,9 @@ public class ThreeStep extends JFrame {
 				answer = answer.toLowerCase();
 				panel_4.setAnswer(answer);
 				num = Integer.parseInt(panel_4.getComboBox().getSelectedItem().toString().trim());
-	            panel_4.setNum(num);
-				if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3)) && (panel_4.getNum()==(panel_4.getAnswer_num().get(3)))) {
+				panel_4.setNum(num);
+				if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))
+						&& (panel_4.getNum() == (panel_4.getAnswer_num().get(3)))) {
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
@@ -263,6 +255,10 @@ public class ThreeStep extends JFrame {
 				panel_4.setVisible(false);
 				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
 
+				dispose();
+				setSound(false);
+				fourstep = new FourStep(main);
+				fourstep.setVisible(true);
 			}
 
 		});

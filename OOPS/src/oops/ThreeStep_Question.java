@@ -143,6 +143,9 @@ public class ThreeStep_Question extends JPanel {
 		answer = answer.toLowerCase();
 		setAnswer(answer);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));	
+		
 		num = Integer.parseInt(comboBox.getSelectedItem().toString().trim());
 		setNum(num);
 		
@@ -202,8 +205,7 @@ public class ThreeStep_Question extends JPanel {
 		answer_num.add(2);
 		setAnswer_num(answer_num);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));
+	
 		
 		JLabel lblNewLabel = new JLabel("* Select the number that error has been occured and write something that is required for correction.");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));

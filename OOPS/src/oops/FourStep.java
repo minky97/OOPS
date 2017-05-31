@@ -41,9 +41,9 @@ public class FourStep extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public void setSound(boolean start,BackSound Sound) {
+	public void setSound(boolean start,BackSound sound) {
 		
-		Sound.mulist(start);
+		sound.mulist(start);
 	}
 
 	public void showlife(int num, JLabel label1, JLabel label2, JLabel label3) {

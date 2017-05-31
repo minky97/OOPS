@@ -10,8 +10,13 @@ import javax.swing.border.TitledBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class End extends JFrame {
@@ -25,9 +30,9 @@ private BackSound Sound;
    /**
     * Create the frame.
     */
-public void setSound(boolean start){
-    Sound = new BackSound("logout");
-    Sound.mulist(start);
+public void setSound(boolean start,BackSound sound){
+    
+    sound.mulist(start);
 }
 
    public End() {
@@ -36,8 +41,8 @@ public void setSound(boolean start){
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       setContentPane(contentPane);
-      
-      setSound(true);
+      Sound = new BackSound("logout");  
+      setSound(true,Sound);
       
       JPanel panel = new JPanel();
       panel.setForeground(Color.BLUE);
@@ -54,6 +59,54 @@ public void setSound(boolean start){
       userId.setForeground(Color.RED);
       userId.setFont(new Font("Arial Black", Font.PLAIN, 40));
       GroupLayout gl_panel = new GroupLayout(panel);
+      
+      this.addWindowListener(new WindowListener()
+      {
+         
+         @Override
+         public void windowOpened(WindowEvent e) {
+            // TODO Auto-generated method stub
+            
+         }
+         
+         @Override
+         public void windowIconified(WindowEvent e) {
+            // TODO Auto-generated method stub
+            
+         }
+         
+         @Override
+         public void windowDeiconified(WindowEvent e) {
+            // TODO Auto-generated method stub
+            
+         }
+         
+         @Override
+         public void windowDeactivated(WindowEvent e) {
+            // TODO Auto-generated method stub
+            
+         }
+         
+         @Override
+         public void windowClosing(WindowEvent e) 
+         {
+          	  setSound(false,Sound);            
+         }
+         
+         @Override
+         public void windowClosed(WindowEvent e) {
+            // TODO Auto-generated method stub
+
+            
+         }
+         
+         @Override
+         public void windowActivated(WindowEvent e) {
+            // TODO Auto-generated method stub
+            
+         }
+      });
+      
       gl_panel.setHorizontalGroup(
       	gl_panel.createParallelGroup(Alignment.LEADING)
       		.addGroup(gl_panel.createSequentialGroup()

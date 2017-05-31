@@ -1,0 +1,4 @@
+1.If you want Encapsulation in your code,you must follow three step.
+one step, mark all instance variables ______ so they are well ______.
+two step, mark getters and setters ______so they can be accessed by anyone.
+three step, add _________to ________.

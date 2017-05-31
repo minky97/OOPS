@@ -27,6 +27,8 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class ThreeStep_Question extends JPanel {
 
@@ -37,23 +39,49 @@ public class ThreeStep_Question extends JPanel {
 	private File q1;
 	private String a;
 	private String answer;
+	private int num;
 	private File q;
 	private File q2;
 	private File q3;
 	private File q4;
 	
 	private ArrayList<String> answer_select;
+	private ArrayList<Integer> answer_num;
 	private Font f1;
 	private JTextField textField_1;
 	private JButton btnA;
+	/**
+	 * @wbp.nonvisual location=193,364
+	 */
+	private final JComboBox comboBox = new JComboBox();
 
 
 	public JTextField getTextField_1() {
 		return textField_1;
 	}
 
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		if(num<0)
+			System.out.println("error");
+		this.num = num;
+	}
+
 	public void setTextField_1(JTextField textField_1) {
 		this.textField_1 = textField_1;
+	}
+
+	public ArrayList<Integer> getAnswer_num() {
+		return answer_num;
+	}
+
+	public void setAnswer_num(ArrayList<Integer> answer_num) {
+		if(answer_select==null)
+			System.out.println("error");
+		this.answer_num = answer_num;
 	}
 
 	public String getAnswer() {
@@ -98,6 +126,7 @@ public class ThreeStep_Question extends JPanel {
 	}
 
 	public ThreeStep_Question(int num) {
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
 
 		f1 = new Font("Times", Font.BOLD, 14);
 
@@ -106,20 +135,28 @@ public class ThreeStep_Question extends JPanel {
 		JLabel lblAnswer = new JLabel("Answer :");
 		lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
 		textField_1 = new JTextField();
+		textField_1.setText("1\r\n2\r\n3\r\n4");
 		textField_1.setColumns(10);
 
 		answer = textField_1.getText().trim();
 		answer = answer.toLowerCase();
 		setAnswer(answer);
+		
+		//몇번체크했는지
+		//num = Integer.parseInt(comboBox.getSelectedItem().toString().trim());
+		//num = num.toLowerCase();
+		//setNum(num);
+		
+		
 
 		this.check = 1;
 		String reader = "";
 
 		try {
-			q1 = new File("step2-1.txt");
-			q2 = new File("step2-2.txt");
-			q3 = new File("step2-3.txt");
-			q4 = new File("step2-4.txt");
+			q1 = new File("step3-1.txt");
+			q2 = new File("step3-2.txt");
+			q3 = new File("step3-3.txt");
+			q4 = new File("step3-4.txt");
 
 			switch (num) {
 			case 1:
@@ -149,13 +186,21 @@ public class ThreeStep_Question extends JPanel {
 			e.printStackTrace();
 		}
 
+		//답체크
 		btnA = new JButton("A");
 		setBtnA(btnA);
 		answer_select = new ArrayList<String>();
-		answer_select.add("static");
-		answer_select.add("inheritance");
-		answer_select.add("polymorphism");
-		answer_select.add("superclass");
+		answer_select.add("+");
+		answer_select.add("\\");
+		answer_select.add("return");
+		answer_select.add("else");
+		setAnswer_select(answer_select);
+		
+		answer_select = new ArrayList<String>();
+		answer_select.add("+");
+		answer_select.add("\\");
+		answer_select.add("return");
+		answer_select.add("else");
 		setAnswer_select(answer_select);
 
 	

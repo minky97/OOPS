@@ -130,7 +130,6 @@ public class ThreeStep_Question extends JPanel {
 		JLabel lblAnswer = new JLabel("Answer :");
 		lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
 		textField_1 = new JTextField();
-		textField_1.setText("1\r\n2\r\n3\r\n4");
 		textField_1.setColumns(10);
 
 		answer = textField_1.getText().trim();
@@ -199,6 +198,7 @@ public class ThreeStep_Question extends JPanel {
 		setAnswer_select(answer_select);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));
 
 	
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -211,15 +211,13 @@ public class ThreeStep_Question extends JPanel {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(49)
 							.addComponent(lblAnswer)
-							.addPreferredGap(ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+							.addGap(18)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
 							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
 					.addGap(32))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(99)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(753, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -231,12 +229,12 @@ public class ThreeStep_Question extends JPanel {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(56)
 							.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
-					.addGap(18)
-					.addComponent(comboBox, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-					.addGap(18)
+					.addPreferredGap(ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblAnswer))
+						.addComponent(lblAnswer)
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addComponent(comboBox)
+							.addComponent(textField_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
 					.addGap(37))
 		);
 

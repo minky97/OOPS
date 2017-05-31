@@ -55,15 +55,6 @@ public class FourStep_Question extends JPanel {
 		this.textarea = textField_1;
 	}
 
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		if(answer==null)
-			System.out.println("error!");
-		this.answer = answer;
-	}
 
 	public ArrayList<String> getAnswer_select() {
 		return answer_select;
@@ -107,9 +98,6 @@ public class FourStep_Question extends JPanel {
 	
 		textarea = new JTextArea();
 		
-		
-		answer = textarea.getText().trim();
-		answer = answer.toLowerCase();
 
 		
 		this.check = 1;
@@ -163,7 +151,8 @@ public class FourStep_Question extends JPanel {
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 
-		
+
+
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

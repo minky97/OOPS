@@ -185,8 +185,7 @@ public class FourStep extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
-				panel_1.setAnswer(answer);
-				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))) {
+				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
@@ -196,17 +195,16 @@ public class FourStep extends JFrame {
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
 				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
-
+				
 			}
 
 		});
 		panel_2.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				answer = panel_2.getTextField_1().getText().trim();
+				answer = panel_2.getTextField_1().getText();
 				answer = answer.toLowerCase();
-				panel_2.setAnswer(answer);
 
-				if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))) {
+				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
@@ -216,15 +214,14 @@ public class FourStep extends JFrame {
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
 				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
+				
 			}
 
 		});
 		panel_3.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				answer = panel_3.getTextField_1().getText().trim();
-				answer = answer.toLowerCase();
-				panel_3.setAnswer(answer);
-				if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))) {
+				answer = panel_3.getTextField_1().getText();
+				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
@@ -234,16 +231,14 @@ public class FourStep extends JFrame {
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
 				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
-
+				
 			}
 
 		});
 		panel_4.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				answer = panel_4.getTextField_1().getText().trim();
-				answer = answer.toLowerCase();
-				panel_4.setAnswer(answer);
-				if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))) {
+				answer = panel_4.getTextField_1().getText();
+				if (answer.equals(panel_4.getAnswer_select().get(3))) {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
@@ -253,8 +248,7 @@ public class FourStep extends JFrame {
 				end.setVisible(true);
 				setSound(false,Sound);
 				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
-
-			}
+						}
 
 		});
 

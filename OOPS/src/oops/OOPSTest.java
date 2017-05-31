@@ -32,7 +32,7 @@ public class OOPSTest  {
 			
 		}
 		else if(panelName.equals("Start")){
-			start=new Start(main,false,0);
+			start=new Start(main,false);
 			
 		}
 

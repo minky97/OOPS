@@ -192,7 +192,8 @@ public class Login extends JFrame {
                   if (check(id,pw,file_id,file_pw)) {
                      setlog_in(true); //game start.
                      JOptionPane.showMessageDialog(null, "Welcome !");
-                     start=new Start(main,true,1);            
+                     dispose();
+                     start=new Start(main,true);            
                   } else if (!check(id,pw,file_id,file_pw)) {
                      setlog_in(false);
                                        }

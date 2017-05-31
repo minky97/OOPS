@@ -37,7 +37,7 @@ public class OneStep extends JFrame {
 	private int lifenum;
 	private ImageIcon life;// life image
 
-	private Start start;
+	private TwoStep twostep;
 	/**
 	 * Launch the application.
 	 */
@@ -217,8 +217,8 @@ public class OneStep extends JFrame {
 				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
 				dispose();
 				setSound(false,Sound);
-				start=new Start(main,true,2);
-				
+				twostep = new TwoStep(main);
+				twostep.setVisible(true);
 			}
 
 		});

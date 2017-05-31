@@ -57,11 +57,11 @@ public class TwoStep extends JFrame {
 			setSound(false, Sound);
 		} else {
 
+			for (int i = 0; i < 5; i++) {
+				imageArray.get(i).setVisible(false);
+			}
 			for (int i = 0; i < num; i++) {
 				imageArray.get(i).setVisible(true);
-			}
-			for (int i = num; i < 5 - num; i++) {
-				imageArray.get(i).setVisible(false);
 			}
 		}
 
@@ -177,7 +177,6 @@ public class TwoStep extends JFrame {
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 		lifenum = 3;
-
 		showlife(lifenum, life);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

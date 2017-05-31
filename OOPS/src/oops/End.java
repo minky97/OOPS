@@ -21,32 +21,23 @@ public class End extends JFrame {
    private int score;
 	final int frame_Height = 900;
 	final int frame_Width = 1300;
-
-   /**
-    * Launch the application.
-    */
-//   public static void main(String[] args) {
-//      EventQueue.invokeLater(new Runnable() {
-//         public void run() {
-//            try {
-//               End frame = new End();
-//               frame.setVisible(true);
-//            } catch (Exception e) {
-//               e.printStackTrace();
-//            }
-//         }
-//      });
-//   }
-
+private BackSound Sound;
    /**
     * Create the frame.
     */
+public void setSound(boolean start){
+    Sound = new BackSound("logout");
+    Sound.mulist(start);
+}
+
    public End() {
 
 	  setBounds(100, 100, frame_Width, frame_Height);
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       setContentPane(contentPane);
+      
+      setSound(true);
       
       JPanel panel = new JPanel();
       panel.setForeground(Color.BLUE);

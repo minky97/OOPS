@@ -43,7 +43,7 @@ public class TwoStep extends JFrame {
 	 * Launch the application.
 	 */
 	public void setSound(boolean start) {
-		Sound = new BackSound("game1");
+		Sound = new BackSound("game2");
 		Sound.mulist(start);
 	}
 

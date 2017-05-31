@@ -20,7 +20,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class FourStep extends JFrame implements Step{
+public class FourStep extends JFrame implements Step {
 
 	private JPanel contentPane;
 	private String caution;
@@ -40,19 +40,20 @@ public class FourStep extends JFrame implements Step{
 	private ImageIcon life;// life image
 	private ArrayList<JLabel> imageArray;
 
-	/**
-	 * Launch the application.
-	 */
+	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
 		sound.mulist(start);
 	}
 
-	public void showlife(int num, ImageIcon life) {
+	@Override
+	public void showlife(int num, ArrayList<JLabel> imageArray) {
 
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
+			End end = new End();
+			end.setVisible(true);
 		} else {
 
 			for (int i = 0; i < 5; i++) {
@@ -65,13 +66,12 @@ public class FourStep extends JFrame implements Step{
 
 	}
 
-
 	/**
 	 * Create the frame.
 	 */
 	public FourStep(Main main_input) {
 
-		this.main=main_input;
+		this.main = main_input;
 		Sound = new BackSound("game3");
 		setTitle("Four Step");
 		setBounds(100, 100, frame_Width, frame_Height);
@@ -123,8 +123,8 @@ public class FourStep extends JFrame implements Step{
 				} else if (window == JOptionPane.OK_OPTION) {
 
 					setSound(false, Sound);
-					 main.setSound(true);
-					 main.setVisible(true);
+					main.setSound(true);
+					main.setVisible(true);
 					dispose();
 
 				}
@@ -134,7 +134,7 @@ public class FourStep extends JFrame implements Step{
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-			
+
 			}
 
 			@Override
@@ -176,9 +176,9 @@ public class FourStep extends JFrame implements Step{
 		imageArray.add(lblNewLabel_2);
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
-		
+
 		lifenum = 3;
-		showlife(lifenum, life);
+		showlife(lifenum, imageArray);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -192,7 +192,7 @@ public class FourStep extends JFrame implements Step{
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, life);
+				showlife(lifenum,imageArray);
 			}
 
 		});
@@ -210,7 +210,7 @@ public class FourStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, life);
+				showlife(lifenum, imageArray);
 			}
 
 		});
@@ -226,7 +226,7 @@ public class FourStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, life);
+				showlife(lifenum, imageArray);
 
 			}
 
@@ -239,11 +239,16 @@ public class FourStep extends JFrame implements Step{
 				} else
 					lifenum = lifenum - 1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				showlife(lifenum, imageArray);
+				
+				/*Exit the Step4 & Open the End Screen*/
 				dispose();
+				setSound(false, Sound);
+				if(lifenum!=0){
 				End end = new End();
 				end.setVisible(true);
-				setSound(false, Sound);
-				showlife(lifenum, life);
+				}
+				
 			}
 
 		});

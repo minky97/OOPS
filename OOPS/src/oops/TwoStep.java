@@ -42,20 +42,21 @@ public class TwoStep extends JFrame implements Step{
 	private ArrayList<JLabel> imageArray;
 	private ThreeStep threestep;
 
-	/**
-	 * Launch the application.
-	 */
+	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
 
 		sound.mulist(start);
 	}
 
-	public void showlife(int num, ImageIcon life) {
+	@Override
+	public void showlife(int num,ArrayList<JLabel> imgaeArray) {
 
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
+			End end = new End();
+			end.setVisible(true);
 		} else {
 
 			for (int i = 0; i < 5; i++) {
@@ -124,9 +125,10 @@ public class TwoStep extends JFrame implements Step{
 				if (window == JOptionPane.CANCEL_OPTION) {
 					remove(window);
 				} else if (window == JOptionPane.OK_OPTION) {
-
 					dispose();
 					setSound(false, Sound);
+					main.setSound(true, Sound);
+					main.setVisible(true);
 				}
 
 			}
@@ -134,10 +136,8 @@ public class TwoStep extends JFrame implements Step{
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-				setSound(false, Sound);
-				main.setSound(true, Sound);
-				main.setVisible(true);
-				dispose();
+			
+			
 			}
 
 			@Override
@@ -165,6 +165,7 @@ public class TwoStep extends JFrame implements Step{
 		panel_3.setVisible(false);
 		panel_4.setVisible(false);
 
+		
 		JLabel lblNewLabel = new JLabel(life);
 		JLabel lblNewLabel_1 = new JLabel(life);
 		JLabel lblNewLabel_2 = new JLabel(life);
@@ -178,7 +179,7 @@ public class TwoStep extends JFrame implements Step{
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 		lifenum = 3;
-		showlife(lifenum, life);
+		showlife(lifenum, imageArray);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -193,7 +194,7 @@ public class TwoStep extends JFrame implements Step{
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, life);
+				showlife(lifenum, imageArray);
 
 			}
 
@@ -213,7 +214,7 @@ public class TwoStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, life);
+				showlife(lifenum, imageArray);
 			}
 
 		});
@@ -231,7 +232,7 @@ public class TwoStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, life);
+				showlife(lifenum, imageArray);
 
 			}
 
@@ -250,7 +251,9 @@ public class TwoStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, life);
+				showlife(lifenum,imageArray);
+				
+				//exit the Step2 & show the Step3
 				dispose();
 				setSound(false,Sound);
 				threestep = new ThreeStep(main);

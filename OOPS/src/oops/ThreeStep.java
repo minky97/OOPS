@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -20,7 +21,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class ThreeStep extends JFrame implements Step{
+public class ThreeStep extends JFrame implements Step {
 
 	private JPanel contentPane;
 	private String caution;
@@ -40,30 +41,34 @@ public class ThreeStep extends JFrame implements Step{
 	private int lifenum;
 	private ImageIcon life;// life image
 	private FourStep fourstep;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private ArrayList<JLabel> imageArray;
 
 	/**
 	 * Launch the application.
 	 */
-	public void setSound(boolean start) {
-		Sound = new BackSound("game2");
+	@Override
+	public void setSound(boolean start, BackSound sound) {
+		this.Sound = sound;
 		Sound.mulist(start);
 	}
 
-	public void showlife(int num, JLabel label1, JLabel label2, JLabel label3) {
-		if (num == 3) {
-			label1.setVisible(true);
-			label2.setVisible(true);
-			label3.setVisible(true);
-		} else if (num == 2) {
-			label1.setVisible(true);
-			label2.setVisible(true);
-			label3.setVisible(false);
-		} else if (num == 1) {
-			label1.setVisible(true);
-			label2.setVisible(false);
-			label3.setVisible(false);
-		} else if (num <= 0) {
+	@Override
+	public void showlife(int num, ArrayList<JLabel> imageArray) {
+		if (num <= 0) {
 			dispose();
+			setSound(false, Sound);
+			End end = new End();
+			end.setVisible(true);
+		} else {
+
+			for (int i = 0; i < 5; i++) {
+				imageArray.get(i).setVisible(false);
+			}
+			for (int i = 0; i < num; i++) {
+				imageArray.get(i).setVisible(true);
+			}
 		}
 	}
 
@@ -75,7 +80,10 @@ public class ThreeStep extends JFrame implements Step{
 		this.main = main_input;
 		setTitle("Three Step");
 		setBounds(100, 100, frame_Width, frame_Height);
-		setSound(true);
+
+		Sound = new BackSound("game3");
+		setSound(true, Sound);
+
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step3.png");
 
@@ -126,7 +134,7 @@ public class ThreeStep extends JFrame implements Step{
 					main.setVisible(true);
 					main.setSound(true);
 					dispose();
-					setSound(false);
+					setSound(false, Sound);
 				}
 
 			}
@@ -163,12 +171,19 @@ public class ThreeStep extends JFrame implements Step{
 		panel_4.setVisible(false);
 
 		JLabel lblNewLabel = new JLabel(life);
-
 		JLabel lblNewLabel_1 = new JLabel(life);
-
 		JLabel lblNewLabel_2 = new JLabel(life);
+		JLabel lblNewLabel_3 = new JLabel(life);
+		JLabel lblNewLabel_4 = new JLabel(life);
 
+		imageArray = new ArrayList<JLabel>();
+		imageArray.add(lblNewLabel);
+		imageArray.add(lblNewLabel_1);
+		imageArray.add(lblNewLabel_2);
+		imageArray.add(lblNewLabel_3);
+		imageArray.add(lblNewLabel_4);
 		lifenum = 3;
+		showlife(lifenum, imageArray);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -187,7 +202,7 @@ public class ThreeStep extends JFrame implements Step{
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
+				showlife(lifenum, imageArray);
 
 			}
 
@@ -210,7 +225,7 @@ public class ThreeStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
+				showlife(lifenum, imageArray);
 			}
 
 		});
@@ -231,7 +246,7 @@ public class ThreeStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
+				showlife(lifenum, imageArray);
 
 			}
 
@@ -253,10 +268,11 @@ public class ThreeStep extends JFrame implements Step{
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, lblNewLabel, lblNewLabel_1, lblNewLabel_2);
+				showlife(lifenum, imageArray);
 
+				/* Exit the step3 & Open the step4 */
 				dispose();
-				setSound(false);
+				setSound(false, Sound);
 				fourstep = new FourStep(main);
 				fourstep.setVisible(true);
 			}
@@ -272,13 +288,20 @@ public class ThreeStep extends JFrame implements Step{
 								.addGap(32)
 								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 259,
 										GroupLayout.PREFERRED_SIZE)
-								.addGap(18).addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 256,
-										GroupLayout.PREFERRED_SIZE))
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(341, Short.MAX_VALUE)));
+								.addGap(18)
+								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 256,
+										GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE,
+										190, GroupLayout.PREFERRED_SIZE)
+								.addGap(18).addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane
+								.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
+								.addContainerGap(341, Short.MAX_VALUE)))));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -287,20 +310,29 @@ public class ThreeStep extends JFrame implements Step{
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498,
 										GroupLayout.PREFERRED_SIZE))
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 301,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(3))
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup()
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-														.addComponent(lblNewLabel_2, Alignment.LEADING,
-																GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-														.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 292,
-																Short.MAX_VALUE))
-												.addContainerGap()))));
+						.addGroup(
+								gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
+										.createSequentialGroup().addGap(18).addGroup(gl_contentPane
+												.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
+														.createSequentialGroup()
+														.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+																.addComponent(lblNewLabel_2, Alignment.LEADING,
+																		GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+																.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE,
+																		292, Short.MAX_VALUE))
+														.addContainerGap())
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 301,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(3))))
+										.addGroup(Alignment.LEADING,
+												gl_contentPane.createSequentialGroup()
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+																.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE,
+																		315, Short.MAX_VALUE)
+																.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))));
 		contentPane.setLayout(gl_contentPane);
 	}
 }

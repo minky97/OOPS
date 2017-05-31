@@ -59,8 +59,9 @@ public class BackSound implements LineListener {
 			audioClip.addLineListener(this);
 
 			audioClip.open(audioStream);
-			if (check)
+			if (check){
 				audioClip.start(); // 노래 나오게 하는 것
+			}
 
 			else {
 				audioClip.stop(); // 노래 안 나오게 하는 것

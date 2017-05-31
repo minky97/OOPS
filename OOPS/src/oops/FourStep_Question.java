@@ -41,19 +41,18 @@ public class FourStep_Question extends JPanel {
 	private File q2;
 	private File q3;
 	private File q4;
-	
+	private JTextArea textarea;
 	private ArrayList<String> answer_select;
 	private Font f1;
-	private JTextArea textField_1;
 	private JButton btnA;
 
 
 	public JTextArea getTextField_1() {
-		return textField_1;
+		return textarea;
 	}
 
 	public void setTextField_1(JTextArea textField_1) {
-		this.textField_1 = textField_1;
+		this.textarea = textField_1;
 	}
 
 	public String getAnswer() {
@@ -105,11 +104,11 @@ public class FourStep_Question extends JPanel {
 
 		JLabel lblAnswer = new JLabel("Answer :");
 		lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		textField_1 = new JTextArea();
-		textField_1.setBackground(new Color(245, 245, 220));
-		textField_1.setColumns(10);
-
-		answer = textField_1.getText().trim();
+	
+		textarea = new JTextArea();
+		
+		
+		answer = textarea.getText().trim();
 		answer = answer.toLowerCase();
 
 		
@@ -159,33 +158,52 @@ public class FourStep_Question extends JPanel {
 		answer_select.add("-1 4 5");
 		answer_select.add("6\ntrue\n13\n5\nfalse\n2\n5\n66\nB\nB\nC\n");
 		
+		
 		setAnswer_select(answer_select);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
 
 		
 
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-				.createSequentialGroup().addGap(27)
-				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup().addGap(49).addComponent(lblAnswer)
-								.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE).addComponent(
-										textField_1, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)))
-				.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-				.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE).addGap(32)));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup().addGap(28).addComponent(scrollPane,
-										GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup().addGap(56).addComponent(btnA,
-										GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
-						.addPreferredGap(ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblAnswer))
-						.addGap(37)));
-
+					.addGap(27)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE)
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+							.addGap(84)
+							.addComponent(lblAnswer)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 415, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+					.addGap(32))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(28)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(56)
+							.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(74)
+							.addComponent(lblAnswer)
+							.addGap(47))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+							.addGap(21))))
+		);
+		
+	
+		scrollPane_1.setViewportView(textarea);
 		JTextArea textArea_1 = new JTextArea();
 		scrollPane.setViewportView(textArea_1);
 		setLayout(groupLayout);

@@ -49,12 +49,19 @@ public class ThreeStep_Question extends JPanel {
 	private ArrayList<Integer> answer_num;
 	private Font f1;
 	private JTextField textField_1;
+	private JComboBox comboBox;
 	private JButton btnA;
 
 
 	public JTextField getTextField_1() {
 		return textField_1;
 	}
+	
+
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
 
 	public int getNum() {
 		return num;
@@ -136,10 +143,8 @@ public class ThreeStep_Question extends JPanel {
 		answer = answer.toLowerCase();
 		setAnswer(answer);
 		
-		//몇번체크했는지
-		//num = Integer.parseInt(comboBox.getSelectedItem().toString().trim());
-		//num = num.toLowerCase();
-		//setNum(num);
+		num = Integer.parseInt(comboBox.getSelectedItem().toString().trim());
+		setNum(num);
 		
 		
 
@@ -187,15 +192,15 @@ public class ThreeStep_Question extends JPanel {
 		answer_select.add("+");
 		answer_select.add("\\");
 		answer_select.add("return");
-		answer_select.add("else");
+		answer_select.add("fos");
 		setAnswer_select(answer_select);
 		
-		answer_select = new ArrayList<String>();
-		answer_select.add("+");
-		answer_select.add("\\");
-		answer_select.add("return");
-		answer_select.add("else");
-		setAnswer_select(answer_select);
+		answer_num = new ArrayList<Integer>();
+		answer_num.add(3);
+		answer_num.add(3);
+		answer_num.add(1);
+		answer_num.add(2);
+		setAnswer_num(answer_num);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));

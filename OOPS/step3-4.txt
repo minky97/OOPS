@@ -1,10 +1,12 @@
 4.
-	public int subtract((1)int a, int b) {
+	
 
-		if(a>b) {
-			return (2)a-b;
-		}
-		(3)Else if (b<a) {
-			return b-a;
-		}
+	try {
+		FileOutputStream fos = new (1)FileOutputStream("box.dat");
+		ObjectOutputStream oos = new ObjectOutputStream((2));
+		oos.writeObject(myBox);
+		oos.close();
+	} (3)catch (Exception e) {
+		e.printStackTrace();
 	}
+}

@@ -1,8 +1,10 @@
-package oops;
+package oops.step;
 
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+
+import oops.BackSound;
 
 public interface Step {
 

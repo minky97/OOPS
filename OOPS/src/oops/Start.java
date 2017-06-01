@@ -2,6 +2,8 @@ package oops;
 
 import javax.swing.*;
 
+import oops.step.OneStep;
+
 public class Start extends JFrame {
 
 	private JLabel label;

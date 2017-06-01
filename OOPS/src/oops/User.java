@@ -2,6 +2,8 @@ package oops;
 
 import java.util.ArrayList;
 
+import oops.step.OneStep;
+
 public class User{
    
    private Main main = new Main();

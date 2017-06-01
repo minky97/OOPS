@@ -1,4 +1,4 @@
-package oops;
+package oops.step;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;

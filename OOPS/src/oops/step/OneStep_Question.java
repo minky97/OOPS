@@ -83,8 +83,8 @@ public class OneStep_Question extends JPanel {
    public void setBtnA(JButton btnA) {
       this.btnA = btnA;
       btnA.setFont(new Font("±¼¸²", Font.BOLD, 49));
-      btnA.setForeground(Color.MAGENTA);
-      btnA.setBackground(Color.CYAN);
+      btnA.setForeground(new Color(0, 0, 0));
+      btnA.setBackground(new Color(255, 228, 225));
       
       
    }

@@ -1,28 +1,27 @@
 package oops;
 
-import java.awt.Graphics;
-import java.awt.Image;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+import oops.step.OneStep;
 
-public class User extends JPanel{
+public class User{
    
-	private Life ulife;
-	private ArrayList<User> user = new ArrayList<User>();
-    private int lf;
-//   @Override
-//   protected void paintComponent(Graphics g) {
-//      
-//      Image image = new ImageIcon("life.jpg").getImage();
-//      g.drawImage(image, 60, 300, this); 
-//      
-//   }
-   
-   public void userlist(User u)
-   {
-	  user.add(u); 
-   }
+   private Main main = new Main();
+   private ArrayList<Integer> scorelist = new ArrayList<Integer>();
+    private Join join = new Join(main);
+    private Login login = new Login(main);
+    private OneStep onestep = new OneStep(main);
+    //private TwoStep twostep = new TwoStep(main);
+    //private ThreeStep threestep = new ThreeStep(main);
+    //private FourStep fourstep = new FourStep(main);
+    public int score(int index)
+    {   
+       int score_int = onestep.getScore();//+twostep.getScore()+threestep.getScore()+fourstep.getScore()
+       
+       scorelist.add(index, score_int);
+       
+       return scorelist.get(index);
+    }
 
+    
 }

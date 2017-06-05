@@ -201,7 +201,7 @@ public class ThreeStep extends JFrame implements Step {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				panel_1.setAnswer(answer);
-				num = Integer.parseInt(panel_1.getComboBox().getSelectedItem().toString().trim());
+				num = Integer.parseInt(panel_1.getComboBox().getSelectedItem().toString());
 				panel_1.setNum(num);
 				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))
 						&& (panel_1.getNum() == (panel_1.getAnswer_num().get(0)))) {

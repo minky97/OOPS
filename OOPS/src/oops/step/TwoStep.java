@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import oops.BackSound;
 import oops.End;
 import oops.Main;
+import oops.User;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -46,7 +47,11 @@ public class TwoStep extends JFrame implements Step{
 	private ImageIcon life;// life image
 	private ArrayList<JLabel> imageArray;
 	private ThreeStep threestep;
-
+	@Override
+	public int getScore(){
+		return score;
+	}
+	
 	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
@@ -55,12 +60,12 @@ public class TwoStep extends JFrame implements Step{
 	}
 
 	@Override
-	public void showlife(int num,ArrayList<JLabel> imgaeArray) {
+	public void showlife(int num,ArrayList<JLabel> imgaeArray,User user) {
 
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
-			End end = new End();
+			End end = new End(user);
 			end.setVisible(true);
 		} else {
 
@@ -77,7 +82,7 @@ public class TwoStep extends JFrame implements Step{
 	/**
 	 * Create the frame.
 	 */
-	public TwoStep(Main main_input) {
+	public TwoStep(Main main_input,User user) {
 
 		this.main = main_input;
 		setTitle("Two Step");
@@ -157,6 +162,8 @@ public class TwoStep extends JFrame implements Step{
 
 		JPanel panel = new JPanel();
 		panel_1 = new TwoStep_Question(1);
+		panel_1.getBtnA().setForeground(new Color(165, 42, 42));
+		panel_1.getBtnA().setBackground(new Color(240, 248, 255));
 		panel_1.setBackground(Color.WHITE);
 		panel_2 = new TwoStep_Question(2);
 		panel_2.setBackground(Color.WHITE);
@@ -184,7 +191,7 @@ public class TwoStep extends JFrame implements Step{
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 		lifenum = 3;
-		showlife(lifenum, imageArray);
+		showlife(lifenum, imageArray,user);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -194,12 +201,12 @@ public class TwoStep extends JFrame implements Step{
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, imageArray);
+				showlife(lifenum, imageArray,user);
 
 			}
 
@@ -214,12 +221,12 @@ public class TwoStep extends JFrame implements Step{
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, imageArray);
+				showlife(lifenum, imageArray,user);
 			}
 
 		});
@@ -232,12 +239,12 @@ public class TwoStep extends JFrame implements Step{
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, imageArray);
+				showlife(lifenum, imageArray,user);
 
 			}
 
@@ -251,19 +258,22 @@ public class TwoStep extends JFrame implements Step{
 					score = score + 5;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum,imageArray);
+				showlife(lifenum,imageArray,user);
 				
+				if(lifenum!=0){
 				//exit the Step2 & show the Step3
 				dispose();
 				setSound(false,Sound);
-				threestep = new ThreeStep(main);
+				threestep = new ThreeStep(main,user);
+				user.step(threestep);
 				threestep.setVisible(true);
 
+				}
 			}
 
 		});

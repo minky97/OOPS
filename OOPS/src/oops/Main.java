@@ -19,7 +19,6 @@ import javax.swing.JLabel;
 
 public class Main extends JFrame {
 
-   
    private Main mine;
    private JPanel contentPane;
    private ImageIcon image;
@@ -32,16 +31,11 @@ public class Main extends JFrame {
    private BackSound Sound;
 
    /**
-    * Launch the application.
-    */
-
-   /**
     * Create the frame.
     */
    
    public static void main(String[] args) {
-      Main main = new Main();
-      
+      Main main = new Main();      
       main.setVisible(true);
    }
    public void setSound(boolean start,BackSound sound){
@@ -62,11 +56,6 @@ public class Main extends JFrame {
       Sound = new BackSound("main");
       setSound(true,Sound);
 
-   
-      
-      
-      
-      
       image = new ImageIcon("image.png");
 
       contentPane = new JPanel() {
@@ -104,6 +93,8 @@ public class Main extends JFrame {
             setSound(false,Sound);
          }
       });
+      
+      
       btnIntroduce.setFont(f1);
 
       JButton btnExit = new JButton("Exit");

@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import oops.BackSound;
 import oops.End;
 import oops.Main;
+import oops.User;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -46,18 +47,23 @@ public class FourStep extends JFrame implements Step {
 	private ArrayList<JLabel> imageArray;
 
 	@Override
+	public int getScore(){
+		return score;
+	}
+	
+	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
 		sound.mulist(start);
 	}
 
 	@Override
-	public void showlife(int num, ArrayList<JLabel> imageArray) {
+	public void showlife(int num, ArrayList<JLabel> imageArray,User user) {
 
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
-			End end = new End();
+			End end = new End(user);
 			end.setVisible(true);
 		} else {
 
@@ -74,7 +80,8 @@ public class FourStep extends JFrame implements Step {
 	/**
 	 * Create the frame.
 	 */
-	public FourStep(Main main_input) {
+	
+	public FourStep(Main main_input,User user) {
 
 		this.main = main_input;
 		Sound = new BackSound("game3");
@@ -183,7 +190,7 @@ public class FourStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_4);
 
 		lifenum = 3;
-		showlife(lifenum, imageArray);
+		showlife(lifenum, imageArray,user);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -192,12 +199,12 @@ public class FourStep extends JFrame implements Step {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum,imageArray);
+				showlife(lifenum,imageArray,user);
 			}
 
 		});
@@ -210,12 +217,12 @@ public class FourStep extends JFrame implements Step {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, imageArray);
+				showlife(lifenum, imageArray,user);
 			}
 
 		});
@@ -226,12 +233,12 @@ public class FourStep extends JFrame implements Step {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, imageArray);
+				showlife(lifenum, imageArray,user);
 
 			}
 
@@ -243,14 +250,14 @@ public class FourStep extends JFrame implements Step {
 					score = score + 10;
 				} else
 					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
-				showlife(lifenum, imageArray);
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(lifenum, imageArray,user);
 				
 				/*Exit the Step4 & Open the End Screen*/
 				dispose();
 				setSound(false, Sound);
 				if(lifenum!=0){
-				End end = new End();
+				End end = new End(user);
 				end.setVisible(true);
 				}
 				

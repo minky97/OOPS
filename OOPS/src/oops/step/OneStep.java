@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import oops.BackSound;
 import oops.End;
 import oops.Main;
+import oops.User;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -52,12 +53,13 @@ public class OneStep extends JFrame implements Step {
 	}
 
 	@Override
-	public void showlife(int num, ArrayList<JLabel> imageArray) {
+	public void showlife(int num, ArrayList<JLabel> imageArray,User user) {
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
-			End end = new End();
+			End end = new End(user);
 			end.setVisible(true);
+		
 		} else {
 
 			for (int i = 0; i < 5; i++) {
@@ -70,10 +72,14 @@ public class OneStep extends JFrame implements Step {
 
 	}
 
+	@Override
+	public int getScore(){
+		return score;
+	}
 	/**
 	 * Create the frame.
 	 */
-	public OneStep(Main main_input) {
+	public OneStep(Main main_input,User user) {
 
 		this.main = main_input;
 		main = new Main();
@@ -177,7 +183,7 @@ public class OneStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 		lifenum = 3;
-		showlife(lifenum,imageArray);
+		showlife(lifenum,imageArray,user);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -191,7 +197,7 @@ public class OneStep extends JFrame implements Step {
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
-				showlife(lifenum,imageArray);
+				showlife(lifenum,imageArray,user);
 
 			}
 
@@ -209,7 +215,7 @@ public class OneStep extends JFrame implements Step {
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
-				showlife(lifenum,imageArray);
+				showlife(lifenum,imageArray,user);
 
 			}
 
@@ -225,13 +231,15 @@ public class OneStep extends JFrame implements Step {
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
-				showlife(lifenum,imageArray);
-				
+				showlife(lifenum,imageArray,user);
+				if(lifenum!=0){
 				/*Exit the step1 & Open the Step2*/
 				dispose();
 				setSound(false, Sound);
-				twostep = new TwoStep(main);
+				twostep = new TwoStep(main,user);
 				twostep.setVisible(true);
+				user.step(twostep);
+				}
 			}
 
 		});

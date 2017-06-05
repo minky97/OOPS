@@ -32,7 +32,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
-   private Login mine;
    private Join join;
    private JPanel contentPane;
    private JTextField textField;
@@ -43,8 +42,6 @@ public class Login extends JFrame {
    final int frame_Height = 900;
    final int frame_Width = 1300;
    private Main main;
-   private Start start;
-   private OOPSTest oopstest;
    private int index; // check user id index
    private boolean log_in; // check log in
    private ImageIcon image;
@@ -52,6 +49,7 @@ public class Login extends JFrame {
    private JTextField textField_1;
    private JLabel lblNewLabel;
    private JButton btnLogin;
+   private Start start;
    
    private String filename_id;
    private String filename_pw;
@@ -80,8 +78,8 @@ public class Login extends JFrame {
          BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
          BufferedReader rd_pw = new BufferedReader(new FileReader(file_pw));
          String a;
-         userlist_id = new ArrayList();
-         userlist_pw = new ArrayList();
+         userlist_id = new ArrayList<String>();
+         userlist_pw = new ArrayList<String>();
          while((a=rd_id.readLine()) != null){
             userlist_id.add(a);
          }
@@ -90,6 +88,7 @@ public class Login extends JFrame {
          }
          if(userlist_id.contains(id)){
             if(pw.equals(userlist_pw.get(userlist_id.indexOf(id)))){
+            	index=userlist_id.indexOf(id);
                return true;
             }
             else{

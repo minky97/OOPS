@@ -10,6 +10,7 @@ import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import oops.BackSound;
 import oops.End;
 import oops.Main;
+import oops.Store;
 import oops.User;
 
 import javax.swing.GroupLayout;
@@ -263,6 +265,14 @@ public class FourStep extends JFrame implements Step {
 				
 			}
 
+		});
+		
+		JButton btnNewButton = new JButton("STORE");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Store sto = new Store();
+				sto.setVisible(true);
+			}
 		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

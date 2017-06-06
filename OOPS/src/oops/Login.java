@@ -188,12 +188,13 @@ public class Login extends JFrame {
                id = textField.getText();
                pw=textField_1.getText();
                try {
-                  if (check(id,pw,file_id,file_pw)) {
+            	   boolean a =check(id,pw,file_id,file_pw);
+                  if (a==true) {
                      setlog_in(true); //game start.
                      JOptionPane.showMessageDialog(null, "Welcome !");
                      dispose();
                      start=new Start(main,true);            
-                  } else if (!check(id,pw,file_id,file_pw)) {
+                  } else if (a==false) {
                      setlog_in(false);
                                        }
                } catch (Exception e1) {

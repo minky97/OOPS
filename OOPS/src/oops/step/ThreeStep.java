@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
 import oops.BackSound;
@@ -24,8 +23,6 @@ import oops.Main;
 import oops.Store;
 import oops.User;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
@@ -48,24 +45,21 @@ public class ThreeStep extends JFrame implements Step {
    private ThreeStep_Question panel_3;// question 3
    private ThreeStep_Question panel_4;// question 4
    private String answer;
-   private String buttonNum;
+   private int num;
    private ImageIcon life;// life image
    private FourStep fourstep;
+   private JLabel lblNewLabel_3;
+   private JLabel lblNewLabel_4;
    private ArrayList<JLabel> imageArray;
-   private JRadioButton radioButton1;
-   private JRadioButton radioButton2;
-   private JRadioButton radioButton3;
-   
-   
 
    /**
     * Launch the application.
     */
    @Override
-   public int getScore(){
+   public int getScore() {
       return score;
    }
-   
+
    @Override
    public void setSound(boolean start, BackSound sound) {
       this.Sound = sound;
@@ -73,7 +67,7 @@ public class ThreeStep extends JFrame implements Step {
    }
 
    @Override
-   public void showlife(int num, ArrayList<JLabel> imageArray,User user) {
+   public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
       if (num <= 0) {
          dispose();
          setSound(false, Sound);
@@ -93,7 +87,7 @@ public class ThreeStep extends JFrame implements Step {
    /**
     * Create the frame.
     */
-   public ThreeStep(Main main_input,User user) {
+   public ThreeStep(Main main_input, User user) {
 
       this.main = main_input;
       setTitle("Three Step");
@@ -200,33 +194,30 @@ public class ThreeStep extends JFrame implements Step {
       imageArray.add(lblNewLabel_2);
       imageArray.add(lblNewLabel_3);
       imageArray.add(lblNewLabel_4);
-      
-      showlife(user.lifenum(0), imageArray,user);
+
+      num = 0;
+      showlife(user.lifenum(num), imageArray, user);
       
       panel_1.getBtnA().addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             answer = panel_1.getTextField_1().getText().trim();
             answer = answer.toLowerCase();
             panel_1.setAnswer(answer);
-            buttonNum = panel_1.getButtonGroup().getSelection().getActionCommand();
-            panel_1.setButtonNum(buttonNum);
-            
-            //num = Integer.parseInt(panel_1.getComboBox().getSelectedItem().toString());
-         
+            num = Integer.parseInt(panel_1.getComboBox().getSelectedItem().toString());
+            panel_1.setNum(num);
             if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))
-                  && (panel_1.getButtonNum() == (panel_1.getAnswer_num().get(0)))) {
+                  && (panel_1.getNum() == (panel_1.getAnswer_num().get(0)))) {
                score = score + 5;
-               showlife(user.lifenum(0),imageArray,user);
+               num = 0;
             } else
-               showlife(user.lifenum(-1),imageArray,user);
-            
-            
+               num = -1;
+
             JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+            showlife(user.lifenum(num), imageArray, user);
             panel_1.setVisible(false);
             panel_2.setVisible(true);
             panel_3.setVisible(false);
             panel_4.setVisible(false);
-         
 
          }
 
@@ -236,21 +227,22 @@ public class ThreeStep extends JFrame implements Step {
             answer = panel_2.getTextField_1().getText().trim();
             answer = answer.toLowerCase();
             panel_2.setAnswer(answer);
-            buttonNum = panel_2.getButtonGroup().getSelection().getActionCommand();
-            panel_2.setButtonNum(buttonNum);
+            num = Integer.parseInt(panel_2.getComboBox().getSelectedItem().toString().trim());
+            panel_2.setNum(num);
 
             if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))
-                  && (panel_2.getButtonNum() == (panel_2.getAnswer_num().get(1)))) {
+                  && (panel_2.getNum() == (panel_2.getAnswer_num().get(1)))) {
                score = score + 5;
-               showlife(user.lifenum(0),imageArray,user);
+               num = 0;
             } else
-               showlife(user.lifenum(-1),imageArray,user);
+               num = -1;
             JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+            showlife(user.lifenum(num), imageArray, user);
             panel_1.setVisible(false);
             panel_2.setVisible(false);
             panel_3.setVisible(true);
             panel_4.setVisible(false);
-      
+
          }
 
       });
@@ -258,21 +250,21 @@ public class ThreeStep extends JFrame implements Step {
          public void actionPerformed(ActionEvent e) {
             answer = panel_3.getTextField_1().getText().trim();
             answer = answer.toLowerCase();
-            panel_3.setAnswer(answer); 
-            buttonNum = panel_3.getButtonGroup().getSelection().getActionCommand();
-            panel_3.setButtonNum(buttonNum);
+            panel_3.setAnswer(answer);
+            num = Integer.parseInt(panel_3.getComboBox().getSelectedItem().toString().trim());
+            panel_3.setNum(num);
             if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))
-                  && (panel_3.getButtonNum() == (panel_3.getAnswer_num().get(2)))) {
+                  && (panel_3.getNum() == (panel_3.getAnswer_num().get(2)))) {
                score = score + 5;
-               showlife(user.lifenum(0),imageArray,user);
+               num = 0;
             } else
-               showlife(user.lifenum(0),imageArray,user);
+               num = -1;
             JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+            showlife(user.lifenum(num), imageArray, user);
             panel_1.setVisible(false);
             panel_2.setVisible(false);
             panel_3.setVisible(false);
             panel_4.setVisible(true);
-         
 
          }
 
@@ -281,36 +273,34 @@ public class ThreeStep extends JFrame implements Step {
          public void actionPerformed(ActionEvent e) {
             answer = panel_4.getTextField_1().getText().trim();
             answer = answer.toLowerCase();
-            panel_4.setAnswer(answer); 
-            buttonNum = panel_4.getButtonGroup().getSelection().getActionCommand()
-            		;
-            panel_4.setButtonNum(buttonNum);
-            
+            panel_4.setAnswer(answer);
+            num = Integer.parseInt(panel_4.getComboBox().getSelectedItem().toString().trim());
+            panel_4.setNum(num);
             if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))
-                  && (panel_4.getButtonNum() == (panel_4.getAnswer_num().get(3)))) {
+                  && (panel_4.getNum() == (panel_4.getAnswer_num().get(3)))) {
                score = score + 5;
-               showlife(user.lifenum(0),imageArray,user);
+               num = 0;
             } else
-               showlife(user.lifenum(-1),imageArray,user);
+               num = -1;
             JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+            showlife(user.lifenum(num), imageArray, user);
             panel_1.setVisible(false);
             panel_2.setVisible(false);
             panel_3.setVisible(false);
             panel_4.setVisible(false);
-         
 
-            if(user.lifenum(0)!=0){
-            /* Exit the step3 & Open the step4 */
-            dispose();
-            setSound(false, Sound);
-            fourstep = new FourStep(main,user);
-            user.step(fourstep);
-            fourstep.setVisible(true);
+            if (user.lifenum(0) != 0) {
+               /* Exit the step3 & Open the step4 */
+               dispose();
+               setSound(false, Sound);
+               fourstep = new FourStep(main, user);
+               user.step(fourstep);
+               fourstep.setVisible(true);
             }
          }
 
       });
-      
+
       JButton btnNewButton = new JButton("STORE");
       btnNewButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) {

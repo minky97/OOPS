@@ -52,7 +52,7 @@ public void setSound(boolean start,BackSound sound){
       JLabel lblOopsTheEnd = new JLabel("OOPS! THE END!");
       lblOopsTheEnd.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 99));
 
-      id=user.user();
+     id=user.user();
       JLabel userScore = new JLabel("User: "+id);
       userScore.setForeground(Color.BLUE);
       userScore.setFont(new Font("Arial Black", Font.BOLD, 40));

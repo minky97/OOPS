@@ -23,6 +23,8 @@ import oops.User;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
@@ -44,7 +46,11 @@ public class OneStep extends JFrame implements Step {
 	private ImageIcon life;// life image
 	private TwoStep twostep;
 	private ArrayList<JLabel> imageArray;
-private int num;
+	private int num;
+	private Hint hintclass;
+	private int hintnum;
+	private int i;
+
 	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
@@ -52,13 +58,13 @@ private int num;
 	}
 
 	@Override
-	public void showlife(int num, ArrayList<JLabel> imageArray,User user) {
+	public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
 			End end = new End(user);
 			end.setVisible(true);
-		
+
 		} else {
 
 			for (int i = 0; i < 5; i++) {
@@ -72,13 +78,14 @@ private int num;
 	}
 
 	@Override
-	public int getScore(){
+	public int getScore() {
 		return score;
 	}
+
 	/**
 	 * Create the frame.
 	 */
-	public OneStep(Main main_input,User user) {
+	public OneStep(Main main_input, User user) {
 
 		this.main = main_input;
 		main = new Main();
@@ -174,18 +181,17 @@ private int num;
 		JLabel lblNewLabel_3 = new JLabel(life);
 		JLabel lblNewLabel_4 = new JLabel(life);
 
-		
 		imageArray = new ArrayList<JLabel>();
 		imageArray.add(lblNewLabel);
 		imageArray.add(lblNewLabel_1);
 		imageArray.add(lblNewLabel_2);
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
-		
-	
-		user.setlifenum(3); //ÃÊ±â life °ª
-		num=0;
-		showlife(user.lifenum(num),imageArray,user);
+
+		user.setlifenum(3); // ÃÊ±â life °ª
+		num = 0;
+		i=0;
+		showlife(user.lifenum(num), imageArray, user);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -193,39 +199,38 @@ private int num;
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 3;
-					num=0;
+					num = 0;
+					i++;
 				} else
-					num=-1;
-				
+					num = -1;
+
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
-				showlife(user.lifenum(num),imageArray,user);
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 
 			}
 
-			
 		});
 		panel_2.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_2.getTextField_1().getText();
 				answer = answer.toLowerCase();
 
-				
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 3;
-					num=0;
-				} else{
-					num=-1;
+					num = 0;
+					i++;
+				} else {
+					num = -1;
 				}
-					
+
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
-				showlife(user.lifenum(num),imageArray,user);
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
-				
 
 			}
 
@@ -235,28 +240,30 @@ private int num;
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 3;
-					num=0;
+					num = 0;
+					i++;
 				} else
-					num=-1;
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
-				showlife(user.lifenum(num),imageArray,user);
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
-		
-				if(user.lifenum(0)!=0){
-				/*Exit the step1 & Open the Step2*/
-				dispose();
-				setSound(false, Sound);
-				twostep = new TwoStep(main,user);
-				twostep.setVisible(true);
-				user.step(twostep);
+
+				if (user.lifenum(0) != 0) {
+					/* Exit the step1 & Open the Step2 */
+					dispose();
+					setSound(false, Sound);
+					twostep = new TwoStep(main, user);
+					twostep.setVisible(true);
+					user.step(twostep);
 				}
 			}
 
 		});
-		
+
 		JButton btnNewButton = new JButton("STORE");
+		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Store sto = new Store();
@@ -264,7 +271,24 @@ private int num;
 			}
 		});
 		
-		
+		hintclass=new Hint();
+		JButton btnhint = new JButton("*HINT*");
+		btnhint.setForeground(Color.RED);
+		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
+		btnhint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hintnum > 0) {
+					String hint = hintclass.getHints().get(i);
+					JOptionPane.showMessageDialog(null, hint+"\n*If you close the hint, you have to pay quiz again*","HINT", JOptionPane.INFORMATION_MESSAGE);
+					hintnum-=1;
+					System.out.println(hintnum);
+
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -288,16 +312,22 @@ private int num;
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(btnNewButton)))
-					.addContainerGap(218, Short.MAX_VALUE))
+							.addGap(29)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnhint, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+					.addContainerGap(209, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(29)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(55)
+							.addComponent(btnNewButton)
+							.addGap(37)
+							.addComponent(btnhint))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)

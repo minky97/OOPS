@@ -25,6 +25,8 @@ import oops.User;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class FourStep extends JFrame implements Step {
@@ -46,6 +48,10 @@ public class FourStep extends JFrame implements Step {
 	private ImageIcon life;// life image
 	private ArrayList<JLabel> imageArray;
 	private int num;
+	private Hint hintclass;
+	private int hintnum;
+	private int i;
+	private JButton btnhint;
 
 	@Override
 	public int getScore() {
@@ -191,6 +197,7 @@ public class FourStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_4);
 
 		num = 0;
+		i=11;
 		showlife(user.lifenum(num), imageArray, user);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -199,6 +206,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 10;
 					num = 0;
+					i++;
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -219,6 +227,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 10;
 					num = 0;
+					i++;
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -237,6 +246,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 10;
 					num = 0;
+					i++;
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -255,6 +265,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_4.getAnswer_select().get(3))) {
 					score = score + 10;
 					num = 0;
+					i++;
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -279,49 +290,76 @@ public class FourStep extends JFrame implements Step {
 				sto.setVisible(true);
 			}
 		});
+		
+		hintclass=new Hint();
+		JButton btnhint = new JButton("*HINT*");
+		btnhint.setForeground(Color.RED);
+		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
+		btnhint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hintnum > 0) {
+					String hint = hintclass.getHints().get(i);
+					JOptionPane.showMessageDialog(null, hint+"\n*If you close the hint, you have to pay quiz again*","HINT", JOptionPane.INFORMATION_MESSAGE);
+					hintnum-=1;
+					System.out.println(hintnum);
+
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(31)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
-								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(55)
-								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(50)
-								.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 162,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(53).addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 161,
-										GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap(341, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(31)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
+							.addGap(32)
+							.addComponent(btnhint))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(29)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+							.addGap(55)
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+							.addGap(50)
+							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
+							.addGap(53)
+							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(204, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(29)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95,
-										Short.MAX_VALUE))
-						.addContainerGap()));
+							.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(163)
+							.addComponent(btnhint)))
+					.addContainerGap())
+		);
 		contentPane.setLayout(gl_contentPane);
 	}
 }

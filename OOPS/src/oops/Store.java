@@ -156,6 +156,7 @@ public class Store extends JFrame {
 				if(coin<timenum_buy*1) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
 				else JOptionPane.showMessageDialog(null,"You get"+timenum_buy*10+"seconds.");
 			timenum+=timenum_buy;
+			coin-=timenum_buy*1;
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
@@ -245,6 +246,7 @@ public class Store extends JFrame {
 				if(coin<hintnum_buy*2) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
 				else JOptionPane.showMessageDialog(null,"You get"+hintnum_buy+"hint.");
 			hintnum+=hintnum_buy;
+			coin-=hintnum_buy*2;
 			}
 		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
@@ -359,6 +361,7 @@ public class Store extends JFrame {
 				if(coin<lifenum_buy*3) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
 				else JOptionPane.showMessageDialog(null,"You get"+lifenum_buy+"life.");
 			lifenum+=lifenum_buy;
+			coin-=lifenum_buy*3;
 			}
 		});
 		GridBagConstraints gbc_btnBuy = new GridBagConstraints();

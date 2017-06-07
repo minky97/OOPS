@@ -46,12 +46,13 @@ public class FourStep extends JFrame implements Step {
 	private String answer;
 	private ImageIcon life;// life image
 	private ArrayList<JLabel> imageArray;
+	private int num;
 
 	@Override
-	public int getScore(){
+	public int getScore() {
 		return score;
 	}
-	
+
 	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
@@ -59,7 +60,7 @@ public class FourStep extends JFrame implements Step {
 	}
 
 	@Override
-	public void showlife(int num, ArrayList<JLabel> imageArray,User user) {
+	public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
 
 		if (num <= 0) {
 			dispose();
@@ -81,8 +82,8 @@ public class FourStep extends JFrame implements Step {
 	/**
 	 * Create the frame.
 	 */
-	
-	public FourStep(Main main_input,User user) {
+
+	public FourStep(Main main_input, User user) {
 
 		this.main = main_input;
 		Sound = new BackSound("game3");
@@ -190,22 +191,24 @@ public class FourStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 
-
+		num = 0;
+		showlife(user.lifenum(num), imageArray, user);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 10;
-					showlife(user.lifenum(0),imageArray,user);
+					num = 0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(user.lifenum(0),imageArray,user);
+
 			}
 
 		});
@@ -216,15 +219,16 @@ public class FourStep extends JFrame implements Step {
 
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 10;
-					showlife(user.lifenum(0),imageArray,user);
+					num = 0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-		
+
 			}
 
 		});
@@ -233,15 +237,15 @@ public class FourStep extends JFrame implements Step {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 10;
-					showlife(user.lifenum(0),imageArray,user);
+					num = 0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				
 
 			}
 
@@ -251,24 +255,24 @@ public class FourStep extends JFrame implements Step {
 				answer = panel_4.getTextField_1().getText();
 				if (answer.equals(panel_4.getAnswer_select().get(3))) {
 					score = score + 10;
-					showlife(user.lifenum(0),imageArray,user);
+					num = 0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-			
-				
-				/*Exit the Step4 & Open the End Screen*/
+				showlife(user.lifenum(num), imageArray, user);
+
+				/* Exit the Step4 & Open the End Screen */
 				dispose();
 				setSound(false, Sound);
-				if(user.lifenum(0)!=0){
-				End end = new End(user);
-				end.setVisible(true);
+				if (user.lifenum(0) != 0) {
+					End end = new End(user);
+					end.setVisible(true);
 				}
-				
+
 			}
 
 		});
-		
+
 		JButton btnNewButton = new JButton("STORE");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

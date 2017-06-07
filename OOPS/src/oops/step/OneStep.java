@@ -46,7 +46,7 @@ public class OneStep extends JFrame implements Step {
 	private ImageIcon life;// life image
 	private TwoStep twostep;
 	private ArrayList<JLabel> imageArray;
-
+private int num;
 	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
@@ -186,8 +186,8 @@ public class OneStep extends JFrame implements Step {
 		
 	
 		user.setlifenum(3); //ÃÊ±â life °ª
-		
-		showlife(user.lifenum(0),imageArray,user);
+		num=0;
+		showlife(user.lifenum(num),imageArray,user);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -195,16 +195,19 @@ public class OneStep extends JFrame implements Step {
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 3;
-					showlife(user.lifenum(0),imageArray,user);
+					num=0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num=-1;
+				
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				showlife(user.lifenum(num),imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 
 			}
 
+			
 		});
 		panel_2.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -214,12 +217,13 @@ public class OneStep extends JFrame implements Step {
 				
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 3;
-					showlife(user.lifenum(0),imageArray,user);
+					num=0;
 				} else{
-					showlife(user.lifenum(-1),imageArray,user);
+					num=-1;
 				}
 					
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				showlife(user.lifenum(num),imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
@@ -232,10 +236,12 @@ public class OneStep extends JFrame implements Step {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
-					showlife(user.lifenum(0),imageArray,user);
+					score = score + 3;
+					num=0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num=-1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				showlife(user.lifenum(num),imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);

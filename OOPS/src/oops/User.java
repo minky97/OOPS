@@ -52,7 +52,7 @@ public class User extends Login {
 	}
 
 	public String user() {
-		user = super.getuser_list().get(super.getindex_user());
+		user = super.getId();
 		return user;
 	}
 	public void setlifenum(int num){

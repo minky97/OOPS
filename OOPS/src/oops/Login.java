@@ -71,7 +71,9 @@ public class Login extends JFrame {
    public ArrayList<String> getuser_list() {
       return userlist_id;
    }
-
+public String getId(){
+	return id;
+}
 
    public boolean check(String id,String pw,File file_id,File file_pw) throws IOException{//check log-in information.
       try {

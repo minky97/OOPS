@@ -29,7 +29,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class TwoStep extends JFrame implements Step{
+public class TwoStep extends JFrame implements Step {
 
 	private JPanel contentPane;
 	private String caution;
@@ -48,11 +48,13 @@ public class TwoStep extends JFrame implements Step{
 	private ImageIcon life;// life image
 	private ArrayList<JLabel> imageArray;
 	private ThreeStep threestep;
+	private int num;
+
 	@Override
-	public int getScore(){
+	public int getScore() {
 		return score;
 	}
-	
+
 	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
@@ -61,7 +63,7 @@ public class TwoStep extends JFrame implements Step{
 	}
 
 	@Override
-	public void showlife(int num,ArrayList<JLabel> imgaeArray,User user) {
+	public void showlife(int num, ArrayList<JLabel> imgaeArray, User user) {
 
 		if (num <= 0) {
 			dispose();
@@ -83,7 +85,7 @@ public class TwoStep extends JFrame implements Step{
 	/**
 	 * Create the frame.
 	 */
-	public TwoStep(Main main_input,User user) {
+	public TwoStep(Main main_input, User user) {
 
 		this.main = main_input;
 		setTitle("Two Step");
@@ -147,8 +149,7 @@ public class TwoStep extends JFrame implements Step{
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-			
-			
+
 			}
 
 			@Override
@@ -178,22 +179,22 @@ public class TwoStep extends JFrame implements Step{
 		panel_3.setVisible(false);
 		panel_4.setVisible(false);
 
-		
 		JLabel lblNewLabel = new JLabel(life);
 		JLabel lblNewLabel_1 = new JLabel(life);
 		JLabel lblNewLabel_2 = new JLabel(life);
 		JLabel lblNewLabel_3 = new JLabel(life);
 		JLabel lblNewLabel_4 = new JLabel(life);
-		
+
 		imageArray = new ArrayList<JLabel>();
 		imageArray.add(lblNewLabel);
 		imageArray.add(lblNewLabel_1);
 		imageArray.add(lblNewLabel_2);
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
-	
-	
-		showlife(user.lifenum(0), imageArray,user);
+
+		num = 0;
+		showlife(user.lifenum(num), imageArray, user);
+
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -201,15 +202,15 @@ public class TwoStep extends JFrame implements Step{
 				panel_1.setAnswer(answer);
 				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 5;
-					showlife(user.lifenum(0),imageArray,user);
+					num = 0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-			
 
 			}
 
@@ -222,15 +223,16 @@ public class TwoStep extends JFrame implements Step{
 
 				if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 5;
-					showlife(user.lifenum(0),imageArray,user);
+					num = 0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				
+
 			}
 
 		});
@@ -241,15 +243,15 @@ public class TwoStep extends JFrame implements Step{
 				panel_3.setAnswer(answer);
 				if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 5;
-					showlife(user.lifenum(0),imageArray,user);
+					num = 0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				
 
 			}
 
@@ -261,29 +263,29 @@ public class TwoStep extends JFrame implements Step{
 				panel_4.setAnswer(answer);
 				if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))) {
 					score = score + 5;
-					showlife(user.lifenum(0),imageArray,user);
+				num=0;
 				} else
-					showlife(user.lifenum(-1),imageArray,user);
+					num=-1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-			
-				
-				if(user.lifenum(0)!=0){
-				//exit the Step2 & show the Step3
-				dispose();
-				setSound(false,Sound);
-				threestep = new ThreeStep(main,user);
-				user.step(threestep);
-				threestep.setVisible(true);
+
+				if (user.lifenum(0) != 0) {
+					// exit the Step2 & show the Step3
+					dispose();
+					setSound(false, Sound);
+					threestep = new ThreeStep(main, user);
+					user.step(threestep);
+					threestep.setVisible(true);
 
 				}
 			}
 
 		});
-		
+
 		JButton btnNewButton = new JButton("STORE");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

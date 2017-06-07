@@ -28,243 +28,298 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JRadioButton;
 
 public class ThreeStep_Question extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
-	private int check = 1;
-	private File q1;
-	private String a;
-	private String answer;
-	private int num;
-	private File q;
-	private File q2;
-	private File q3;
-	private File q4;
-	
-	private ArrayList<String> answer_select;
-	private ArrayList<Integer> answer_num;
-	private Font f1;
-	private JTextField textField_1;
-	private JComboBox comboBox;
-	private JButton btnA;
+   /**
+    * Create the panel.
+    */
+   private int check = 1;
+   private File q1;
+   private String a;
+   private String answer;
+   private String buttonNum;
+   private File q;
+   private File q2;
+   private File q3;
+   private File q4;
+   
+   private ArrayList<String> answer_select;
+   private ArrayList<String> answer_num;
+   private Font f1;
+   private JTextField textField_1;
+   private JButton btnA;
+   private ButtonGroup buttonGroup;
+   private JRadioButton radioButton1;
+   private JRadioButton radioButton2;
+   private JRadioButton radioButton3;
+
+   
+
+   public JRadioButton getRadioButton1() {
+	return radioButton1;
+}
+
+public void setRadioButton1(JRadioButton radioButton1) {
+	 if(radioButton1==null)
+         System.out.println("error");
+	this.radioButton1 = radioButton1;
+}
+
+public JRadioButton getRadioButton2() {
+	return radioButton2;
+}
+
+public void setRadioButton2(JRadioButton radioButton2) {
+	 if(radioButton2==null)
+         System.out.println("error");
+	this.radioButton2 = radioButton2;
+}
+
+public JRadioButton getRadioButton3() {
+	return radioButton3;
+}
+
+public void setRadioButton3(JRadioButton radioButton3) {
+	 if(radioButton3==null)
+         System.out.println("error");
+	this.radioButton3 = radioButton3;
+}
+
+public JTextField getTextField_1() {
+      return textField_1;
+   }
+   
+public ButtonGroup getButtonGroup() {
+      return buttonGroup;
+   }
+
+   public void setButtonGroup(ButtonGroup buttonGroup) {
+      if(buttonGroup==null)
+         System.out.println("error");
+      this.buttonGroup = buttonGroup;
+   }
 
 
-	public JTextField getTextField_1() {
-		return textField_1;
-	}
-	
+   public String getButtonNum() {
+      return buttonNum;
+   }
 
-	public JComboBox getComboBox() {
-		return comboBox;
-	}
+   public void setButtonNum(String buttonNum) {
+      if(buttonNum==null)
+         System.out.println("error");
+      this.buttonNum = buttonNum;
+   }
 
+   public void setTextField_1(JTextField textField_1) {
+      this.textField_1 = textField_1;
+   }
 
-	public int getNum() {
-		return num;
-	}
+   public ArrayList<String> getAnswer_num() {
+      return answer_num;
+   }
 
-	public void setNum(int num) {
-		if(num<0)
-			System.out.println("error");
-		this.num = num;
-	}
+   public void setAnswer_num(ArrayList<String> answer_num) {
+      if(answer_select==null)
+         System.out.println("error");
+      this.answer_num = answer_num;
+   }
 
-	public void setTextField_1(JTextField textField_1) {
-		this.textField_1 = textField_1;
-	}
+   public String getAnswer() {
+      return answer;
+   }
 
-	public ArrayList<Integer> getAnswer_num() {
-		return answer_num;
-	}
+   public void setAnswer(String answer) {
+      if(answer==null)
+         System.out.println("error!");
+      this.answer = answer;
+   }
 
-	public void setAnswer_num(ArrayList<Integer> answer_num) {
-		if(answer_select==null)
-			System.out.println("error");
-		this.answer_num = answer_num;
-	}
+   public ArrayList<String> getAnswer_select() {
+      return answer_select;
+   }
 
-	public String getAnswer() {
-		return answer;
-	}
+   public void setAnswer_select(ArrayList<String> answer_select) {
+      if(answer_select==null)
+         System.out.println("error");
+      this.answer_select = answer_select;
+   }
 
-	public void setAnswer(String answer) {
-		if(answer==null)
-			System.out.println("error!");
-		this.answer = answer;
-	}
+   public JButton getBtnA() {
+      return btnA;
+   }
 
-	public ArrayList<String> getAnswer_select() {
-		return answer_select;
-	}
+   public void setBtnA(JButton btnA) {
+      this.btnA = btnA;
+      btnA.setFont(new Font("±¼¸²", Font.BOLD, 49));
+      btnA.setForeground(Color.MAGENTA);
+      btnA.setBackground(Color.CYAN);
+      
+      
+   }
 
-	public void setAnswer_select(ArrayList<String> answer_select) {
-		if(answer_select==null)
-			System.out.println("error");
-		this.answer_select = answer_select;
-	}
+   public int getCheck() {
+      return check;
+   }
 
-	public JButton getBtnA() {
-		return btnA;
-	}
+   public void setCheck(int check) {// capsulation ÇØ¾ß´ï
+      this.check = check;
+   }
 
-	public void setBtnA(JButton btnA) {
-		this.btnA = btnA;
-		btnA.setFont(new Font("±¼¸²", Font.BOLD, 49));
-		btnA.setForeground(Color.MAGENTA);
-		btnA.setBackground(Color.CYAN);
-		
-		
-	}
+   public ThreeStep_Question(int num) {
 
-	public int getCheck() {
-		return check;
-	}
+      f1 = new Font("Times", Font.BOLD, 14);
 
-	public void setCheck(int check) {// capsulation ÇØ¾ß´ï
-		this.check = check;
-	}
+      JScrollPane scrollPane = new JScrollPane();
 
-	public ThreeStep_Question(int num) {
+      JLabel lblAnswer = new JLabel("Answer :");
+      lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
+      textField_1 = new JTextField();
+      textField_1.setColumns(10);
 
-		f1 = new Font("Times", Font.BOLD, 14);
+      answer = textField_1.getText().trim();
+      answer = answer.toLowerCase();
+      setAnswer(answer);
+      
+      //buttonNum = buttonGroup.getSelection().getActionCommand();
+      //setButtonNum(buttonNum);
+      
 
-		JScrollPane scrollPane = new JScrollPane();
+      this.check = 1;
+      String reader = "";
 
-		JLabel lblAnswer = new JLabel("Answer :");
-		lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+      try {
+         q1 = new File("step3-1.txt");
+         q2 = new File("step3-2.txt");
+         q3 = new File("step3-3.txt");
+         q4 = new File("step3-4.txt");
 
-		answer = textField_1.getText().trim();
-		answer = answer.toLowerCase();
-		setAnswer(answer);
-		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));	
-		
-		num = Integer.parseInt(comboBox.getSelectedItem().toString().trim());
-		setNum(num);
-		
-		
+         switch (num) {
+         case 1:
+            q = q1;
+            break;
+         case 2:
+            q = q2;
+            break;
+         case 3:
+            q = q3;
+            break;
+         case 4:
+            q = q4;
+            break;
+         }
+         BufferedReader br = new BufferedReader(new FileReader(q));
+         a = "";
+         while ((reader = br.readLine()) != null) {
+            a += reader;
+            a += "\n";
+         }
+      } catch (FileNotFoundException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      } catch (IOException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
 
-		this.check = 1;
-		String reader = "";
+      //´äÃ¼Å©
+      btnA = new JButton("A");
+      setBtnA(btnA);
+      answer_select = new ArrayList<String>();
+      answer_select.add("+");
+      answer_select.add("\\");
+      answer_select.add("return");
+      answer_select.add("fos");
+      setAnswer_select(answer_select);
+      
+      answer_num = new ArrayList<String>();
+      answer_num.add("(3)");
+      answer_num.add("(3)");
+      answer_num.add("(1)");
+      answer_num.add("(2)");
+      setAnswer_num(answer_num);
+      
+   
+      
+      JLabel lblNewLabel = new JLabel("* Check the number that error has been occured and write something that is required for correction.");
+      lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+      
+      JLabel lblanyModificationOr = new JLabel("(Any Modification or deletion is not allowed. Only addtion to the proper place is allowed.)");
+      lblanyModificationOr.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+      
+      JRadioButton radioButton1 = new JRadioButton("(1)");
+      
+      JRadioButton radioButton2 = new JRadioButton("(2)");
+      
+      JRadioButton radioButton3 = new JRadioButton("(3)");
+      
+      buttonGroup = new ButtonGroup();
+      buttonGroup.add(radioButton1);
+      buttonGroup.add(radioButton2);
+      buttonGroup.add(radioButton3);
 
-		try {
-			q1 = new File("step3-1.txt");
-			q2 = new File("step3-2.txt");
-			q3 = new File("step3-3.txt");
-			q4 = new File("step3-4.txt");
+          
 
-			switch (num) {
-			case 1:
-				q = q1;
-				break;
-			case 2:
-				q = q2;
-				break;
-			case 3:
-				q = q3;
-				break;
-			case 4:
-				q = q4;
-				break;
-			}
-			BufferedReader br = new BufferedReader(new FileReader(q));
-			a = "";
-			while ((reader = br.readLine()) != null) {
-				a += reader;
-				a += "\n";
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+   
+      GroupLayout groupLayout = new GroupLayout(this);
+      groupLayout.setHorizontalGroup(
+         groupLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(groupLayout.createSequentialGroup()
+               .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                  .addGroup(groupLayout.createSequentialGroup()
+                     .addGap(39)
+                     .addComponent(lblanyModificationOr))
+                  .addGroup(groupLayout.createSequentialGroup()
+                     .addGap(27)
+                     .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                        .addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 832, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(groupLayout.createSequentialGroup()
+                           .addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+                              .addGroup(groupLayout.createSequentialGroup()
+                                 .addComponent(lblAnswer)
+                                 .addPreferredGap(ComponentPlacement.UNRELATED)
+                                 .addComponent(radioButton1)
+                                 .addGap(18)
+                                 .addComponent(radioButton2)
+                                 .addGap(18)
+                                 .addComponent(radioButton3)
+                                 .addGap(18)
+                                 .addComponent(textField_1))
+                              .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE))
+                           .addPreferredGap(ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                           .addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)))))
+               .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+      );
+      groupLayout.setVerticalGroup(
+         groupLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(groupLayout.createSequentialGroup()
+               .addContainerGap()
+               .addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+               .addPreferredGap(ComponentPlacement.RELATED)
+               .addComponent(lblanyModificationOr)
+               .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+                  .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE)
+                  .addComponent(btnA, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE))
+               .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+                  .addComponent(lblAnswer)
+                  .addComponent(radioButton1)
+                  .addComponent(radioButton2)
+                  .addComponent(radioButton3)
+                  .addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+               .addGap(87))
+      );
 
-		//´äÃ¼Å©
-		btnA = new JButton("A");
-		setBtnA(btnA);
-		answer_select = new ArrayList<String>();
-		answer_select.add("+");
-		answer_select.add("\\");
-		answer_select.add("return");
-		answer_select.add("fos");
-		setAnswer_select(answer_select);
-		
-		answer_num = new ArrayList<Integer>();
-		answer_num.add(3);
-		answer_num.add(3);
-		answer_num.add(1);
-		answer_num.add(2);
-		setAnswer_num(answer_num);
-		
-	
-		
-		JLabel lblNewLabel = new JLabel("* Select the number that error has been occured and write something that is required for correction.");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		
-		JLabel lblanyModificationOr = new JLabel("(Any Modification or deletion is not allowed. Only addtion to the proper place is allowed.)");
-		lblanyModificationOr.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+      JTextArea textArea_1 = new JTextArea();
+      scrollPane.setViewportView(textArea_1);
+      setLayout(groupLayout);
+      textArea_1.setText(a);
+      textArea_1.setFont(f1);
+      textArea_1.setEditable(false);
 
-	
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(39)
-					.addComponent(lblanyModificationOr)
-					.addContainerGap(111, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(27)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 832, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-									.addComponent(lblAnswer)
-									.addGap(18)
-									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(textField_1))
-								.addComponent(scrollPane, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE))
-							.addGap(27)
-							.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblanyModificationOr)
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblAnswer)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
-					.addGap(87))
-		);
-
-		JTextArea textArea_1 = new JTextArea();
-		scrollPane.setViewportView(textArea_1);
-		setLayout(groupLayout);
-		textArea_1.setText(a);
-		textArea_1.setFont(f1);
-		textArea_1.setEditable(false);
-
-	}
+   }
 }

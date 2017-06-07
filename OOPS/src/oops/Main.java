@@ -1,7 +1,6 @@
 package oops;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -15,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
+
 
 public class Main extends JFrame {
 
@@ -26,8 +25,6 @@ public class Main extends JFrame {
    final int frame_Height = 900;
    final int frame_Width = 1300;
    private OOPSTest oopstest;
-   private Login login;
-   private JLabel lblWelcome;
    private BackSound Sound;
 
    /**
@@ -51,8 +48,7 @@ public class Main extends JFrame {
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setBounds(100, 100, frame_Width, frame_Height);
       
-      login=new Login(mine);
-      
+     
       Sound = new BackSound("main");
       setSound(true,Sound);
 
@@ -65,7 +61,7 @@ public class Main extends JFrame {
             super.paintComponent(g);
          }
       };
-      ;
+      
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
       f1 = new Font("µ¸¿ò", Font.BOLD, 15);

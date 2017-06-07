@@ -1,17 +1,14 @@
 package oops;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.HeadlessException;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -29,7 +26,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
+
 
 public class Login extends JFrame {
    private Join join;
@@ -80,8 +77,6 @@ public String getId(){
          BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
          BufferedReader rd_pw = new BufferedReader(new FileReader(file_pw));
          String a;
-         userlist_id = new ArrayList<String>();
-         userlist_pw = new ArrayList<String>();
          while((a=rd_id.readLine()) != null){
             userlist_id.add(a);
          }
@@ -155,8 +150,8 @@ public String getId(){
       
       lblNewLabel = new JLabel("If you don't have id , click the button \"Join\".");
       
-      userlist_id = new ArrayList();
-      userlist_pw = new ArrayList();
+      userlist_id = new ArrayList<String>();
+      userlist_pw = new ArrayList<String>();
       
       filename_id = "id.txt";
       filename_pw = "pw.txt";

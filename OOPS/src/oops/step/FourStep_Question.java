@@ -1,8 +1,7 @@
 package oops.step;
 
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,22 +9,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
-import javax.swing.JCheckBox;
+
 import javax.swing.JButton;
 import java.awt.Color;
-import javax.swing.JTextField;
+
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 import javax.swing.JTextArea;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class FourStep_Question extends JPanel {
@@ -46,7 +41,6 @@ public class FourStep_Question extends JPanel {
 	private Font f1;
 	private JButton btnA;
 
-
 	public JTextArea getTextField_1() {
 		return textarea;
 	}
@@ -55,13 +49,12 @@ public class FourStep_Question extends JPanel {
 		this.textarea = textField_1;
 	}
 
-
 	public ArrayList<String> getAnswer_select() {
 		return answer_select;
 	}
 
 	public void setAnswer_select(ArrayList<String> answer_select) {
-		if(answer_select==null)
+		if (answer_select == null)
 			System.out.println("error");
 		this.answer_select = answer_select;
 	}
@@ -75,8 +68,7 @@ public class FourStep_Question extends JPanel {
 		btnA.setFont(new Font("±¼¸²", Font.BOLD, 49));
 		btnA.setForeground(Color.MAGENTA);
 		btnA.setBackground(Color.CYAN);
-		
-		
+
 	}
 
 	public int getCheck() {
@@ -95,11 +87,9 @@ public class FourStep_Question extends JPanel {
 
 		JLabel lblAnswer = new JLabel("Answer :");
 		lblAnswer.setFont(new Font("Times New Roman", Font.BOLD, 23));
-	
-		textarea = new JTextArea();
-		
 
-		
+		textarea = new JTextArea();
+
 		this.check = 1;
 		String reader = "";
 
@@ -145,53 +135,43 @@ public class FourStep_Question extends JPanel {
 		answer_select.add("0\n0\n4\n");
 		answer_select.add("-1 4 5");
 		answer_select.add("6\ntrue\n13\n5\nfalse\n2\n5\n66\nB\nB\nC\n");
-		
-		
+
 		setAnswer_select(answer_select);
-		
+
 		JScrollPane scrollPane_1 = new JScrollPane();
 
-
-
-
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(27)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addGap(27)
+				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 621, GroupLayout.PREFERRED_SIZE)
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-							.addGap(84)
-							.addComponent(lblAnswer)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 415, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-					.addGap(32))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.LEADING,
+								groupLayout.createSequentialGroup().addGap(84).addComponent(lblAnswer)
+										.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 415,
+												GroupLayout.PREFERRED_SIZE)))
+				.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE).addGap(32)));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(28)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(56)
-							.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(74)
-							.addComponent(lblAnswer)
-							.addGap(47))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-							.addGap(21))))
-		);
-		
-	
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup().addGap(28).addComponent(scrollPane,
+										GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
+								.addGroup(
+										groupLayout.createSequentialGroup().addGap(56).addComponent(btnA,
+												GroupLayout.PREFERRED_SIZE, 247,
+												GroupLayout.PREFERRED_SIZE)))
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup().addGap(74).addComponent(lblAnswer)
+										.addGap(47))
+								.addGroup(Alignment.TRAILING,
+										groupLayout.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+												.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 120,
+														GroupLayout.PREFERRED_SIZE)
+												.addGap(21)))));
+
 		scrollPane_1.setViewportView(textarea);
 		JTextArea textArea_1 = new JTextArea();
 		scrollPane.setViewportView(textArea_1);

@@ -10,6 +10,8 @@ public class OOPSTest  {
 	private Introduce introduce;
 	private Login login;
 	private Join join;
+	
+	
 	public OOPSTest(Main input_main)
 	{
 		this.main = input_main;

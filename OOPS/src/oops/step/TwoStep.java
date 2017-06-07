@@ -1,9 +1,6 @@
 package oops.step;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -27,7 +24,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
+
 
 public class TwoStep extends JFrame implements Step {
 

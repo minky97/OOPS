@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
@@ -29,9 +31,11 @@ import java.awt.Insets;
 import javax.swing.Icon;
 import java.awt.Color;
 
-public class Store extends JFrame {
+public class Store extends JFrame{
 
 	private JPanel contentPane;
+	private String caution;
+	private int window;
 	private int coin;
 	private int lifenum; //user가 가지고 있는 life의 개수
 	private int timenum; //user가 가지고 있는 time의 개수
@@ -44,33 +48,68 @@ public class Store extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Store frame = new Store();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Store() {
 		setTitle("Store");
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.addWindowListener(new WindowListener() {
+
+	         @Override
+	         public void windowOpened(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowIconified(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowDeiconified(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowDeactivated(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowClosing(WindowEvent e) {
+	            window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
+	                  JOptionPane.WARNING_MESSAGE);
+	            if (window == JOptionPane.CANCEL_OPTION) {
+	               remove(window);
+	            } else if (window == JOptionPane.OK_OPTION) {
+	               
+	               dispose();
+	            }
+
+	         }
+
+	         @Override
+	         public void windowClosed(WindowEvent e) {
+	            // TODO Auto-generated method stub
+	         }
+
+	         @Override
+	         public void windowActivated(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+	      });
 	    setBounds(100, 100, 757, 747);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		caution = "Do you really want to exit store?";
 		f1 = new Font("Times", Font.BOLD, 40);
 		
 		JPanel panel_life = new JPanel();
@@ -107,6 +146,7 @@ public class Store extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		textArea.setText("you can get 10 seconds.\r\nThe time gives you more\r\ntime to solve question.");
+		textArea.setEditable(false);
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.anchor = GridBagConstraints.NORTH;
 		gbc_textArea.gridwidth = 2;
@@ -197,6 +237,7 @@ public class Store extends JFrame {
 		JTextArea textArea_1 = new JTextArea();
 		textArea_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		textArea_1.setText("you can get 1 hint.\r\nThe hint helps you to\r\nsolve question easier.");
+		textArea_1.setEditable(false);
 		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
 		gbc_textArea_1.anchor = GridBagConstraints.NORTH;
 		gbc_textArea_1.gridwidth = 2;
@@ -314,6 +355,7 @@ public class Store extends JFrame {
 		JTextArea txtrYouCanGet = new JTextArea();
 		txtrYouCanGet.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		txtrYouCanGet.setText("you can get 1 life.\r\nThe life gives you a \r\none more chance to\r\nsolve question.\r\n");
+		txtrYouCanGet.setEditable(false);
 		GridBagConstraints gbc_txtrYouCanGet = new GridBagConstraints();
 		gbc_txtrYouCanGet.anchor = GridBagConstraints.NORTH;
 		gbc_txtrYouCanGet.insets = new Insets(0, 0, 5, 0);

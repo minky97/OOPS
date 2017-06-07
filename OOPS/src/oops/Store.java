@@ -104,7 +104,7 @@ public class Store extends JFrame{
 
 	         }
 	      });
-	    setBounds(100, 100, 757, 747);
+	    setBounds(100, 100, 957, 747);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -296,6 +296,9 @@ public class Store extends JFrame{
 		gbc_button_1.gridx = 0;
 		gbc_button_1.gridy = 6;
 		panel_1.add(button_1, gbc_button_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -306,7 +309,8 @@ public class Store extends JFrame{
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -319,9 +323,47 @@ public class Store extends JFrame{
 								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 630, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(panel_life, GroupLayout.PREFERRED_SIZE, 615, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(18, Short.MAX_VALUE))
+							.addComponent(panel_life, GroupLayout.PREFERRED_SIZE, 615, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)))
+					.addContainerGap())
 		);
+		
+		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setFont(new Font("Dialog", Font.PLAIN, 19));
+		textArea_2.setText("Now you have\r\n"+lifenum+" life\r\n"+timenum+" time\r\n"+hintnum+" hint");
+		textArea_2.setEditable(false);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon("store_rabbit.png"));
+		
+		JLabel label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon("store_turtle.png"));
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addComponent(label_3, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+					.addGap(33)
+					.addComponent(textArea_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(40, Short.MAX_VALUE))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label_4, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(41)
+					.addComponent(textArea_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
+		);
+		panel_2.setLayout(gl_panel_2);
 		GridBagLayout gbl_panel_life = new GridBagLayout();
 		gbl_panel_life.rowHeights = new int[] {56, 188, 104, 51, 92, 27, 29, 0};
 		gbl_panel_life.columnWidths = new int[]{138, 53, 0};

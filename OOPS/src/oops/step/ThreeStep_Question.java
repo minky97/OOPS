@@ -143,7 +143,7 @@ public class ThreeStep_Question extends JPanel {
 		answer = answer.toLowerCase();
 		setAnswer(answer);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));	
 		
 		num = Integer.parseInt(comboBox.getSelectedItem().toString().trim());

@@ -1,17 +1,14 @@
 package oops;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.HeadlessException;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -29,10 +26,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
+
 
 public class Login extends JFrame {
-   private Login mine;
    private Join join;
    private JPanel contentPane;
    private JTextField textField;
@@ -43,8 +39,6 @@ public class Login extends JFrame {
    final int frame_Height = 900;
    final int frame_Width = 1300;
    private Main main;
-   private Start start;
-   private OOPSTest oopstest;
    private int index; // check user id index
    private boolean log_in; // check log in
    private ImageIcon image;
@@ -52,6 +46,7 @@ public class Login extends JFrame {
    private JTextField textField_1;
    private JLabel lblNewLabel;
    private JButton btnLogin;
+   private Start start;
    
    private String filename_id;
    private String filename_pw;
@@ -73,15 +68,15 @@ public class Login extends JFrame {
    public ArrayList<String> getuser_list() {
       return userlist_id;
    }
-
+public String getId(){
+	return id;
+}
 
    public boolean check(String id,String pw,File file_id,File file_pw) throws IOException{//check log-in information.
       try {
          BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
          BufferedReader rd_pw = new BufferedReader(new FileReader(file_pw));
          String a;
-         userlist_id = new ArrayList();
-         userlist_pw = new ArrayList();
          while((a=rd_id.readLine()) != null){
             userlist_id.add(a);
          }
@@ -90,6 +85,7 @@ public class Login extends JFrame {
          }
          if(userlist_id.contains(id)){
             if(pw.equals(userlist_pw.get(userlist_id.indexOf(id)))){
+            	index=userlist_id.indexOf(id);
                return true;
             }
             else{
@@ -154,8 +150,8 @@ public class Login extends JFrame {
       
       lblNewLabel = new JLabel("If you don't have id , click the button \"Join\".");
       
-      userlist_id = new ArrayList();
-      userlist_pw = new ArrayList();
+      userlist_id = new ArrayList<String>();
+      userlist_pw = new ArrayList<String>();
       
       filename_id = "id.txt";
       filename_pw = "pw.txt";
@@ -189,12 +185,13 @@ public class Login extends JFrame {
                id = textField.getText();
                pw=textField_1.getText();
                try {
-                  if (check(id,pw,file_id,file_pw)) {
+            	   boolean a =check(id,pw,file_id,file_pw);
+                  if (a==true) {
                      setlog_in(true); //game start.
                      JOptionPane.showMessageDialog(null, "Welcome !");
                      dispose();
                      start=new Start(main,true);            
-                  } else if (!check(id,pw,file_id,file_pw)) {
+                  } else if (a==false) {
                      setlog_in(false);
                                        }
                } catch (Exception e1) {

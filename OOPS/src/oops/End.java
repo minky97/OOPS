@@ -35,7 +35,7 @@ public void setSound(boolean start,BackSound sound){
     sound.mulist(start);
 }
 
-   public End() {
+   public End(User user) {
 
 	  setBounds(100, 100, frame_Width, frame_Height);
       contentPane = new JPanel();
@@ -51,10 +51,12 @@ public void setSound(boolean start,BackSound sound){
       
       JLabel lblOopsTheEnd = new JLabel("OOPS! THE END!");
       lblOopsTheEnd.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 99));
-      
+
+     id=user.user();
       JLabel userScore = new JLabel("User: "+id);
       userScore.setForeground(Color.BLUE);
       userScore.setFont(new Font("Arial Black", Font.BOLD, 40));
+      score=user.score();
       JLabel userId = new JLabel("Score: "+score);
       userId.setForeground(Color.RED);
       userId.setFont(new Font("Arial Black", Font.PLAIN, 40));

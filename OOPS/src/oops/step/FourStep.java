@@ -1,7 +1,6 @@
 package oops.step;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,7 @@ import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,6 +19,8 @@ import javax.swing.border.EmptyBorder;
 import oops.BackSound;
 import oops.End;
 import oops.Main;
+import oops.Store;
+import oops.User;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -41,9 +43,14 @@ public class FourStep extends JFrame implements Step {
 	private FourStep_Question panel_3;
 	private FourStep_Question panel_4;
 	private String answer;
-	private int lifenum;
 	private ImageIcon life;// life image
 	private ArrayList<JLabel> imageArray;
+	private int num;
+
+	@Override
+	public int getScore() {
+		return score;
+	}
 
 	@Override
 	public void setSound(boolean start, BackSound sound) {
@@ -52,12 +59,12 @@ public class FourStep extends JFrame implements Step {
 	}
 
 	@Override
-	public void showlife(int num, ArrayList<JLabel> imageArray) {
+	public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
 
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
-			End end = new End();
+			End end = new End(user);
 			end.setVisible(true);
 		} else {
 
@@ -74,7 +81,8 @@ public class FourStep extends JFrame implements Step {
 	/**
 	 * Create the frame.
 	 */
-	public FourStep(Main main_input) {
+
+	public FourStep(Main main_input, User user) {
 
 		this.main = main_input;
 		Sound = new BackSound("game3");
@@ -182,22 +190,24 @@ public class FourStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 
-		lifenum = 3;
-		showlife(lifenum, imageArray);
+		num = 0;
+		showlife(user.lifenum(num), imageArray, user);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 10;
+					num = 0;
 				} else
-					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+					num = -1;
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum,imageArray);
+
 			}
 
 		});
@@ -208,14 +218,16 @@ public class FourStep extends JFrame implements Step {
 
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 10;
+					num = 0;
 				} else
-					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+					num = -1;
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, imageArray);
+
 			}
 
 		});
@@ -224,14 +236,15 @@ public class FourStep extends JFrame implements Step {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 10;
+					num = 0;
 				} else
-					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
+					num = -1;
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, imageArray);
 
 			}
 
@@ -241,21 +254,30 @@ public class FourStep extends JFrame implements Step {
 				answer = panel_4.getTextField_1().getText();
 				if (answer.equals(panel_4.getAnswer_select().get(3))) {
 					score = score + 10;
+					num = 0;
 				} else
-					lifenum = lifenum - 1;
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
-				showlife(lifenum, imageArray);
-				
-				/*Exit the Step4 & Open the End Screen*/
+					num = -1;
+				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				showlife(user.lifenum(num), imageArray, user);
+
+				/* Exit the Step4 & Open the End Screen */
 				dispose();
 				setSound(false, Sound);
-				if(lifenum!=0){
-				End end = new End();
-				end.setVisible(true);
+				if (user.lifenum(0) != 0) {
+					End end = new End(user);
+					end.setVisible(true);
 				}
-				
+
 			}
 
+		});
+
+		JButton btnNewButton = new JButton("STORE");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Store sto = new Store();
+				sto.setVisible(true);
+			}
 		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

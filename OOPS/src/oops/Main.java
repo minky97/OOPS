@@ -1,7 +1,6 @@
 package oops;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -15,11 +14,10 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
+
 
 public class Main extends JFrame {
 
-   
    private Main mine;
    private JPanel contentPane;
    private ImageIcon image;
@@ -27,21 +25,14 @@ public class Main extends JFrame {
    final int frame_Height = 900;
    final int frame_Width = 1300;
    private OOPSTest oopstest;
-   private Login login;
-   private JLabel lblWelcome;
    private BackSound Sound;
-
-   /**
-    * Launch the application.
-    */
 
    /**
     * Create the frame.
     */
    
    public static void main(String[] args) {
-      Main main = new Main();
-      
+      Main main = new Main();      
       main.setVisible(true);
    }
    public void setSound(boolean start,BackSound sound){
@@ -57,16 +48,10 @@ public class Main extends JFrame {
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setBounds(100, 100, frame_Width, frame_Height);
       
-      login=new Login(mine);
-      
+     
       Sound = new BackSound("main");
       setSound(true,Sound);
 
-   
-      
-      
-      
-      
       image = new ImageIcon("image.png");
 
       contentPane = new JPanel() {
@@ -76,7 +61,7 @@ public class Main extends JFrame {
             super.paintComponent(g);
          }
       };
-      ;
+      
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
       f1 = new Font("µ¸¿ò", Font.BOLD, 15);
@@ -104,18 +89,9 @@ public class Main extends JFrame {
             setSound(false,Sound);
          }
       });
+      
+      
       btnIntroduce.setFont(f1);
-
-      JButton btnSetting = new JButton("Setting");
-      btnSetting.setFont(f1);
-      btnSetting.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent arg0)
-         {            
-            oopstest = new OOPSTest(mine);
-            oopstest.test(btnSetting.getText());
-            setSound(false,Sound);
-         }
-      });
 
       JButton btnExit = new JButton("Exit");
       btnExit.setFont(f1);
@@ -130,32 +106,25 @@ public class Main extends JFrame {
 
       GroupLayout gl_contentPane = new GroupLayout(contentPane);
       gl_contentPane.setHorizontalGroup(
-         gl_contentPane.createParallelGroup(Alignment.TRAILING)
-            .addGroup(gl_contentPane.createSequentialGroup()
-               .addGap(529)
-               .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-                  .addComponent(btnExit, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                  .addComponent(btnSetting, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                  .addComponent(btnIntroduce, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                  .addComponent(btnStart, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
-               .addGap(507))
-            .addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-               .addGap(1013)
-               .addContainerGap(30, Short.MAX_VALUE))
+      	gl_contentPane.createParallelGroup(Alignment.LEADING)
+      		.addGroup(gl_contentPane.createSequentialGroup()
+      			.addGap(529)
+      			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+      				.addComponent(btnStart, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+      				.addComponent(btnIntroduce, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+      				.addComponent(btnExit, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+      			.addGap(507))
       );
       gl_contentPane.setVerticalGroup(
-         gl_contentPane.createParallelGroup(Alignment.TRAILING)
-            .addGroup(gl_contentPane.createSequentialGroup()
-               .addGap(47)
-               .addPreferredGap(ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
-               .addComponent(btnStart, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-               .addGap(35)
-               .addComponent(btnIntroduce, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-               .addGap(36)
-               .addComponent(btnSetting, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-               .addGap(37)
-               .addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-               .addGap(88))
+      	gl_contentPane.createParallelGroup(Alignment.TRAILING)
+      		.addGroup(gl_contentPane.createSequentialGroup()
+      			.addGap(495)
+      			.addComponent(btnStart, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+      			.addPreferredGap(ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+      			.addComponent(btnIntroduce, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+      			.addGap(63)
+      			.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+      			.addGap(88))
       );
       contentPane.setLayout(gl_contentPane);
    }

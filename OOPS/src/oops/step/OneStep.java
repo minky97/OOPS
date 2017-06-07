@@ -1,7 +1,5 @@
 package oops.step;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,11 +17,14 @@ import javax.swing.border.EmptyBorder;
 import oops.BackSound;
 import oops.End;
 import oops.Main;
+import oops.Store;
+import oops.User;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
 
 public class OneStep extends JFrame implements Step {
 
@@ -40,11 +41,10 @@ public class OneStep extends JFrame implements Step {
 	private OneStep_Question panel_2;// question2
 	private OneStep_Question panel_3;// question3
 	private String answer;
-	private int lifenum;
 	private ImageIcon life;// life image
 	private TwoStep twostep;
 	private ArrayList<JLabel> imageArray;
-
+private int num;
 	@Override
 	public void setSound(boolean start, BackSound sound) {
 		this.Sound = sound;
@@ -52,12 +52,13 @@ public class OneStep extends JFrame implements Step {
 	}
 
 	@Override
-	public void showlife(int num, ArrayList<JLabel> imageArray) {
+	public void showlife(int num, ArrayList<JLabel> imageArray,User user) {
 		if (num <= 0) {
 			dispose();
 			setSound(false, Sound);
-			End end = new End();
+			End end = new End(user);
 			end.setVisible(true);
+		
 		} else {
 
 			for (int i = 0; i < 5; i++) {
@@ -70,10 +71,14 @@ public class OneStep extends JFrame implements Step {
 
 	}
 
+	@Override
+	public int getScore(){
+		return score;
+	}
 	/**
 	 * Create the frame.
 	 */
-	public OneStep(Main main_input) {
+	public OneStep(Main main_input,User user) {
 
 		this.main = main_input;
 		main = new Main();
@@ -176,8 +181,11 @@ public class OneStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_2);
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
-		lifenum = 3;
-		showlife(lifenum,imageArray);
+		
+	
+		user.setlifenum(3); //ÃÊ±â life °ª
+		num=0;
+		showlife(user.lifenum(num),imageArray,user);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -185,31 +193,39 @@ public class OneStep extends JFrame implements Step {
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 3;
+					num=0;
 				} else
-					lifenum = lifenum - 1;
+					num=-1;
+				
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				showlife(user.lifenum(num),imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
-				showlife(lifenum,imageArray);
 
 			}
 
+			
 		});
 		panel_2.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_2.getTextField_1().getText();
 				answer = answer.toLowerCase();
 
+				
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 3;
-				} else
-					lifenum = lifenum - 1;
+					num=0;
+				} else{
+					num=-1;
+				}
+					
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				showlife(user.lifenum(num),imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
-				showlife(lifenum,imageArray);
+				
 
 			}
 
@@ -219,65 +235,84 @@ public class OneStep extends JFrame implements Step {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 3;
+					num=0;
 				} else
-					lifenum = lifenum - 1;
+					num=-1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				showlife(user.lifenum(num),imageArray,user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
-				showlife(lifenum,imageArray);
-				
+		
+				if(user.lifenum(0)!=0){
 				/*Exit the step1 & Open the Step2*/
 				dispose();
 				setSound(false, Sound);
-				twostep = new TwoStep(main);
+				twostep = new TwoStep(main,user);
 				twostep.setVisible(true);
+				user.step(twostep);
+				}
 			}
 
 		});
+		
+		JButton btnNewButton = new JButton("STORE");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Store sto = new Store();
+				sto.setVisible(true);
+			}
+		});
+		
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(31).addGroup(gl_contentPane
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
-								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(55)
-								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(65)
-								.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 153,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(18).addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 167,
-										GroupLayout.PREFERRED_SIZE))
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(341, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(31)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(29)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+							.addGap(55)
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+							.addGap(65)
+							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addComponent(btnNewButton)))
+					.addContainerGap(218, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(29)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498,
-										GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 95,
-												GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95,
-										Short.MAX_VALUE))
-						.addContainerGap()));
+									.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))))
+					.addContainerGap())
+		);
 		contentPane.setLayout(gl_contentPane);
 	}
 }

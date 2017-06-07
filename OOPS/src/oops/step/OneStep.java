@@ -43,7 +43,6 @@ public class OneStep extends JFrame implements Step {
 	private OneStep_Question panel_2;// question2
 	private OneStep_Question panel_3;// question3
 	private String answer;
-	private int lifenum;
 	private ImageIcon life;// life image
 	private TwoStep twostep;
 	private ArrayList<JLabel> imageArray;
@@ -184,8 +183,11 @@ public class OneStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_2);
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
-		lifenum = 3;
-		showlife(lifenum,imageArray,user);
+		
+	
+		user.setlifenum(3); //ÃÊ±â life °ª
+		
+		showlife(user.lifenum(0),imageArray,user);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -193,13 +195,13 @@ public class OneStep extends JFrame implements Step {
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 3;
+					showlife(user.lifenum(0),imageArray,user);
 				} else
-					lifenum = lifenum - 1;
+					showlife(user.lifenum(-1),imageArray,user);
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
-				showlife(lifenum,imageArray,user);
 
 			}
 
@@ -209,15 +211,19 @@ public class OneStep extends JFrame implements Step {
 				answer = panel_2.getTextField_1().getText();
 				answer = answer.toLowerCase();
 
+				
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 3;
-				} else
-					lifenum = lifenum - 1;
+					showlife(user.lifenum(0),imageArray,user);
+				} else{
+					showlife(user.lifenum(-1),imageArray,user);
+				}
+					
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
-				showlife(lifenum,imageArray,user);
+				
 
 			}
 
@@ -226,15 +232,15 @@ public class OneStep extends JFrame implements Step {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
-					score = score + 3;
+					showlife(user.lifenum(0),imageArray,user);
 				} else
-					lifenum = lifenum - 1;
+					showlife(user.lifenum(-1),imageArray,user);
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
-				showlife(lifenum,imageArray,user);
-				if(lifenum!=0){
+		
+				if(user.lifenum(0)!=0){
 				/*Exit the step1 & Open the Step2*/
 				dispose();
 				setSound(false, Sound);

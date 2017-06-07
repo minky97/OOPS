@@ -14,12 +14,13 @@ public class User extends Login {
 		// TODO Auto-generated constructor stub
 	}
 
-	// private ArrayList<Integer> scorelist = new ArrayList<Integer>();
 	private OneStep onestep;
 	private TwoStep twostep;
 	private ThreeStep threestep;
 	private FourStep fourstep;
 	private String user;
+	private int lifenum;
+
 
 	public void step(OneStep onestep) {
 		this.onestep = onestep;
@@ -53,6 +54,14 @@ public class User extends Login {
 	public String user() {
 		user = super.getuser_list().get(super.getindex_user());
 		return user;
+	}
+	public void setlifenum(int num){
+		this.lifenum=num;
+	}
+	
+	public int lifenum(int num){
+		lifenum=lifenum+num;
+		return lifenum;
 	}
 
 }

@@ -46,7 +46,6 @@ public class ThreeStep extends JFrame implements Step {
 	private ThreeStep_Question panel_4;// question 4
 	private String answer;
 	private int num;
-	private int lifenum;
 	private ImageIcon life;// life image
 	private FourStep fourstep;
 	private JLabel lblNewLabel_3;
@@ -195,8 +194,8 @@ public class ThreeStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_2);
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
-		lifenum = 3;
-		showlife(lifenum, imageArray,user);
+		
+		showlife(user.lifenum(0), imageArray,user);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -208,8 +207,9 @@ public class ThreeStep extends JFrame implements Step {
 				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))
 						&& (panel_1.getNum() == (panel_1.getAnswer_num().get(0)))) {
 					score = score + 5;
+					showlife(user.lifenum(0),imageArray,user);
 				} else
-					lifenum = lifenum - 1;
+					showlife(user.lifenum(-1),imageArray,user);
 				
 				
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -217,7 +217,7 @@ public class ThreeStep extends JFrame implements Step {
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, imageArray,user);
+			
 
 			}
 
@@ -233,14 +233,15 @@ public class ThreeStep extends JFrame implements Step {
 				if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))
 						&& (panel_2.getNum() == (panel_2.getAnswer_num().get(1)))) {
 					score = score + 5;
+					showlife(user.lifenum(0),imageArray,user);
 				} else
-					lifenum = lifenum - 1;
+					showlife(user.lifenum(-1),imageArray,user);
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
-				showlife(lifenum, imageArray,user);
+		
 			}
 
 		});
@@ -254,14 +255,15 @@ public class ThreeStep extends JFrame implements Step {
 				if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))
 						&& (panel_3.getNum() == (panel_3.getAnswer_num().get(2)))) {
 					score = score + 5;
+					showlife(user.lifenum(0),imageArray,user);
 				} else
-					lifenum = lifenum - 1;
+					showlife(user.lifenum(0),imageArray,user);
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
-				showlife(lifenum, imageArray,user);
+			
 
 			}
 
@@ -276,16 +278,17 @@ public class ThreeStep extends JFrame implements Step {
 				if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))
 						&& (panel_4.getNum() == (panel_4.getAnswer_num().get(3)))) {
 					score = score + 5;
+					showlife(user.lifenum(0),imageArray,user);
 				} else
-					lifenum = lifenum - 1;
+					showlife(user.lifenum(-1),imageArray,user);
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
-				showlife(lifenum, imageArray,user);
+			
 
-				if(lifenum!=0){
+				if(user.lifenum(0)!=0){
 				/* Exit the step3 & Open the step4 */
 				dispose();
 				setSound(false, Sound);

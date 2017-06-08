@@ -52,16 +52,19 @@ public class OneStep extends JFrame implements Step {
 	private int i;
 
 	@Override
-	public void setSound(boolean start, BackSound sound) {
+	public void setSound(BackSound sound) {
 		this.Sound = sound;
-		sound.mulist(start);
+		sound.mulist();
+	}
+	public void setSound(boolean start){
+		Sound.play(start);
 	}
 
 	@Override
 	public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
 		if (num <= 0) {
 			dispose();
-			setSound(false, Sound);
+			setSound(false);
 			End end = new End(user);
 			end.setVisible(true);
 
@@ -93,7 +96,7 @@ public class OneStep extends JFrame implements Step {
 		Sound = new BackSound("game1");
 		setTitle("One Step");
 		setBounds(100, 100, frame_Width, frame_Height);
-		setSound(true, Sound);
+		setSound(Sound);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step1.png");
 
@@ -139,7 +142,7 @@ public class OneStep extends JFrame implements Step {
 				if (window == JOptionPane.CANCEL_OPTION) {
 					remove(window);
 				} else if (window == JOptionPane.OK_OPTION) {
-					setSound(false, Sound);
+					setSound(false);
 					main.setSound(true);
 					main.setVisible(true);
 					dispose();
@@ -253,7 +256,7 @@ public class OneStep extends JFrame implements Step {
 				if (user.lifenum(0) != 0) {
 					/* Exit the step1 & Open the Step2 */
 					dispose();
-					setSound(false, Sound);
+					setSound(false);
 					twostep = new TwoStep(main, user);
 					twostep.setVisible(true);
 					user.step(twostep);

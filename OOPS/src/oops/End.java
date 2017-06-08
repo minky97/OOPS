@@ -30,9 +30,12 @@ private BackSound Sound;
    /**
     * Create the frame.
     */
-public void setSound(boolean start,BackSound sound){
-    
-    sound.mulist(start);
+public void setSound(BackSound sound){
+    this.Sound=sound;
+    sound.mulist();
+}
+public void setSound(boolean start){
+	Sound.play(start);
 }
 
    public End(User user) {
@@ -41,8 +44,9 @@ public void setSound(boolean start,BackSound sound){
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       setContentPane(contentPane);
-      Sound = new BackSound("logout");  
-      setSound(true,Sound);
+      Sound = new BackSound("logout");
+      setSound(Sound);
+      setSound(true);
       
       JPanel panel = new JPanel();
       panel.setForeground(Color.BLUE);
@@ -92,7 +96,7 @@ public void setSound(boolean start,BackSound sound){
          @Override
          public void windowClosing(WindowEvent e) 
          {
-          	  setSound(false,Sound);            
+          	  setSound(false);            
          }
          
          @Override

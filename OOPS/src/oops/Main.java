@@ -35,12 +35,12 @@ public class Main extends JFrame {
       Main main = new Main();      
       main.setVisible(true);
    }
-   public void setSound(boolean start,BackSound sound){
+   public void setSound(BackSound sound){
       this.Sound = sound;
-      sound.mulist(start);
+      sound.mulist();
    }
    public void setSound(boolean start){
-	      Sound.mulist(start);
+	      Sound.play(start);
    }
    public Main() {
       this.mine = this;
@@ -50,7 +50,8 @@ public class Main extends JFrame {
       
      
       Sound = new BackSound("main");
-      setSound(true,Sound);
+      setSound(Sound);
+      setSound(true);
 
       image = new ImageIcon("image.png");
 
@@ -76,7 +77,7 @@ public class Main extends JFrame {
          {            
             oopstest = new OOPSTest(mine);
             oopstest.test(btnStart.getText());
-            setSound(false,Sound);
+            setSound(false);
          }
       });
 
@@ -86,7 +87,7 @@ public class Main extends JFrame {
          {            
             oopstest = new OOPSTest(mine);
             oopstest.test(btnIntroduce.getText());
-            setSound(false,Sound);
+            setSound(false);
          }
       });
       
@@ -98,7 +99,7 @@ public class Main extends JFrame {
       btnExit.addActionListener(new ActionListener(){
          public void actionPerformed(ActionEvent arg0){
             mine.setVisible(false);
-            setSound(false,Sound);
+            setSound(false);
          }
       });
       

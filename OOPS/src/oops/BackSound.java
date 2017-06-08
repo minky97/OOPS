@@ -34,6 +34,7 @@ public class BackSound implements LineListener {
 	private AudioInputStream audioStream;
 	private AudioFormat format;
 	private Clip audioClip;
+	private String store;
 
 	/**
 	 * Play a given audio file.
@@ -46,8 +47,8 @@ public class BackSound implements LineListener {
 		info = new DataLine.Info(Clip.class, format);
 	}
 
-	void play(String audioFilePath, boolean check) {
-		audioFile = new File(audioFilePath);
+	public void play(boolean check) {
+		audioFile = new File(store);
 
 		try {
 			audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -59,7 +60,7 @@ public class BackSound implements LineListener {
 			audioClip.addLineListener(this);
 
 			audioClip.open(audioStream);
-			if (check){
+			if (check) {
 				audioClip.start(); // 노래 나오게 하는 것
 			}
 
@@ -106,9 +107,9 @@ public class BackSound implements LineListener {
 
 	}
 
-	public void mulist(boolean start) {
+	public void mulist() {
 
-		String store = null;
+		store = null;
 		switch (music) {
 
 		case "game1":
@@ -134,8 +135,6 @@ public class BackSound implements LineListener {
 		if (store == null) {
 			System.out.println("error!");
 		}
-
-		play(store, start);
 
 	}
 

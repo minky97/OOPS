@@ -66,16 +66,19 @@ public class ThreeStep extends JFrame implements Step {
 	}
 
 	@Override
-	public void setSound(boolean start, BackSound sound) {
+	public void setSound(BackSound sound) {
 		this.Sound = sound;
-		Sound.mulist(start);
+		Sound.mulist();
+	}
+	public void setSound(boolean start){
+		Sound.play(start);
 	}
 
 	@Override
 	public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
 		if (num <= 0) {
 			dispose();
-			setSound(false, Sound);
+			setSound(false);
 			End end = new End(user);
 			end.setVisible(true);
 		} else {
@@ -99,7 +102,8 @@ public class ThreeStep extends JFrame implements Step {
 		setBounds(100, 100, frame_Width, frame_Height);
 
 		Sound = new BackSound("game3");
-		setSound(true, Sound);
+		setSound(Sound);
+		setSound(true);
 
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step3.png");
@@ -151,7 +155,7 @@ public class ThreeStep extends JFrame implements Step {
 					main.setVisible(true);
 					main.setSound(true);
 					dispose();
-					setSound(false, Sound);
+					setSound(false);
 				}
 
 			}
@@ -302,7 +306,7 @@ public class ThreeStep extends JFrame implements Step {
 				if (user.lifenum(0) != 0) {
 					/* Exit the step3 & Open the step4 */
 					dispose();
-					setSound(false, Sound);
+					setSound(false);
 					fourstep = new FourStep(main, user);
 					user.step(fourstep);
 					fourstep.setVisible(true);

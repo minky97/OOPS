@@ -59,9 +59,12 @@ public class FourStep extends JFrame implements Step {
 	}
 
 	@Override
-	public void setSound(boolean start, BackSound sound) {
+	public void setSound(BackSound sound) {
 		this.Sound = sound;
-		sound.mulist(start);
+		sound.mulist();
+	}
+	public void setSound(boolean start){
+		Sound.play(start);
 	}
 
 	@Override
@@ -69,7 +72,7 @@ public class FourStep extends JFrame implements Step {
 
 		if (num <= 0) {
 			dispose();
-			setSound(false, Sound);
+			setSound(false);
 			End end = new End(user);
 			end.setVisible(true);
 		} else {
@@ -94,7 +97,8 @@ public class FourStep extends JFrame implements Step {
 		Sound = new BackSound("game3");
 		setTitle("Four Step");
 		setBounds(100, 100, frame_Width, frame_Height);
-		setSound(true, Sound);
+		setSound(Sound);
+		setSound(true);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step4.png");
 
@@ -141,7 +145,7 @@ public class FourStep extends JFrame implements Step {
 					remove(window);
 				} else if (window == JOptionPane.OK_OPTION) {
 
-					setSound(false, Sound);
+					setSound(false);
 					main.setSound(true);
 					main.setVisible(true);
 					dispose();
@@ -273,7 +277,7 @@ public class FourStep extends JFrame implements Step {
 
 				/* Exit the Step4 & Open the End Screen */
 				dispose();
-				setSound(false, Sound);
+				setSound(false);
 				if (user.lifenum(0) != 0) {
 					End end = new End(user);
 					end.setVisible(true);

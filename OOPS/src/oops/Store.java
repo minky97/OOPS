@@ -37,17 +37,6 @@ public class Store extends JFrame{
 	private String caution;
 	private int window;
 	private int coin;
-	
-	public int getCoin() {
-		return coin;
-	}
-
-
-	public void setCoin(int coin) {
-		this.coin = coin;
-	}
-
-
 	private int lifenum; //user가 가지고 있는 life의 개수
 	private int timenum; //user가 가지고 있는 time의 개수
 	private int hintnum; //user가 가지고 있는 hint의 개수
@@ -59,12 +48,26 @@ public class Store extends JFrame{
 	private JTextField textField_1;
 	private JTextField textField_2;
 
+	
+	public int getCoin() {
+		return coin;
+	}
+
+
+	public void setCoin(int coin) {
+		this.coin = coin;
+	}
+
+
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public Store() {
 		setTitle("Store");
+		caution = "Do you really want to exit store?";
+		
 		this.addWindowListener(new WindowListener() {
 
 	         @Override
@@ -120,7 +123,7 @@ public class Store extends JFrame{
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		caution = "Do you really want to exit store?";
+		
 		f1 = new Font("Times", Font.BOLD, 40);
 		
 		JPanel panel_life = new JPanel();

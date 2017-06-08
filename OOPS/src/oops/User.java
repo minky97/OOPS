@@ -49,6 +49,19 @@ private Login login;
 
 		return score_int;
 	}
+	
+	   public int coin() {
+		      int coin_int = onestep.getCoin();
+		      if(twostep!=null)
+		         coin_int = coin_int + twostep.getCoin();
+		      if(threestep!=null)
+		         coin_int = coin_int + threestep.getCoin();
+		      if(fourstep!=null)
+		         coin_int = coin_int + fourstep.getCoin();
+		      
+		      
+		      return coin_int;
+		   }
 
 	public String user() {
 		user = login.getId();

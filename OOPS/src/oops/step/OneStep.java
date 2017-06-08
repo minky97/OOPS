@@ -371,4 +371,8 @@ public class OneStep extends JFrame implements Step {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+	public int getCoin() {
+		// TODO Auto-generated method stub
+		return coin;
+	}
 }

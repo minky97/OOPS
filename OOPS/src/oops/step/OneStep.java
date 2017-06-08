@@ -95,12 +95,13 @@ public class OneStep extends JFrame implements Step {
 	public OneStep(Main main_input, User user) {
 
 		this.main = main_input;
-		main = new Main();
 
 		Sound = new BackSound("game1");
+		
 		setTitle("One Step");
 		setBounds(100, 100, frame_Width, frame_Height);
 		setSound(Sound);
+		setSound(true);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step1.png");
 

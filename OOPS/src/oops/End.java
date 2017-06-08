@@ -43,6 +43,7 @@ public void setSound(boolean start){
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       setContentPane(contentPane);
       Sound = new BackSound("logout");
+      Sound.setEnd(true);
       setSound(Sound);
       setSound(true);
       

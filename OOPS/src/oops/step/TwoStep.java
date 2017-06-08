@@ -210,7 +210,6 @@ public class TwoStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -219,6 +218,7 @@ public class TwoStep extends JFrame implements Step {
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
+				i++;
 
 			}
 
@@ -233,7 +233,7 @@ public class TwoStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
+					
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -242,6 +242,7 @@ public class TwoStep extends JFrame implements Step {
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
+				i++;
 
 			}
 
@@ -255,7 +256,7 @@ public class TwoStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
+					
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -264,6 +265,7 @@ public class TwoStep extends JFrame implements Step {
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
+				i++;
 
 			}
 
@@ -277,7 +279,7 @@ public class TwoStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
+					
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -286,6 +288,7 @@ public class TwoStep extends JFrame implements Step {
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
+				i++;
 
 				if (user.lifenum(0) != 0) {
 					// exit the Step2 & show the Step3

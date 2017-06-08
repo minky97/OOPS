@@ -207,7 +207,6 @@ public class OneStep extends JFrame implements Step {
 					coin = coin + 1;
 					num = 0;
 					
-					i++;
 				} else
 					num = -1;
 
@@ -216,7 +215,9 @@ public class OneStep extends JFrame implements Step {
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
+				i++;
 
+				
 			}
 
 		});
@@ -229,7 +230,7 @@ public class OneStep extends JFrame implements Step {
 					score = score + 3;
 					coin = coin + 1;
 					num = 0;
-					i++;
+					
 				} else {
 					num = -1;
 				}
@@ -239,6 +240,7 @@ public class OneStep extends JFrame implements Step {
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
+				i++;
 
 			}
 
@@ -250,7 +252,7 @@ public class OneStep extends JFrame implements Step {
 					score = score + 3;
 					coin = coin + 1;
 					num = 0;
-					i++;
+					
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
@@ -259,6 +261,7 @@ public class OneStep extends JFrame implements Step {
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
+				i++;
 
 				if (user.lifenum(0) != 0) {
 					/* Exit the step1 & Open the Step2 */

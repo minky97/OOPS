@@ -221,7 +221,7 @@ public class ThreeStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
+					
 				} else
 					num = -1;
 
@@ -231,6 +231,7 @@ public class ThreeStep extends JFrame implements Step {
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
+				i++;
 
 			}
 
@@ -248,7 +249,7 @@ public class ThreeStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
+					
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -257,6 +258,7 @@ public class ThreeStep extends JFrame implements Step {
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
 				panel_4.setVisible(false);
+				i++;
 
 			}
 
@@ -273,7 +275,7 @@ public class ThreeStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
+					
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -282,6 +284,7 @@ public class ThreeStep extends JFrame implements Step {
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
+				i++;
 
 			}
 
@@ -298,7 +301,7 @@ public class ThreeStep extends JFrame implements Step {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
-					i++;
+					
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
@@ -307,6 +310,7 @@ public class ThreeStep extends JFrame implements Step {
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(false);
+				i++;
 
 				if (user.lifenum(0) != 0) {
 					/* Exit the step3 & Open the step4 */

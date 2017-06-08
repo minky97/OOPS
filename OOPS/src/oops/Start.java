@@ -11,11 +11,18 @@ public class Start extends JFrame {
 	private Main main;
 	private OneStep onestep;
 	private User user;
-
-	public Start(Main main_input, boolean log_in) {
+	private OOPSTest test;
+	public Start(Main main_input,OOPSTest test){
 		this.main = main_input;
-		user = new User(main);
-		login = new Login(main);
+		this.test=test;
+		
+		
+		login = new Login(main,test);
+		user = new User(login);
+	}
+
+	public void start(boolean log_in) {
+		
 		if (log_in == true) {
 		
 			onestep = new OneStep(main,user);

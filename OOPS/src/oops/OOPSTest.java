@@ -12,6 +12,14 @@ public class OOPSTest  {
 	private Join join;
 	
 	
+	public Start getStart() {
+		return start;
+	}
+
+	public void setStart(Start start) {
+		this.start = start;
+	}
+
 	public OOPSTest(Main input_main)
 	{
 		this.main = input_main;
@@ -28,7 +36,8 @@ public class OOPSTest  {
 		}
 	
 		else if(panelName.equals("Start")){
-			start=new Start(main,false);
+			start=new Start(main,this);
+			start.start(false);
 			
 		}
 

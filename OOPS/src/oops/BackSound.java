@@ -44,7 +44,7 @@ public class BackSound implements LineListener {
 	 */
 	public BackSound(String music) {
 		this.music = music;
-		info = new DataLine.Info(Clip.class, format);
+		
 	}
 
 	public void play(boolean check) {
@@ -54,9 +54,9 @@ public class BackSound implements LineListener {
 			audioStream = AudioSystem.getAudioInputStream(audioFile);
 
 			format = audioStream.getFormat();
-
+			info = new DataLine.Info(Clip.class, format);
 			audioClip = (Clip) AudioSystem.getLine(info);
-
+			
 			audioClip.addLineListener(this);
 
 			audioClip.open(audioStream);
@@ -68,14 +68,14 @@ public class BackSound implements LineListener {
 				audioClip.stop(); // 노래 안 나오게 하는 것
 				audioClip.close();
 			}
-			// while (!playCompleted) {
-			// // wait for the playback completes
-			// try {
-			// Thread.sleep(5000);
-			// } catch (InterruptedException ex) {
-			// ex.printStackTrace();
-			// }
-			// }
+//			 while (!playCompleted) {
+//			  //wait for the playback completes
+//			 try {
+//			 Thread.sleep(5000);
+//			 } catch (InterruptedException ex) {
+//			 ex.printStackTrace();
+//			 }
+//			 }
 
 		} catch (UnsupportedAudioFileException ex) {
 			System.out.println("The specified audio file is not supported.");

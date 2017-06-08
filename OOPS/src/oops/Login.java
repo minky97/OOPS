@@ -47,7 +47,7 @@ public class Login extends JFrame {
    private JLabel lblNewLabel;
    private JButton btnLogin;
    private Start start;
-   
+   private OOPSTest test;
    private String filename_id;
    private String filename_pw;
    private File file_id;
@@ -112,10 +112,13 @@ public String getId(){
    }
 
 
-
-   public Login(Main main_input) {
+public Login(Main main_input){
+	this.main=main_input;
+}
+   public Login(Main main_input,OOPSTest test) {
    
       this.main = main_input;
+      this.test=test;
       
       setTitle("Login");
       setBounds(100, 100, frame_Width, frame_Height);
@@ -190,7 +193,8 @@ public String getId(){
                      setlog_in(true); //game start.
                      JOptionPane.showMessageDialog(null, "Welcome !");
                      dispose();
-                     start=new Start(main,true);            
+                     start=test.getStart();
+                     start.start(true);
                   } else if (a==false) {
                      setlog_in(false);
                                        }

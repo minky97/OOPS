@@ -27,9 +27,7 @@ public class End extends JFrame {
 	final int frame_Height = 900;
 	final int frame_Width = 1300;
 private BackSound Sound;
-   /**
-    * Create the frame.
-    */
+  
 public void setSound(BackSound sound){
     this.Sound=sound;
     sound.mulist();

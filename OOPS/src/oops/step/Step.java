@@ -11,6 +11,5 @@ public interface Step {
 
 	abstract public int getScore();
 	abstract public void setSound(BackSound Sound);
-
 	abstract public void showlife(int num, ArrayList<JLabel> imageArray,User user);
 }

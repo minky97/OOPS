@@ -6,10 +6,10 @@ import oops.step.OneStep;
 import oops.step.ThreeStep;
 import oops.step.TwoStep;
 
-public class User extends Login {
+public class User {
 
-	public User(Main main_input) {
-		super(main_input);
+	public User(Login login) {
+		this.login=login;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,7 +19,7 @@ public class User extends Login {
 	private FourStep fourstep;
 	private String user;
 	private int lifenum;
-
+private Login login;
 
 	public void step(OneStep onestep) {
 		this.onestep = onestep;
@@ -51,7 +51,7 @@ public class User extends Login {
 	}
 
 	public String user() {
-		user = super.getId();
+		user = login.getId();
 		return user;
 	}
 	public void setlifenum(int num){

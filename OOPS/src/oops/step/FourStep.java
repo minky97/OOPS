@@ -40,6 +40,7 @@ public class FourStep extends JFrame implements Step {
 	private int window;
 	private Main main;
 	private int score;
+	private int coin;
 	private FourStep_Question panel_1;
 	private FourStep_Question panel_2;
 	private FourStep_Question panel_3;
@@ -210,6 +211,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 10;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;
@@ -231,6 +233,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 10;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;
@@ -250,6 +253,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 10;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;
@@ -269,6 +273,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_4.getAnswer_select().get(3))) {
 					score = score + 10;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;

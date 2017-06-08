@@ -37,6 +37,17 @@ public class Store extends JFrame{
 	private String caution;
 	private int window;
 	private int coin;
+	
+	public int getCoin() {
+		return coin;
+	}
+
+
+	public void setCoin(int coin) {
+		this.coin = coin;
+	}
+
+
 	private int lifenum; //user가 가지고 있는 life의 개수
 	private int timenum; //user가 가지고 있는 time의 개수
 	private int hintnum; //user가 가지고 있는 hint의 개수

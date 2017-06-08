@@ -41,6 +41,7 @@ public class ThreeStep extends JFrame implements Step {
 	private int window;
 	private Main main;
 	private int score;
+	private int coin;
 	private ThreeStep_Question panel_1;// question 1
 	private ThreeStep_Question panel_2;// question 2
 	private ThreeStep_Question panel_3;// question 3
@@ -219,6 +220,7 @@ public class ThreeStep extends JFrame implements Step {
 						&& (panel_1.getNum() == (panel_1.getAnswer_num().get(0)))) {
 					score = score + 5;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;
@@ -245,6 +247,7 @@ public class ThreeStep extends JFrame implements Step {
 						&& (panel_2.getNum() == (panel_2.getAnswer_num().get(1)))) {
 					score = score + 5;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;
@@ -269,6 +272,7 @@ public class ThreeStep extends JFrame implements Step {
 						&& (panel_3.getNum() == (panel_3.getAnswer_num().get(2)))) {
 					score = score + 5;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;
@@ -293,6 +297,7 @@ public class ThreeStep extends JFrame implements Step {
 						&& (panel_4.getNum() == (panel_4.getAnswer_num().get(3)))) {
 					score = score + 5;
 					num = 0;
+					coin = coin + 1;
 					i++;
 				} else
 					num = -1;

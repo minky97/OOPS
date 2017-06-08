@@ -38,6 +38,8 @@ public class OneStep extends JFrame implements Step {
 	final int frame_Width = 1300;
 	private int window;
 	private Main main;
+	private Store usestore;
+	private int coin;
 	private int score;
 	private OneStep_Question panel_1;// question1
 	private OneStep_Question panel_2;// question2
@@ -202,7 +204,9 @@ public class OneStep extends JFrame implements Step {
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 3;
+					coin = coin + 1;
 					num = 0;
+					
 					i++;
 				} else
 					num = -1;
@@ -223,6 +227,7 @@ public class OneStep extends JFrame implements Step {
 
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 3;
+					coin = coin + 1;
 					num = 0;
 					i++;
 				} else {
@@ -243,11 +248,13 @@ public class OneStep extends JFrame implements Step {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 3;
+					coin = coin + 1;
 					num = 0;
 					i++;
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -264,6 +271,7 @@ public class OneStep extends JFrame implements Step {
 			}
 
 		});
+
 
 		JButton btnNewButton = new JButton("STORE");
 		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 22));

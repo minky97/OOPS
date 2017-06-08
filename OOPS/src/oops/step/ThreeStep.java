@@ -324,13 +324,15 @@ public class ThreeStep extends JFrame implements Step {
 
 		});
 
-		JButton btnNewButton = new JButton("STORE");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnStore = new JButton("STORE");
+		btnStore.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		btnStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Store sto = new Store();
 				sto.setVisible(true);
 			}
 		});
+		
 		
 		hintclass=new Hint();
 		JButton btnhint = new JButton("*HINT*");
@@ -350,6 +352,7 @@ public class ThreeStep extends JFrame implements Step {
 				}
 			}
 		});
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -375,22 +378,24 @@ public class ThreeStep extends JFrame implements Step {
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
 							.addGap(34)
-							.addComponent(btnhint)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnhint)
+								.addComponent(btnStore))
 							.addContainerGap(202, Short.MAX_VALUE))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+					.addContainerGap(29, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(29)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnStore)
+							.addGap(36)
 							.addComponent(btnhint)
 							.addGap(245)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)

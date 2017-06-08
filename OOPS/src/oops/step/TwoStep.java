@@ -303,8 +303,10 @@ public class TwoStep extends JFrame implements Step {
 
 		});
 
-		JButton btnNewButton = new JButton("STORE");
-		btnNewButton.addActionListener(new ActionListener() {
+
+		JButton btnStore = new JButton("STORE");
+		btnStore.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		btnStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Store sto = new Store();
 				sto.setVisible(true);
@@ -329,6 +331,7 @@ public class TwoStep extends JFrame implements Step {
 				}
 			}
 		});
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -354,7 +357,9 @@ public class TwoStep extends JFrame implements Step {
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
 							.addGap(31)
-							.addComponent(btnhint, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnStore, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnhint, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
 					.addContainerGap(97, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -369,7 +374,9 @@ public class TwoStep extends JFrame implements Step {
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(156)
+							.addGap(85)
+							.addComponent(btnStore, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
 							.addComponent(btnhint, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
 					.addGap(146)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)

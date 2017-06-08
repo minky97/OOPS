@@ -64,10 +64,10 @@ public class Join extends JFrame {
 		}
 		
 	}
-	public Join(Main main_input) {
+	public Join(Main main_input,OOPSTest test) {
 		
 		this.main = main_input;
-		log = new Login(main);
+		log = new Login(main,test);
 		
 		setTitle("Sign");
 		setBounds(100, 100, frame_Width, frame_Height);
@@ -116,7 +116,7 @@ public class Join extends JFrame {
 					if (check(id,file_id)) {//check that already exist user.
 						JOptionPane.showMessageDialog(null, "It already exist.");
 					} else {//make the user
-						JOptionPane.showMessageDialog(null, "Success join ! \n *Welcome* ");
+						
 						BufferedWriter fw_id = new BufferedWriter(new FileWriter(file_id,true));
 						BufferedWriter fw_pw = new BufferedWriter(new FileWriter(file_pw,true));
 						fw_id.write(id+"\n");
@@ -128,10 +128,10 @@ public class Join extends JFrame {
 						fw_id.close();
 						fw_pw.close();
 						
-						
+						JOptionPane.showMessageDialog(null, "Success join ! \n *Welcome* ");
 						setVisible(false);
 						log.setVisible(true);
-						dispose();
+						//dispose();
 					}	
 				}
 				catch(Exception e2){

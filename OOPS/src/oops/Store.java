@@ -35,7 +35,7 @@ public class Store extends JFrame{
 
 	private JPanel contentPane;
 	private String caution;
-	private int window;
+
 	private int coin;
 	private int lifenum; //user가 가지고 있는 life의 개수
 	private int timenum; //user가 가지고 있는 time의 개수
@@ -68,56 +68,7 @@ public class Store extends JFrame{
 		setTitle("Store");
 		caution = "Do you really want to exit store?";
 		
-		this.addWindowListener(new WindowListener() {
 
-	         @Override
-	         public void windowOpened(WindowEvent e) {
-	            // TODO Auto-generated method stub
-
-	         }
-
-	         @Override
-	         public void windowIconified(WindowEvent e) {
-	            // TODO Auto-generated method stub
-
-	         }
-
-	         @Override
-	         public void windowDeiconified(WindowEvent e) {
-	            // TODO Auto-generated method stub
-
-	         }
-
-	         @Override
-	         public void windowDeactivated(WindowEvent e) {
-	            // TODO Auto-generated method stub
-
-	         }
-
-	         @Override
-	         public void windowClosing(WindowEvent e) {
-	            window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
-	                  JOptionPane.WARNING_MESSAGE);
-	            if (window == JOptionPane.CANCEL_OPTION) {
-	               remove(window);
-	            } else if (window == JOptionPane.OK_OPTION) {
-	               
-	               dispose();
-	            }
-
-	         }
-
-	         @Override
-	         public void windowClosed(WindowEvent e) {
-	            // TODO Auto-generated method stub
-	         }
-
-	         @Override
-	         public void windowActivated(WindowEvent e) {
-	            // TODO Auto-generated method stub
-
-	         }
-	      });
 	    setBounds(100, 100, 957, 747);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -462,6 +413,56 @@ public class Store extends JFrame{
 			coin-=lifenum_buy*3;
 			}
 		});
+		
+		this.addWindowListener(new WindowListener() {
+
+	         @Override
+	         public void windowOpened(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowIconified(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowDeiconified(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowDeactivated(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+
+	         @Override
+	         public void windowClosing(WindowEvent e) {
+	            int window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
+	                  JOptionPane.WARNING_MESSAGE);
+	            if (window == JOptionPane.CANCEL_OPTION) {
+	            	
+	            } else if (window == JOptionPane.OK_OPTION) {
+	               dispose();
+	            }
+
+	         }
+
+	         @Override
+	         public void windowClosed(WindowEvent e) {
+	            // TODO Auto-generated method stub
+	         }
+
+	         @Override
+	         public void windowActivated(WindowEvent e) {
+	            // TODO Auto-generated method stub
+
+	         }
+	      });
 		GridBagConstraints gbc_btnBuy = new GridBagConstraints();
 		gbc_btnBuy.anchor = GridBagConstraints.NORTHEAST;
 		gbc_btnBuy.insets = new Insets(0, 0, 0, 5);
@@ -469,6 +470,7 @@ public class Store extends JFrame{
 		gbc_btnBuy.gridy = 6;
 		panel_life.add(btnBuy, gbc_btnBuy);
 		contentPane.setLayout(gl_contentPane);
+		
 	}
 }
 

@@ -162,7 +162,7 @@ public class Store extends JFrame{
 				}
 				if(coin<timenum_buy*2) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
 				else {
-					JOptionPane.showMessageDialog(null,"You get"+timenum_buy*10+"seconds.");
+					JOptionPane.showMessageDialog(null,"You get "+timenum_buy*10+" seconds.");
 					timenum+=timenum_buy;
 					coin-=timenum_buy*2;
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
@@ -259,7 +259,7 @@ public class Store extends JFrame{
 					JOptionPane.showMessageDialog(null,"ERROR: Please input only positive integers.");
 				}
 				if(coin<hintnum_buy*1) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
-				else {JOptionPane.showMessageDialog(null,"You get"+hintnum_buy+"hint.");
+				else {JOptionPane.showMessageDialog(null,"You get "+hintnum_buy+" hint.");
 			hintnum+=hintnum_buy;
 			coin-=hintnum_buy*1;
 			textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
@@ -421,7 +421,7 @@ public class Store extends JFrame{
 					JOptionPane.showMessageDialog(null,"ERROR: Please input only positive integers.");
 				}
 				if(coin<lifenum_buy*3) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
-				else {JOptionPane.showMessageDialog(null,"You get"+lifenum_buy+"life.");
+				else {JOptionPane.showMessageDialog(null,"You get "+lifenum_buy+" life.");
 			lifenum+=lifenum_buy;
 			coin-=lifenum_buy*3;
 			textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"

@@ -36,14 +36,14 @@ public class Store extends JFrame{
 	private JPanel contentPane;
 	private String caution;
 
-	private int coin;
+	private int coin;//user가 가지고 있는 coin개수
 	private int lifenum; //user가 가지고 있는 life의 개수
 	private int timenum; //user가 가지고 있는 time의 개수
 	private int hintnum; //user가 가지고 있는 hint의 개수
 	private int lifenum_buy; //user가 구입하고자하는 life의 개수 life=3coin
 	private int timenum_buy; //user가 구입하고자하는 time의 개수  time=2coin
 	private int hintnum_buy; //user가 구입하고자하는 hint의 개수  hint=1coin
-	private Font f1;
+	private Font f1;//
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -64,7 +64,7 @@ public class Store extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public Store() {
+	public Store(User user) {
 		setTitle("Store");
 		caution = "Do you really want to exit store?";
 		
@@ -119,7 +119,7 @@ public class Store extends JFrame{
 		gbc_textArea.gridx = 0;
 		gbc_textArea.gridy = 2;
 		panel.add(textArea, gbc_textArea);
-		
+		coin=user.coin();
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon("coin_store.png"));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
@@ -158,10 +158,10 @@ public class Store extends JFrame{
 				}catch(NumberFormatException e2){
 					JOptionPane.showMessageDialog(null,"ERROR: Please input only positive integers.");
 				}
-				if(coin<timenum_buy*1) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
+				if(coin<timenum_buy*2) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
 				else JOptionPane.showMessageDialog(null,"You get"+timenum_buy*10+"seconds.");
 			timenum+=timenum_buy;
-			coin-=timenum_buy*1;
+			coin-=timenum_buy*2;
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
@@ -249,10 +249,10 @@ public class Store extends JFrame{
 				}catch(NumberFormatException e3){
 					JOptionPane.showMessageDialog(null,"ERROR: Please input only positive integers.");
 				}
-				if(coin<hintnum_buy*2) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
+				if(coin<hintnum_buy*1) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
 				else JOptionPane.showMessageDialog(null,"You get"+hintnum_buy+"hint.");
 			hintnum+=hintnum_buy;
-			coin-=hintnum_buy*2;
+			coin-=hintnum_buy*1;
 			}
 		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
@@ -297,7 +297,7 @@ public class Store extends JFrame{
 		
 		JTextArea textArea_2 = new JTextArea();
 		textArea_2.setFont(new Font("Dialog", Font.PLAIN, 19));
-		textArea_2.setText("Now you have\r\n"+lifenum+" life\r\n"+timenum+" time\r\n"+hintnum+" hint");
+		textArea_2.setText("Now you have\r\n"+lifenum+" life\r\n"+timenum+" time\r\n"+hintnum+" hint\r\n"+coin+" coin.");
 		textArea_2.setEditable(false);
 		
 		JLabel label_3 = new JLabel("");
@@ -473,4 +473,5 @@ public class Store extends JFrame{
 		
 	}
 }
+
 

@@ -10,3 +10,5 @@ o
 oo
 oi
 oi-p
+qq
+0000

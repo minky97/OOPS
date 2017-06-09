@@ -74,7 +74,7 @@ public class Join extends JFrame {
 
 		f1 = new Font("Times", Font.BOLD, 40);
 
-		image = new ImageIcon("sign.png");
+		image = new ImageIcon("join.png");
 
 		filename_id = "id.txt";
 		filename_pw = "pw.txt";

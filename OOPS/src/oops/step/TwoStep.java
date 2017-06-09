@@ -321,15 +321,17 @@ public class TwoStep extends JFrame implements Step {
 		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
 		btnhint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				hintnum = user.getHintnum();
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
-					JOptionPane.showMessageDialog(null, hint+"\n*If you close the hint, you have to pay quiz again*","HINT", JOptionPane.INFORMATION_MESSAGE);
-					hintnum-=1;
-					System.out.println(hintnum);
+					JOptionPane.showMessageDialog(null, hint + "\n*If you close the hint, you have to pay quiz again*",
+							"HINT", JOptionPane.INFORMATION_MESSAGE);
+					hintnum -= 1;
+					user.setHintnum(hintnum);
 
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING", JOptionPane.WARNING_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
@@ -400,4 +402,6 @@ public class TwoStep extends JFrame implements Step {
 		// TODO Auto-generated method stub
 		return coin;
 	}
+	
+	
 }

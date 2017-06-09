@@ -52,7 +52,7 @@ public class OneStep extends JFrame implements Step {
 	private int num;
 	private Hint hintclass;
 	private int hintnum;
-	private int i;
+	private int i;// index of hints ArrayList
 	private Clock clock;
 	private JButton btnNewButton;
 
@@ -61,7 +61,8 @@ public class OneStep extends JFrame implements Step {
 		this.Sound = sound;
 		sound.mulist();
 	}
-	public void setSound(boolean start){
+
+	public void setSound(boolean start) {
 		Sound.play(start);
 	}
 
@@ -102,7 +103,7 @@ public class OneStep extends JFrame implements Step {
 		clock.setVisible(true);
 		clock.setTime(30);
 		Sound = new BackSound("game1");
-		
+
 		setResizable(false);
 		setTitle("One Step");
 		setBounds(100, 100, frame_Width, frame_Height);
@@ -151,7 +152,7 @@ public class OneStep extends JFrame implements Step {
 				window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
 						JOptionPane.WARNING_MESSAGE);
 				if (window == JOptionPane.CANCEL_OPTION) {
-					
+
 				} else if (window == JOptionPane.OK_OPTION) {
 					setSound(false);
 					main.setSound(true);
@@ -203,8 +204,9 @@ public class OneStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_4);
 
 		user.setlifenum(3); // ÃÊ±â life °ª
+		hintnum = user.getHintnum();//
 		num = 0;
-		i=0;
+		i = 0;
 		showlife(user.lifenum(num), imageArray, user);
 
 		panel_1.getBtnA().addActionListener(new ActionListener() {
@@ -227,7 +229,6 @@ public class OneStep extends JFrame implements Step {
 				panel_3.setVisible(false);
 				i++;
 
-				
 			}
 
 		});
@@ -265,7 +266,7 @@ public class OneStep extends JFrame implements Step {
 				} else
 					num = -1;
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
-				
+
 				showlife(user.lifenum(num), imageArray, user);
 				clock.setTime(30);
 				panel_1.setVisible(false);
@@ -285,7 +286,6 @@ public class OneStep extends JFrame implements Step {
 
 		});
 
-
 		btnNewButton = new JButton("STORE");
 		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -295,88 +295,100 @@ public class OneStep extends JFrame implements Step {
 				clock.stop();
 			}
 		});
-		
-		hintclass=new Hint();
+
+		hintclass = new Hint();
 		JButton btnhint = new JButton("*HINT*");
 		btnhint.setForeground(Color.RED);
 		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
 		btnhint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				hintnum = user.getHintnum();
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
-					JOptionPane.showMessageDialog(null, hint+"\n*If you close the hint, you have to pay quiz again*","HINT", JOptionPane.INFORMATION_MESSAGE);
-					hintnum-=1;
-					System.out.println(hintnum);
+					JOptionPane.showMessageDialog(null, hint + "\n*If you close the hint, you have to pay quiz again*",
+							"HINT", JOptionPane.INFORMATION_MESSAGE);
+					hintnum -= 1;
+					user.setHintnum(hintnum);
 
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING", JOptionPane.WARNING_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
-		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-							.addGap(29)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnhint, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(29)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-							.addGap(55)
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
-							.addGap(65)
-							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(clock, GroupLayout.PREFERRED_SIZE, 348, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(39, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(29)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(55)
-							.addComponent(btnNewButton)
-							.addGap(37)
-							.addComponent(btnhint)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
-							.addContainerGap())
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(71)
-							.addComponent(clock, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
-		);
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(31).addGroup(gl_contentPane
+						.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+								.createSequentialGroup()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(panel_2, GroupLayout.PREFERRED_SIZE,
+												900, GroupLayout.PREFERRED_SIZE)
+										.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900,
+												GroupLayout.PREFERRED_SIZE))
+								.addGap(29)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(btnhint, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)))
+						.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
+								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(55)
+								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(65)
+								.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 153,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 167,
+										GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(clock, GroupLayout.PREFERRED_SIZE, 348, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap(39, Short.MAX_VALUE)));
+		gl_contentPane
+				.setVerticalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+								.createSequentialGroup().addGap(29).addGroup(
+										gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(panel_2, GroupLayout.PREFERRED_SIZE,
+														498, GroupLayout.PREFERRED_SIZE)
+												.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498,
+														GroupLayout.PREFERRED_SIZE)
+												.addGroup(gl_contentPane.createSequentialGroup().addGap(55)
+														.addComponent(btnNewButton).addGap(37).addComponent(btnhint)))
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+										.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+														.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE,
+																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 95,
+																GroupLayout.PREFERRED_SIZE))
+												.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+														GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+												.addComponent(lblNewLabel_1, Alignment.TRAILING,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+														Short.MAX_VALUE)
+												.addComponent(lblNewLabel_2, Alignment.TRAILING,
+														GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+										.addContainerGap())
+										.addGroup(gl_contentPane
+												.createSequentialGroup().addGap(71).addComponent(clock,
+														GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+												.addContainerGap()))));
 		contentPane.setLayout(gl_contentPane);
 	}
+
 	public int getCoin() {
 		// TODO Auto-generated method stub
 		return coin;

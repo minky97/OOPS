@@ -299,7 +299,7 @@ public class FourStep extends JFrame implements Step {
 		btnStore.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Store sto = new Store();
+				Store sto = new Store(user);
 				sto.setVisible(true);
 			}
 		});

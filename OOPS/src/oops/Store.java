@@ -47,6 +47,7 @@ public class Store extends JFrame{
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextArea textArea_2;
 
 	
 	public int getCoin() {
@@ -160,9 +161,16 @@ public class Store extends JFrame{
 					JOptionPane.showMessageDialog(null,"ERROR: Please input only positive integers.");
 				}
 				if(coin<timenum_buy*2) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
-				else JOptionPane.showMessageDialog(null,"You get"+timenum_buy*10+"seconds.");
-			timenum+=timenum_buy;
-			coin-=timenum_buy*2;
+				else {
+					JOptionPane.showMessageDialog(null,"You get"+timenum_buy*10+"seconds.");
+					timenum+=timenum_buy;
+					coin-=timenum_buy*2;
+					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
+							+ coin + " coin.");
+					textField_1.setText("");
+				}
+			
+			
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
@@ -251,9 +259,13 @@ public class Store extends JFrame{
 					JOptionPane.showMessageDialog(null,"ERROR: Please input only positive integers.");
 				}
 				if(coin<hintnum_buy*1) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
-				else JOptionPane.showMessageDialog(null,"You get"+hintnum_buy+"hint.");
+				else {JOptionPane.showMessageDialog(null,"You get"+hintnum_buy+"hint.");
 			hintnum+=hintnum_buy;
 			coin-=hintnum_buy*1;
+			textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
+					+ coin + " coin.");
+			textField_2.setText("");
+				}
 			}
 		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
@@ -409,9 +421,13 @@ public class Store extends JFrame{
 					JOptionPane.showMessageDialog(null,"ERROR: Please input only positive integers.");
 				}
 				if(coin<lifenum_buy*3) JOptionPane.showMessageDialog(null,"You don't have enough coin to buy it!!");
-				else JOptionPane.showMessageDialog(null,"You get"+lifenum_buy+"life.");
+				else {JOptionPane.showMessageDialog(null,"You get"+lifenum_buy+"life.");
 			lifenum+=lifenum_buy;
 			coin-=lifenum_buy*3;
+			textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
+					+ coin + " coin.");
+			textField.setText("");
+				}
 			}
 		});
 		

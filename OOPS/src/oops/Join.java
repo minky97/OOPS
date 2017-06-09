@@ -71,7 +71,7 @@ public class Join extends JFrame {
 		
 		setTitle("Sign");
 		setBounds(100, 100, frame_Width, frame_Height);
-
+		setResizable(false);
 		f1 = new Font("Times", Font.BOLD, 40);
 
 		image = new ImageIcon("join.png");

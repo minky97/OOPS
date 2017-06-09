@@ -43,7 +43,7 @@ public class Introduce extends JFrame {
       this.main = main_input;
       
       setBounds(100, 100, frame_Width, frame_Height);
-      
+      setResizable(false);
          image = new ImageIcon("introduce.png");
          
          contentPane = new JPanel() {

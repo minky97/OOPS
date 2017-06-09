@@ -46,7 +46,7 @@ public void setSound(boolean start){
       Sound.setEnd(true);
       setSound(Sound);
       setSound(true);
-      
+      setResizable(false);
       JPanel panel = new JPanel();
       panel.setForeground(Color.BLUE);
       panel.setBackground(Color.WHITE);

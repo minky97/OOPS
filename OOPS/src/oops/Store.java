@@ -65,9 +65,10 @@ public class Store extends JFrame{
 	 * Create the frame.
 	 */
 	public Store(User user) {
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setTitle("Store");
 		caution = "Do you really want to exit store?";
-		
+		setResizable(false);
 
 	    setBounds(100, 100, 957, 747);
 		contentPane = new JPanel();

@@ -153,4 +153,4 @@ public class BackSound implements LineListener {
 
 }
 
-// http://www.codejava.net/coding/how-to-play-back-audio-in-java-with-examples
+// Borrowed from http://www.codejava.net/coding/how-to-play-back-audio-in-java-with-examples

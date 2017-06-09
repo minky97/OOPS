@@ -93,6 +93,7 @@ public class FourStep extends JFrame implements Step {
 	 */
 
 	public FourStep(Main main_input, User user) {
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		this.main = main_input;
 		Sound = new BackSound("game3");
@@ -143,7 +144,7 @@ public class FourStep extends JFrame implements Step {
 				window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
 						JOptionPane.WARNING_MESSAGE);
 				if (window == JOptionPane.CANCEL_OPTION) {
-					remove(window);
+			
 				} else if (window == JOptionPane.OK_OPTION) {
 
 					setSound(false);

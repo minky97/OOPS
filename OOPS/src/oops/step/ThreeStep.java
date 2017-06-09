@@ -97,11 +97,12 @@ public class ThreeStep extends JFrame implements Step {
 	 * Create the frame.
 	 */
 	public ThreeStep(Main main_input, User user) {
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		this.main = main_input;
 		setTitle("Three Step");
 		setBounds(100, 100, frame_Width, frame_Height);
-
+		setResizable(false);
 		Sound = new BackSound("game3");
 		setSound(Sound);
 		setSound(true);
@@ -150,7 +151,7 @@ public class ThreeStep extends JFrame implements Step {
 				window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
 						JOptionPane.WARNING_MESSAGE);
 				if (window == JOptionPane.CANCEL_OPTION) {
-					remove(window);
+					
 				} else if (window == JOptionPane.OK_OPTION) {
 
 					main.setVisible(true);

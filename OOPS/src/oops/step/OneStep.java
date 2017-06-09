@@ -94,6 +94,7 @@ public class OneStep extends JFrame implements Step {
 	 * Create the frame.
 	 */
 	public OneStep(Main main_input, User user) {
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		this.main = main_input;
 
@@ -102,6 +103,7 @@ public class OneStep extends JFrame implements Step {
 		clock.setTime(30);
 		Sound = new BackSound("game1");
 		
+		setResizable(false);
 		setTitle("One Step");
 		setBounds(100, 100, frame_Width, frame_Height);
 		setSound(Sound);
@@ -149,7 +151,7 @@ public class OneStep extends JFrame implements Step {
 				window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
 						JOptionPane.WARNING_MESSAGE);
 				if (window == JOptionPane.CANCEL_OPTION) {
-					remove(window);
+					
 				} else if (window == JOptionPane.OK_OPTION) {
 					setSound(false);
 					main.setSound(true);

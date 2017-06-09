@@ -47,6 +47,7 @@ public class ThreeStep extends JFrame implements Step {
 	private ThreeStep_Question panel_3;// question 3
 	private ThreeStep_Question panel_4;// question 4
 	private String answer;
+	private String comboNum;
 	private int num;
 	private ImageIcon life;// life image
 	private FourStep fourstep;
@@ -211,10 +212,10 @@ public class ThreeStep extends JFrame implements Step {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				panel_1.setAnswer(answer);
-				num = Integer.parseInt(panel_1.getComboBox().getSelectedItem().toString());
-				panel_1.setNum(num);
+				comboNum = panel_1.getComboBox().getSelectedItem().toString();
+	            panel_1.setComboNum(comboNum);
 				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))
-						&& (panel_1.getNum() == (panel_1.getAnswer_num().get(0)))) {
+						&& (panel_1.getComboNum().equals(panel_1.getAnswer_num().get(0)))) {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
@@ -238,11 +239,11 @@ public class ThreeStep extends JFrame implements Step {
 				answer = panel_2.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				panel_2.setAnswer(answer);
-				num = Integer.parseInt(panel_2.getComboBox().getSelectedItem().toString().trim());
-				panel_2.setNum(num);
+				comboNum = panel_2.getComboBox().getSelectedItem().toString().trim();
+				panel_2.setComboNum(comboNum);
 
 				if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))
-						&& (panel_2.getNum() == (panel_2.getAnswer_num().get(1)))) {
+						&& (panel_2.getComboNum().equals(panel_2.getAnswer_num().get(1)))){
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
@@ -265,10 +266,10 @@ public class ThreeStep extends JFrame implements Step {
 				answer = panel_3.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				panel_3.setAnswer(answer);
-				num = Integer.parseInt(panel_3.getComboBox().getSelectedItem().toString().trim());
-				panel_3.setNum(num);
+				comboNum = panel_3.getComboBox().getSelectedItem().toString().trim();
+				panel_3.setComboNum(comboNum);
 				if (panel_3.getAnswer().equals(panel_3.getAnswer_select().get(2))
-						&& (panel_3.getNum() == (panel_3.getAnswer_num().get(2)))) {
+						&& (panel_3.getComboNum().equals(panel_3.getAnswer_num().get(2)))) {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;
@@ -291,10 +292,10 @@ public class ThreeStep extends JFrame implements Step {
 				answer = panel_4.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				panel_4.setAnswer(answer);
-				num = Integer.parseInt(panel_4.getComboBox().getSelectedItem().toString().trim());
-				panel_4.setNum(num);
+				comboNum = panel_4.getComboBox().getSelectedItem().toString().trim();
+				panel_4.setComboNum(comboNum);
 				if (panel_4.getAnswer().equals(panel_4.getAnswer_select().get(3))
-						&& (panel_4.getNum() == (panel_4.getAnswer_num().get(3)))) {
+						&& (panel_4.getComboNum().equals(panel_4.getAnswer_num().get(3)))) {
 					score = score + 5;
 					num = 0;
 					coin = coin + 1;

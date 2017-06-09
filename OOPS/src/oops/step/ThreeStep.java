@@ -57,10 +57,6 @@ public class ThreeStep extends JFrame implements Step {
 	private int hintnum;
 	private int i;
 	private JButton btnhint;
-
-	/**
-	 * Launch the application.
-	 */
 	@Override
 	public int getScore() {
 		return score;

@@ -67,7 +67,7 @@ public class Login extends JFrame {
 	}
 
 	public String getId() {
-		return id;
+		return id.toString() ;
 	}
 
 	public boolean check(String id, String pw, File file_id, File file_pw) throws IOException {// check

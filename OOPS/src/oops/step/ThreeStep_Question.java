@@ -39,6 +39,7 @@ public class ThreeStep_Question extends JPanel {
    private File q1;
    private String a;
    private String answer;
+   private String comboNum;
    private int num;
    private File q;
    private File q2;
@@ -46,7 +47,7 @@ public class ThreeStep_Question extends JPanel {
    private File q4;
    
    private ArrayList<String> answer_select;
-   private ArrayList<Integer> answer_num;
+   private ArrayList<String> answer_num;
    private Font f1;
    private JTextField textField_1;
    private JComboBox comboBox;
@@ -63,25 +64,25 @@ public class ThreeStep_Question extends JPanel {
    }
 
 
-   public int getNum() {
-      return num;
+   public String getComboNum() {
+      return comboNum;
    }
 
-   public void setNum(int num) {
-      if(num<0)
+   public void setComboNum(String comboNum) {
+      if(comboNum==null)
          System.out.println("error");
-      this.num = num;
+      this.comboNum = comboNum;
    }
 
    public void setTextField_1(JTextField textField_1) {
       this.textField_1 = textField_1;
    }
 
-   public ArrayList<Integer> getAnswer_num() {
+   public ArrayList<String> getAnswer_num() {
       return answer_num;
    }
 
-   public void setAnswer_num(ArrayList<Integer> answer_num) {
+   public void setAnswer_num(ArrayList<String> answer_num) {
       if(answer_select==null)
          System.out.println("error");
       this.answer_num = answer_num;
@@ -146,8 +147,8 @@ public class ThreeStep_Question extends JPanel {
       comboBox = new JComboBox();
       comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));   
       
-      num = Integer.parseInt(comboBox.getSelectedItem().toString().trim());
-      setNum(num);
+      comboNum = comboBox.getSelectedItem().toString().trim();
+      setComboNum(comboNum);
       
       
 
@@ -198,11 +199,11 @@ public class ThreeStep_Question extends JPanel {
       answer_select.add("fos");
       setAnswer_select(answer_select);
       
-      answer_num = new ArrayList<Integer>();
-      answer_num.add(3);
-      answer_num.add(3);
-      answer_num.add(1);
-      answer_num.add(2);
+      answer_num = new ArrayList<String>();
+      answer_num.add("3");
+      answer_num.add("3");
+      answer_num.add("1");
+      answer_num.add("2");
       setAnswer_num(answer_num);
       
    
@@ -267,5 +268,4 @@ public class ThreeStep_Question extends JPanel {
       textArea_1.setEditable(false);
 
    }
-
 }

@@ -4,10 +4,10 @@
 2-1 if you create object -> public objectname (){}
 2-2 _ n _ _ r _ _ a _ _ e
 2-3 _ o _ _ m _ _ _ h _ _ m
-3-1
-3-2
-3-3
-3-4
+3-1 ???:can add strings
+3-2 add \ somewhere
+3-3 you consider about public void type and public int type
+3-4 ObjectOutputStream convert object into bytes
 4-1 Animal class has makeNoise method and eat method
 4-2 you must distinguish i++ and ++i.
 4-3 you have to use '=', if you want to compare string address

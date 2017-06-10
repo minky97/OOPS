@@ -226,7 +226,7 @@ public class ThreeStep extends Step {
 		num = 0;
 		i=7;
 		showlife(user.lifenum(num), imageArray, user);
-
+coin=user.getCoin(0);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();

@@ -90,7 +90,7 @@ public class ThreeStep extends Step {
 		if (num <= 0) {
 			dispose();
 			setSound(false);
-			End end = new End(user);
+			End end = new End(user,main);
 			end.setVisible(true);
 		} else {
 
@@ -118,7 +118,7 @@ public class ThreeStep extends Step {
 		setSound(Sound);
 		setSound(true);
 
-		clock = new Clock(user);
+		clock = new Clock(user,main);
 		clock.setVisible(true);
 		clock.setTime(35);
 		clock.setStep(this);

@@ -86,7 +86,7 @@ public class TwoStep extends Step {
 		if (num <= 0) {
 			dispose();
 			setSound(false);
-			End end = new End(user);
+			End end = new End(user,main);
 			end.setVisible(true);
 		} else {
 
@@ -186,7 +186,7 @@ public class TwoStep extends Step {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		clock = new Clock(user);
+		clock = new Clock(user,main);
 		clock.setVisible(true);
 		clock.setTime(30);
 		clock.setStep(this);	

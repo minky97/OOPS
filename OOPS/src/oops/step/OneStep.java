@@ -72,7 +72,7 @@ public class OneStep extends Step {
 		if (num <= 0) {// life==0 , end
 			dispose();
 			setSound(false);
-			End end = new End(user);
+			End end = new End(user,main);
 			end.setVisible(true);
 
 		} else {
@@ -99,7 +99,7 @@ public class OneStep extends Step {
 		this.mine = this;
 		this.main = main_input;
 
-		clock = new Clock(user);
+		clock = new Clock(user,main);
 		clock.setVisible(true);
 		clock.setTime(30);
 		clock.setStep(this);
@@ -237,7 +237,7 @@ public class OneStep extends Step {
 				if (clock.getTime() == 0) {
 					dispose();
 					setSound(false);
-					End end = new End(user);
+					End end = new End(user,main);
 					end.setVisible(true);
 				}
 				// timefinish(user, mine.getClock().getTime());

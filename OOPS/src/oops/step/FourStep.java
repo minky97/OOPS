@@ -79,7 +79,7 @@ public class FourStep extends Step {
 		if (num <= 0) {
 			dispose();
 			setSound(false);
-			End end = new End(user);
+			End end = new End(user,main);
 			end.setVisible(true);
 		} else {
 
@@ -106,7 +106,7 @@ public class FourStep extends Step {
 		setBounds(100, 100, frame_Width, frame_Height);
 		setSound(Sound);
 		setSound(true);
-		clock = new Clock(user);
+		clock = new Clock(user,main);
 		clock.setVisible(true);
 		clock.setTime(35);
 		clock.setStep(this);
@@ -312,7 +312,7 @@ public class FourStep extends Step {
 				if (user.lifenum(0) != 0) {
 					clock.stop();
 					clock.setStep(null);
-					End end = new End(user);
+					End end = new End(user,main);
 					end.setVisible(true);
 				}
 

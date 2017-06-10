@@ -26,7 +26,7 @@ public class Clock extends JPanel implements ActionListener {
 	Timer timer = new Timer(1000,this);
 	int time;
 	private Step step;
-
+private Main main;
 	
 	public int getTime() {
 		return time;
@@ -43,9 +43,9 @@ public class Clock extends JPanel implements ActionListener {
 	
 	
 	
-	public Clock(User user) {
+	public Clock(User user,Main main_input) {
 		this.user=user;
-		
+		this.main=main_input;
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -85,7 +85,7 @@ public class Clock extends JPanel implements ActionListener {
 		}
 		if(time==0 &&step!=null){
 			
-			End end = new End(user);
+			End end = new End(user,main);
 			end.setVisible(true);
 			step.dispose();
 			step.setSound(false);

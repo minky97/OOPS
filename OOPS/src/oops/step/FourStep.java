@@ -106,7 +106,7 @@ public class FourStep extends JFrame implements Step {
 		setBounds(100, 100, frame_Width, frame_Height);
 		setSound(Sound);
 		setSound(true);
-		clock = new Clock();
+		clock = new Clock(user);
 		clock.setVisible(true);
 		clock.setTime(35);
 		

@@ -99,9 +99,10 @@ public class OneStep extends JFrame implements Step {
 		this.mine = this;
 		this.main = main_input;
 
-		clock = new Clock();
+		clock = new Clock(user);
 		clock.setVisible(true);
 		clock.setTime(30);
+		
 
 		Sound = new BackSound("game1");
 

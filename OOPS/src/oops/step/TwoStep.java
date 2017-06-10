@@ -374,10 +374,10 @@ public class TwoStep extends JFrame implements Step {
 			}
 		});
 		
-		clock = new Clock();
+		clock = new Clock(user);
 		clock.setVisible(true);
 		clock.setTime(30);
-		
+				
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

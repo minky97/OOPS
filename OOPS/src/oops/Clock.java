@@ -20,6 +20,7 @@ import javax.swing.GroupLayout.Alignment;
 
 public class Clock extends JPanel implements ActionListener {
 
+	private User user;
 	public int getTime() {
 		return time;
 	}
@@ -32,8 +33,11 @@ public class Clock extends JPanel implements ActionListener {
 	
 	Timer timer = new Timer(1000,this);
 	int time;
+
+	private boolean check=false;
 	
-	public Clock() {
+	public Clock(User user) {
+		this.user=user;
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -72,8 +76,18 @@ public class Clock extends JPanel implements ActionListener {
 			}
 			repaint();
 		}
+		if(time==0){
+			setend(true);
+			End end = new End(user);
+			end.setVisible(true);
+		}
 	}
-	
+	public void setend(boolean check){
+		this.check=check;
+	}
+	public boolean getend(){
+		return check;
+	}
 	public void stop()
 	{
 		timer.stop();

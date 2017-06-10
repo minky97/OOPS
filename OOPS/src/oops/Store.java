@@ -170,13 +170,13 @@ public class Store extends JFrame {
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + timenum_buy * 10 + " seconds.");
 					timenum += timenum_buy * 10;
-					coin = -(timenum_buy * 2);
-					coin = user.getCoin(coin);
+					coin -=(timenum_buy * 2);
+					user.setCoin(coin);
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
-							+ " hint\r\n" + user.getCoin(0) + " coin.");
+							+ " hint\r\n" + coin + " coin.");
 					textField_1.setText("");
 					clock.setTime(timenum);
-					
+						
 				}
 
 			}
@@ -271,12 +271,13 @@ public class Store extends JFrame {
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + hintnum_buy + " hint.");
 					hintnum += hintnum_buy;
-					coin = -(hintnum_buy * 1);
-					coin = user.getCoin(coin);
+					coin -=(hintnum_buy * 1);
+					user.setCoin(coin);
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
-							+ " hint\r\n" + user.getCoin(0) + " coin.");
+							+ " hint\r\n" + coin + " coin.");
 					textField_2.setText("");
 					user.setHintnum(hintnum);
+					
 
 				}
 			}
@@ -424,12 +425,13 @@ public class Store extends JFrame {
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + lifenum_buy + " life.");
 					lifenum += lifenum_buy;
-					coin = -(lifenum_buy * 3);
-					coin = user.getCoin(coin);
+					coin -= lifenum_buy * 3;
+					user.setCoin(coin);
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
-							+ " hint\r\n" + user.getCoin(0) + " coin.");
+							+ " hint\r\n" + coin + " coin.");
 					textField.setText("");
 					user.setlifenum(lifenum);
+				
 
 				}
 			}

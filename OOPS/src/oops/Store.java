@@ -83,7 +83,7 @@ public class Store extends JFrame {
 		panel.setBackground(Color.WHITE);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 138, 53, 0 };
-		gbl_panel.rowHeights = new int[] { 56, 188, 104, 51, 92, 27, 29, 0, 0 };
+		gbl_panel.rowHeights = new int[] { 56, 178, 104, 57, 85, 27, 29, 0, 0 };
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
@@ -107,17 +107,17 @@ public class Store extends JFrame {
 		gbc_label_1.gridy = 1;
 		panel.add(label_1, gbc_label_1);
 
-		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		textArea.setText("you can get 10 seconds.\r\nThe time gives you more\r\ntime to solve question.");
-		textArea.setEditable(false);
-		GridBagConstraints gbc_textArea = new GridBagConstraints();
-		gbc_textArea.anchor = GridBagConstraints.NORTH;
-		gbc_textArea.gridwidth = 2;
-		gbc_textArea.insets = new Insets(0, 0, 5, 0);
-		gbc_textArea.gridx = 0;
-		gbc_textArea.gridy = 2;
-		panel.add(textArea, gbc_textArea);
+		JTextArea txtrYouCanGet_1 = new JTextArea();
+		txtrYouCanGet_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		txtrYouCanGet_1.setText("you can get 10 seconds.\r\nThe time gives you more\r\ntime to solve question.\r\nAlthough you have enough\r\nlife, you game over when \r\nyour time is over.");
+		txtrYouCanGet_1.setEditable(false);
+		GridBagConstraints gbc_txtrYouCanGet_1 = new GridBagConstraints();
+		gbc_txtrYouCanGet_1.anchor = GridBagConstraints.NORTH;
+		gbc_txtrYouCanGet_1.gridwidth = 2;
+		gbc_txtrYouCanGet_1.insets = new Insets(0, 0, 5, 0);
+		gbc_txtrYouCanGet_1.gridx = 0;
+		gbc_txtrYouCanGet_1.gridy = 2;
+		panel.add(txtrYouCanGet_1, gbc_txtrYouCanGet_1);
 		coin = user.getCoin(0);
 		hintnum = user.getHintnum();
 		lifenum = user.lifenum(lifenum);
@@ -192,7 +192,7 @@ public class Store extends JFrame {
 		panel_1.setBackground(Color.WHITE);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 138, 53, 0 };
-		gbl_panel_1.rowHeights = new int[] { 56, 188, 104, 51, 92, 27, 29, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 56, 179, 104, 75, 84, 27, 29, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
@@ -216,17 +216,17 @@ public class Store extends JFrame {
 		gbc_label_5.gridy = 1;
 		panel_1.add(label_5, gbc_label_5);
 
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		textArea_1.setText("you can get 1 hint.\r\nThe hint helps you to\r\nsolve question easier.");
-		textArea_1.setEditable(false);
-		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
-		gbc_textArea_1.anchor = GridBagConstraints.NORTH;
-		gbc_textArea_1.gridwidth = 2;
-		gbc_textArea_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textArea_1.gridx = 0;
-		gbc_textArea_1.gridy = 2;
-		panel_1.add(textArea_1, gbc_textArea_1);
+		JTextArea txtrYouCanGet_2 = new JTextArea();
+		txtrYouCanGet_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		txtrYouCanGet_2.setText("you can get 1 hint.\r\nThe hint helps you to\r\nsolve question easier.\r\nyou use hint item only\r\nonce in same question.");
+		txtrYouCanGet_2.setEditable(false);
+		GridBagConstraints gbc_txtrYouCanGet_2 = new GridBagConstraints();
+		gbc_txtrYouCanGet_2.anchor = GridBagConstraints.NORTH;
+		gbc_txtrYouCanGet_2.gridwidth = 2;
+		gbc_txtrYouCanGet_2.insets = new Insets(0, 0, 5, 0);
+		gbc_txtrYouCanGet_2.gridx = 0;
+		gbc_txtrYouCanGet_2.gridy = 2;
+		panel_1.add(txtrYouCanGet_2, gbc_txtrYouCanGet_2);
 
 		JLabel label_6 = new JLabel("");
 		label_6.setIcon(new ImageIcon("coin_store.png"));
@@ -292,29 +292,35 @@ public class Store extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addComponent(panel_life, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
-				.createSequentialGroup()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(33)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 630,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 630,
-												GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(panel_life,
-								GroupLayout.PREFERRED_SIZE, 615, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(panel_2,
-								GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)))
-				.addContainerGap()));
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel_life, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(33)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 630, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 630, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(24)
+							.addComponent(panel_life, GroupLayout.PREFERRED_SIZE, 615, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
+		);
 
 		JLabel label_3 = new JLabel("");
 		label_3.setIcon(new ImageIcon("store_rabbit.png"));
@@ -340,102 +346,6 @@ public class Store extends JFrame {
 						.addPreferredGap(ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
 						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)));
 		panel_2.setLayout(gl_panel_2);
-		GridBagLayout gbl_panel_life = new GridBagLayout();
-		gbl_panel_life.rowHeights = new int[] { 56, 188, 104, 51, 92, 27, 29, 0 };
-		gbl_panel_life.columnWidths = new int[] { 138, 53, 0 };
-		gbl_panel_life.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_life.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-		panel_life.setLayout(gbl_panel_life);
-
-		textField = new JTextField();
-		textField.setColumns(10);
-
-		JLabel lblLife = new JLabel("Life");
-		lblLife.setFont(f1);
-		GridBagConstraints gbc_lblLife = new GridBagConstraints();
-		gbc_lblLife.anchor = GridBagConstraints.NORTHEAST;
-		gbc_lblLife.insets = new Insets(0, 0, 5, 5);
-		gbc_lblLife.gridx = 0;
-		gbc_lblLife.gridy = 0;
-		panel_life.add(lblLife, gbc_lblLife);
-
-		JLabel life_image = new JLabel("");
-		life_image.setIcon(new ImageIcon("life_store.png"));
-		GridBagConstraints gbc_life_image = new GridBagConstraints();
-		gbc_life_image.fill = GridBagConstraints.BOTH;
-		gbc_life_image.insets = new Insets(0, 0, 5, 0);
-		gbc_life_image.gridwidth = 2;
-		gbc_life_image.gridx = 0;
-		gbc_life_image.gridy = 1;
-		panel_life.add(life_image, gbc_life_image);
-
-		JTextArea txtrYouCanGet = new JTextArea();
-		txtrYouCanGet.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		txtrYouCanGet
-				.setText("you can get 1 life.\r\nThe life gives you a \r\none more chance to\r\nsolve question.\r\n");
-		txtrYouCanGet.setEditable(false);
-		GridBagConstraints gbc_txtrYouCanGet = new GridBagConstraints();
-		gbc_txtrYouCanGet.anchor = GridBagConstraints.NORTH;
-		gbc_txtrYouCanGet.insets = new Insets(0, 0, 5, 0);
-		gbc_txtrYouCanGet.gridwidth = 2;
-		gbc_txtrYouCanGet.gridx = 0;
-		gbc_txtrYouCanGet.gridy = 2;
-		panel_life.add(txtrYouCanGet, gbc_txtrYouCanGet);
-
-		JLabel label1_coin = new JLabel("");
-		label1_coin.setIcon(new ImageIcon("coin_store.png"));
-		GridBagConstraints gbc_label1_coin = new GridBagConstraints();
-		gbc_label1_coin.fill = GridBagConstraints.BOTH;
-		gbc_label1_coin.insets = new Insets(0, 0, 5, 5);
-		gbc_label1_coin.gridx = 0;
-		gbc_label1_coin.gridy = 4;
-		panel_life.add(label1_coin, gbc_label1_coin);
-
-		JLabel lblNewLabel = new JLabel("x3");
-		lblNewLabel.setFont(f1);
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNewLabel.gridx = 1;
-		gbc_lblNewLabel.gridy = 4;
-		panel_life.add(lblNewLabel, gbc_lblNewLabel);
-		textField.setColumns(10);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.anchor = GridBagConstraints.NORTH;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.gridwidth = 2;
-		gbc_textField.gridx = 0;
-		gbc_textField.gridy = 5;
-		panel_life.add(textField, gbc_textField);
-
-		JButton btnBuy = new JButton("BUY");
-		btnBuy.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lifenum_buy = 0;
-				try {
-					String s = textField.getText();
-					lifenum_buy = Integer.parseInt(s);
-				} catch (NumberFormatException n) {
-					JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
-				}
-				if (coin < lifenum_buy * 3)
-					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
-				else if (lifenum + lifenum_buy > 5)
-					JOptionPane.showMessageDialog(null, "You can't have more than 5 life!!");
-				else {
-					JOptionPane.showMessageDialog(null, "You get " + lifenum_buy + " life.");
-					lifenum += lifenum_buy;
-					coin -= lifenum_buy * 3;
-					user.setCoin(coin);
-					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
-							+ " hint\r\n" + coin + " coin.");
-					textField.setText("");
-					user.setlifenum(lifenum);
-				
-
-				}
-			}
-		});
 
 		this.addWindowListener(new WindowListener() {
 
@@ -487,12 +397,107 @@ public class Store extends JFrame {
 
 			}
 		});
-		GridBagConstraints gbc_btnBuy = new GridBagConstraints();
-		gbc_btnBuy.anchor = GridBagConstraints.NORTHEAST;
-		gbc_btnBuy.insets = new Insets(0, 0, 0, 5);
-		gbc_btnBuy.gridx = 0;
-		gbc_btnBuy.gridy = 6;
-		panel_life.add(btnBuy, gbc_btnBuy);
+				GridBagLayout gbl_panel_life = new GridBagLayout();
+				gbl_panel_life.columnWidths = new int[]{128, 53, 0};
+				gbl_panel_life.rowHeights = new int[]{70, 178, 154, 18, 82, 27, 29, 0};
+				gbl_panel_life.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+				gbl_panel_life.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+				panel_life.setLayout(gbl_panel_life);
+								
+										JLabel lblLife = new JLabel("Life");
+										lblLife.setFont(f1);
+										GridBagConstraints gbc_lblLife = new GridBagConstraints();
+										gbc_lblLife.anchor = GridBagConstraints.SOUTHEAST;
+										gbc_lblLife.insets = new Insets(0, 0, 5, 5);
+										gbc_lblLife.gridx = 0;
+										gbc_lblLife.gridy = 0;
+										panel_life.add(lblLife, gbc_lblLife);
+								
+										JLabel life_image = new JLabel("");
+										life_image.setIcon(new ImageIcon("life_store.png"));
+										GridBagConstraints gbc_life_image = new GridBagConstraints();
+										gbc_life_image.fill = GridBagConstraints.BOTH;
+										gbc_life_image.insets = new Insets(0, 0, 5, 0);
+										gbc_life_image.gridwidth = 2;
+										gbc_life_image.gridx = 0;
+										gbc_life_image.gridy = 1;
+										panel_life.add(life_image, gbc_life_image);
+						
+								JTextArea txtrYouCanGet = new JTextArea();
+								txtrYouCanGet.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+								txtrYouCanGet
+										.setText("you can get 1 life. The \r\nlife gives you a one more \r\nchance to solve question. \r\nBut you can't have more \r\nthan 5 life.And life must \r\napply next question.\r\n");
+								txtrYouCanGet.setEditable(false);
+								GridBagConstraints gbc_txtrYouCanGet = new GridBagConstraints();
+								gbc_txtrYouCanGet.anchor = GridBagConstraints.NORTH;
+								gbc_txtrYouCanGet.insets = new Insets(0, 0, 5, 0);
+								gbc_txtrYouCanGet.gridwidth = 2;
+								gbc_txtrYouCanGet.gridx = 0;
+								gbc_txtrYouCanGet.gridy = 2;
+								panel_life.add(txtrYouCanGet, gbc_txtrYouCanGet);
+						
+								JLabel label1_coin = new JLabel("");
+								label1_coin.setIcon(new ImageIcon("coin_store.png"));
+								GridBagConstraints gbc_label1_coin = new GridBagConstraints();
+								gbc_label1_coin.fill = GridBagConstraints.BOTH;
+								gbc_label1_coin.insets = new Insets(0, 0, 5, 5);
+								gbc_label1_coin.gridx = 0;
+								gbc_label1_coin.gridy = 4;
+								panel_life.add(label1_coin, gbc_label1_coin);
+						
+								JLabel lblNewLabel = new JLabel("x3");
+								lblNewLabel.setFont(f1);
+								GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+								gbc_lblNewLabel.fill = GridBagConstraints.HORIZONTAL;
+								gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+								gbc_lblNewLabel.gridx = 1;
+								gbc_lblNewLabel.gridy = 4;
+								panel_life.add(lblNewLabel, gbc_lblNewLabel);
+				
+						textField = new JTextField();
+						textField.setColumns(10);
+						GridBagConstraints gbc_textField = new GridBagConstraints();
+						gbc_textField.anchor = GridBagConstraints.NORTH;
+						gbc_textField.insets = new Insets(0, 0, 5, 0);
+						gbc_textField.gridwidth = 2;
+						gbc_textField.gridx = 0;
+						gbc_textField.gridy = 5;
+						panel_life.add(textField, gbc_textField);
+				
+						JButton btnBuy = new JButton("BUY");
+						btnBuy.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								lifenum_buy = 0;
+								try {
+									String s = textField.getText();
+									lifenum_buy = Integer.parseInt(s);
+								} catch (NumberFormatException n) {
+									JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
+								}
+								if (coin < lifenum_buy * 3)
+									JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
+								else if (lifenum + lifenum_buy > 5)
+									JOptionPane.showMessageDialog(null, "You can't have more than 5 life!!");
+								else {
+									JOptionPane.showMessageDialog(null, "You get " + lifenum_buy + " life.");
+									lifenum += lifenum_buy;
+									coin -= lifenum_buy * 3;
+									user.setCoin(coin);
+									textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
+											+ " hint\r\n" + coin + " coin.");
+									textField.setText("");
+									user.setlifenum(lifenum);
+								
+
+								}
+							}
+						});
+						GridBagConstraints gbc_btnBuy = new GridBagConstraints();
+						gbc_btnBuy.anchor = GridBagConstraints.NORTHEAST;
+						gbc_btnBuy.insets = new Insets(0, 0, 0, 5);
+						gbc_btnBuy.gridx = 0;
+						gbc_btnBuy.gridy = 6;
+						panel_life.add(btnBuy, gbc_btnBuy);
 		contentPane.setLayout(gl_contentPane);
 
 	}

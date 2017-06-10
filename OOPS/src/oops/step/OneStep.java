@@ -29,7 +29,7 @@ import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
-public class OneStep extends JFrame implements Step {
+public class OneStep extends Step {
 
 	private JPanel contentPane;
 	private String caution;
@@ -102,6 +102,7 @@ public class OneStep extends JFrame implements Step {
 		clock = new Clock(user);
 		clock.setVisible(true);
 		clock.setTime(30);
+		clock.setStep(this);
 		
 
 		Sound = new BackSound("game1");

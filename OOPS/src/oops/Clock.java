@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import oops.step.OneStep;
+import oops.step.Step;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -21,6 +22,12 @@ import javax.swing.GroupLayout.Alignment;
 public class Clock extends JPanel implements ActionListener {
 
 	private User user;
+	private ImageIcon icon = new ImageIcon("time.png");
+	Timer timer = new Timer(1000,this);
+	int time;
+	private Step step;
+
+	
 	public int getTime() {
 		return time;
 	}
@@ -28,13 +35,13 @@ public class Clock extends JPanel implements ActionListener {
 	public void setTime(int time) {
 		this.time = time;
 	}
+	public void setStep(Step step){
+		this.step=step;
+	}
 
-	private ImageIcon icon = new ImageIcon("time.png");
 	
-	Timer timer = new Timer(1000,this);
-	int time;
-
-	private boolean check=false;
+	
+	
 	
 	public Clock(User user) {
 		this.user=user;
@@ -77,17 +84,14 @@ public class Clock extends JPanel implements ActionListener {
 			repaint();
 		}
 		if(time==0){
-			setend(true);
+			
 			End end = new End(user);
 			end.setVisible(true);
+			step.dispose();
+		
 		}
 	}
-	public void setend(boolean check){
-		this.check=check;
-	}
-	public boolean getend(){
-		return check;
-	}
+	
 	public void stop()
 	{
 		timer.stop();

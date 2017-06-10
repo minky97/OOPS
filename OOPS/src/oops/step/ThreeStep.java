@@ -31,7 +31,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class ThreeStep extends JFrame implements Step {
+public class ThreeStep extends Step {
 
 	private JPanel contentPane;
 	private String caution;
@@ -386,7 +386,7 @@ public class ThreeStep extends JFrame implements Step {
 		clock = new Clock(user);
 		clock.setVisible(true);
 		clock.setTime(35);
-	
+		clock.setStep(this);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

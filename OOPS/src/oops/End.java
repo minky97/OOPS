@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -27,6 +29,7 @@ public class End extends JFrame {
 	final int frame_Height = 900;
 	final int frame_Width = 1300;
 private BackSound Sound;
+
   
 public void setSound(BackSound sound){
     this.Sound=sound;
@@ -35,6 +38,7 @@ public void setSound(BackSound sound){
 public void setSound(boolean start){
 	Sound.play(start);
 }
+
 
    public End(User user) {
 

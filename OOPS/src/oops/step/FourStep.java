@@ -30,7 +30,7 @@ import java.awt.Font;
 
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class FourStep extends JFrame implements Step {
+public class FourStep extends Step {
 
 	private JPanel contentPane;
 	private String caution;
@@ -109,7 +109,7 @@ public class FourStep extends JFrame implements Step {
 		clock = new Clock(user);
 		clock.setVisible(true);
 		clock.setTime(35);
-		
+		clock.setStep(this);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step4.png");
 

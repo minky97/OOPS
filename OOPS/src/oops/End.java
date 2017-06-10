@@ -101,6 +101,7 @@ public class End extends JFrame {
 				setSound(false);
 				dispose();
 				main.setVisible(true);
+				main.setSound(true);
 			}
 
 			@Override

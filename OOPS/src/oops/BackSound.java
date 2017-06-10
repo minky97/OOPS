@@ -29,13 +29,13 @@ public class BackSound implements LineListener {
 	 */
 	boolean playCompleted;
 	private String music;
-	private DataLine.Info info;
+	private DataLine.Info info;           //데이터의 추가형식 (ex.오디오형식)
 	private File audioFile;
 	private AudioInputStream audioStream;
-	private AudioFormat format;
-	private Clip audioClip;
-	private String store;
-	private boolean end=false;
+	private AudioFormat format;           //사운드 stream내에서 데이터 특정의 배열 지정
+	private Clip audioClip;               //start,end,loop...
+	private String store;                 //음악 저장 경로
+	private boolean end=false;            //ending에선 음악 반복 x
 
 	/**
 	 * Play a given audio file.
@@ -72,7 +72,7 @@ public class BackSound implements LineListener {
 
 			if (check) {
 				 if (!end) {
-				 audioClip.loop(10);
+				 audioClip.loop(100);
 				 }
 				audioClip.start(); // 노래 나오게 하는 것
 			}

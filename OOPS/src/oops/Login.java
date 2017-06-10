@@ -77,13 +77,13 @@ public class Login extends JFrame {
 			BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
 			BufferedReader rd_pw = new BufferedReader(new FileReader(file_pw));
 			String a;
-			while ((a = rd_id.readLine()) != null) {
+			while ((a = rd_id.readLine()) != null) {//Arraylist input from file.
 				userlist_id.add(a);
 			}
 			while ((a = rd_pw.readLine()) != null) {
 				userlist_pw.add(a);
 			}
-			if (userlist_id.contains(id)) {
+			if (userlist_id.contains(id)) {//check existing user information(just id)
 				if (pw.equals(userlist_pw.get(userlist_id.indexOf(id)))) {
 					index = userlist_id.indexOf(id);
 					return true;

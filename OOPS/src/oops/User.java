@@ -52,18 +52,15 @@ public class User {
       return score_int;
    }
 
-   /*public int coin() {
-      int coin_int = onestep.getCoin();
-      
-      if (twostep != null)
-         coin_int = coin_int + twostep.getCoin();
-      if (threestep != null)
-         coin_int = coin_int + threestep.getCoin();
-      if (fourstep != null)
-         coin_int = coin_int + fourstep.getCoin();
-      
-      return coin_int;
-   } */
+
+   public void setCoin(int co) {
+	      this.coin = co;
+	   }
+   public int getCoin(int num){
+	   this.coin=this.coin+num;
+	   return coin;
+   }
+   
 
    public int getHintnum() {
       return hintnum;
@@ -87,12 +84,7 @@ public class User {
       return lifenum;
    }
    
-   public void setCoin(int co) {
-      this.coin = co;
-   }
-   public int getCoin(int co) {
-      coin = coin + co;
-      return coin;
-   }
+   
+   
 
 }

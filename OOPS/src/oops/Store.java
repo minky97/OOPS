@@ -53,9 +53,9 @@ public class Store extends JFrame {
 	private JTextArea textArea_2;
     private Step step;
     private Clock clock;
-	public int getCoin() {
-		return coin;
-	}
+//	public int getCoin() {
+//		return coin;
+//	}
 
 
     public void clock_m(Clock clock)
@@ -63,9 +63,9 @@ public class Store extends JFrame {
     	this.clock = clock;
     }
 
-	public void setCoin(int coin) {
-		this.coin = coin;
-	}
+//	public void setCoin(int coin) {
+//		this.coin = coin;
+//	}
 
 	/**
 	 * Create the frame.
@@ -127,7 +127,7 @@ public class Store extends JFrame {
 		gbc_textArea.gridx = 0;
 		gbc_textArea.gridy = 2;
 		panel.add(textArea, gbc_textArea);
-		coin = user.getCoin(co);
+		coin = user.getCoin(0);
 		hintnum = user.getHintnum();
 		lifenum = user.lifenum(lifenum);
 		timenum = clock.getTime();
@@ -184,7 +184,7 @@ public class Store extends JFrame {
 							+ " hint\r\n" + coin + " coin.");
 					textField_1.setText("");
 					clock.setTime(timenum);
-					user.setCoin(coin);
+					user.getCoin(-coin);
 				}
 
 			}
@@ -284,7 +284,7 @@ public class Store extends JFrame {
 							+ " hint\r\n" + coin + " coin.");
 					textField_2.setText("");
 					user.setHintnum(hintnum);
-					user.setCoin(coin);
+					user.getCoin(-coin);
 				}
 			}
 		});
@@ -437,7 +437,7 @@ public class Store extends JFrame {
 							+ " hint\r\n" + coin + " coin.");
 					textField.setText("");
 					user.setlifenum(lifenum);
-					user.setCoin(coin);
+					user.getCoin(-coin);
 				}
 			}
 		});

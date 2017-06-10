@@ -55,11 +55,11 @@ public void setSound(boolean start){
       JLabel lblOopsTheEnd = new JLabel("OOPS! THE END!");
       lblOopsTheEnd.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 99));
 
-     id=user.user();
+     id=user.user(); // user id
       JLabel userScore = new JLabel("User: "+id);
       userScore.setForeground(Color.BLUE);
       userScore.setFont(new Font("Arial Black", Font.BOLD, 40));
-      score=user.score();
+      score=user.score(); // user's score
       JLabel userId = new JLabel("Score: "+score);
       userId.setForeground(Color.RED);
       userId.setFont(new Font("Arial Black", Font.PLAIN, 40));

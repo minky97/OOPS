@@ -2,7 +2,7 @@ package oops;
 
 import javax.swing.JFrame;
 
-public class OOPSTest  {
+public class OOPSTest  {//화면 전환 ( main <-> start,introduce)
 
 	private Main main;
 	private Start start;

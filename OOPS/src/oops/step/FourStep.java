@@ -99,7 +99,7 @@ public class FourStep extends JFrame implements Step {
 
 	public FourStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
+this.mine=mine;
 		this.main = main_input;
 		Sound = new BackSound("game3");
 		setTitle("Four Step");
@@ -219,7 +219,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 10;
 					num = 0;
-					coin = coin + 1;
+					coin=user.getCoin(1);
 					
 				} else
 					num = -1;
@@ -245,7 +245,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 10;
 					num = 0;
-					coin = coin + 1;
+					coin=user.getCoin(1);
 					
 				} else
 					num = -1;
@@ -269,7 +269,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 10;
 					num = 0;
-					coin = coin + 1;
+					coin=user.getCoin(1);
 					
 				} else
 					num = -1;
@@ -293,7 +293,7 @@ public class FourStep extends JFrame implements Step {
 				if (answer.equals(panel_4.getAnswer_select().get(3))) {
 					score = score + 10;
 					num = 0;
-					coin = coin + 1;
+					coin=user.getCoin(1);
 
 				} else
 					num = -1;

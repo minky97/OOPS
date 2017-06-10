@@ -212,14 +212,14 @@ public class OneStep extends JFrame implements Step {
 		num = 0;
 		i = 0;
 		showlife(user.lifenum(num), imageArray, user);
-
+user.setCoin(0);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 3;
-					coin = coin + 1;
+					coin=user.getCoin(1);//coin num increment
 					num = 0;
 				} else
 					num = -1;
@@ -253,7 +253,7 @@ public class OneStep extends JFrame implements Step {
 
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 3;
-					coin = coin + 1;
+					coin=user.getCoin(1);
 					num = 0;
 				} else {
 					num = -1;
@@ -278,7 +278,7 @@ public class OneStep extends JFrame implements Step {
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 3;
-					coin = coin + 1;
+					coin=user.getCoin(1);
 					num = 0;
 				} else
 					num = -1;

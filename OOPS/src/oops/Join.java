@@ -37,8 +37,8 @@ public class Join extends JFrame {
 	final int frame_Width = 1300;
 	private Font f1;
 	private ImageIcon image;
-	private JTextField textField_1;
-	private JTextField textField;
+	private JTextField textField_1;//pw textField
+	private JTextField textField; //id textField
 	private String id;
 	private String pw;
 	private String filename_id;
@@ -47,7 +47,7 @@ public class Join extends JFrame {
 	private File file_pw;
 	private Main main;
 	
-	public boolean check(String id,File file_id) throws IOException{//input user id & pw in file.
+	public boolean check(String id,File file_id) throws IOException{//Check existing id 
 		try {
 			BufferedReader rd_id = new BufferedReader(new FileReader(file_id));
 			String s;
@@ -115,7 +115,7 @@ public class Join extends JFrame {
 				try{
 					if (check(id,file_id)) {//check that already exist user.
 						JOptionPane.showMessageDialog(null, "It already exist.");
-					} else {//make the user
+					} else {//make the user (input user id & pw in file.)
 						
 						BufferedWriter fw_id = new BufferedWriter(new FileWriter(file_id,true));
 						BufferedWriter fw_pw = new BufferedWriter(new FileWriter(file_pw,true));

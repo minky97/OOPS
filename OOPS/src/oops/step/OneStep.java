@@ -228,6 +228,7 @@ public class OneStep extends JFrame implements Step {
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
+				user.setCoin(coin);
 				clock.setTime(30);
 				if(clock.getTime()==0)
 				{
@@ -262,6 +263,7 @@ public class OneStep extends JFrame implements Step {
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
+				user.setCoin(coin);
 				clock.setTime(30);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -285,6 +287,7 @@ public class OneStep extends JFrame implements Step {
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
+				user.setCoin(coin);
 				clock.setTime(30);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);

@@ -152,6 +152,7 @@ public class Store extends JFrame {
 		textArea_2.setFont(new Font("Dialog", Font.PLAIN, 19));
 		textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
 				+ coin + " coin.");
+		
 		textArea_2.setEditable(false);
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);

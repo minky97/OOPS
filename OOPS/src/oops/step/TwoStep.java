@@ -236,6 +236,7 @@ public class TwoStep extends JFrame implements Step {
 				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
+				user.setCoin(coin);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
@@ -263,6 +264,7 @@ public class TwoStep extends JFrame implements Step {
 				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
+				user.setCoin(coin);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
@@ -289,6 +291,7 @@ public class TwoStep extends JFrame implements Step {
 				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
+				user.setCoin(coin);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
@@ -315,6 +318,7 @@ public class TwoStep extends JFrame implements Step {
 				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
+				user.setCoin(coin);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);

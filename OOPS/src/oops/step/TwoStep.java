@@ -63,6 +63,8 @@ public class TwoStep extends JFrame implements Step {
 
 	private TwoStep mine;
 	
+
+	
 	@Override
 	public int getScore() {
 		return score;
@@ -229,6 +231,7 @@ public class TwoStep extends JFrame implements Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -255,6 +258,7 @@ public class TwoStep extends JFrame implements Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -280,6 +284,7 @@ public class TwoStep extends JFrame implements Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -305,6 +310,7 @@ public class TwoStep extends JFrame implements Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -333,6 +339,7 @@ public class TwoStep extends JFrame implements Step {
 			public void actionPerformed(ActionEvent arg0) {
 				Store sto = new Store(user,clock,mine);
 				sto.setVisible(true);
+				mine.getClock().stop();
 			}
 		});
 
@@ -342,6 +349,7 @@ public class TwoStep extends JFrame implements Step {
 		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
 		btnhint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				mine.getClock().stop();
 				hintnum = user.getHintnum();
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
@@ -349,10 +357,12 @@ public class TwoStep extends JFrame implements Step {
 							"HINT", JOptionPane.INFORMATION_MESSAGE);
 					hintnum -= 1;
 					user.setHintnum(hintnum);
+					mine.getClock().restart();
 
 				} else {
 					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
+					mine.getClock().restart();
 				}
 			}
 		});

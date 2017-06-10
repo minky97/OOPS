@@ -69,6 +69,7 @@ public class ThreeStep extends JFrame implements Step {
 		this.clock = clock;
 	}
 
+	
 	@Override
 	public int getScore() {
 		return score;
@@ -237,6 +238,7 @@ public class ThreeStep extends JFrame implements Step {
 
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(35);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -266,6 +268,7 @@ public class ThreeStep extends JFrame implements Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(35);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -294,6 +297,7 @@ public class ThreeStep extends JFrame implements Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(35);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -322,6 +326,7 @@ public class ThreeStep extends JFrame implements Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				clock.setTime(35);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -359,17 +364,19 @@ public class ThreeStep extends JFrame implements Step {
 		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
 		btnhint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				mine.getClock().stop();
 				hintnum = user.getHintnum();
 				if (hintnum > 0) {
-					String hint = hintclass.getHints().get(i);
+					String hint = hintclass.getHints().get(i);					
 					JOptionPane.showMessageDialog(null, hint + "\n*If you close the hint, you have to pay quiz again*",
 							"HINT", JOptionPane.INFORMATION_MESSAGE);
 					hintnum -= 1;
 					user.setHintnum(hintnum);
-
+					mine.getClock().restart();
 				} else {
 					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
+					mine.getClock().restart();
 				}
 			}
 		});

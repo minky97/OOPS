@@ -39,6 +39,7 @@ public class Store extends JFrame {
 	private String caution;
 
 	private int coin;// user가 가지고 있는 coin개수
+	private int co;
 	private int lifenum; // user가 가지고 있는 life의 개수
 	private int timenum; // user가 가지고 있는 time의 개수
 	private int hintnum; // user가 가지고 있는 hint의 개수
@@ -126,7 +127,7 @@ public class Store extends JFrame {
 		gbc_textArea.gridx = 0;
 		gbc_textArea.gridy = 2;
 		panel.add(textArea, gbc_textArea);
-		coin = user.coin();
+		coin = user.getCoin(co);
 		hintnum = user.getHintnum();
 		lifenum = user.lifenum(lifenum);
 		timenum = clock.getTime();
@@ -182,7 +183,7 @@ public class Store extends JFrame {
 							+ " hint\r\n" + coin + " coin.");
 					textField_1.setText("");
 					clock.setTime(timenum);
-					user.coin();
+					user.setCoin(coin);
 				}
 
 			}
@@ -282,7 +283,7 @@ public class Store extends JFrame {
 							+ " hint\r\n" + coin + " coin.");
 					textField_2.setText("");
 					user.setHintnum(hintnum);
-					user.coin();
+					user.setCoin(coin);
 				}
 			}
 		});
@@ -435,7 +436,7 @@ public class Store extends JFrame {
 							+ " hint\r\n" + coin + " coin.");
 					textField.setText("");
 					user.setlifenum(lifenum);
-					user.coin();
+					user.setCoin(coin);
 				}
 			}
 		});

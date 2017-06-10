@@ -58,18 +58,18 @@ public class OneStep extends JFrame implements Step {
 	private OneStep mine;
 
 	@Override
-	public void setSound(BackSound sound) {
+	public void setSound(BackSound sound) {// set sound track of backsound
 		this.Sound = sound;
 		sound.mulist();
 	}
 
-	public void setSound(boolean start) {
+	public void setSound(boolean start) {// start or stop sound
 		Sound.play(start);
 	}
 
 	@Override
 	public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
-		if (num <= 0) {
+		if (num <= 0) {// life==0 , end
 			dispose();
 			setSound(false);
 			End end = new End(user);
@@ -102,7 +102,7 @@ public class OneStep extends JFrame implements Step {
 		clock = new Clock();
 		clock.setVisible(true);
 		clock.setTime(30);
-		
+
 		Sound = new BackSound("game1");
 
 		setResizable(false);
@@ -112,14 +112,14 @@ public class OneStep extends JFrame implements Step {
 		setSound(true);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step1.png");
-		
+
 		life = new ImageIcon("life.png");
 		contentPane = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
-				
+
 			}
 		};
 
@@ -127,7 +127,7 @@ public class OneStep extends JFrame implements Step {
 
 			@Override
 			public void windowOpened(WindowEvent e) {
-				//showlife(user.lifenum(num) , imageArray, user);
+				// showlife(user.lifenum(num) , imageArray, user);
 				// TODO Auto-generated method stub
 
 			}
@@ -156,7 +156,7 @@ public class OneStep extends JFrame implements Step {
 						JOptionPane.WARNING_MESSAGE);
 				mine.getClock().stop();
 				if (window == JOptionPane.CANCEL_OPTION) {
-                      mine.getClock().restart();
+					mine.getClock().restart();
 				} else if (window == JOptionPane.OK_OPTION) {
 					setSound(false);
 					main.setSound(true);
@@ -183,6 +183,7 @@ public class OneStep extends JFrame implements Step {
 
 		JPanel panel = new JPanel();
 
+		/* Question panel */
 		panel_1 = new OneStep_Question(1);
 		panel_1.setBackground(Color.WHITE);
 		panel_2 = new OneStep_Question(2);
@@ -194,6 +195,7 @@ public class OneStep extends JFrame implements Step {
 		panel_2.setVisible(false);
 		panel_3.setVisible(false);
 
+		/* life image label */
 		JLabel lblNewLabel = new JLabel(life);
 		JLabel lblNewLabel_1 = new JLabel(life);
 		JLabel lblNewLabel_2 = new JLabel(life);
@@ -207,19 +209,19 @@ public class OneStep extends JFrame implements Step {
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 
-		user.setlifenum(3); // 초기 life 값
-		hintnum = user.getHintnum();//
-		num = 0;
+		user.setlifenum(3); // set life 값
+		hintnum = user.getHintnum();
+		num = 0;// 소멸되는 life값
 		i = 0;
 		showlife(user.lifenum(num), imageArray, user);
-user.setCoin(0);
+		user.setCoin(0);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				if (answer.equals(panel_1.getAnswer_select().get(0))) {
 					score = score + 3;
-					coin=user.getCoin(1);//coin num increment
+					coin = user.getCoin(1);// coin num increment
 					num = 0;
 				} else
 					num = -1;
@@ -230,14 +232,13 @@ user.setCoin(0);
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
 				clock.setTime(30);
-				if(clock.getTime()==0)
-				{
+				if (clock.getTime() == 0) {
 					dispose();
 					setSound(false);
 					End end = new End(user);
 					end.setVisible(true);
 				}
-				//timefinish(user, mine.getClock().getTime());
+				// timefinish(user, mine.getClock().getTime());
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
@@ -253,7 +254,7 @@ user.setCoin(0);
 
 				if (answer.equals(panel_2.getAnswer_select().get(1))) {
 					score = score + 3;
-					coin=user.getCoin(1);
+					coin = user.getCoin(1);
 					num = 0;
 				} else {
 					num = -1;
@@ -278,7 +279,7 @@ user.setCoin(0);
 				answer = panel_3.getTextField_1().getText();
 				if (answer.equals(panel_3.getAnswer_select().get(2))) {
 					score = score + 3;
-					coin=user.getCoin(1);
+					coin = user.getCoin(1);
 					num = 0;
 				} else
 					num = -1;
@@ -331,7 +332,7 @@ user.setCoin(0);
 					hintnum -= 1;
 					user.setHintnum(hintnum);
 					mine.getClock().restart();
- 
+
 				} else {
 					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
@@ -341,63 +342,77 @@ user.setCoin(0);
 		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(29)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(btnhint, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(clock, GroupLayout.PREFERRED_SIZE, 348, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(29)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-							.addGap(55)
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
-							.addGap(65)
-							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(29)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+		gl_contentPane
+				.setHorizontalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane
+										.createSequentialGroup().addGap(
+												31)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+																.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900,
+																		GroupLayout.PREFERRED_SIZE)
+																.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900,
+																		GroupLayout.PREFERRED_SIZE)
+																.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900,
+																		GroupLayout.PREFERRED_SIZE))
+														.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+																.addGroup(gl_contentPane.createSequentialGroup()
+																		.addGap(29).addGroup(gl_contentPane
+																				.createParallelGroup(Alignment.LEADING,
+																						false)
+																				.addComponent(btnNewButton,
+																						GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.DEFAULT_SIZE,
+																						Short.MAX_VALUE)
+																				.addComponent(btnhint,
+																						GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.DEFAULT_SIZE,
+																						Short.MAX_VALUE)))
+																.addGroup(gl_contentPane.createSequentialGroup()
+																		.addPreferredGap(ComponentPlacement.RELATED)
+																		.addComponent(clock, GroupLayout.PREFERRED_SIZE,
+																				348, GroupLayout.PREFERRED_SIZE))))
+												.addGroup(gl_contentPane.createSequentialGroup().addGap(29)
+														.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(18)
+														.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 110,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(55)
+														.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 121,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(65)
+														.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 153,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(18).addComponent(lblNewLabel_4,
+																GroupLayout.PREFERRED_SIZE, 167,
+																GroupLayout.PREFERRED_SIZE)))
+										.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(29)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(55)
-							.addComponent(btnNewButton)
-							.addGap(37)
-							.addComponent(btnhint)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(clock, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_contentPane.createSequentialGroup().addGap(55).addComponent(btnNewButton)
+								.addGap(37).addComponent(btnhint).addPreferredGap(ComponentPlacement.RELATED,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(clock, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)))
+				.addPreferredGap(ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)
+								.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 95,
+										GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
-					.addContainerGap())
-		);
+				.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -413,7 +428,5 @@ user.setCoin(0);
 	public void setClock(Clock clock) {
 		this.clock = clock;
 	}
-
-	
 
 }

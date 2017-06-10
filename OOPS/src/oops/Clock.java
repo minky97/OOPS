@@ -83,7 +83,7 @@ public class Clock extends JPanel implements ActionListener {
 			}
 			repaint();
 		}
-		if(time==0){
+		if(time==0 &&step!=null){
 			
 			End end = new End(user);
 			end.setVisible(true);

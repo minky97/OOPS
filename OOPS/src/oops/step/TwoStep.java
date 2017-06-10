@@ -186,6 +186,13 @@ public class TwoStep extends Step {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
+		clock = new Clock(user);
+		clock.setVisible(true);
+		clock.setTime(30);
+		clock.setStep(this);	
+
+		
+		
 		JPanel panel = new JPanel();
 		panel_1 = new TwoStep_Question(1);
 		panel_1.getBtnA().setForeground(new Color(165, 42, 42));
@@ -333,7 +340,7 @@ public class TwoStep extends Step {
 					threestep = new ThreeStep(main, user);
 					user.step(threestep);
 					threestep.setVisible(true);
-
+					clock.setStep(null);
 				}
 			}
 
@@ -374,11 +381,7 @@ public class TwoStep extends Step {
 			}
 		});
 		
-		clock = new Clock(user);
-		clock.setVisible(true);
-		clock.setTime(30);
-		clock.setStep(this);	
-
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

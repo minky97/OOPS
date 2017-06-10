@@ -309,6 +309,7 @@ public class FourStep extends Step {
 				dispose();
 				setSound(false);
 				if (user.lifenum(0) != 0) {
+					clock.setStep(null);
 					End end = new End(user);
 					end.setVisible(true);
 				}

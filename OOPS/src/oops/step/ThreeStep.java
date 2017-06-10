@@ -116,6 +116,11 @@ public class ThreeStep extends Step {
 		Sound = new BackSound("game3");
 		setSound(Sound);
 		setSound(true);
+		
+		clock = new Clock(user);
+		clock.setVisible(true);
+		clock.setTime(35);
+		clock.setStep(this);
 
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step3.png");
@@ -341,6 +346,7 @@ public class ThreeStep extends Step {
 					/* Exit the step3 & Open the step4 */
 					dispose();
 					setSound(false);
+					clock.setStep(null);
 					fourstep = new FourStep(main, user);
 					user.step(fourstep);
 					fourstep.setVisible(true);
@@ -383,10 +389,7 @@ public class ThreeStep extends Step {
 			}
 		});
 		
-		clock = new Clock(user);
-		clock.setVisible(true);
-		clock.setTime(35);
-		clock.setStep(this);
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

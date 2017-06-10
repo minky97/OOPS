@@ -99,13 +99,17 @@ public class FourStep extends JFrame implements Step {
 
 	public FourStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-this.mine=mine;
+        this.mine=this;
 		this.main = main_input;
 		Sound = new BackSound("game3");
 		setTitle("Four Step");
 		setBounds(100, 100, frame_Width, frame_Height);
 		setSound(Sound);
 		setSound(true);
+		clock = new Clock();
+		clock.setVisible(true);
+		clock.setTime(35);
+		
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step4.png");
 
@@ -346,10 +350,7 @@ this.mine=mine;
 			}
 		});
 		
-		clock = new Clock();
-		clock.setVisible(true);
-		clock.setTime(35);
-		
+	
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

@@ -348,6 +348,7 @@ public class ThreeStep extends Step {
 					dispose();
 					setSound(false);
 					clock.stop();
+					clock.setStep(null);
 					fourstep = new FourStep(main, user);
 					user.step(fourstep);
 					fourstep.setVisible(true);

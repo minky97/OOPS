@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import oops.BackSound;
+import oops.Clock;
 import oops.End;
 import oops.Main;
 import oops.Store;
@@ -53,6 +54,8 @@ public class FourStep extends JFrame implements Step {
 	private int hintnum;
 	private int i;
 	private JButton btnhint;
+	private Clock clock;
+	private FourStep mine;
 
 	@Override
 	public int getScore() {
@@ -216,7 +219,9 @@ public class FourStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
@@ -239,7 +244,9 @@ public class FourStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -260,7 +267,9 @@ public class FourStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -281,7 +290,9 @@ public class FourStep extends JFrame implements Step {
 
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 
 				/* Exit the Step4 & Open the End Screen */
@@ -300,7 +311,7 @@ public class FourStep extends JFrame implements Step {
 		btnStore.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Store sto = new Store(user,clock);
+				Store sto = new Store(user,clock,mine);
 				sto.setVisible(true);
 			}
 		});
@@ -326,6 +337,10 @@ public class FourStep extends JFrame implements Step {
 			}
 		});
 		
+		clock = new Clock();
+		clock.setVisible(true);
+		clock.setTime(35);
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -339,10 +354,15 @@ public class FourStep extends JFrame implements Step {
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-							.addGap(32)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnStore)
-								.addComponent(btnhint)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(32)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnStore)
+										.addComponent(btnhint)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(clock, GroupLayout.PREFERRED_SIZE, 338, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(29)
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
@@ -354,34 +374,44 @@ public class FourStep extends JFrame implements Step {
 							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
 							.addGap(53)
 							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(204, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(29)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)))
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(106)
 							.addComponent(btnStore)
 							.addGap(30)
-							.addComponent(btnhint)))
+							.addComponent(btnhint)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(clock, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	public Clock getClock() {
+		return clock;
+	}
+
+	public void setClock(Clock clock) {
+		this.clock = clock;
 	}
 
 	public int getCoin() {

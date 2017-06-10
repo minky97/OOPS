@@ -21,6 +21,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import net.miginfocom.swing.MigLayout;
+import oops.step.Step;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
@@ -48,10 +50,17 @@ public class Store extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextArea textArea_2;
-
+    private Step step;
+    private Clock clock;
 	public int getCoin() {
 		return coin;
 	}
+
+
+    public void clock_m(Clock clock)
+    {
+    	this.clock = clock;
+    }
 
 	public void setCoin(int coin) {
 		this.coin = coin;
@@ -60,12 +69,13 @@ public class Store extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Store(User user,Clock clock) {
+	public Store(User user,Clock clock, Step sstep) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setTitle("Store");
 		caution = "Do you really want to exit store?";
 		setResizable(false);
 
+		this.step = sstep;
 		setBounds(100, 100, 957, 747);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -166,7 +176,7 @@ public class Store extends JFrame {
 					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + timenum_buy * 10 + " seconds.");
-					timenum += timenum_buy;
+					timenum += timenum_buy * 10;
 					coin -= timenum_buy * 2;
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
 							+ " hint\r\n" + coin + " coin.");
@@ -462,6 +472,7 @@ public class Store extends JFrame {
 				if (window == JOptionPane.CANCEL_OPTION) {
 
 				} else if (window == JOptionPane.OK_OPTION) {
+				    step.getClock().restart();
 					dispose();
 				}
 

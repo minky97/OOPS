@@ -55,7 +55,8 @@ public class OneStep extends JFrame implements Step {
 	private int i;// index of hints ArrayList
 	private Clock clock;
 	private JButton btnNewButton;
-
+    private OneStep mine;
+	
 	@Override
 	public void setSound(BackSound sound) {
 		this.Sound = sound;
@@ -97,6 +98,7 @@ public class OneStep extends JFrame implements Step {
 	public OneStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+		this.mine = this;
 		this.main = main_input;
 
 		clock = new Clock();
@@ -220,12 +222,13 @@ public class OneStep extends JFrame implements Step {
 				} else
 					num = -1;
 
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				clock.setTime(30);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
-				clock.setTime(30);
 				panel_3.setVisible(false);
 				i++;
 
@@ -245,7 +248,9 @@ public class OneStep extends JFrame implements Step {
 					num = -1;
 				}
 
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				clock.setTime(30);
 				panel_1.setVisible(false);
@@ -265,8 +270,10 @@ public class OneStep extends JFrame implements Step {
 					num = 0;
 				} else
 					num = -1;
+				
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
-
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				clock.setTime(30);
 				panel_1.setVisible(false);
@@ -290,9 +297,9 @@ public class OneStep extends JFrame implements Step {
 		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Store sto = new Store(user,clock);
+				Store sto = new Store(user,clock,mine);
 				sto.setVisible(true);
-				clock.stop();
+				mine.getClock().stop();
 			}
 		});
 
@@ -393,4 +400,14 @@ public class OneStep extends JFrame implements Step {
 		// TODO Auto-generated method stub
 		return coin;
 	}
+
+	public Clock getClock() {
+		return clock;
+	}
+
+	public void setClock(Clock clock) {
+		this.clock = clock;
+	}
+
+	
 }

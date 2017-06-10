@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import oops.BackSound;
+import oops.Clock;
 import oops.End;
 import oops.Main;
 import oops.Store;
@@ -58,6 +59,16 @@ public class ThreeStep extends JFrame implements Step {
 	private int hintnum;
 	private int i;
 	private JButton btnhint;
+	private Clock clock;
+	private ThreeStep mine;
+	public Clock getClock() {
+		return clock;
+	}
+
+	public void setClock(Clock clock) {
+		this.clock = clock;
+	}
+
 	@Override
 	public int getScore() {
 		return score;
@@ -96,6 +107,7 @@ public class ThreeStep extends JFrame implements Step {
 	public ThreeStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+		this.mine = this;
 		this.main = main_input;
 		setTitle("Three Step");
 		setBounds(100, 100, frame_Width, frame_Height);
@@ -223,7 +235,9 @@ public class ThreeStep extends JFrame implements Step {
 				} else
 					num = -1;
 
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
@@ -250,7 +264,9 @@ public class ThreeStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -276,7 +292,9 @@ public class ThreeStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -302,7 +320,9 @@ public class ThreeStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -326,8 +346,9 @@ public class ThreeStep extends JFrame implements Step {
 		btnStore.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Store sto = new Store(user,clock);
+				Store sto = new Store(user,clock,mine);
 				sto.setVisible(true);
+				mine.getClock().stop();
 			}
 		});
 		
@@ -353,6 +374,10 @@ public class ThreeStep extends JFrame implements Step {
 			}
 		});
 		
+		clock = new Clock();
+		clock.setVisible(true);
+		clock.setTime(35);
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -370,23 +395,28 @@ public class ThreeStep extends JFrame implements Step {
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE))
+							.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-							.addGap(34)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnhint)
-								.addComponent(btnStore))
-							.addContainerGap(202, Short.MAX_VALUE))))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(34)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnhint)
+										.addComponent(btnStore)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(clock, GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(29, Short.MAX_VALUE)
+					.addContainerGap(32, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
@@ -397,15 +427,16 @@ public class ThreeStep extends JFrame implements Step {
 							.addComponent(btnStore)
 							.addGap(36)
 							.addComponent(btnhint)
-							.addGap(245)))
+							.addGap(25)
+							.addComponent(clock, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblNewLabel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-										.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
+										.addComponent(lblNewLabel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+										.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
 									.addContainerGap())
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 301, GroupLayout.PREFERRED_SIZE)
@@ -413,8 +444,8 @@ public class ThreeStep extends JFrame implements Step {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)))))
+								.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)))))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

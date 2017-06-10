@@ -79,5 +79,9 @@ public class Clock extends JPanel implements ActionListener {
 		timer.stop();
 	}
 	
+	public void restart()
+	{
+		timer.start();
+	}
 }
 

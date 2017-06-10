@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import oops.BackSound;
+import oops.Clock;
 import oops.End;
 import oops.Main;
 import oops.Store;
@@ -25,6 +26,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TwoStep extends JFrame implements Step {
 
@@ -50,7 +52,17 @@ public class TwoStep extends JFrame implements Step {
 	private Hint hintclass;
 	private int hintnum;
 	private int i;
+    private Clock clock;
+    public Clock getClock() {
+		return clock;
+	}
 
+	public void setClock(Clock clock) {
+		this.clock = clock;
+	}
+
+	private TwoStep mine;
+	
 	@Override
 	public int getScore() {
 		return score;
@@ -92,6 +104,7 @@ public class TwoStep extends JFrame implements Step {
 	public TwoStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+		this.mine = this;
 		this.main = main_input;
 		setTitle("Two Step");
 		setBounds(100, 100, frame_Width, frame_Height);
@@ -214,7 +227,9 @@ public class TwoStep extends JFrame implements Step {
 					coin = coin + 1;
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
@@ -238,7 +253,9 @@ public class TwoStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -261,7 +278,9 @@ public class TwoStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -284,7 +303,9 @@ public class TwoStep extends JFrame implements Step {
 					
 				} else
 					num = -1;
+				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
+				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -310,7 +331,7 @@ public class TwoStep extends JFrame implements Step {
 		btnStore.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Store sto = new Store(user,clock);
+				Store sto = new Store(user,clock,mine);
 				sto.setVisible(true);
 			}
 		});
@@ -336,6 +357,10 @@ public class TwoStep extends JFrame implements Step {
 			}
 		});
 		
+		clock = new Clock();
+		clock.setVisible(true);
+		clock.setTime(30);
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -360,16 +385,21 @@ public class TwoStep extends JFrame implements Step {
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-							.addGap(31)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnStore, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnhint, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
-					.addContainerGap(97, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(31)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(btnStore, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnhint, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(clock, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)))))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(29)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -381,7 +411,9 @@ public class TwoStep extends JFrame implements Step {
 							.addGap(85)
 							.addComponent(btnStore, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(btnhint, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnhint, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(clock, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)))
 					.addGap(146)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
@@ -402,6 +434,4 @@ public class TwoStep extends JFrame implements Step {
 		// TODO Auto-generated method stub
 		return coin;
 	}
-	
-	
 }

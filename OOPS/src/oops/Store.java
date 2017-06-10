@@ -426,6 +426,7 @@ public class Store extends JFrame {
 				}
 				if (coin < lifenum_buy * 3)
 					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
+				else if(lifenum+lifenum_buy>5) JOptionPane.showMessageDialog(null, "You can't have more than 5 life!!");
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + lifenum_buy + " life.");
 					lifenum += lifenum_buy;
@@ -433,7 +434,7 @@ public class Store extends JFrame {
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
 							+ " hint\r\n" + coin + " coin.");
 					textField.setText("");
-					user.lifenum(lifenum);
+					user.setlifenum(lifenum);
 					user.coin();
 				}
 			}

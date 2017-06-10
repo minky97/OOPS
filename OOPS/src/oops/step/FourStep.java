@@ -115,6 +115,7 @@ public class FourStep extends JFrame implements Step {
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
+				showlife(user.lifenum(num), imageArray, user);
 			}
 		};
 

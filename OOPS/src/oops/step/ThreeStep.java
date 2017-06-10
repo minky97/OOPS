@@ -61,6 +61,7 @@ public class ThreeStep extends Step {
 	private JButton btnhint;
 	private Clock clock;
 	private ThreeStep mine;
+
 	public Clock getClock() {
 		return clock;
 	}
@@ -69,7 +70,6 @@ public class ThreeStep extends Step {
 		this.clock = clock;
 	}
 
-	
 	@Override
 	public int getScore() {
 		return score;
@@ -80,7 +80,8 @@ public class ThreeStep extends Step {
 		this.Sound = sound;
 		Sound.mulist();
 	}
-	public void setSound(boolean start){
+
+	public void setSound(boolean start) {
 		Sound.play(start);
 	}
 
@@ -116,7 +117,7 @@ public class ThreeStep extends Step {
 		Sound = new BackSound("game3");
 		setSound(Sound);
 		setSound(true);
-		
+
 		clock = new Clock(user);
 		clock.setVisible(true);
 		clock.setTime(35);
@@ -132,7 +133,7 @@ public class ThreeStep extends Step {
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
-				
+
 			}
 		};
 
@@ -168,7 +169,7 @@ public class ThreeStep extends Step {
 				window = JOptionPane.showConfirmDialog(null, caution, "Caution", JOptionPane.OK_CANCEL_OPTION,
 						JOptionPane.WARNING_MESSAGE);
 				if (window == JOptionPane.CANCEL_OPTION) {
-					
+
 				} else if (window == JOptionPane.OK_OPTION) {
 
 					main.setVisible(true);
@@ -224,22 +225,22 @@ public class ThreeStep extends Step {
 		imageArray.add(lblNewLabel_4);
 
 		num = 0;
-		i=7;
+		i = 7;
 		showlife(user.lifenum(num), imageArray, user);
-coin=user.getCoin(0);
+		coin = user.getCoin(0);
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
 				answer = answer.toLowerCase();
 				panel_1.setAnswer(answer);
 				comboNum = panel_1.getComboBox().getSelectedItem().toString();
-	            panel_1.setComboNum(comboNum);
+				panel_1.setComboNum(comboNum);
 				if (panel_1.getAnswer().equals(panel_1.getAnswer_select().get(0))
 						&& (panel_1.getComboNum().equals(panel_1.getAnswer_num().get(0)))) {
 					score = score + 5;
 					num = 0;
-					coin=user.getCoin(1);
-					
+					coin = user.getCoin(1);
+
 				} else
 					num = -1;
 
@@ -266,11 +267,11 @@ coin=user.getCoin(0);
 				panel_2.setComboNum(comboNum);
 
 				if (panel_2.getAnswer().equals(panel_2.getAnswer_select().get(1))
-						&& (panel_2.getComboNum().equals(panel_2.getAnswer_num().get(1)))){
+						&& (panel_2.getComboNum().equals(panel_2.getAnswer_num().get(1)))) {
 					score = score + 5;
 					num = 0;
-					coin=user.getCoin(1);
-					
+					coin = user.getCoin(1);
+
 				} else
 					num = -1;
 				mine.getClock().stop();
@@ -298,8 +299,8 @@ coin=user.getCoin(0);
 						&& (panel_3.getComboNum().equals(panel_3.getAnswer_num().get(2)))) {
 					score = score + 5;
 					num = 0;
-					coin=user.getCoin(1);
-					
+					coin = user.getCoin(1);
+
 				} else
 					num = -1;
 				mine.getClock().stop();
@@ -327,8 +328,8 @@ coin=user.getCoin(0);
 						&& (panel_4.getComboNum().equals(panel_4.getAnswer_num().get(3)))) {
 					score = score + 5;
 					num = 0;
-					coin=user.getCoin(1);
-					
+					coin = user.getCoin(1);
+
 				} else
 					num = -1;
 				mine.getClock().stop();
@@ -346,7 +347,7 @@ coin=user.getCoin(0);
 					/* Exit the step3 & Open the step4 */
 					dispose();
 					setSound(false);
-					clock.setStep(null);
+					clock.stop();
 					fourstep = new FourStep(main, user);
 					user.step(fourstep);
 					fourstep.setVisible(true);
@@ -359,14 +360,13 @@ coin=user.getCoin(0);
 		btnStore.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnStore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Store sto = new Store(user,clock,mine);
+				Store sto = new Store(user, clock, mine);
 				sto.setVisible(true);
 				mine.getClock().stop();
 			}
 		});
-		
-		
-		hintclass=new Hint();
+
+		hintclass = new Hint();
 		JButton btnhint = new JButton("*HINT*");
 		btnhint.setForeground(Color.RED);
 		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
@@ -375,7 +375,7 @@ coin=user.getCoin(0);
 				mine.getClock().stop();
 				hintnum = user.getHintnum();
 				if (hintnum > 0) {
-					String hint = hintclass.getHints().get(i);					
+					String hint = hintclass.getHints().get(i);
 					JOptionPane.showMessageDialog(null, hint + "\n*If you close the hint, you have to pay quiz again*",
 							"HINT", JOptionPane.INFORMATION_MESSAGE);
 					hintnum -= 1;
@@ -388,76 +388,73 @@ coin=user.getCoin(0);
 				}
 			}
 		});
-		
-		
+
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
-							.addGap(32)
-							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 259, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(31)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+						.createSequentialGroup().addGap(10)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
+						.addGap(32)
+						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 259, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+						.addGap(18).addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane
+								.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(34)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnhint)
-										.addComponent(btnStore)))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(clock, GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)))
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(32, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE)
-							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnStore)
-							.addGap(36)
-							.addComponent(btnhint)
-							.addGap(25)
-							.addComponent(clock, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblNewLabel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-										.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
-									.addContainerGap())
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 301, GroupLayout.PREFERRED_SIZE)
-									.addGap(3))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)))))
-		);
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup().addGap(34)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(btnhint).addComponent(btnStore)))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.RELATED).addComponent(clock,
+														GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)))
+								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
+		gl_contentPane
+				.setVerticalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+								.createSequentialGroup().addContainerGap(32,
+										Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 498,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 498,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 498,
+														GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup().addComponent(btnStore)
+												.addGap(36).addComponent(btnhint).addGap(25).addComponent(clock,
+														GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+										.createSequentialGroup().addGap(18).addGroup(gl_contentPane
+												.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
+														.createSequentialGroup()
+														.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+																.addComponent(lblNewLabel_2, Alignment.LEADING,
+																		GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+																.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE,
+																		295, Short.MAX_VALUE))
+														.addContainerGap())
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 301,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(3))))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 318,
+																Short.MAX_VALUE)
+														.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 318,
+																Short.MAX_VALUE))))));
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -465,7 +462,7 @@ coin=user.getCoin(0);
 		// TODO Auto-generated method stub
 		return coin;
 	}
-	
+
 	public int getHintnum() {
 		// TODO Auto-generated method stub
 		return coin;

@@ -341,7 +341,7 @@ public class TwoStep extends Step {
 					threestep = new ThreeStep(main, user);
 					user.step(threestep);
 					threestep.setVisible(true);
-					clock.setStep(null);
+					clock.stop();
 				}
 			}
 

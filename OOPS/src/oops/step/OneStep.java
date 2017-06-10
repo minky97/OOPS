@@ -301,7 +301,7 @@ public class OneStep extends Step {
 					/* Exit the step1 & Open the Step2 */
 					dispose();
 					setSound(false);
-					clock.setStep(null);
+					clock.stop();
 					twostep = new TwoStep(main, user);
 					twostep.setVisible(true);
 					user.step(twostep);

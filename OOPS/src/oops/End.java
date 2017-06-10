@@ -43,6 +43,7 @@ public void setSound(boolean start){
    public End(User user) {
 
 	  setBounds(100, 100, frame_Width, frame_Height);
+	  setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       setContentPane(contentPane);
@@ -99,7 +100,8 @@ public void setSound(boolean start){
          @Override
          public void windowClosing(WindowEvent e) 
          {
-          	  setSound(false);            
+          	  setSound(false);
+          	 System.exit(0);
          }
          
          @Override

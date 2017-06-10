@@ -38,10 +38,6 @@ private Main main;
 	public void setStep(Step step){
 		this.step=step;
 	}
-
-	
-	
-	
 	
 	public Clock(User user,Main main_input) {
 		this.user=user;
@@ -83,7 +79,7 @@ private Main main;
 			}
 			repaint();
 		}
-		if(time==0 &&step!=null){
+		if(time==0){
 			
 			End end = new End(user,main);
 			end.setVisible(true);

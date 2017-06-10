@@ -334,8 +334,6 @@ public class ThreeStep extends Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-				clock.setTime(35);
-				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);

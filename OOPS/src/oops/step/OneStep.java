@@ -290,7 +290,7 @@ public class OneStep extends JFrame implements Step {
 		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 22));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Store sto = new Store(user);
+				Store sto = new Store(user,clock);
 				sto.setVisible(true);
 				clock.stop();
 			}

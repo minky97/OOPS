@@ -60,7 +60,7 @@ public class Store extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Store(User user) {
+	public Store(User user,Clock clock) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setTitle("Store");
 		caution = "Do you really want to exit store?";
@@ -73,7 +73,7 @@ public class Store extends JFrame {
 		setContentPane(contentPane);
 
 		f1 = new Font("Times", Font.BOLD, 40);
-
+		
 		JPanel panel_life = new JPanel();
 		panel_life.setBackground(Color.WHITE);
 
@@ -118,6 +118,8 @@ public class Store extends JFrame {
 		panel.add(textArea, gbc_textArea);
 		coin = user.coin();
 		hintnum = user.getHintnum();
+		lifenum = user.lifenum(lifenum);
+		timenum = clock.getTime();
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon("coin_store.png"));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
@@ -135,7 +137,11 @@ public class Store extends JFrame {
 		gbc_lblX.gridx = 1;
 		gbc_lblX.gridy = 4;
 		panel.add(lblX, gbc_lblX);
-
+		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setFont(new Font("Dialog", Font.PLAIN, 19));
+		textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
+				+ coin + " coin.");
+		textArea_2.setEditable(false);
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
@@ -165,6 +171,8 @@ public class Store extends JFrame {
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
 							+ " hint\r\n" + coin + " coin.");
 					textField_1.setText("");
+					clock.setTime(timenum);
+					user.coin();
 				}
 
 			}
@@ -259,11 +267,12 @@ public class Store extends JFrame {
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + hintnum_buy + " hint.");
 					hintnum += hintnum_buy;
-					user.setHintnum(hintnum);
 					coin -= hintnum_buy * 1;
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
 							+ " hint\r\n" + coin + " coin.");
 					textField_2.setText("");
+					user.setHintnum(hintnum);
+					user.coin();
 				}
 			}
 		});
@@ -301,11 +310,7 @@ public class Store extends JFrame {
 								GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)))
 				.addContainerGap()));
 
-		JTextArea textArea_2 = new JTextArea();
-		textArea_2.setFont(new Font("Dialog", Font.PLAIN, 19));
-		textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum + " hint\r\n"
-				+ coin + " coin.");
-		textArea_2.setEditable(false);
+		
 
 		JLabel label_3 = new JLabel("");
 		label_3.setIcon(new ImageIcon("store_rabbit.png"));
@@ -418,6 +423,8 @@ public class Store extends JFrame {
 					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
 							+ " hint\r\n" + coin + " coin.");
 					textField.setText("");
+					user.lifenum(lifenum);
+					user.coin();
 				}
 			}
 		});

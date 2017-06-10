@@ -96,7 +96,6 @@ public class OneStep extends JFrame implements Step {
 	 */
 	public OneStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
 		this.mine = this;
 		this.main = main_input;
 
@@ -113,14 +112,14 @@ public class OneStep extends JFrame implements Step {
 		setSound(true);
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step1.png");
-
+		
 		life = new ImageIcon("life.png");
 		contentPane = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
-				showlife(user.lifenum(num), imageArray, user);
+				
 			}
 		};
 
@@ -128,6 +127,7 @@ public class OneStep extends JFrame implements Step {
 
 			@Override
 			public void windowOpened(WindowEvent e) {
+				//showlife(user.lifenum(num) , imageArray, user);
 				// TODO Auto-generated method stub
 
 			}

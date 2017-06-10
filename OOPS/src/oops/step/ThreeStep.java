@@ -127,7 +127,7 @@ public class ThreeStep extends JFrame implements Step {
 				g.drawImage(image.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
-				showlife(user.lifenum(num), imageArray, user);
+				
 			}
 		};
 
@@ -135,6 +135,7 @@ public class ThreeStep extends JFrame implements Step {
 
 			@Override
 			public void windowOpened(WindowEvent e) {
+				showlife(user.lifenum(num), imageArray, user);
 				// TODO Auto-generated method stub
 
 			}

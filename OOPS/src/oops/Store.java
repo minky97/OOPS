@@ -53,9 +53,7 @@ public class Store extends JFrame {
 	private JTextArea textArea_2;
     private Step step;
     private Clock clock;
-//	public int getCoin() {
-//		return coin;
-//	}
+
 
 
     public void clock_m(Clock clock)
@@ -63,9 +61,6 @@ public class Store extends JFrame {
     	this.clock = clock;
     }
 
-//	public void setCoin(int coin) {
-//		this.coin = coin;
-//	}
 
 	/**
 	 * Create the frame.

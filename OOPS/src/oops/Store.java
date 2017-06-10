@@ -180,7 +180,7 @@ public class Store extends JFrame {
 							+ " hint\r\n" + user.getCoin(0) + " coin.");
 					textField_1.setText("");
 					clock.setTime(timenum);
-					
+				//	
 				}
 
 			}

@@ -109,7 +109,7 @@ public class Login extends JFrame {
 		this.main = main_input;
 	}
 
-	public Login(Main main_input, OOPSTest test) {// test : OOPSTest have Start. so it have parameter OOPSTest. 
+	public Login(Main main_input, OOPSTest test) {// test : OOPSTest have Start and Start have User, so it have parameter OOPSTest.(so 1 user(1 start) costruct) 
 
 		this.main = main_input;
 		this.test = test;

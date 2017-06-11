@@ -31,7 +31,6 @@ public class FourStep_Question extends JPanel {
 	private int check = 1;
 	private File q1;
 	private String a;
-	private String answer;
 	private File q;
 	private File q2;
 	private File q3;

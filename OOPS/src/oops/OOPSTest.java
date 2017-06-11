@@ -6,10 +6,8 @@ public class OOPSTest  {//화면 전환 ( main <-> start,introduce)
 
 	private Main main;
 	private Start start;
-	private End end;
 	private Introduce introduce;
-	private Login login;
-	private Join join;
+	
 	
 	
 	public Start getStart() {
@@ -41,6 +39,7 @@ public class OOPSTest  {//화면 전환 ( main <-> start,introduce)
 			
 		}
 
+		//else로 빠지는지 확인할려고 ㅎㅎ .. kk
 		else {
 			System.out.println("kk");
 		}

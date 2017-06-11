@@ -22,16 +22,16 @@ import sun.audio.*;
  * @author www.codejava.net
  *
  */
-public class BackSound implements LineListener {
+public class BackSound implements LineListener {//line listener => line 변경된걸 알려줌.
 
 	/**
 	 * this flag indicates whether the playback completes or not.
 	 */
-	boolean playCompleted;
-	private String music;
+	boolean playCompleted;                //시작과 끝을 알려줌.
+	private String music;                 //
 	private DataLine.Info info;           //데이터의 추가형식 (ex.오디오형식)
-	private File audioFile;
-	private AudioInputStream audioStream;
+	private File audioFile;               // 
+	private AudioInputStream audioStream; //
 	private AudioFormat format;           //사운드 stream내에서 데이터 특정의 배열 지정
 	private Clip audioClip;               //start,end,loop...
 	private String store;                 //음악 저장 경로

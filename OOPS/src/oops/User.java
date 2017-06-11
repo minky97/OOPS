@@ -16,7 +16,6 @@ public class User {
    private TwoStep twostep;
    private ThreeStep threestep;
    private FourStep fourstep;
-   private Store store;
    private String user;
    private int lifenum;
    private int hintnum;

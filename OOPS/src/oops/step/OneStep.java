@@ -94,6 +94,8 @@ public class OneStep extends Step {
 	/**
 	 * Create the frame.
 	 */
+	
+	
 	public OneStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.mine = this;

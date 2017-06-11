@@ -207,6 +207,7 @@ public class OneStep extends Step {
 		panel_1.setVisible(true);
 		panel_2.setVisible(false);
 		panel_3.setVisible(false);
+		
 
 		/* life image label */
 		JLabel lblNewLabel = new JLabel(life);

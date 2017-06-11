@@ -70,7 +70,7 @@ public class User {
    }
 
    public String user() {
-      user = login.getId();
+      this.user = login.getId();
       return user;
    }
 

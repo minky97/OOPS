@@ -67,7 +67,10 @@ public class Login extends JFrame {
 	}
 
 	public String getId() {
-		return id.toString() ;
+		return id;
+	}
+	public void setId(String id){
+		this.id=id;
 	}
 
 	public boolean check(String id, String pw, File file_id, File file_pw) throws IOException {// check
@@ -151,6 +154,7 @@ public class Login extends JFrame {
 		filename_id = "id.txt";
 		filename_pw = "pw.txt";
 
+		
 		file_id = new File(filename_id);
 		file_pw = new File(filename_pw);
 
@@ -176,8 +180,9 @@ public class Login extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(btnLogin)) {
-					id = textField.getText();
-					pw = textField_1.getText();
+					id = textField.getText().toString();
+					pw = textField_1.getText().toString();
+					setId(id.toString());
 					try {
 						boolean a = check(id, pw, file_id, file_pw);
 						if (a == true) {

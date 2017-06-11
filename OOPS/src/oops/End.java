@@ -58,6 +58,7 @@ public class End extends JFrame {
 		JLabel lblOopsTheEnd = new JLabel("OOPS! THE END!");
 		lblOopsTheEnd.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 99));
 
+	
 		id = user.user(); // user id
 		JLabel userScore = new JLabel("User: " + id);
 		userScore.setForeground(Color.BLUE);
@@ -98,8 +99,8 @@ public class End extends JFrame {
 			public void windowClosing(WindowEvent e) {
 				setSound(false);
 				dispose();
+				main=new Main();
 				main.setVisible(true);
-				main.setSound(true);
 			}
 
 			@Override

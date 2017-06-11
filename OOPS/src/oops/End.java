@@ -101,6 +101,7 @@ public class End extends JFrame {
 				dispose();
 				main=new Main();
 				main.setVisible(true);
+				main.setSound(true);
 			}
 
 			@Override

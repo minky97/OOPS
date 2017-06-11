@@ -102,14 +102,14 @@ public class BackSound implements LineListener {//line listener => line 변경된걸
 		LineEvent.Type type = event.getType();
 
 		if (type == LineEvent.Type.START) {
-			System.out.println("Playback started.");
+			System.out.println("Music started.");
 
 		} else if (type == LineEvent.Type.STOP) {
 			playCompleted = true;
-			System.out.println("Playback completed.");
+			System.out.println("Music completed.");
 		}
 
-	}
+	}// 음악의 상태 변경을 알려 줌
 
 	public void mulist() {
 
@@ -140,7 +140,7 @@ public class BackSound implements LineListener {//line listener => line 변경된걸
 			System.out.println("error!");
 		}
 
-	}
+	}// 배경 음악 리스트
 
 }
 

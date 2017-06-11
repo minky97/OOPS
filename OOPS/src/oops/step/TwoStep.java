@@ -53,10 +53,13 @@ public class TwoStep extends Step {
 	private int hintnum;
 	private int i;
     private Clock clock;
+    
+    @Override
     public Clock getClock() {
 		return clock;
 	}
 
+    @Override
 	public void setClock(Clock clock) {
 		this.clock = clock;
 	}
@@ -450,8 +453,5 @@ public class TwoStep extends Step {
 		contentPane.setLayout(gl_contentPane);
 	}
 
-	public int getCoin() {
-		// TODO Auto-generated method stub
-		return coin;
-	}
+
 }

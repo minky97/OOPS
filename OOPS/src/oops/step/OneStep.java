@@ -66,6 +66,15 @@ public class OneStep extends Step {
 	public void setSound(boolean start) {// start or stop sound
 		Sound.play(start);
 	}
+	@Override
+	public Clock getClock() {
+		return clock;
+	}
+
+	@Override
+	public void setClock(Clock clock) {
+		this.clock = clock;
+	}
 
 	@Override
 	public void showlife(int num, ArrayList<JLabel> imageArray, User user) {
@@ -242,7 +251,7 @@ public class OneStep extends Step {
 					End end = new End(user,main);
 					end.setVisible(true);
 				}
-				// timefinish(user, mine.getClock().getTime());
+				
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
@@ -420,17 +429,8 @@ public class OneStep extends Step {
 		contentPane.setLayout(gl_contentPane);
 	}
 
-	public int getCoin() {
-		// TODO Auto-generated method stub
-		return coin;
-	}
+	
 
-	public Clock getClock() {
-		return clock;
-	}
 
-	public void setClock(Clock clock) {
-		this.clock = clock;
-	}
 
 }

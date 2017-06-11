@@ -62,10 +62,11 @@ public class ThreeStep extends Step {
 	private Clock clock;
 	private ThreeStep mine;
 
+	@Override
 	public Clock getClock() {
 		return clock;
 	}
-
+	@Override
 	public void setClock(Clock clock) {
 		this.clock = clock;
 	}
@@ -457,13 +458,7 @@ public class ThreeStep extends Step {
 		contentPane.setLayout(gl_contentPane);
 	}
 
-	public int getCoin() {
-		// TODO Auto-generated method stub
-		return coin;
-	}
+	
 
-	public int getHintnum() {
-		// TODO Auto-generated method stub
-		return coin;
-	}
+	
 }

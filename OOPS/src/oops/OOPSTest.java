@@ -1,6 +1,5 @@
 package oops;
 
-import javax.swing.JFrame;
 
 public class OOPSTest  {//화면 전환 ( main <-> start,introduce)
 

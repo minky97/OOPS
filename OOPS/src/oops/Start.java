@@ -12,6 +12,15 @@ public class Start extends JFrame {//화면 전환 (start<->login,onestep
 	private OneStep onestep;
 	private User user;
 	private OOPSTest test;
+	
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
 	public Start(Main main_input,OOPSTest test){
 		this.main = main_input;
 		this.test=test;

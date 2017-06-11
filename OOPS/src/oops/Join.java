@@ -64,7 +64,7 @@ public class Join extends JFrame {
 	public Join(Main main_input,OOPSTest test) {
 		
 		this.main = main_input;
-		log = new Login(main,test);
+		log = test.getStart().getLogin();
 		
 		setTitle("Sign");
 		setBounds(100, 100, frame_Width, frame_Height);

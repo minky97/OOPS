@@ -201,8 +201,8 @@ public class ThreeStep_Question extends JPanel {
       
       answer_num = new ArrayList<String>();
       answer_num.add("3");
-      answer_num.add("3");
       answer_num.add("1");
+      answer_num.add("3");
       answer_num.add("2");
       setAnswer_num(answer_num);
       

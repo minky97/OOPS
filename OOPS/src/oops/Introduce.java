@@ -32,6 +32,7 @@ public class Introduce extends JFrame {
    final int frame_Width = 1300;
 
    
+   
    /**
     * Create the frame.
     */

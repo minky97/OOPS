@@ -84,7 +84,7 @@ public class Login extends JFrame {
 				userlist_pw.add(a);
 			}
 			if (userlist_id.contains(id)) {//check existing user information(just id)
-				if (pw.equals(userlist_pw.get(userlist_id.indexOf(id)))) {
+				if (pw.equals(userlist_pw.get(userlist_id.indexOf(id)))) {//because the id array and the pw array have same index of user.
 					index = userlist_id.indexOf(id);
 					return true;
 				} else {
@@ -109,7 +109,7 @@ public class Login extends JFrame {
 		this.main = main_input;
 	}
 
-	public Login(Main main_input, OOPSTest test) {
+	public Login(Main main_input, OOPSTest test) {// test : OOPSTest have Start. so it have parameter OOPSTest. 
 
 		this.main = main_input;
 		this.test = test;
@@ -158,6 +158,8 @@ public class Login extends JFrame {
 		btnJoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(btnJoin)) {
+
+					/* Join */
 					join = new Join(main,test);
 					join.setVisible(true);
 					setVisible(false);

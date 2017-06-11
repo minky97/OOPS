@@ -185,7 +185,7 @@ public class OneStep extends Step {
 
 		JPanel panel = new JPanel();
 
-		/* Question panel */
+		/* Question panel (argument = Question number) */
 		panel_1 = new OneStep_Question(1);
 		panel_1.setBackground(Color.WHITE);
 		panel_2 = new OneStep_Question(2);
@@ -212,7 +212,7 @@ public class OneStep extends Step {
 		imageArray.add(lblNewLabel_4);
 
 		user.setlifenum(3); // set life 값
-		hintnum = user.getHintnum();
+		hintnum = user.getHintnum(); // hint number 
 		num = 0;// 소멸되는 life값
 		i = 0;
 		showlife(user.lifenum(num), imageArray, user);

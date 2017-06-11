@@ -122,7 +122,7 @@ public class Join extends JFrame {
 						fw_id.write(id+"\n");
 						fw_pw.write(pw+"\n");
 						
-						fw_id.flush();
+						fw_id.flush();//buffer가 차지않아도 write.
 						fw_pw.flush();
 						
 						fw_id.close();

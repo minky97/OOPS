@@ -89,7 +89,7 @@ public class TwoStep extends Step {
 		if (num <= 0) {
 			dispose();
 			setSound(false);
-			End end = new End(user,main);
+			End end = new End(user);
 			end.setVisible(true);
 		} else {
 

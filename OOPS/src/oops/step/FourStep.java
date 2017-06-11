@@ -88,7 +88,7 @@ public class FourStep extends Step {
 		if (num <= 0) {
 			dispose();
 			setSound(false);
-			End end = new End(user,main);
+			End end = new End(user);
 			end.setVisible(true);
 		} else {
 
@@ -321,7 +321,7 @@ public class FourStep extends Step {
 				if (user.lifenum(0) != 0) {
 					clock.stop();
 					clock.setStep(null);
-					End end = new End(user,main);
+					End end = new End(user);
 					end.setVisible(true);
 				}
 

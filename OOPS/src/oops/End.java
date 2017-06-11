@@ -37,9 +37,9 @@ public class End extends JFrame {
 		Sound.play(start);
 	}
 
-	public End(User user, Main main_input) {
+	public End(User user) {
 
-		this.main = main_input;
+		
 		setBounds(100, 100, frame_Width, frame_Height);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		contentPane = new JPanel();
@@ -98,10 +98,8 @@ public class End extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				setSound(false);
-				dispose();
-				main=new Main();
-				main.setVisible(true);
-				main.setSound(true);
+				System.exit(0);
+			
 			}
 
 			@Override

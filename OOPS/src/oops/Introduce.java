@@ -30,8 +30,6 @@ public class Introduce extends JFrame {
    private JPanel contentPane;
    final int frame_Height = 900;
    final int frame_Width = 1300;
-   final Font F_title;
-   final Font F_text;
 
    
    /**
@@ -56,8 +54,6 @@ public class Introduce extends JFrame {
             
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       setContentPane(contentPane);
-      F_title=new Font("Times",Font.BOLD|Font.ITALIC,60);
-      F_text=new Font("Times",Font.BOLD,30);
       
       GroupLayout gl_contentPane = new GroupLayout(contentPane);
       gl_contentPane.setHorizontalGroup(

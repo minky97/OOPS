@@ -46,9 +46,16 @@ public class Store extends JFrame {
 	private JTextArea textArea_2;
 	private Step step;
 	private Clock clock;
+	private boolean check;//exit check
 
 	public void clock_m(Clock clock) {
 		this.clock = clock;
+	}
+	public boolean isCheck(){
+		return check;
+	}
+	public void Check(boolean check){
+		this.check=check;
 	}
 
 	/**
@@ -59,7 +66,7 @@ public class Store extends JFrame {
 		setTitle("Store");
 		caution = "Do you really want to exit store?";
 		setResizable(false);
-
+		Check(false);
 		this.step = sstep;
 		setBounds(100, 100, 957, 747);
 		contentPane = new JPanel();
@@ -159,8 +166,7 @@ public class Store extends JFrame {
 				} catch (NumberFormatException e2) {
 					JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
 				}
-				if (timenum_buy<=0) JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
-				else if (coin < timenum_buy * 2) 
+				if (coin < timenum_buy * 2)
 					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + timenum_buy * 10 + " seconds.");
@@ -262,8 +268,7 @@ public class Store extends JFrame {
 				} catch (NumberFormatException e3) {
 					JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
 				}
-				if(hintnum_buy<=0) JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
-				else if (coin < hintnum_buy * 1)
+				if (coin < hintnum_buy * 1)
 					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
 				else {
 					JOptionPane.showMessageDialog(null, "You get " + hintnum_buy + " hint.");
@@ -372,6 +377,7 @@ public class Store extends JFrame {
 				} else if (window == JOptionPane.OK_OPTION) {
 					step.getClock().restart();
 					dispose();
+					
 				}
 
 			}
@@ -379,6 +385,7 @@ public class Store extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
+				Check(false);
 			}
 
 			@Override
@@ -464,8 +471,7 @@ public class Store extends JFrame {
 				} catch (NumberFormatException n) {
 					JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
 				}
-				if(lifenum_buy<=0) JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
-				else if (coin < lifenum_buy * 3)
+				if (coin < lifenum_buy * 3)
 					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
 				else if (lifenum + lifenum_buy > 5)
 					JOptionPane.showMessageDialog(null, "You can't have more than 5 life!!");

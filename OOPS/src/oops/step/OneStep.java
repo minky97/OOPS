@@ -56,6 +56,7 @@ public class OneStep extends Step {
 	private Clock clock;
 	private JButton btnNewButton;
 	private OneStep mine;
+	private int check;
 
 	@Override
 	public void setSound(BackSound sound) {// set sound track of backsound
@@ -66,6 +67,7 @@ public class OneStep extends Step {
 	public void setSound(boolean start) {// start or stop sound
 		Sound.play(start);
 	}
+
 	@Override
 	public Clock getClock() {
 		return clock;
@@ -103,18 +105,16 @@ public class OneStep extends Step {
 	/**
 	 * Create the frame.
 	 */
-	
-	
+
 	public OneStep(Main main_input, User user) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.mine = this;
 		this.main = main_input;
 
-		mine.setClock(new Clock(user,main));
+		mine.setClock(new Clock(user, main));
 		mine.getClock().setVisible(true);
 		mine.getClock().setTime(30);
 		mine.getClock().setStep(this);
-		
 
 		Sound = new BackSound("game1");
 
@@ -207,7 +207,6 @@ public class OneStep extends Step {
 		panel_1.setVisible(true);
 		panel_2.setVisible(false);
 		panel_3.setVisible(false);
-		
 
 		/* life image label */
 		JLabel lblNewLabel = new JLabel(life);
@@ -224,11 +223,12 @@ public class OneStep extends Step {
 		imageArray.add(lblNewLabel_4);
 
 		user.setlifenum(3); // set life 값
-		hintnum = user.getHintnum(); // hint number 
+		hintnum = user.getHintnum(); // hint number
 		num = 0;// 소멸되는 life값
 		i = 0;
 		showlife(user.lifenum(num), imageArray, user);
 		user.setCoin(0);
+		check = 1;
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -246,8 +246,8 @@ public class OneStep extends Step {
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
 				mine.getClock().setTime(30);
-			
-				
+				check = 2;
+
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
 				panel_3.setVisible(false);
@@ -269,6 +269,7 @@ public class OneStep extends Step {
 					num = -1;
 				}
 
+				check = 3;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + score);
 				mine.getClock().restart();
@@ -323,8 +324,13 @@ public class OneStep extends Step {
 				Store sto = new Store(user, clock, mine);
 				sto.setVisible(true);
 				mine.getClock().stop();
+//				panel_1.setVisible(false);
+//				panel_2.setVisible(false);
+//				panel_3.setVisible(false);
+
 			}
 		});
+		
 
 		hintclass = new Hint();
 		JButton btnhint = new JButton("*HINT*");
@@ -334,6 +340,9 @@ public class OneStep extends Step {
 			public void actionPerformed(ActionEvent e) {
 				mine.getClock().stop();
 				hintnum = user.getHintnum();
+				panel_1.setVisible(false);
+				panel_2.setVisible(false);
+				panel_3.setVisible(false);
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
 					JOptionPane.showMessageDialog(null, hint + "\n*If you close the hint, you have to pay quiz again*",
@@ -346,6 +355,21 @@ public class OneStep extends Step {
 					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
 					mine.getClock().restart();
+					switch (check) {
+					case 1:
+						panel_1.setVisible(true);
+						panel_2.setVisible(false);
+						panel_3.setVisible(false);
+						break;
+					case 2:
+						panel_1.setVisible(false);
+						panel_2.setVisible(true);
+						panel_3.setVisible(false);
+					case 3:
+						panel_1.setVisible(false);
+						panel_2.setVisible(false);
+						panel_3.setVisible(true);
+					}
 				}
 			}
 		});
@@ -424,9 +448,5 @@ public class OneStep extends Step {
 				.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
 	}
-
-	
-
-
 
 }

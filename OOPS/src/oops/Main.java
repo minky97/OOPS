@@ -36,6 +36,9 @@ public class Main extends JFrame {
       main.setVisible(true);
    }
    public void setSound(BackSound sound){
+	   if(sound == null) {
+		   System.out.println("error!");
+	   }
       this.Sound = sound;
       sound.mulist();
    }

@@ -30,10 +30,16 @@ public class Clock extends JPanel implements ActionListener {
 	}
 
 	public void setTime(int time) {
+		if(time < 0 ) {
+			System.out.println("error!");
+		}
 		this.time = time;
 	}
 
 	public void setStep(Step step) {
+		if(step == null) {
+			System.out.println("error!");
+		}
 		this.step = step;
 	}
 

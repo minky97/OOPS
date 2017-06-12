@@ -29,6 +29,9 @@ public class End extends JFrame {
 	private BackSound Sound;
 
 	public void setSound(BackSound sound) {
+		if(sound == null) {
+			System.out.println("error!");
+		}
 		this.Sound = sound;
 		sound.mulist();
 	}

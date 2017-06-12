@@ -53,6 +53,9 @@ public class User {
 
 
    public void setCoin(int co) {
+	   if(co < 0) {
+		   System.out.println("error!");
+	   }
 	      this.coin = co;
 	   }
    public int getCoin(int num){
@@ -66,6 +69,9 @@ public class User {
    }
 
    public void setHintnum(int hintnum) {
+	   if(hintnum <0) {
+		   System.out.println("error!");
+	   }
       this.hintnum = hintnum;
    }
 
@@ -75,6 +81,9 @@ public class User {
    }
 
    public void setlifenum(int num) {
+	   if(num < 0) {
+		   System.out.println("error!");
+	   }
       this.lifenum = num;
    }
 

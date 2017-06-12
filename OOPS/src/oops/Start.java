@@ -18,6 +18,9 @@ public class Start extends JFrame {//화면 전환 (start<->login,onestep
 	}
 
 	public void setLogin(Login login) {
+		if(login == null) {
+			System.out.println("error!");
+		}
 		this.login = login;
 	}
 

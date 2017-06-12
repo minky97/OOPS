@@ -70,6 +70,9 @@ public class Login extends JFrame {
 		return id;
 	}
 	public void setId(String id){
+		if(id == null) {
+			System.out.println("error!");
+		}
 		this.id=id;
 	}
 

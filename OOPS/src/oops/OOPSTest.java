@@ -14,6 +14,9 @@ public class OOPSTest  {//화면 전환 ( main <-> start,introduce)
 	}
 
 	public void setStart(Start start) {
+		if(start == null) {
+			System.out.println("error!");
+		}
 		this.start = start;
 	}
 

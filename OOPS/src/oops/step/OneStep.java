@@ -260,27 +260,29 @@ public class OneStep extends Step {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_2.getTextField_1().getText();
 				answer = answer.toLowerCase();
+				if (answer == "o" || answer == "x") {
+					if (answer.equals(panel_2.getAnswer_select().get(1))) {
+						score = score + 3;
+						coin = user.getCoin(1);
+						num = 0;
+					} else {
+						num = -1;
+					}
 
-				if (answer.equals(panel_2.getAnswer_select().get(1))) {
-					score = score + 3;
-					coin = user.getCoin(1);
-					num = 0;
+					check = 3;
+					mine.getClock().stop();
+					JOptionPane.showMessageDialog(null, "Your score is " + score);
+					mine.getClock().restart();
+					showlife(user.lifenum(num), imageArray, user);
+					user.setCoin(coin);
+					mine.getClock().setTime(30);
+					panel_1.setVisible(false);
+					panel_2.setVisible(false);
+					panel_3.setVisible(true);
+					i++;
 				} else {
-					num = -1;
+					JOptionPane.showMessageDialog(null, "please input \"o\" or \"x\" ");
 				}
-
-				check = 3;
-				mine.getClock().stop();
-				JOptionPane.showMessageDialog(null, "Your score is " + score);
-				mine.getClock().restart();
-				showlife(user.lifenum(num), imageArray, user);
-				user.setCoin(coin);
-				mine.getClock().setTime(30);
-				panel_1.setVisible(false);
-				panel_2.setVisible(false);
-				panel_3.setVisible(true);
-				i++;
-
 			}
 
 		});
@@ -324,13 +326,12 @@ public class OneStep extends Step {
 				Store sto = new Store(user, clock, mine);
 				sto.setVisible(true);
 				mine.getClock().stop();
-//				panel_1.setVisible(false);
-//				panel_2.setVisible(false);
-//				panel_3.setVisible(false);
+				// panel_1.setVisible(false);
+				// panel_2.setVisible(false);
+				// panel_3.setVisible(false);
 
 			}
 		});
-		
 
 		hintclass = new Hint();
 		JButton btnhint = new JButton("*HINT*");

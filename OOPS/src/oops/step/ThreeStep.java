@@ -117,10 +117,11 @@ public class ThreeStep extends Step {
 		setSound(Sound);
 		setSound(true);
 
-		clock = new Clock(user,main);
-		clock.setVisible(true);
-		clock.setTime(35);
-		clock.setStep(this);
+		mine.setClock(new Clock(user,main));
+		mine.getClock().setVisible(true);
+		mine.getClock().setTime(30);
+		mine.getClock().setStep(this);
+		
 
 		caution = "Do you really want to close the window? If you close the window, you need to solve the problem again from the beginning.";
 		image = new ImageIcon("step3.png");
@@ -245,7 +246,7 @@ public class ThreeStep extends Step {
 
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-				clock.setTime(35);
+				mine.getClock().setTime(35);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -275,7 +276,7 @@ public class ThreeStep extends Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-				clock.setTime(35);
+				mine.getClock().setTime(35);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -304,7 +305,7 @@ public class ThreeStep extends Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-				clock.setTime(35);
+				mine.getClock().setTime(35);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				panel_1.setVisible(false);
@@ -344,8 +345,8 @@ public class ThreeStep extends Step {
 					/* Exit the step3 & Open the step4 */
 					dispose();
 					setSound(false);
-					clock.stop();
-					clock.setStep(null);
+					mine.getClock().stop();
+					mine.getClock().setStep(null);
 					fourstep = new FourStep(main, user);
 					user.step(fourstep);
 					fourstep.setVisible(true);

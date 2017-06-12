@@ -189,10 +189,13 @@ public class TwoStep extends Step {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		clock = new Clock(user,main);
-		clock.setVisible(true);
-		clock.setTime(30);
-		clock.setStep(this);	
+		mine.setClock(new Clock(user,main));
+		mine.getClock().setVisible(true);
+		mine.getClock().setTime(30);
+		mine.getClock().setStep(this);
+		
+		
+		
 
 		
 		
@@ -244,7 +247,7 @@ public class TwoStep extends Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-				clock.setTime(30);
+				mine.getClock().setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
@@ -273,7 +276,7 @@ public class TwoStep extends Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-				clock.setTime(30);
+				mine.getClock().setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
@@ -325,7 +328,7 @@ public class TwoStep extends Step {
 					num = -1;
 				mine.getClock().stop();
 				JOptionPane.showMessageDialog(null, "Your score is " + user.score());
-				clock.setTime(30);
+				mine.getClock().setTime(30);
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
@@ -339,11 +342,11 @@ public class TwoStep extends Step {
 					// exit the Step2 & show the Step3
 					dispose();
 					setSound(false);
-					clock.setStep(null);
+					mine.getClock().setStep(null);
 					threestep = new ThreeStep(main, user);
 					user.step(threestep);
 					threestep.setVisible(true);
-					clock.stop();
+					mine.getClock().stop();
 				}
 			}
 

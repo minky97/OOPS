@@ -110,10 +110,10 @@ public class OneStep extends Step {
 		this.mine = this;
 		this.main = main_input;
 
-		clock = new Clock(user,main);
-		clock.setVisible(true);
-		clock.setTime(30);
-		clock.setStep(this);
+		mine.setClock(new Clock(user,main));
+		mine.getClock().setVisible(true);
+		mine.getClock().setTime(30);
+		mine.getClock().setStep(this);
 		
 
 		Sound = new BackSound("game1");
@@ -245,13 +245,8 @@ public class OneStep extends Step {
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
-				clock.setTime(30);
-				if (clock.getTime() == 0) {
-					dispose();
-					setSound(false);
-					End end = new End(user);
-					end.setVisible(true);
-				}
+				mine.getClock().setTime(30);
+			
 				
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
@@ -279,7 +274,7 @@ public class OneStep extends Step {
 				mine.getClock().restart();
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
-				clock.setTime(30);
+				mine.getClock().setTime(30);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(true);
@@ -311,7 +306,7 @@ public class OneStep extends Step {
 					/* Exit the step1 & Open the Step2 */
 					dispose();
 					setSound(false);
-					clock.stop();
+					mine.getClock().stop();
 					clock.setStep(null);
 					twostep = new TwoStep(main, user);
 					twostep.setVisible(true);

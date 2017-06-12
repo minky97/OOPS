@@ -37,11 +37,11 @@ public class OOPSTest  {//화면 전환 ( main <-> start,introduce)
 			start.start(false);
 			
 		}
-
-		//else로 빠지는지 확인할려고 ㅎㅎ .. kk
-		else {
-			System.out.println("kk");
+		else if(panelName.equals("Exit")){
+			System.exit(0);
 		}
+
+		
 	}
 
 }

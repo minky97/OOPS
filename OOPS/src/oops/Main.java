@@ -98,8 +98,9 @@ public class Main extends JFrame {
       btnExit.setFont(f1);
       btnExit.addActionListener(new ActionListener(){
          public void actionPerformed(ActionEvent arg0){
-            mine.setVisible(false);
-            setSound(false);
+           oopstest = new OOPSTest(mine);
+           oopstest.test(btnExit.getText());
+           setSound(false);
          }
       });
       

@@ -50,13 +50,11 @@ public class ThreeStep extends Step {
 	private int num;
 	private ImageIcon life;// life image
 	private FourStep fourstep;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
 	private ArrayList<JLabel> imageArray;
 	private Hint hintclass;
 	private int hintnum;
 	private int i;
-	private JButton btnhint;
+	
 	private Clock clock;
 	private ThreeStep mine;
 
@@ -361,6 +359,7 @@ public class ThreeStep extends Step {
 			public void actionPerformed(ActionEvent arg0) {
 				Store sto = new Store(user, clock, mine);
 				sto.setVisible(true);
+				mine.setVisible(false);
 				mine.getClock().stop();
 			}
 		});
@@ -372,6 +371,7 @@ public class ThreeStep extends Step {
 		btnhint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mine.getClock().stop();
+				mine.setVisible(false);
 				hintnum = user.getHintnum();
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
@@ -380,10 +380,12 @@ public class ThreeStep extends Step {
 					hintnum -= 1;
 					user.setHintnum(hintnum);
 					mine.getClock().restart();
+					mine.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
 					mine.getClock().restart();
+					mine.setVisible(true);
 				}
 			}
 		});

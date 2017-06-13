@@ -336,17 +336,19 @@ public class FourStep extends Step {
 			public void actionPerformed(ActionEvent arg0) {
 				Store sto = new Store(user,clock,mine);
 				sto.setVisible(true);
+				mine.setVisible(false);
 				mine.getClock().stop();
 			}
 		});
 		
 		hintclass=new Hint();
-		JButton btnhint = new JButton("*HINT*");
+		btnhint = new JButton("*HINT*");
 		btnhint.setForeground(Color.RED);
 		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
 		btnhint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mine.getClock().stop();
+				mine.setVisible(false);
 				hintnum = user.getHintnum();
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
@@ -354,10 +356,12 @@ public class FourStep extends Step {
 							"HINT", JOptionPane.INFORMATION_MESSAGE);
 					hintnum -= 1;
 					user.setHintnum(hintnum);
+					mine.setVisible(true);
 					mine.getClock().restart();
 				} else {
 					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
+					mine.setVisible(true);
 					mine.getClock().restart();
 				}
 			}

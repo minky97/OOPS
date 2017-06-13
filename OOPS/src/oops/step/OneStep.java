@@ -39,7 +39,6 @@ public class OneStep extends Step {
 	final int frame_Width = 1300;
 	private int window;
 	private Main main;
-	private Store usestore;
 	private int coin;
 	private int score;
 	private OneStep_Question panel_1;// question1
@@ -56,7 +55,7 @@ public class OneStep extends Step {
 	private Clock clock;
 	private JButton btnNewButton;
 	private OneStep mine;
-	private int check;
+	private JButton btnhint;
 
 	@Override
 	public void setSound(BackSound sound) {// set sound track of backsound
@@ -228,7 +227,6 @@ public class OneStep extends Step {
 		i = 0;
 		showlife(user.lifenum(num), imageArray, user);
 		user.setCoin(0);
-		check = 1;
 		panel_1.getBtnA().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_1.getTextField_1().getText().trim();
@@ -246,7 +244,7 @@ public class OneStep extends Step {
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
 				mine.getClock().setTime(30);
-				check = 2;
+			
 
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
@@ -268,8 +266,6 @@ public class OneStep extends Step {
 					} else {
 						num = -1;
 					}
-
-					check = 3;
 					mine.getClock().stop();
 					JOptionPane.showMessageDialog(null, "Your score is " + score);
 					mine.getClock().restart();
@@ -326,51 +322,34 @@ public class OneStep extends Step {
 				Store sto = new Store(user, clock, mine);
 				sto.setVisible(true);
 				mine.getClock().stop();
-				// panel_1.setVisible(false);
-				// panel_2.setVisible(false);
-				// panel_3.setVisible(false);
-
+			mine.setVisible(false);
 			}
 		});
 
 		hintclass = new Hint();
-		JButton btnhint = new JButton("*HINT*");
+		btnhint = new JButton("*HINT*");
 		btnhint.setForeground(Color.RED);
 		btnhint.setFont(new Font("±¼¸²", Font.BOLD, 23));
 		btnhint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mine.getClock().stop();
 				hintnum = user.getHintnum();
-				panel_1.setVisible(false);
-				panel_2.setVisible(false);
-				panel_3.setVisible(false);
+			mine.setVisible(false);
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
 					JOptionPane.showMessageDialog(null, hint + "\n*If you close the hint, you have to pay quiz again*",
 							"HINT", JOptionPane.INFORMATION_MESSAGE);
 					hintnum -= 1;
 					user.setHintnum(hintnum);
+					mine.setVisible(true);
 					mine.getClock().restart();
 
 				} else {
 					JOptionPane.showMessageDialog(null, "You don't have a hint item.\nBuy it at store!!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
+					mine.setVisible(true);
 					mine.getClock().restart();
-					switch (check) {
-					case 1:
-						panel_1.setVisible(true);
-						panel_2.setVisible(false);
-						panel_3.setVisible(false);
-						break;
-					case 2:
-						panel_1.setVisible(false);
-						panel_2.setVisible(true);
-						panel_3.setVisible(false);
-					case 3:
-						panel_1.setVisible(false);
-						panel_2.setVisible(false);
-						panel_3.setVisible(true);
-					}
+					
 				}
 			}
 		});

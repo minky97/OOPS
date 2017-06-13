@@ -375,6 +375,7 @@ public class Store extends JFrame {
 				if (window == JOptionPane.CANCEL_OPTION) {
 
 				} else if (window == JOptionPane.OK_OPTION) {
+					step.setVisible(true);
 					step.getClock().restart();
 					dispose();
 					

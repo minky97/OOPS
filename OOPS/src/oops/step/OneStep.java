@@ -139,7 +139,7 @@ public class OneStep extends Step {
 
 			@Override
 			public void windowOpened(WindowEvent e) {
-				// showlife(user.lifenum(num) , imageArray, user);
+				showlife(user.lifenum(num) , imageArray, user);
 				// TODO Auto-generated method stub
 
 			}

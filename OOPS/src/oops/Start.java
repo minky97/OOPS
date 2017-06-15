@@ -41,6 +41,7 @@ public class Start extends JFrame {//Connectiong (start<->login,onestep)
 			user.step(onestep);
 			onestep.setVisible(true);
 			login.setVisible(false);
+			login.dispose();
 		}
 
 		else if (log_in == false) {

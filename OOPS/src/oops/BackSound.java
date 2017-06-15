@@ -74,11 +74,11 @@ public class BackSound implements LineListener {//line listener => line 변경된걸
 				 if (!end) {
 				 audioClip.loop(100);
 				 }
-				audioClip.start(); // 노래 나오게 하는 것
+				audioClip.start(); // start music
 			}
 
 			else {
-				audioClip.stop(); // 노래 안 나오게 하는 것
+				audioClip.stop(); // stop music
 				audioClip.close();
 			}
 		} catch (UnsupportedAudioFileException ex) {

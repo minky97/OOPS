@@ -221,9 +221,9 @@ public class OneStep extends Step {
 		imageArray.add(lblNewLabel_3);
 		imageArray.add(lblNewLabel_4);
 
-		user.setlifenum(3); // set life 값
+		user.setlifenum(3); // set life value
 		hintnum = user.getHintnum(); // hint number
-		num = 0;// 소멸되는 life값
+		num = 0;// decreased life number
 		i = 0;
 		showlife(user.lifenum(num), imageArray, user);
 		user.setCoin(0);

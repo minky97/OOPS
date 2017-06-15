@@ -100,6 +100,7 @@ public class End extends JFrame {
 
 			@Override
 			public void windowClosing(WindowEvent e) {
+
 				setSound(false);
 				System.exit(0);
 			

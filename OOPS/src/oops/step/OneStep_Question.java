@@ -86,7 +86,7 @@ public class OneStep_Question extends JPanel {
       return check;
    }
 
-   public void setCheck(int check) {// capsulation ÇØ¾ß´ï
+   public void setCheck(int check) {
       this.check = check;
    }
 

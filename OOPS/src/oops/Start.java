@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import oops.step.OneStep;
 
-public class Start extends JFrame {//화면 전환 (start<->login,onestep
+public class Start extends JFrame {//Connectiong (start<->login,onestep)
 
 	private JLabel label;
 	private Login login;

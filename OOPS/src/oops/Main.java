@@ -22,8 +22,8 @@ public class Main extends JFrame {
    private JPanel contentPane;
    private ImageIcon image;
    private Font f1;
-   final int frame_Height = 900;
-   final int frame_Width = 1300;
+   static final int frame_Height = 900;
+   static final int frame_Width = 1300;
    private OOPSTest oopstest;
    private BackSound Sound;
 

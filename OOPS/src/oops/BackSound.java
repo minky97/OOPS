@@ -9,11 +9,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineEvent.Type;
+
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import sun.audio.*;
 
 /**
  * This is an example program that demonstrates how to play back an audio file
@@ -27,15 +26,16 @@ public class BackSound implements LineListener {
 	/**
 	 * this flag indicates whether the playback completes or not.
 	 */
-	boolean playCompleted;                
-	private String music;                 //music name
-	private DataLine.Info info;           //Additional format of data. (ex.format of audio)
-	private File audioFile;                
-	private AudioInputStream audioStream; 
-	private AudioFormat format;           
-	private Clip audioClip;               //start,end,loop...
-	private String store;                 //Where music is stored
-	private boolean end=false;            //not loop at ending
+	boolean playCompleted;
+	private String music; // music name
+	private DataLine.Info info; // Additional format of data. (ex.format of
+								// audio)
+	private File audioFile;
+	private AudioInputStream audioStream;
+	private AudioFormat format;
+	private Clip audioClip; // start,end,loop...
+	private String store; // Where music is stored
+	private boolean end = false; // not loop at ending
 
 	/**
 	 * Play a given audio file.
@@ -56,7 +56,7 @@ public class BackSound implements LineListener {
 		if (check) {
 			audioFile = new File(store);
 		}
-		
+
 		try {
 			if (check) {
 				audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -71,9 +71,9 @@ public class BackSound implements LineListener {
 			}
 
 			if (check) {
-				 if (!end) {
-				 audioClip.loop(100);
-				 }
+				if (!end) {
+					audioClip.loop(100);
+				}
 				audioClip.start(); // start music
 			}
 
@@ -144,4 +144,5 @@ public class BackSound implements LineListener {
 
 }
 
-// Borrowed from http://www.codejava.net/coding/how-to-play-back-audio-in-java-with-examples
+// Borrowed from
+// http://www.codejava.net/coding/how-to-play-back-audio-in-java-with-examples

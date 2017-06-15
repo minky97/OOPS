@@ -1,7 +1,7 @@
 package oops;
 
 
-public class OOPSTest  {//화면 전환 ( main <-> start,introduce)
+public class OOPSTest  {//conversion of screen  ( main <-> start,introduce)
 
 	private Main main;
 	private Start start;

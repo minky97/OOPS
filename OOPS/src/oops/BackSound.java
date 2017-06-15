@@ -140,7 +140,7 @@ public class BackSound implements LineListener {
 			System.out.println("error!");
 		}
 
-	}// 배경 음악 리스트
+	}// list of background music list
 
 }
 

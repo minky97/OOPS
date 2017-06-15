@@ -31,14 +31,14 @@ public class Store extends JFrame {
 	private JPanel contentPane;
 	private String caution;
 
-	private int coin;// user가 가지고 있는 coin개수
+	private int coin;// user's coinnum
 	private int co;
-	private int lifenum; // user가 가지고 있는 life의 개수
-	private int timenum; // user가 가지고 있는 time의 개수
-	private int hintnum; // user가 가지고 있는 hint의 개수
-	private int lifenum_buy; // user가 구입하고자하는 life의 개수 life=3coin
-	private int timenum_buy; // user가 구입하고자하는 time의 개수 time=2coin
-	private int hintnum_buy; // user가 구입하고자하는 hint의 개수 hint=1coin
+	private int lifenum; // user's lifenum
+	private int timenum; // user's timenum
+	private int hintnum; // user's hintnum
+	private int lifenum_buy; // what is user want to buy //life price=3coin
+	private int timenum_buy; // what is user want to buy//time price=2coin
+	private int hintnum_buy; // what is user want to buy// hint price=1coin
 	private Font f1;//
 	private JTextField textField;
 	private JTextField textField_1;

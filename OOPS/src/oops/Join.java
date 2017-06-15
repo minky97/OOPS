@@ -119,7 +119,7 @@ public class Join extends JFrame {
 						fw_id.write(id+"\n");
 						fw_pw.write(pw+"\n");
 						
-						fw_id.flush();//buffer가 차지않아도 write.
+						fw_id.flush();//ven if the buffer does not occupy,it can write.
 						fw_pw.flush();
 						
 						fw_id.close();
@@ -128,7 +128,7 @@ public class Join extends JFrame {
 						JOptionPane.showMessageDialog(null, "Success join ! \n *Welcome* ");
 						setVisible(false);
 						log.setVisible(true);
-						//dispose();
+						dispose();
 					}	
 				}
 				catch(Exception e2){

@@ -46,16 +46,18 @@ public class Store extends JFrame {
 	private JTextArea textArea_2;
 	private Step step;
 	private Clock clock;
-	private boolean check;//exit check
+	private boolean check;// exit check
 
 	public void clock_m(Clock clock) {
 		this.clock = clock;
 	}
-	public boolean isCheck(){
+
+	public boolean isCheck() {
 		return check;
 	}
-	public void Check(boolean check){
-		this.check=check;
+
+	public void Check(boolean check) {
+		this.check = check;
 	}
 
 	/**
@@ -163,27 +165,28 @@ public class Store extends JFrame {
 				try {
 					String s2 = textField_1.getText();
 					timenum_buy = Integer.parseInt(s2);
+					if (timenum_buy <= 0) {
+						JOptionPane.showMessageDialog(null, "You input only positive integers!!");
+						textField_1.setText("");
+					} else if (coin < timenum_buy * 2) {
+						JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
+						textField_1.setText("");
+					} else {
+						JOptionPane.showMessageDialog(null, "You get " + timenum_buy * 10 + " seconds.");
+						timenum += timenum_buy * 10;
+						coin -= (timenum_buy * 2);
+						user.setCoin(coin);
+						textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
+								+ " hint\r\n" + coin + " coin.");
+						textField_1.setText("");
+						clock.setTime(timenum);
+
+					}
+
 				} catch (NumberFormatException e2) {
 					JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
-				}
-				if (timenum_buy<=0) {
-					JOptionPane.showMessageDialog(null, "You input only positive integers!!");
-					textField.setText("");
-				}
-				else if (coin < timenum_buy * 2){
-					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
-					textField.setText("");
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "You get " + timenum_buy * 10 + " seconds.");
-					timenum += timenum_buy * 10;
-					coin -= (timenum_buy * 2);
-					user.setCoin(coin);
-					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
-							+ " hint\r\n" + coin + " coin.");
 					textField_1.setText("");
-					clock.setTime(timenum);
-
+	
 				}
 
 			}
@@ -271,29 +274,29 @@ public class Store extends JFrame {
 				try {
 					String s3 = textField_2.getText();
 					hintnum_buy = Integer.parseInt(s3);
+					if (hintnum_buy <= 0) {
+						JOptionPane.showMessageDialog(null, "You input only positive integers!!");
+						textField_2.setText("");
+					} else if (coin < hintnum_buy * 1) {
+						JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
+						textField_2.setText("");
+					} else {
+						JOptionPane.showMessageDialog(null, "You get " + hintnum_buy + " hint.");
+						hintnum += hintnum_buy;
+						coin -= (hintnum_buy * 1);
+						user.setCoin(coin);
+						textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
+								+ " hint\r\n" + coin + " coin.");
+						textField_2.setText("");
+						user.setHintnum(hintnum);
+
+					}
+
 				} catch (NumberFormatException e3) {
 					JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
-				}
-				if (hintnum_buy<=0) {
-					JOptionPane.showMessageDialog(null, "You input only positive integers!!");
-					textField.setText("");
-				}
-				else if (coin < hintnum_buy * 1){
-					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
-					textField.setText("");
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "You get " + hintnum_buy + " hint.");
-					hintnum += hintnum_buy;
-					coin -= (hintnum_buy * 1);
-					user.setCoin(coin);
-					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
-							+ " hint\r\n" + coin + " coin.");
 					textField_2.setText("");
-					user.setHintnum(hintnum);
-
 				}
-			}
+							}
 		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.anchor = GridBagConstraints.NORTHEAST;
@@ -390,7 +393,7 @@ public class Store extends JFrame {
 					step.setVisible(true);
 					step.getClock().restart();
 					dispose();
-					
+
 				}
 
 			}
@@ -481,32 +484,32 @@ public class Store extends JFrame {
 				try {
 					String s = textField.getText();
 					lifenum_buy = Integer.parseInt(s);
+					if (lifenum_buy <= 0) {
+						JOptionPane.showMessageDialog(null, "You input only positive integers!!");
+						textField.setText("");
+					} else if (coin < lifenum_buy * 3) {
+						JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
+						textField.setText("");
+					} else if (lifenum + lifenum_buy > 5) {
+						JOptionPane.showMessageDialog(null, "You can't have more than 5 life!!");
+						textField.setText("");
+					} else {
+						JOptionPane.showMessageDialog(null, "You get " + lifenum_buy + " life.");
+						lifenum += lifenum_buy;
+						coin -= lifenum_buy * 3;
+						user.setCoin(coin);
+						textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
+								+ " hint\r\n" + coin + " coin.");
+						textField.setText("");
+						user.setlifenum(lifenum);
+
+					}
+
 				} catch (NumberFormatException n) {
 					JOptionPane.showMessageDialog(null, "ERROR: Please input only positive integers.");
-				}
-				if (lifenum_buy<=0) {
-					JOptionPane.showMessageDialog(null, "You input only positive integers!!");
-					textField.setText("");
-				}
-				else if (coin < lifenum_buy * 3){
-					JOptionPane.showMessageDialog(null, "You don't have enough coin to buy it!!");
-					textField.setText("");
-				}
-				else if (lifenum + lifenum_buy > 5){
-					JOptionPane.showMessageDialog(null, "You can't have more than 5 life!!");
 				textField.setText("");
 				}
-				else {
-					JOptionPane.showMessageDialog(null, "You get " + lifenum_buy + " life.");
-					lifenum += lifenum_buy;
-					coin -= lifenum_buy * 3;
-					user.setCoin(coin);
-					textArea_2.setText("Now you have\r\n" + lifenum + " life\r\n" + timenum + " time\r\n" + hintnum
-							+ " hint\r\n" + coin + " coin.");
-					textField.setText("");
-					user.setlifenum(lifenum);
-
-				}
+								
 			}
 		});
 		GridBagConstraints gbc_btnBuy = new GridBagConstraints();

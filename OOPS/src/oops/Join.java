@@ -109,6 +109,10 @@ public class Join extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				id = textField.getText();
 				pw = textField_1.getText();
+				if(id.equals("")||pw.equals("")){
+					JOptionPane.showMessageDialog(null,"Please input id/pw");
+				}
+				else{
 				try{
 					if (check(id,file_id)) {//check that already exist user.
 						JOptionPane.showMessageDialog(null, "It already exist.");
@@ -133,6 +137,7 @@ public class Join extends JFrame {
 				}
 				catch(Exception e2){
 					e2.printStackTrace();
+				}
 				}
 				
 				

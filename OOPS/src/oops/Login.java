@@ -185,6 +185,10 @@ public class Login extends JFrame {
 				if (e.getSource().equals(btnLogin)) {
 					id = textField.getText().toString();
 					pw = textField_1.getText().toString();
+					if(id.equals("")||pw.equals("")){
+						JOptionPane.showMessageDialog(null, "please input id/pw");
+					}
+					else{
 					setId(id.toString());
 					try {
 						boolean a = check(id, pw, file_id, file_pw);
@@ -201,7 +205,7 @@ public class Login extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-
+					}
 				}
 			}
 		});

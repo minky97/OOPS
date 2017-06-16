@@ -32,8 +32,8 @@ public class BackSound implements LineListener {
 								// audio)
 	private File audioFile;
 	private AudioInputStream audioStream;
-	private AudioFormat format;
-	private Clip audioClip; // start,end,loop...
+	private AudioFormat format; //Provide a specific data type 
+	private Clip audioClip; // A special kind of data line
 	private String store; // Where music is stored
 	private boolean end = false; // not loop at ending
 

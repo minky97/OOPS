@@ -139,7 +139,7 @@ public class OneStep extends Step {
 
 			@Override
 			public void windowOpened(WindowEvent e) {
-				showlife(user.lifenum(num) , imageArray, user);
+				showlife(user.lifenum(num), imageArray, user);
 				// TODO Auto-generated method stub
 
 			}
@@ -244,7 +244,6 @@ public class OneStep extends Step {
 				showlife(user.lifenum(num), imageArray, user);
 				user.setCoin(coin);
 				mine.getClock().setTime(30);
-			
 
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
@@ -322,7 +321,7 @@ public class OneStep extends Step {
 				Store sto = new Store(user, clock, mine);
 				sto.setVisible(true);
 				mine.getClock().stop();
-			mine.setVisible(false);
+				mine.setVisible(false);
 			}
 		});
 
@@ -334,7 +333,7 @@ public class OneStep extends Step {
 			public void actionPerformed(ActionEvent e) {
 				mine.getClock().stop();
 				hintnum = user.getHintnum();
-			mine.setVisible(false);
+				mine.setVisible(false);
 				if (hintnum > 0) {
 					String hint = hintclass.getHints().get(i);
 					JOptionPane.showMessageDialog(null, hint + "\n*If you close the hint, you have to pay quiz again*",
@@ -349,7 +348,7 @@ public class OneStep extends Step {
 							JOptionPane.WARNING_MESSAGE);
 					mine.setVisible(true);
 					mine.getClock().restart();
-					
+
 				}
 			}
 		});

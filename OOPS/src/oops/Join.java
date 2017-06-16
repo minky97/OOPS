@@ -66,7 +66,7 @@ public class Join extends JFrame {
 		this.main = main_input;
 		log = test.getStart().getLogin();
 		
-		setTitle("Sign");
+		setTitle("Sign up");
 		setBounds(100, 100, frame_Width, frame_Height);
 		setResizable(false);
 		f1 = new Font("Times", Font.BOLD, 40);
@@ -119,7 +119,7 @@ public class Join extends JFrame {
 						fw_id.write(id+"\n");
 						fw_pw.write(pw+"\n");
 						
-						fw_id.flush();//ven if the buffer does not occupy,it can write.
+						fw_id.flush();//even if the buffer does not occupy,it can write.
 						fw_pw.flush();
 						
 						fw_id.close();

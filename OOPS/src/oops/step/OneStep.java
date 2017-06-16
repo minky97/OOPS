@@ -258,7 +258,7 @@ public class OneStep extends Step {
 			public void actionPerformed(ActionEvent e) {
 				answer = panel_2.getTextField_1().getText();
 				answer = answer.toLowerCase();
-				if (answer == "o" || answer == "x") {
+				if (answer.equals("o") || answer.equals("x")) {
 					if (answer.equals(panel_2.getAnswer_select().get(1))) {
 						score = score + 3;
 						coin = user.getCoin(1);

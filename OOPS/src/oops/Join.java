@@ -119,7 +119,7 @@ public class Join extends JFrame {
 						fw_id.write(id+"\n");
 						fw_pw.write(pw+"\n");
 						
-						fw_id.flush();//even if the buffer does not occupy,it can write.
+						fw_id.flush();//even if the buffer does not occupy, it can write.
 						fw_pw.flush();
 						
 						fw_id.close();

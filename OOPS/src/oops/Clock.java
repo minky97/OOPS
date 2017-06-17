@@ -65,6 +65,7 @@ public class Clock extends JPanel implements ActionListener {
 		g.drawImage(icon.getImage(), 0, 0, null);
 	}
 
+	//https://m.blog.naver.com/PostView.nhn?blogId=rlaauddlf200&logNo=30146684375&proxyReferer=http%3A%2F%2Fwww.google.co.kr%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D7%26ved%3D0ahUKEwj71JWw_cPUAhVBW7wKHQTZBkMQFghHMAY%26url%3Dhttp%253A%252F%252Fm.blog.naver.com%252Frlaauddlf200%252F30146684375%26usg%3DAFQjCNHMNWpfV5CkwRi_9_I2_969YYO1GA
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
